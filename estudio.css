@@ -24,7 +24,7 @@
   --ok:#4e7a3c;  --bad:#a8402f;
   --shadow: 0 1px 2px rgba(60,40,20,.06), 0 6px 24px rgba(80,55,25,.07);
   --radius: 14px;
-  --reading: 70ch;
+  --reading: 60ch;
 }
 [data-theme="dark"]{
   --paper:#191510; --paper-2:#211b14; --ink:#ece2d2; --ink-soft:#b3a892;
@@ -46,7 +46,7 @@
 html{scroll-behavior:smooth}
 body{
   font-family:'Literata',Georgia,'Times New Roman',serif;
-  font-size:19px; line-height:1.75; color:var(--ink);
+  font-size:19px; line-height:1.85; color:var(--ink);
   background:var(--paper);
   /* textura de papel sutil con un gradiente de grano */
   background-image:
@@ -76,13 +76,17 @@ h1,.h1{
 
 /* ---------- Tipografia de contenido ---------- */
 h2,.h2{font-family:'Fraunces',serif;font-weight:600;font-size:1.9rem;line-height:1.15;
-  letter-spacing:-.01em;margin:48px 0 14px;color:var(--ink)}
-h3,.h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.4rem;margin:34px 0 10px;color:var(--ink)}
-h4,.h4{font-family:'Literata',serif;font-weight:600;font-size:1.08rem;margin:24px 0 8px;color:var(--accent)}
-p{margin:0 0 16px;max-width:var(--reading)}
-ul,ol{margin:0 0 18px;padding-left:1.3em;max-width:var(--reading)}
-li{margin:0 0 9px}
+  letter-spacing:-.01em;margin:72px 0 20px;color:var(--ink)}
+h2:first-of-type{margin-top:24px}
+h3,.h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.4rem;margin:48px 0 14px;color:var(--ink)}
+h4,.h4{font-family:'Literata',serif;font-weight:600;font-size:1.08rem;margin:30px 0 10px;color:var(--accent)}
+p{margin:0 0 24px;max-width:var(--reading)}
+ul,ol{margin:4px 0 26px;padding-left:1.3em;max-width:var(--reading)}
+li{margin:0 0 13px;padding-left:.2em}
 li::marker{color:var(--accent)}
+/* Separacion generosa entre temas dentro del resumen */
+.tema{padding:8px 0 28px;border-bottom:1px solid var(--line);margin-bottom:20px}
+.tema:last-child{border-bottom:0}
 strong,b{font-weight:600;color:var(--ink)}
 em{color:var(--ink-soft)}
 a{color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1px}
