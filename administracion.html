@@ -53,6 +53,14 @@ p.secDesc{color:var(--muted); margin-bottom:18px; font-size:.95rem;}
 .b-yellow::before{background:var(--warn);}
 .b-green{background:var(--greenSoft); color:var(--green);}
 .b-green::before{background:var(--green);}
+.b-exam{background:var(--accentSoft); color:var(--accent); border:1px solid var(--accent);}
+.b-exam::before{background:var(--accent);}
+.examBanner{margin:18px 16px 0; padding:16px 18px; border:2px solid var(--accent); border-left-width:6px; border-radius:12px; background:var(--accentSoft); max-width:900px;}
+.examBanner h2{margin:0 0 8px; font-size:1.05rem; color:var(--accent);}
+.examBanner ul{margin:0 0 6px 20px;}
+.examBanner li{margin-bottom:3px; font-weight:600;}
+.examBanner p{margin:6px 0 0; font-size:.85rem; color:var(--muted);}
+@media(min-width:760px){.examBanner{margin-left:auto; margin-right:auto;}}
 .utag{display:inline-block; background:var(--accentSoft); color:var(--accent); font-weight:700; font-size:.78rem; padding:3px 10px; border-radius:8px; margin-bottom:8px;}
 .formula{background:var(--accentSoft); border-left:4px solid var(--accent); padding:10px 14px; border-radius:8px; margin:10px 0; font-family:Consolas,Menlo,monospace; font-size:.95rem; overflow-x:auto;}
 .tip{background:var(--warnSoft); border-left:4px solid var(--warn); padding:10px 14px; border-radius:8px; margin:10px 0; font-size:.92rem;}
@@ -136,6 +144,16 @@ table.gt th{background:var(--accentSoft); color:var(--accent);}
     <span>Basado en parcial 2025 + prácticos</span>
   </div>
 </header>
+
+<div class="examBanner">
+  <h2>Qué entra en el 2do parcial</h2>
+  <ul>
+    <li>Departamentalización (parte de Estructuras Orgánicas)</li>
+    <li>Función de Producción</li>
+    <li>Punto de Equilibrio</li>
+  </ul>
+  <p>Solo estos tres temas se toman en el 2do parcial. El resto del contenido queda como repaso y referencia general.</p>
+</div>
 
 <nav class="tabs" id="tabs">
   <button data-tab="resumen" class="active">Resumen</button>
@@ -259,7 +277,7 @@ table.gt th{background:var(--accentSoft); color:var(--accent);}
       <li><strong>Organización línea-staff:</strong> combina las dos. Los órganos de <strong>línea</strong> deciden y ejecutan (autoridad lineal); los de <strong>staff</strong> asesoran, recomiendan y prestan servicios especializados (asesoría legal, consultores, auditoría). <strong>Relación de staff/asesoramiento:</strong> sugiere pero no decide (el asesor financiero sugiere un crédito al director, que decide si lo toma o no).</li>
       <li><strong>Comités</strong> <span class="badge b-green">Complementario</span>: grupos que estudian problemas o recomiendan; naturaleza variada.</li>
     </ul>
-    <h4>Departamentalización <span class="badge b-red">Imprescindible</span></h4>
+    <h4>Departamentalización <span class="badge b-red">Imprescindible</span> <span class="badge b-exam">Entra en el 2do parcial</span></h4>
     <p>Es agrupar actividades homogéneas en unidades (especialización horizontal). Tipos:</p>
     <ul>
       <li><strong>Por funciones:</strong> Producción, Ventas/Comercialización, Finanzas, Personal. La más común. Ventaja: agrupa especialistas, economía de escala. Desventaja: cada área se encierra en lo suyo y se pierde la visión del conjunto.</li>
@@ -316,7 +334,7 @@ table.gt th{background:var(--accentSoft); color:var(--accent);}
 
   <div class="card">
     <span class="utag">UNIDAD 4</span>
-    <h3>Punto de Equilibrio</h3>
+    <h3>Punto de Equilibrio <span class="badge b-exam">Entra en el 2do parcial</span></h3>
     <h4>El concepto <span class="badge b-red">Imprescindible (ejercicio seguro de parcial)</span></h4>
     <p>El punto de equilibrio (PE) es el nivel de actividad donde <strong>los ingresos totales igualan a los costos totales</strong>: no ganás ni perdés. Por encima, ganancia; por debajo, pérdida. Sirve para responder: ¿cuántas unidades tengo que vender para no perder plata? ¿Y para ganar lo que quiero?</p>
     <h4>Las variables <span class="badge b-red">Imprescindible</span></h4>
@@ -345,7 +363,7 @@ table.gt th{background:var(--accentSoft); color:var(--accent);}
 
   <div class="card">
     <span class="utag">UNIDAD 5</span>
-    <h3>Función Producción y Abastecimiento</h3>
+    <h3>Función Producción y Abastecimiento <span class="badge b-exam">Entra en el 2do parcial</span></h3>
     <h4>El sistema de producción <span class="badge b-yellow">Importante</span></h4>
     <p>Producción es la <strong>transformación de insumos en productos</strong> (bienes o servicios). Funciona como sistema: <strong>entradas</strong> (materias primas, mano de obra, energía, capital, información) → <strong>proceso de conversión</strong> → <strong>salidas</strong> (productos y servicios), con un subsistema de <strong>control por retroalimentación</strong>. Una panadería: entra harina, sale pan; el control de calidad y los reclamos del cliente retroalimentan el proceso. Sus objetivos típicos se miden en: costo, calidad, flexibilidad y entrega.</p>
     <h4>Tres niveles de decisiones <span class="badge b-yellow">Importante</span></h4>
@@ -545,6 +563,17 @@ table.gt th{background:var(--accentSoft); color:var(--accent);}
 <section class="panel" id="panel-guia">
   <h2 class="sec">Guía estratégica 80/20</h2>
   <p class="secDesc">Qué cae seguro y dónde invertir cada hora. Evidencia: la prueba del primer parcial 2025 y los trabajos prácticos de la cátedra.</p>
+
+  <div class="card" style="border:2px solid var(--accent); border-left-width:6px;">
+    <h3>Prioridad absoluta del 2do parcial <span class="badge b-exam">Entra en el 2do parcial</span></h3>
+    <p>Estos son los <strong>únicos tres temas</strong> que se toman en el 2do parcial. Acá va el 80% de tu tiempo:</p>
+    <ul class="stepList">
+      <li><strong>1) Punto de Equilibrio (U4).</strong> El caballito de batalla: 3 prácticos enteros de ejercicios numéricos. Hacelos todos a mano y grabate los 3 tipos (Contable, Financiero, Económico).</li>
+      <li><strong>2) Departamentalización (U3, parte de Estructuras Orgánicas).</strong> Clasificar organigramas: funcional, por producto, geográfica, clientela, proceso, proyectos y matricial.</li>
+      <li><strong>3) Función de Producción.</strong> El sistema entrada-proceso-salida, los tres niveles de decisiones, los tipos de producción y la logística (abastecimiento, expedición, mantenimiento).</li>
+    </ul>
+    <p style="font-size:.85rem; color:var(--muted);">Todo lo demás que aparece más abajo (variables del entorno, escuelas, relaciones formales, características de las organizaciones) corresponde al <strong>primer parcial y al repaso general</strong>: te sirve para el final, pero <strong>no entra en el 2do parcial</strong>.</p>
+  </div>
 
   <div class="card">
     <h3>Qué tomaron en el parcial 2025 (la mejor pista que tenés)</h3>
