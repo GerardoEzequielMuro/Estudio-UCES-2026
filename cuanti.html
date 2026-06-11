@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Instrumentos Cuantitativos · UCES 2026 · Sistema de Estudio</title>
+<script src="https://www.geogebra.org/apps/deployggb.js"></script>
 <style>
 :root{
   --bg:#f7f7fb; --card:#ffffff; --text:#1a1a2e; --muted:#5a5a72;
@@ -65,6 +66,10 @@ li{margin-bottom:5px}
 .fig .par{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .fig .par img{max-width:min(46%,260px)}
 .fig figcaption{font-size:.78rem;color:var(--muted);margin-top:6px}
+.ggb{width:100%;max-width:600px;margin:0 auto;display:flex;justify-content:center}
+.ggb-fallback{display:flex;align-items:center;justify-content:center;min-height:180px;border:1px dashed var(--border);border-radius:10px;color:var(--muted);font-size:.85rem;text-align:center;padding:16px;background:var(--formula-bg)}
+.ggb-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.ggb-row .ggb{max-width:200px}
 .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 18px;margin-bottom:14px}
 .formula{background:var(--formula-bg);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin:10px 0;font-size:1.05rem;text-align:center;font-family:Georgia,"Times New Roman",serif}
 .formula small{display:block;font-family:system-ui,sans-serif;font-size:.78rem;color:var(--muted);margin-top:4px}
@@ -245,35 +250,8 @@ sup,sub{font-size:.72em}
 <li><b>b (ordenada al origen):</b> donde la recta corta al eje y, o sea el punto (0; b).</li>
 </ul>
 <figure class="fig">
-<svg viewBox="0 0 440 300" role="img" aria-label="Recta f(x) = 2x + 3 con pendiente y ordenada al origen señaladas">
-  <!-- ejes -->
-  <line x1="30" y1="222" x2="412" y2="222" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
-  <polygon points="412,222 404,218 404,226" fill="currentColor" opacity=".6"/>
-  <line x1="220" y1="292" x2="220" y2="14" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
-  <polygon points="220,14 216,22 224,22" fill="currentColor" opacity=".6"/>
-  <text x="420" y="238" font-size="13" fill="currentColor">x</text>
-  <text x="228" y="20" font-size="13" fill="currentColor">y</text>
-  <!-- ticks x -->
-  <line x1="100" y1="218" x2="100" y2="226" stroke="currentColor" opacity=".6"/><text x="100" y="240" font-size="11" fill="currentColor" text-anchor="middle">−2</text>
-  <line x1="160" y1="218" x2="160" y2="226" stroke="currentColor" opacity=".6"/><text x="160" y="240" font-size="11" fill="currentColor" text-anchor="middle">−1</text>
-  <line x1="280" y1="218" x2="280" y2="226" stroke="currentColor" opacity=".6"/><text x="280" y="240" font-size="11" fill="currentColor" text-anchor="middle">1</text>
-  <line x1="340" y1="218" x2="340" y2="226" stroke="currentColor" opacity=".6"/><text x="340" y="240" font-size="11" fill="currentColor" text-anchor="middle">2</text>
-  <!-- ticks y -->
-  <line x1="216" y1="136" x2="224" y2="136" stroke="currentColor" opacity=".6"/><text x="210" y="140" font-size="11" fill="currentColor" text-anchor="end">3</text>
-  <line x1="216" y1="78" x2="224" y2="78" stroke="currentColor" opacity=".6"/><text x="210" y="82" font-size="11" fill="currentColor" text-anchor="end">5</text>
-  <!-- recta f(x)=2x+3 -->
-  <line x1="70" y1="280" x2="340" y2="20" stroke="var(--accent)" stroke-width="2.5"/>
-  <text x="330" y="36" font-size="13" fill="var(--accent)" text-anchor="end" font-weight="600">f(x) = 2x + 3</text>
-  <!-- triangulo de pendiente: de (0,5;4) a (1,5;4) a (1,5;6) -->
-  <line x1="250" y1="107" x2="310" y2="107" stroke="var(--green)" stroke-width="2"/>
-  <line x1="310" y1="107" x2="310" y2="49" stroke="var(--green)" stroke-width="2"/>
-  <text x="280" y="123" font-size="11" fill="var(--green)" text-anchor="middle">+1</text>
-  <text x="318" y="82" font-size="11" fill="var(--green)" font-weight="600">m = +2</text>
-  <!-- ordenada al origen -->
-  <circle cx="220" cy="136" r="4.5" fill="var(--red)"/>
-  <text x="212" y="124" font-size="12" fill="var(--red)" text-anchor="end" font-weight="600">b = 3</text>
-</svg>
-<figcaption>La recta f(x) = 2x + 3: corta al eje y en b = 3 y por cada unidad que avanza x, sube m = 2.</figcaption>
+<div class="ggb"><div id="ggb1" class="ggb-fallback">Gráfico interactivo (requiere conexión)</div></div>
+<figcaption>La recta f(x) = 2x + 3: corta al eje y en b = 3 y por cada unidad que avanza x, sube m = 2. Movela y hacé zoom.</figcaption>
 </figure>
 <p>Si conocés dos puntos P<sub>1</sub>(x<sub>1</sub>; y<sub>1</sub>) y P<sub>2</sub>(x<sub>2</sub>; y<sub>2</sub>) de la recta:</p>
 <div class="formula">m = <span class="frac"><span class="top">y<sub>2</sub> − y<sub>1</sub></span><span class="bot">x<sub>2</sub> − x<sub>1</sub></span></span><small>"Lo que sube dividido lo que avanza"</small></div>
@@ -301,34 +279,8 @@ sup,sub{font-size:.72em}
 <li><b>Incompatible:</b> rectas paralelas (misma pendiente, distinta ordenada). Sin solución, S = ∅. Si lo resolvés analíticamente llegás a un absurdo.</li>
 </ul>
 <figure class="fig">
-<svg viewBox="0 0 440 300" role="img" aria-label="Sistema de dos ecuaciones lineales graficado como dos rectas que se cortan en el punto (−1; 3)">
-  <!-- ejes -->
-  <line x1="30" y1="206" x2="418" y2="206" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
-  <polygon points="418,206 410,202 410,210" fill="currentColor" opacity=".6"/>
-  <line x1="256" y1="292" x2="256" y2="14" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
-  <polygon points="256,14 252,22 260,22" fill="currentColor" opacity=".6"/>
-  <text x="426" y="222" font-size="13" fill="currentColor">x</text>
-  <text x="264" y="20" font-size="13" fill="currentColor">y</text>
-  <!-- ticks -->
-  <line x1="184" y1="202" x2="184" y2="210" stroke="currentColor" opacity=".6"/><text x="184" y="224" font-size="11" fill="currentColor" text-anchor="middle">−1</text>
-  <line x1="328" y1="202" x2="328" y2="210" stroke="currentColor" opacity=".6"/><text x="328" y="224" font-size="11" fill="currentColor" text-anchor="middle">1</text>
-  <line x1="252" y1="169" x2="260" y2="169" stroke="currentColor" opacity=".6"/><text x="266" y="173" font-size="11" fill="currentColor">1</text>
-  <line x1="252" y1="94" x2="260" y2="94" stroke="currentColor" opacity=".6"/><text x="266" y="98" font-size="11" fill="currentColor">3</text>
-  <!-- rectas -->
-  <line x1="112" y1="20" x2="364" y2="280" stroke="var(--accent)" stroke-width="2.5"/>
-  <line x1="88" y1="20" x2="400" y2="261" stroke="var(--red)" stroke-width="2.5"/>
-  <!-- leyenda -->
-  <line x1="300" y1="28" x2="324" y2="28" stroke="var(--accent)" stroke-width="2.5"/>
-  <text x="330" y="32" font-size="12" fill="var(--accent)" font-weight="600">2x + y = 1</text>
-  <line x1="300" y1="48" x2="324" y2="48" stroke="var(--red)" stroke-width="2.5"/>
-  <text x="330" y="52" font-size="12" fill="var(--red)" font-weight="600">3x + 2y = 3</text>
-  <!-- guias y punto de interseccion -->
-  <line x1="184" y1="94" x2="184" y2="206" stroke="currentColor" stroke-width="1" stroke-dasharray="4 3" opacity=".55"/>
-  <line x1="184" y1="94" x2="256" y2="94" stroke="currentColor" stroke-width="1" stroke-dasharray="4 3" opacity=".55"/>
-  <circle cx="184" cy="94" r="4.5" fill="var(--green)"/>
-  <text x="176" y="84" font-size="12" fill="var(--green)" text-anchor="end" font-weight="600">S = (−1; 3)</text>
-</svg>
-<figcaption>Sistema compatible determinado: cada ecuación es una recta y la solución es el punto donde se cortan. Es el sistema del ejemplo: 2x + y = 1 y 3x + 2y = 3.</figcaption>
+<div class="ggb"><div id="ggb2" class="ggb-fallback">Gráfico interactivo (requiere conexión)</div></div>
+<figcaption>Sistema compatible determinado: cada ecuación es una recta y la solución es el punto donde se cortan. Es el sistema del ejemplo: 2x + y = 1 y 3x + 2y = 3, con S = (−1; 3).</figcaption>
 </figure>
 <figure class="fig"><img alt="Dos rectas paralelas, y = menos 2x + 1 e y = menos 2x + 2: sistema incompatible" loading="lazy" src="data:image/png;base64,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">
 <figcaption>El caso incompatible del material: y = −2x + 1 e y = −2x + 2 tienen la misma pendiente y distinta ordenada. Paralelas, nunca se cortan, S = ∅. Del material teórico de la Unidad 2.</figcaption>
@@ -397,27 +349,12 @@ sup,sub{font-size:.72em}
 <li>Δ &lt; 0: no tiene raíces reales.</li>
 </ul>
 <figure class="fig">
-<svg viewBox="0 0 480 190" role="img" aria-label="Tres parábolas que muestran los casos del discriminante: dos raíces, raíz doble y sin raíces reales">
-  <!-- caso 1: dos raices -->
-  <line x1="20" y1="110" x2="140" y2="110" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
-  <path d="M30,66 Q80,204 130,66" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
-  <circle cx="50" cy="110" r="3.8" fill="var(--red)"/>
-  <circle cx="110" cy="110" r="3.8" fill="var(--red)"/>
-  <text x="80" y="160" font-size="14" fill="currentColor" text-anchor="middle" font-weight="700">Δ &gt; 0</text>
-  <text x="80" y="178" font-size="11" fill="currentColor" text-anchor="middle" opacity=".75">dos raíces distintas</text>
-  <!-- caso 2: raiz doble -->
-  <line x1="180" y1="110" x2="300" y2="110" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
-  <path d="M190,60 Q240,160 290,60" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
-  <circle cx="240" cy="110" r="3.8" fill="var(--red)"/>
-  <text x="240" y="160" font-size="14" fill="currentColor" text-anchor="middle" font-weight="700">Δ = 0</text>
-  <text x="240" y="178" font-size="11" fill="currentColor" text-anchor="middle" opacity=".75">raíz doble (toca y rebota)</text>
-  <!-- caso 3: sin raices -->
-  <line x1="340" y1="110" x2="460" y2="110" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
-  <path d="M350,40 Q400,130 450,40" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
-  <text x="400" y="160" font-size="14" fill="currentColor" text-anchor="middle" font-weight="700">Δ &lt; 0</text>
-  <text x="400" y="178" font-size="11" fill="currentColor" text-anchor="middle" opacity=".75">no corta: sin raíces reales</text>
-</svg>
-<figcaption>El discriminante te dice cuántas veces la parábola corta al eje x (acá con a &gt; 0; con a &lt; 0 es lo mismo pero dada vuelta).</figcaption>
+<div class="ggb-row">
+  <div class="ggb"><div id="ggb3a" class="ggb-fallback">Δ &gt; 0 (requiere conexión)</div></div>
+  <div class="ggb"><div id="ggb3b" class="ggb-fallback">Δ = 0 (requiere conexión)</div></div>
+  <div class="ggb"><div id="ggb3c" class="ggb-fallback">Δ &lt; 0 (requiere conexión)</div></div>
+</div>
+<figcaption>El discriminante te dice cuántas veces la parábola corta al eje x. Δ &gt; 0: dos raíces (x²−x−2). Δ = 0: raíz doble (x²−2x+1). Δ &lt; 0: no corta (x²+1). Acá con a &gt; 0; con a &lt; 0 es lo mismo pero dada vuelta.</figcaption>
 </figure>
 <div class="ej"><div class="tit">Ejemplo resuelto (del apunte)</div>
 <p>Resolver 3x² + 5x − 8 = 0. Identificá: a = 3, b = 5, c = −8.</p>
@@ -473,37 +410,8 @@ sup,sub{font-size:.72em}
 <div class="step"><b>Imagen:</b> a = 1 &gt; 0 ⇒ Img f = [−9/4; +∞). Con esos 4 datos ya graficás la parábola.</div>
 </div>
 <figure class="fig">
-<svg viewBox="0 0 440 300" role="img" aria-label="Parábola f(x) = x al cuadrado menos 3x con vértice, raíces y eje de simetría rotulados">
-  <!-- ejes -->
-  <line x1="30" y1="169" x2="418" y2="169" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
-  <polygon points="418,169 410,165 410,173" fill="currentColor" opacity=".6"/>
-  <line x1="130" y1="292" x2="130" y2="14" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
-  <polygon points="130,14 126,22 134,22" fill="currentColor" opacity=".6"/>
-  <text x="426" y="185" font-size="13" fill="currentColor">x</text>
-  <text x="138" y="20" font-size="13" fill="currentColor">y</text>
-  <!-- ticks x -->
-  <line x1="190" y1="165" x2="190" y2="173" stroke="currentColor" opacity=".6"/><text x="190" y="187" font-size="11" fill="currentColor" text-anchor="middle">1</text>
-  <line x1="250" y1="165" x2="250" y2="173" stroke="currentColor" opacity=".6"/><text x="250" y="187" font-size="11" fill="currentColor" text-anchor="middle">2</text>
-  <line x1="370" y1="165" x2="370" y2="173" stroke="currentColor" opacity=".6"/><text x="370" y="187" font-size="11" fill="currentColor" text-anchor="middle">4</text>
-  <!-- ticks y -->
-  <line x1="126" y1="94" x2="134" y2="94" stroke="currentColor" opacity=".6"/><text x="120" y="98" font-size="11" fill="currentColor" text-anchor="end">2</text>
-  <line x1="126" y1="243" x2="134" y2="243" stroke="currentColor" opacity=".6"/><text x="120" y="247" font-size="11" fill="currentColor" text-anchor="end">−2</text>
-  <!-- eje de simetria -->
-  <line x1="220" y1="16" x2="220" y2="286" stroke="var(--amber)" stroke-width="1.5" stroke-dasharray="6 4"/>
-  <text x="228" y="32" font-size="12" fill="var(--amber)" font-weight="600">eje: x = 3/2</text>
-  <!-- parabola f(x)=x²−3x -->
-  <path d="M70,20 Q220,484 370,20" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
-  <text x="160" y="62" font-size="13" fill="var(--accent)" text-anchor="middle" font-weight="600">f(x) = x² − 3x</text>
-  <!-- raices -->
-  <circle cx="130" cy="169" r="4.5" fill="var(--red)"/>
-  <text x="118" y="156" font-size="12" fill="var(--red)" text-anchor="end" font-weight="600">x₁ = 0</text>
-  <circle cx="310" cy="169" r="4.5" fill="var(--red)"/>
-  <text x="322" y="156" font-size="12" fill="var(--red)" font-weight="600">x₂ = 3</text>
-  <!-- vertice -->
-  <circle cx="220" cy="252" r="4.5" fill="var(--green)"/>
-  <text x="232" y="266" font-size="12" fill="var(--green)" font-weight="600">V(3/2; −9/4)</text>
-</svg>
-<figcaption>La parábola del ejemplo: raíces en 0 y 3, vértice en el medio (mínimo porque a &gt; 0) y eje de simetría x = 3/2.</figcaption>
+<div class="ggb"><div id="ggb4" class="ggb-fallback">Gráfico interactivo (requiere conexión)</div></div>
+<figcaption>La parábola del ejemplo f(x) = x² − 3x: raíces en 0 y 3, vértice en el medio V(3/2; −9/4) (mínimo porque a &gt; 0) y eje de simetría x = 3/2.</figcaption>
 </figure>
 </div>
 
@@ -553,36 +461,8 @@ sup,sub{font-size:.72em}
 <div class="step"><b>El interés compuesto</b> (la ganancia) es C<sub>f</sub> − C<sub>0</sub>: en el caso anual, 6691,13 − 5000 = 1691,13.</div>
 </div>
 <figure class="fig">
-<svg viewBox="0 0 440 315" role="img" aria-label="Comparación entre interés compuesto, que crece como curva exponencial, e interés simple, que crece como recta">
-  <!-- ejes -->
-  <line x1="40" y1="280" x2="420" y2="280" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
-  <polygon points="420,280 412,276 412,284" fill="currentColor" opacity=".6"/>
-  <line x1="50" y1="292" x2="50" y2="14" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
-  <polygon points="50,14 46,22 54,22" fill="currentColor" opacity=".6"/>
-  <text x="404" y="268" font-size="12" fill="currentColor">t (años)</text>
-  <text x="58" y="20" font-size="12" fill="currentColor">$</text>
-  <!-- ticks x -->
-  <line x1="167" y1="276" x2="167" y2="284" stroke="currentColor" opacity=".6"/><text x="167" y="298" font-size="11" fill="currentColor" text-anchor="middle">10</text>
-  <line x1="283" y1="276" x2="283" y2="284" stroke="currentColor" opacity=".6"/><text x="283" y="298" font-size="11" fill="currentColor" text-anchor="middle">20</text>
-  <line x1="400" y1="276" x2="400" y2="284" stroke="currentColor" opacity=".6"/><text x="400" y="298" font-size="11" fill="currentColor" text-anchor="middle">30</text>
-  <text x="50" y="298" font-size="11" fill="currentColor" text-anchor="middle">0</text>
-  <!-- ticks y -->
-  <line x1="46" y1="237" x2="54" y2="237" stroke="currentColor" opacity=".6"/><text x="42" y="241" font-size="11" fill="currentColor" text-anchor="end">5000</text>
-  <line x1="46" y1="150" x2="54" y2="150" stroke="currentColor" opacity=".6"/><text x="42" y="154" font-size="11" fill="currentColor" text-anchor="end">15000</text>
-  <line x1="46" y1="20" x2="54" y2="20" stroke="currentColor" opacity=".6"/><text x="42" y="24" font-size="11" fill="currentColor" text-anchor="end">30000</text>
-  <!-- interes simple: 5000(1 + 0,06t) -->
-  <line x1="50" y1="237" x2="400" y2="159" stroke="var(--green)" stroke-width="2.5"/>
-  <text x="392" y="150" font-size="12" fill="var(--green)" text-anchor="end" font-weight="600">Simple: 5000·(1 + 0,06·t)</text>
-  <!-- interes compuesto: 5000·1,06^t -->
-  <path d="M50,237 L85,228 L120,219 L155,207 L190,193 L225,176 L260,156 L295,133 L330,105 L365,71 L400,31" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
-  <text x="392" y="22" font-size="12" fill="var(--accent)" text-anchor="end" font-weight="600">Compuesto: 5000·1,06ᵗ</text>
-  <!-- brecha a t=30 -->
-  <line x1="400" y1="31" x2="400" y2="159" stroke="var(--red)" stroke-width="1.3" stroke-dasharray="4 3"/>
-  <!-- capital inicial -->
-  <circle cx="50" cy="237" r="3.5" fill="currentColor"/>
-  <text x="60" y="250" font-size="11" fill="currentColor">C₀ = 5000</text>
-</svg>
-<figcaption>Mismo capital ($5000) al 6% anual: el simple suma siempre el mismo interés (recta), el compuesto genera interés sobre interés (curva exponencial). Con los años la brecha (línea punteada) se agranda.</figcaption>
+<div class="ggb"><div id="ggb5" class="ggb-fallback">Gráfico interactivo (requiere conexión)</div></div>
+<figcaption>Mismo capital ($5000) al 6% anual: el simple 5000·(1 + 0,06·t) suma siempre el mismo interés (recta), el compuesto 5000·1,06ᵗ genera interés sobre interés (curva exponencial). Con los años la brecha se agranda.</figcaption>
 </figure>
 <p>Mismo molde para población: P = P<sub>0</sub>(1 + i)<sup>t</sup>, con i el índice de crecimiento en tanto por 1. Y para depreciación continua aparece V = C·e<sup>−kt</sup> (TP5 y repaso: una máquina que pierde valor con el tiempo).</p>
 </div>
@@ -1040,6 +920,108 @@ const F = [
     d.innerHTML = '<div class="fc-inner"><div class="fc-face fc-front"><div>'+c.f+'</div><div class="hint">tocá para dar vuelta</div></div><div class="fc-face fc-back"><div class="fr">'+c.b+'</div><div class="mn">'+c.m+'</div></div></div>';
     d.addEventListener('click',()=>d.classList.toggle('flipped'));
     grid.appendChild(d);
+  });
+})();
+</script>
+<script>
+// ===== Graficos interactivos GeoGebra =====
+(function(){
+  if(typeof GGBApplet === 'undefined') return; // sin conexion: queda el texto fallback
+
+  var base = {
+    appName: "graphing",
+    showToolBar: false,
+    showAlgebraInput: false,
+    showMenuBar: false,
+    showResetIcon: false,
+    enableShiftDragZoom: true,
+    enableRightClick: false,
+    enableLabelDrags: false,
+    width: 600,
+    height: 400,
+    scaleContainerClass: "ggb",
+    autoHeight: false
+  };
+
+  function mount(id, opts){
+    var p = {};
+    for(var k in base){ p[k] = base[k]; }
+    for(var k in opts){ p[k] = opts[k]; }
+    var applet = new GGBApplet(p, true);
+    applet.inject(id);
+  }
+
+  // 1) Recta f(x) = 2x + 3
+  mount("ggb1", {
+    width: 600, height: 400,
+    appletOnLoad: function(api){
+      api.setCoordSystem(-4, 4, -2, 9);
+      api.evalCommand('f(x)=2x+3');
+      api.evalCommand('A=(0,3)');
+      api.setCaption('A', 'b = 3');
+      api.setLabelVisible('A', true);
+    }
+  });
+
+  // 2) Sistema 2x2: 2x+y=1 y 3x+2y=3, interseccion en (-1,3)
+  mount("ggb2", {
+    width: 600, height: 400,
+    appletOnLoad: function(api){
+      api.setCoordSystem(-5, 3, -2, 6);
+      api.evalCommand('f(x)=1-2x');
+      api.evalCommand('g(x)=(3-3x)/2');
+      api.evalCommand('P=Interseca(f,g)');
+      api.setCaption('P', 'S = (-1; 3)');
+      api.setLabelVisible('P', true);
+    }
+  });
+
+  // 3) Discriminante: tres parabolas chicas
+  mount("ggb3a", {
+    width: 200, height: 200,
+    appletOnLoad: function(api){
+      api.setCoordSystem(-3, 3, -2, 4);
+      api.evalCommand('h(x)=x^2-x-2');
+      api.evalCommand('Raiz(h)');
+    }
+  });
+  mount("ggb3b", {
+    width: 200, height: 200,
+    appletOnLoad: function(api){
+      api.setCoordSystem(-2, 4, -1, 5);
+      api.evalCommand('h(x)=x^2-2x+1');
+      api.evalCommand('Raiz(h)');
+    }
+  });
+  mount("ggb3c", {
+    width: 200, height: 200,
+    appletOnLoad: function(api){
+      api.setCoordSystem(-3, 3, -1, 6);
+      api.evalCommand('h(x)=x^2+1');
+    }
+  });
+
+  // 4) Parabola f(x) = x^2 - 3x, vertice y raices
+  mount("ggb4", {
+    width: 600, height: 400,
+    appletOnLoad: function(api){
+      api.setCoordSystem(-2, 5, -3, 4);
+      api.evalCommand('h(x)=x^2-3x');
+      api.evalCommand('V=Vertice(h)');
+      api.setCaption('V', 'V(3/2; -9/4)');
+      api.setLabelVisible('V', true);
+      api.evalCommand('Raiz(h)');
+    }
+  });
+
+  // 5) Interes compuesto vs simple: C0=5000 al 6% anual
+  mount("ggb5", {
+    width: 600, height: 400,
+    appletOnLoad: function(api){
+      api.setCoordSystem(0, 30, 0, 32000);
+      api.evalCommand('simple(t)=5000*(1+0.06*t)');
+      api.evalCommand('compuesto(t)=5000*1.06^t');
+    }
   });
 })();
 </script>
