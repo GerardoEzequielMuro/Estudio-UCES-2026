@@ -6,3 +6,4 @@ _marin.txt
 _extract_fei.py
 *.pyc
 __pycache__/
+_*.py

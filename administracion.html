@@ -37,6 +37,10 @@
 .numfb.ok{color:var(--ok)} .numfb.bad{color:var(--bad)}
 .qtag{font-family:'Literata',serif;font-size:.7rem;font-weight:600;letter-spacing:.06em;color:var(--accent);
   background:var(--accent-soft);border:1px solid var(--line-strong);padding:2px 8px;border-radius:99px;margin-right:8px}
+/* Figuras de diapositivas de cátedra */
+.slide-fig{margin:20px auto;max-width:100%;text-align:center}
+.slide-fig img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.slide-fig figcaption{font-size:.82rem;color:var(--ink-soft);margin-top:6px;font-style:italic}
 </style>
 </head>
 <body>
@@ -101,51 +105,37 @@
   <li><strong>Control:</strong> cuatro fases: establecer estándares, observar el desempeño, comparar contra el estándar y aplicar acción correctiva. Sin control no sabés si el plan funcionó.</li>
 </ul>
 <figure>
-<svg class="diag" viewBox="0 0 660 175" role="img" aria-label="Ciclo del proceso administrativo: planeación, organización, dirección y control, con retroalimentación">
-  <defs>
-    <marker id="arrC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
-  </defs>
-  <g style="color:var(--ink-soft)">
-    <rect class="dbox" x="14" y="45" width="130" height="44" rx="10"/>
-    <rect class="dbox" x="180" y="45" width="130" height="44" rx="10"/>
-    <rect class="dbox" x="346" y="45" width="130" height="44" rx="10"/>
-    <rect class="dbox" x="512" y="45" width="130" height="44" rx="10"/>
-    <text x="79" y="72" font-size="15" font-weight="700" text-anchor="middle">Planeación</text>
-    <text x="245" y="72" font-size="15" font-weight="700" text-anchor="middle">Organización</text>
-    <text x="411" y="72" font-size="15" font-weight="700" text-anchor="middle">Dirección</text>
-    <text x="577" y="72" font-size="15" font-weight="700" text-anchor="middle">Control</text>
-    <line class="dline" x1="144" y1="67" x2="176" y2="67" marker-end="url(#arrC)"/>
-    <line class="dline" x1="310" y1="67" x2="342" y2="67" marker-end="url(#arrC)"/>
-    <line class="dline" x1="476" y1="67" x2="508" y2="67" marker-end="url(#arrC)"/>
-    <path class="dline" d="M577,89 L577,130 L79,130 L79,93" marker-end="url(#arrC)"/>
-    <text class="dmuted" x="328" y="148" font-size="12.5" text-anchor="middle">Retroalimentación: el control detecta desvíos y el ciclo vuelve a empezar</text>
-    <text class="dmuted" x="328" y="28" font-size="12.5" text-anchor="middle">El proceso (o ciclo) administrativo</text>
-  </g>
-</svg>
+<img src="assets/administracion/u1_ciclo_administrativo.jpg" alt="Ciclo del proceso administrativo del apunte de cátedra: planeación, organización, dirección y control, con retroalimentación" loading="lazy">
 <figcaption>El ciclo administrativo: planear, organizar, dirigir y controlar, con retroalimentación.</figcaption>
 </figure>
 <figure>
-<svg class="diag" viewBox="0 0 680 250" role="img" aria-label="Pirámide de niveles organizacionales: institucional, intermedio y operacional, con su nivel de planeación">
-  <g style="color:var(--ink-soft)">
-    <polygon class="dbox" points="200,18 252.8,84 147.2,84"/>
-    <polygon class="dbox" points="147.2,84 252.8,84 306.4,151 93.6,151"/>
-    <polygon class="dbox" points="93.6,151 306.4,151 360,218 40,218"/>
-    <text x="200" y="72" font-size="12.5" font-weight="700" text-anchor="middle">Institucional</text>
-    <text x="200" y="122" font-size="13" font-weight="700" text-anchor="middle">Intermedio</text>
-    <text x="200" y="189" font-size="13" font-weight="700" text-anchor="middle">Operacional</text>
-    <line class="dline" x1="262" y1="55" x2="390" y2="55"/>
-    <line class="dline" x1="316" y1="120" x2="390" y2="120"/>
-    <line class="dline" x1="368" y1="187" x2="390" y2="187"/>
-    <text x="398" y="46" font-size="13" font-weight="700">Planeación estratégica</text>
-    <text class="dmuted" x="398" y="63" font-size="12">Largo plazo · toda la empresa · la cúpula</text>
-    <text x="398" y="111" font-size="13" font-weight="700">Planeación táctica</text>
-    <text class="dmuted" x="398" y="128" font-size="12">Mediano plazo · por departamento</text>
-    <text x="398" y="178" font-size="13" font-weight="700">Planeación operacional</text>
-    <text class="dmuted" x="398" y="195" font-size="12">Corto plazo · cada tarea o actividad</text>
-    <text class="dmuted" x="200" y="240" font-size="12.5" text-anchor="middle">Niveles organizacionales y de planeación</text>
-  </g>
-</svg>
-<figcaption>Niveles organizacionales y su tipo de planeación.</figcaption>
+<table style="width:100%;border-collapse:collapse;font-size:.92rem;margin:0 auto;max-width:640px">
+  <thead>
+    <tr style="background:var(--surface-2)">
+      <th style="text-align:left;padding:10px 13px;border:1px solid var(--line);color:var(--ink)">Nivel organizacional</th>
+      <th style="text-align:left;padding:10px 13px;border:1px solid var(--line);color:var(--ink)">Tipo de planeación</th>
+      <th style="text-align:left;padding:10px 13px;border:1px solid var(--line);color:var(--ink)">Alcance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:10px 13px;border:1px solid var(--line)"><strong>Institucional</strong></td>
+      <td style="padding:10px 13px;border:1px solid var(--line)">Planeación estratégica</td>
+      <td style="padding:10px 13px;border:1px solid var(--line);color:var(--muted)">Largo plazo · toda la empresa · la cúpula</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 13px;border:1px solid var(--line)"><strong>Intermedio</strong></td>
+      <td style="padding:10px 13px;border:1px solid var(--line)">Planeación táctica</td>
+      <td style="padding:10px 13px;border:1px solid var(--line);color:var(--muted)">Mediano plazo · por departamento</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 13px;border:1px solid var(--line)"><strong>Operacional</strong></td>
+      <td style="padding:10px 13px;border:1px solid var(--line)">Planeación operacional</td>
+      <td style="padding:10px 13px;border:1px solid var(--line);color:var(--muted)">Corto plazo · cada tarea o actividad</td>
+    </tr>
+  </tbody>
+</table>
+<figcaption>Niveles organizacionales y su tipo de planeación (Tabla 10.2 del apunte).</figcaption>
 </figure>
 </div>
 
@@ -210,6 +200,10 @@
   <li><strong>Cadena de mando / principio escalar:</strong> línea clara de autoridad desde la cima hasta la base.</li>
   <li><strong>Coordinación:</strong> armonizar todos los esfuerzos individuales hacia el objetivo común. Se logra con comunicación.</li>
 </ul>
+<figure class="slide-fig">
+  <img src="assets/administracion/u3princ_p01-04.png" alt="Principios de estructura: tramo de control amplio vs estrecho, delegacion y organigrama escalar con ejemplos" loading="lazy">
+  <figcaption>Principios de estructura del apunte de cátedra: tramo de control (estructura achatada vs alargada), esquema escalar y ejemplos de organigrama según amplitud de supervisión.</figcaption>
+</figure>
 </div>
 
 <div class="tema">
@@ -220,6 +214,10 @@
   <li><strong>Organización línea-staff:</strong> combina las dos. Los órganos de <strong>línea</strong> deciden y ejecutan (autoridad lineal); los de <strong>staff</strong> asesoran, recomiendan y prestan servicios especializados (asesoría legal, consultores, auditoría). <strong>Relación de staff/asesoramiento:</strong> sugiere pero no decide (el asesor financiero sugiere un crédito al director, que decide si lo toma o no).</li>
   <li><strong>Comités</strong> <span class="badge p3">Complementario</span>: grupos que estudian problemas o recomiendan; naturaleza variada.</li>
 </ul>
+<figure class="slide-fig">
+  <img src="assets/administracion/u3_p25-28.png" alt="Organigramas de organización lineal, funcional y linea-staff del apunte de catedra" loading="lazy">
+  <figcaption>Organigramas de los tres tipos de organización formal: lineal (piramidal), funcional (autoridad por especialidad) y línea-staff (línea + asesores), con ejemplos del apunte de cátedra.</figcaption>
+</figure>
 </div>
 
 <div class="tema">
@@ -235,48 +233,27 @@
   <li><strong>Matricial</strong> <span class="badge p2">Importante</span>: combina funcional + proyectos: cada persona responde a un gerente funcional Y a un gerente de proyecto. Flexible pero rompe la unidad de mando (doble jefe).</li>
 </ul>
 <figure>
-<svg class="diag" viewBox="0 0 700 235" role="img" aria-label="Dos organigramas de ejemplo: departamentalización funcional y departamentalización por producto">
-  <g style="color:var(--ink-soft)">
-    <rect class="dbox" x="85" y="22" width="150" height="36" rx="8"/>
-    <text x="160" y="45" font-size="13" font-weight="700" text-anchor="middle">Gerencia General</text>
-    <line class="dline" x1="160" y1="58" x2="160" y2="80"/>
-    <line class="dline" x1="55" y1="80" x2="265" y2="80"/>
-    <line class="dline" x1="55" y1="80" x2="55" y2="100"/>
-    <line class="dline" x1="160" y1="80" x2="160" y2="100"/>
-    <line class="dline" x1="265" y1="80" x2="265" y2="100"/>
-    <rect class="dbox" x="8" y="100" width="94" height="34" rx="8"/>
-    <rect class="dbox" x="113" y="100" width="94" height="34" rx="8"/>
-    <rect class="dbox" x="218" y="100" width="94" height="34" rx="8"/>
-    <text x="55" y="122" font-size="12" text-anchor="middle">Producción</text>
-    <text x="160" y="122" font-size="12" text-anchor="middle">Ventas</text>
-    <text x="265" y="122" font-size="12" text-anchor="middle">Finanzas</text>
-    <text x="160" y="165" font-size="13" font-weight="700" text-anchor="middle">Por funciones</text>
-    <text class="dmuted" x="160" y="184" font-size="11.5" text-anchor="middle">Agrupa especialistas de la misma</text>
-    <text class="dmuted" x="160" y="199" font-size="11.5" text-anchor="middle">actividad. La más común.</text>
-    <rect class="dbox" x="455" y="22" width="150" height="36" rx="8"/>
-    <text x="530" y="45" font-size="13" font-weight="700" text-anchor="middle">Dirección General</text>
-    <line class="dline" x1="530" y1="58" x2="530" y2="80"/>
-    <line class="dline" x1="425" y1="80" x2="635" y2="80"/>
-    <line class="dline" x1="425" y1="80" x2="425" y2="100"/>
-    <line class="dline" x1="530" y1="80" x2="530" y2="100"/>
-    <line class="dline" x1="635" y1="80" x2="635" y2="100"/>
-    <rect class="dbox" x="378" y="100" width="94" height="46" rx="8"/>
-    <rect class="dbox" x="483" y="100" width="94" height="46" rx="8"/>
-    <rect class="dbox" x="588" y="100" width="94" height="46" rx="8"/>
-    <text x="425" y="119" font-size="12" text-anchor="middle">División</text>
-    <text x="425" y="135" font-size="12" text-anchor="middle">Farmacéutica</text>
-    <text x="530" y="119" font-size="12" text-anchor="middle">División</text>
-    <text x="530" y="135" font-size="12" text-anchor="middle">Veterinaria</text>
-    <text x="635" y="119" font-size="12" text-anchor="middle">División</text>
-    <text x="635" y="135" font-size="12" text-anchor="middle">Química</text>
-    <text x="530" y="172" font-size="13" font-weight="700" text-anchor="middle">Por productos</text>
-    <text class="dmuted" x="530" y="191" font-size="11.5" text-anchor="middle">Una división por línea de producto.</text>
-    <text class="dmuted" x="530" y="206" font-size="11.5" text-anchor="middle">Ideal con muchos productos.</text>
-  </g>
-</svg>
+<img src="assets/administracion/u3_depto_funcional.png" alt="Departamentalización por funciones del apunte de cátedra: Presidente con vicepresidentes de Mercadotecnia, Producción y Finanzas" loading="lazy" style="max-width:100%">
+<img src="assets/administracion/u3_depto_productos.jpg" alt="Departamentalización por productos del apunte de cátedra: Dirección con División Farmacéutica, División Veterinaria y División Química" loading="lazy" style="max-width:60%;display:block;margin:0 auto">
 <figcaption>Dos organigramas: departamentalización por funciones y por productos.</figcaption>
 </figure>
 <p>Principios para elegir el criterio: mayor uso, mayor interés, separación del control y supresión de la competencia.</p>
+<figure class="slide-fig">
+  <img src="assets/administracion/u3_p29-32.png" alt="Organigramas de departamentalizacion por funciones, por productos, geografica y por clientela del apunte de catedra" loading="lazy">
+  <figcaption>Organigramas de cuatro criterios de departamentalización: por funciones, por productos, geográfica y por clientela, con sus ventajas y aplicaciones típicas.</figcaption>
+</figure>
+<figure class="slide-fig">
+  <img src="assets/administracion/u3_p33-36.png" alt="Organigramas de departamentalizacion por proceso, por proyectos y estructura matricial del apunte de catedra" loading="lazy">
+  <figcaption>Organigramas de departamentalización por proceso, por proyectos y estructura matricial (doble autoridad: gerente funcional y gerente de proyecto).</figcaption>
+</figure>
+<figure class="slide-fig">
+  <img src="assets/administracion/u3_p41-44.png" alt="Estructura matricial combinada funcional mas proyectos y schema de organizacion por proyectos del apunte de catedra" loading="lazy">
+  <figcaption>Estructura matricial: combinación de departamentalización funcional y por proyectos. Cada empleado responde a dos jefes (doble linea de autoridad). Comparacion con estructura por proyectos.</figcaption>
+</figure>
+<figure class="slide-fig">
+  <img src="assets/administracion/u3_p45-48.png" alt="Organigramas de departamentalizacion por producto y por territorio, tabla comparativa de criterios de departamentalizacion" loading="lazy">
+  <figcaption>Organigramas adicionales de departamentalización por producto y por territorio, y tabla comparativa de los cuatro criterios principales.</figcaption>
+</figure>
 </div>
 
 <div class="tema">
@@ -336,6 +313,10 @@
   <div class="ct">Ejemplo cotidiano: el puesto de panchos</div>
   <p style="margin:0">Alquiler del carrito $120.000 por mes (CF). Cada pancho te cuesta $200 entre salchicha, pan y aderezos (CVu) y lo vendés a $500 (Pv). Contribución marginal = $300. <mark>Qe = 120.000 / 300 = 400 panchos</mark>. Del pancho 401 en adelante, todo es ganancia. ¿Querés ganar $30.000? (120.000 + 30.000) / 300 = 500 panchos.</p>
 </div>
+<figure class="slide-fig">
+  <img src="assets/administracion/u45_p13-16.png" alt="Grafico del punto de equilibrio con curvas de ingresos y costos totales, zona de ganancias y zona de perdidas, y formulas del apunte de catedra" loading="lazy">
+  <figcaption>Grafico del punto de equilibrio del apunte de cátedra: cruce de la curva de ingresos totales con los costos totales, zona de perdidas (por debajo), zona de ganancias (por arriba), y las formulas de los tres tipos (contable, financiero y economico).</figcaption>
+</figure>
 </div>
 
 <h2>Unidad 5 · Función Producción y Abastecimiento <span class="badge exam">Entra en el 2do parcial</span></h2>
@@ -343,6 +324,10 @@
 <div class="tema">
 <p><strong>El sistema de producción</strong> <span class="badge p2">Importante</span>: producción es la <mark>transformación de insumos en productos</mark> (bienes o servicios). Funciona como sistema: <strong>entradas</strong> (materias primas, mano de obra, energía, capital, información) → <strong>proceso de conversión</strong> → <strong>salidas</strong> (productos y servicios), con un subsistema de <strong>control por retroalimentación</strong>.</p>
 <p>Una panadería: entra harina, sale pan; el control de calidad y los reclamos del cliente retroalimentan el proceso. Sus objetivos típicos se miden en: costo, calidad, flexibilidad y entrega.</p>
+<figure class="slide-fig">
+  <img src="assets/administracion/u45_p01-04.png" alt="Sistema de produccion como sistema abierto: entradas, proceso de conversion y salidas con retroalimentacion, y tabla de objetivos de produccion" loading="lazy">
+  <figcaption>El sistema de producción como sistema abierto: entradas (materias primas, mano de obra, capital), proceso de conversión y salidas (bienes y servicios), con retroalimentación. Tabla de objetivos de producción (costo, calidad, flexibilidad, entrega).</figcaption>
+</figure>
 </div>
 
 <div class="tema">
@@ -352,6 +337,10 @@
   <li><strong>Tácticas:</strong> planeamiento de la producción e inventarios, programación, lanzamiento y monitorización, conducción de la fuerza de trabajo.</li>
   <li><strong>Logísticas:</strong> mantenimiento, <strong>abastecimiento</strong>, expedición, manejo de materiales, administración de personal de producción.</li>
 </ul>
+<figure class="slide-fig">
+  <img src="assets/administracion/u45_p05-08.png" alt="Modelo de decision de produccion con los tres niveles estrategico tactico y logistico, y curva de costos de inventario" loading="lazy">
+  <figcaption>Modelo de decisiones de producción con los tres niveles (estratégico, táctico y logístico) y su alcance temporal. Incluye curva de costos de inventario (costo de ordenamiento vs costo de mantenimiento de existencias).</figcaption>
+</figure>
 </div>
 
 <div class="tema">
@@ -362,6 +351,10 @@
   <li><strong>Por montaje:</strong> piezas que confluyen en una línea de montaje final: automóviles, motores, electrodomésticos.</li>
   <li><strong>Por proyectos:</strong> producto único de gran porte con fecha de inicio y fin: construcción (casas, puentes, diques), astilleros. Usa PERT y Gantt.</li>
 </ul>
+<figure class="slide-fig">
+  <img src="assets/administracion/u45_p09-12.png" alt="Layouts de planta para produccion intermitente y por montaje, diagrama de Gantt y esquema de control de calidad" loading="lazy">
+  <figcaption>Layouts de planta (disposicion de maquinaria): por proceso (producción intermitente) y por producto (línea de montaje). Diagrama de Gantt para programación de producción por proyectos. Esquema de control de calidad por variable y por atributo.</figcaption>
+</figure>
 </div>
 
 <div class="tema">
@@ -377,12 +370,24 @@
   <li><strong>Mantenimiento:</strong> 4 tipos: <strong>preventivo</strong> (anticipado, programado para evitar fallas), <strong>predictivo</strong> (monitorea variables técnicas: vibraciones, temperatura, para prever la falla), <strong>correctivo programable</strong> (la falla se detectó pero la reparación puede esperar a la fecha más oportuna) y <strong>correctivo de emergencia</strong> (la avería exige acción inmediata).</li>
   <li><strong>Servicios de planta:</strong> energía, gas, vapor, agua tratada, aire comprimido.</li>
 </ul>
+<figure class="slide-fig">
+  <img src="assets/administracion/u45_p17-20.png" alt="Ciclo de abastecimiento almacenes compras recepcion, schema de tipos de mantenimiento y tabla comparativa preventivo predictivo correctivo" loading="lazy">
+  <figcaption>Ciclo de abastecimiento (almacenes detectan la necesidad, compras ejecuta, recepción ingresa el bien). Tabla comparativa de los cuatro tipos de mantenimiento: preventivo, predictivo, correctivo programable y correctivo de emergencia.</figcaption>
+</figure>
+<figure class="slide-fig">
+  <img src="assets/administracion/u45_p21-22.png" alt="Grafico del lote optimo de compra: cruce de la curva de costo de ordenamiento descendente y la curva de costo de mantenimiento de existencias ascendente" loading="lazy">
+  <figcaption>Grafico del lote optimo de compra: el lote económico es el punto donde se minimiza la suma del costo de ordenamiento (decrece con lotes mas grandes) y el costo de mantenimiento de existencias (crece con lotes mas grandes).</figcaption>
+</figure>
 </div>
 
 <h2>Unidad 6 · Función Personal</h2>
 
 <div class="tema">
 <p><strong>Alcance</strong> <span class="badge p2">Importante</span>: la administración de personal (Dessler) abarca: análisis de puestos, planeación de necesidades de mano de obra y reclutamiento, selección, inducción y capacitación, administración de sueldos, incentivos y beneficios, evaluación del desempeño, comunicación, desarrollo de gerentes, seguridad y salud, y relaciones laborales.</p>
+<figure class="slide-fig">
+  <img src="assets/administracion/u6_p01-04.png" alt="Esquema de la funcion personal con piramide de niveles y cuadro de las subfunciones de RRHH del apunte de catedra" loading="lazy">
+  <figcaption>Esquema de la función personal del apunte de cátedra: subfunciones de administración de recursos humanos, estructura por niveles y relacion con las otras funciones organizacionales.</figcaption>
+</figure>
 </div>
 
 <div class="tema">
@@ -396,6 +401,14 @@
   <li><strong>Selección:</strong> filtrar con una secuencia: solicitud y CV → entrevistas → pruebas de empleo → investigación de historia anterior → selección preliminar → examen médico → colocación. Pruebas: evaluación psicológica, conocimientos técnicos, salud.</li>
   <li><strong>Inducción:</strong> incorporar y orientar al nuevo: que conozca la organización, su cultura y su puesto (folletos, recorridas, presentaciones). Minimiza la ansiedad natural del arranque.</li>
 </ul>
+<figure class="slide-fig">
+  <img src="assets/administracion/u6_p05-08.png" alt="Flujograma del proceso de seleccion de personal y esquema del ciclo de capacitacion y desarrollo del apunte de catedra" loading="lazy">
+  <figcaption>Flujograma del proceso de seleccion de personal (solicitud, entrevistas, pruebas, investigacion de antecedentes, examen medico, colocacion) y esquema del ciclo de capacitacion y desarrollo del apunte de catedra.</figcaption>
+</figure>
+<figure class="slide-fig">
+  <img src="assets/administracion/u6_p09-11.png" alt="Secuencia detallada del proceso de seleccion de personal con etapas y criterios de evaluacion psicologica y tecnica" loading="lazy">
+  <figcaption>Secuencia detallada del proceso de seleccion de personal: criterios de evaluacion en cada etapa (psicologica, tecnica, medica) y condiciones de avance o descarte del candidato.</figcaption>
+</figure>
 </div>
 
 <div class="tema">

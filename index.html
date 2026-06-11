@@ -4,64 +4,110 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sistema de Estudio UCES 2026 · Plan de Acción</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#f7f7fb; --card:#ffffff; --text:#1a1a2e; --muted:#5a5a72;
-  --accent:#4f46e5; --accent-soft:#eef2ff; --border:#e4e4ef;
-  --green:#16a34a; --amber:#d97706; --red:#dc2626;
-}
-@media (prefers-color-scheme: dark){
-  :root{
-    --bg:#0f0f1a; --card:#1a1a2c; --text:#eaeaf5; --muted:#9a9ab5;
-    --accent:#818cf8; --accent-soft:#23234a; --border:#2c2c44;
-  }
+  --bg:#eef1f5; --surface:#ffffff; --surface-2:#f6f8fb;
+  --ink:#13202e; --text:#2b3848; --muted:#5f6c7b;
+  --line:#e3e8ee; --line-strong:#cbd5e0;
+  --brand:#0e7a64; --brand-deep:#0a5a48; --brand-soft:#e2f1ec;
+  --indigo:#3f4fae; --indigo-deep:#2f3b86; --indigo-soft:#e9ebf8;
+  --gold:#a9760f; --gold-soft:#f7edd6;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --shadow:0 1px 2px rgba(20,32,46,.04),0 8px 24px -12px rgba(20,32,46,.12);
+  --radius:14px;
 }
 [data-theme="dark"]{
-  --bg:#0f0f1a; --card:#1a1a2c; --text:#eaeaf5; --muted:#9a9ab5;
-  --accent:#818cf8; --accent-soft:#23234a; --border:#2c2c44;
+  --bg:#0c1117; --surface:#141d27; --surface-2:#1b2530;
+  --ink:#eef4f9; --text:#c4cfdb; --muted:#8593a3;
+  --line:#243140; --line-strong:#33424f;
+  --brand:#43c0a4; --brand-deep:#6fd3bb; --brand-soft:#0f2f29;
+  --indigo:#929dee; --indigo-deep:#a8b1f2; --indigo-soft:#1a2140;
+  --gold:#d8ad52; --gold-soft:#2c2512;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 30px -14px rgba(0,0,0,.6);
 }
-[data-theme="light"]{
-  --bg:#f7f7fb; --card:#ffffff; --text:#1a1a2e; --muted:#5a5a72;
-  --accent:#4f46e5; --accent-soft:#eef2ff; --border:#e4e4ef;
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0c1117; --surface:#141d27; --surface-2:#1b2530;
+    --ink:#eef4f9; --text:#c4cfdb; --muted:#8593a3;
+    --line:#243140; --line-strong:#33424f;
+    --brand:#43c0a4; --brand-deep:#6fd3bb; --brand-soft:#0f2f29;
+    --indigo:#929dee; --indigo-deep:#a8b1f2; --indigo-soft:#1a2140;
+    --gold:#d8ad52; --gold-soft:#2c2512;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 30px -14px rgba(0,0,0,.6);
+  }
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-.wrap{max-width:880px;margin:0 auto;padding:24px 16px 64px}
-header{text-align:center;padding:32px 0 16px}
-header h1{font-size:1.7rem;margin-bottom:6px}
-header p{color:var(--muted);font-size:.95rem}
-.theme-btn{position:fixed;top:14px;right:14px;background:var(--card);border:1px solid var(--border);border-radius:50%;width:42px;height:42px;font-size:1.2rem;cursor:pointer;z-index:10}
-h2{font-size:1.2rem;margin:36px 0 14px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.7;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:var(--brand-soft);color:var(--brand-deep)}
+.wrap{max-width:900px;margin:0 auto;min-height:100vh;background:var(--surface);
+  padding:0 clamp(20px,5vw,64px) 80px;box-shadow:var(--shadow)}
+.theme-btn{position:fixed;top:16px;right:16px;z-index:50;background:var(--surface);border:1px solid var(--line-strong);
+  border-radius:11px;width:42px;height:42px;font-size:1.1rem;cursor:pointer;color:var(--ink);
+  box-shadow:var(--shadow);transition:background .15s,transform .15s}
+.theme-btn:hover{background:var(--brand-soft);transform:rotate(-12deg)}
+
+/* header con textura blueprint */
+.site-head{position:relative;text-align:center;padding:54px 0 30px;border-bottom:1px solid var(--line);margin-bottom:8px;overflow:hidden}
+.site-head::before{content:"";position:absolute;inset:-10px 0 0;z-index:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:30px 30px;opacity:.6;
+  -webkit-mask:linear-gradient(180deg,#000 5%,transparent 70%);mask:linear-gradient(180deg,#000 5%,transparent 70%)}
+.site-head>*{position:relative;z-index:1}
+.kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brand);font-weight:600;margin-bottom:14px}
+header h1{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,5vw,3rem);line-height:1.04;letter-spacing:-.025em;color:var(--ink);margin-bottom:12px}
+header .sub{color:var(--muted);font-size:1.02rem;max-width:58ch;margin:0 auto}
+
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.4rem,3vw,1.85rem);letter-spacing:-.02em;color:var(--ink);
+  margin:54px 0 20px;padding-bottom:14px;border-bottom:2px solid var(--line);display:flex;align-items:baseline;gap:13px}
+h2::before{content:"";flex:none;align-self:center;width:11px;height:11px;border-radius:3px;background:linear-gradient(135deg,var(--brand),var(--indigo))}
+
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;text-decoration:none;color:var(--text);display:block;transition:transform .15s, box-shadow .15s}
-a.card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.12)}
-.card .emoji{font-size:1.6rem}
-.card h3{font-size:1.05rem;margin:6px 0 4px}
-.card p{font-size:.85rem;color:var(--muted)}
-.rec{display:flex;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px;align-items:flex-start}
-.rec .n{background:var(--accent);color:#fff;border-radius:8px;min-width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem}
-.rec b{display:block;margin-bottom:2px}
-.rec small{color:var(--muted)}
-.day{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}
-.day summary{padding:14px 16px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;list-style:none}
+.card{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;
+  text-decoration:none;color:var(--text);display:block;box-shadow:var(--shadow);transition:transform .15s,border-color .15s,box-shadow .15s}
+a.card:hover{transform:translateY(-3px);border-color:var(--brand);box-shadow:0 10px 26px -12px rgba(20,32,46,.25)}
+.card h3{font-family:var(--serif);font-size:1.1rem;margin:0 0 6px;color:var(--ink);font-weight:600}
+.card p{font-size:.86rem;color:var(--muted);margin:0}
+
+.rec{display:flex;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:15px 17px;margin-bottom:10px;align-items:flex-start;box-shadow:var(--shadow)}
+.rec .n{flex:none;width:34px;height:34px;border-radius:9px;display:grid;place-items:center;color:#fff;font-family:var(--mono);
+  font-weight:700;font-size:.95rem;background:linear-gradient(135deg,var(--brand),var(--brand-deep))}
+.rec b{display:block;margin-bottom:3px;color:var(--ink)}
+.rec small{color:var(--muted);font-size:.88rem;line-height:1.55}
+
+.day{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow)}
+.day summary{padding:14px 17px;font-weight:600;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;list-style:none}
 .day summary::-webkit-details-marker{display:none}
-.day summary .t{color:var(--muted);font-weight:400;font-size:.85rem}
-.day ul{padding:0 18px 14px 34px;font-size:.93rem}
-.day li{margin-bottom:6px}
-.tag{display:inline-block;font-size:.72rem;padding:2px 8px;border-radius:99px;font-weight:600;margin-left:6px;vertical-align:middle}
-.tag.q{background:var(--accent-soft);color:var(--accent)}
-.tip{background:var(--accent-soft);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;padding:12px 16px;margin:10px 0;font-size:.93rem}
-.foot{text-align:center;color:var(--muted);font-size:.85rem;margin-top:48px}
-.check{accent-color:var(--accent);width:16px;height:16px;margin-right:8px;vertical-align:-2px}
+.day summary .t{color:var(--muted);font-weight:500;font-size:.8rem;font-family:var(--mono)}
+.day ul{padding:0 18px 15px 36px;font-size:.93rem}
+.day li{margin-bottom:7px}
+.day li::marker{color:var(--brand)}
+.tag{display:inline-block;font-family:var(--mono);font-size:.66rem;font-weight:700;letter-spacing:.04em;
+  padding:2px 8px;border-radius:6px;margin-left:6px;vertical-align:middle;background:var(--indigo-soft);color:var(--indigo-deep)}
+
+.tip{background:var(--surface-2);border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 var(--radius) var(--radius) 0;padding:14px 18px;margin:11px 0;font-size:.93rem;box-shadow:var(--shadow)}
+.tip b{color:var(--ink)}
+.foot{text-align:center;color:var(--muted);font-size:.85rem;margin-top:52px;padding-top:22px;border-top:1px solid var(--line)}
+.foot a{color:var(--brand-deep)}
+.check{accent-color:var(--brand);width:16px;height:16px;margin-right:9px;vertical-align:-2px}
 </style>
 </head>
 <body>
 <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
 <div class="wrap">
 
-<header>
+<header class="site-head">
+  <div class="kicker">UCES Resistencia · 1er cuatrimestre 2026</div>
   <h1>Sistema de Estudio UCES 2026</h1>
-  <p>5 materias · 5 recursos por materia · Hecho desde los apuntes de cátedra</p>
+  <p class="sub">5 materias · 5 recursos por materia · hecho desde los apuntes de cátedra</p>
 </header>
 
 <h2>Tus 5 materias</h2>
@@ -81,59 +127,59 @@ a.card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.12)}
 <div class="rec"><div class="n">5</div><div><b>Guía estratégica 80/20</b><small>Tu brújula los últimos 2-3 días antes del parcial. Si te queda poco tiempo, estudiá SOLO lo marcado imprescindible de esta guía.</small></div></div>
 
 <h2>Plan de acción (7 días por vuelta)</h2>
-<p style="color:var(--muted);font-size:.9rem;margin-bottom:12px">Pensado en bloques de 2 a 3 horas por día. Si tenés más días, repetí el ciclo: la segunda vuelta siempre rinde el doble. Tildá lo que completás (se guarda solo).</p>
+<p style="color:var(--muted);font-size:.9rem;margin-bottom:14px">Pensado en bloques de 2 a 3 horas por día. Si tenés más días, repetí el ciclo: la segunda vuelta siempre rinde el doble. Tildá lo que completás (se guarda solo).</p>
 
 <details class="day" open><summary><span><input type="checkbox" class="check" data-k="d1">Día 1 · Entender el terreno</span><span class="t">~2.5 h</span></summary>
 <ul>
-  <li>Resumen ejecutivo de <b>Economía</b> completo <span class="tag q">45 min</span></li>
-  <li>Resumen ejecutivo de <b>Cuanti</b> completo <span class="tag q">45 min</span></li>
-  <li>Mapas conceptuales de las dos materias <span class="tag q">20 min</span></li>
-  <li>Primera sesión de flashcards de Economía <span class="tag q">15 min</span></li>
+  <li>Resumen ejecutivo de <b>Economía</b> completo <span class="tag">45 min</span></li>
+  <li>Resumen ejecutivo de <b>Cuanti</b> completo <span class="tag">45 min</span></li>
+  <li>Mapas conceptuales de las dos materias <span class="tag">20 min</span></li>
+  <li>Primera sesión de flashcards de Economía <span class="tag">15 min</span></li>
 </ul></details>
 
 <details class="day"><summary><span><input type="checkbox" class="check" data-k="d2">Día 2 · Las otras tres</span><span class="t">~2.5 h</span></summary>
 <ul>
-  <li>Resumen ejecutivo de <b>Marketing</b> <span class="tag q">45 min</span></li>
-  <li>Resumen ejecutivo de <b>Administración</b> <span class="tag q">40 min</span></li>
-  <li>Resumen ejecutivo de <b>Análisis Conceptual</b> <span class="tag q">35 min</span></li>
-  <li>Flashcards de Cuanti (fórmulas) <span class="tag q">15 min</span></li>
+  <li>Resumen ejecutivo de <b>Marketing</b> <span class="tag">45 min</span></li>
+  <li>Resumen ejecutivo de <b>Administración</b> <span class="tag">40 min</span></li>
+  <li>Resumen ejecutivo de <b>Análisis Conceptual</b> <span class="tag">35 min</span></li>
+  <li>Flashcards de Cuanti (fórmulas) <span class="tag">15 min</span></li>
 </ul></details>
 
 <details class="day"><summary><span><input type="checkbox" class="check" data-k="d3">Día 3 · Práctica dura: números</span><span class="t">~2.5 h</span></summary>
 <ul>
-  <li>Quiz completo de <b>Cuanti</b>, leyendo cada explicación <span class="tag q">60 min</span></li>
-  <li>Quiz de <b>Economía</b> <span class="tag q">45 min</span></li>
-  <li>Flashcards de Administración (fórmulas de punto de equilibrio) <span class="tag q">15 min</span></li>
-  <li>Repaso de lo que fallaste en los quizzes <span class="tag q">20 min</span></li>
+  <li>Quiz completo de <b>Cuanti</b>, leyendo cada explicación <span class="tag">60 min</span></li>
+  <li>Quiz de <b>Economía</b> <span class="tag">45 min</span></li>
+  <li>Flashcards de Administración (fórmulas de punto de equilibrio) <span class="tag">15 min</span></li>
+  <li>Repaso de lo que fallaste en los quizzes <span class="tag">20 min</span></li>
 </ul></details>
 
 <details class="day"><summary><span><input type="checkbox" class="check" data-k="d4">Día 4 · Práctica dura: teoría</span><span class="t">~2.5 h</span></summary>
 <ul>
-  <li>Quiz de <b>Marketing</b> <span class="tag q">45 min</span></li>
-  <li>Quiz de <b>Administración</b> <span class="tag q">45 min</span></li>
-  <li>Quiz de <b>Análisis Conceptual</b> <span class="tag q">40 min</span></li>
-  <li>Flashcards de las 3 materias, solo las falladas <span class="tag q">20 min</span></li>
+  <li>Quiz de <b>Marketing</b> <span class="tag">45 min</span></li>
+  <li>Quiz de <b>Administración</b> <span class="tag">45 min</span></li>
+  <li>Quiz de <b>Análisis Conceptual</b> <span class="tag">40 min</span></li>
+  <li>Flashcards de las 3 materias, solo las falladas <span class="tag">20 min</span></li>
 </ul></details>
 
 <details class="day"><summary><span><input type="checkbox" class="check" data-k="d5">Día 5 · Modo 80/20</span><span class="t">~2 h</span></summary>
 <ul>
-  <li>Guía estratégica de las 5 materias: leé los temas imprescindibles <span class="tag q">60 min</span></li>
-  <li>Volvé al resumen SOLO de los temas imprescindibles que no te cierran <span class="tag q">45 min</span></li>
-  <li>Flashcards mezcladas, 2 materias a elección <span class="tag q">15 min</span></li>
+  <li>Guía estratégica de las 5 materias: leé los temas imprescindibles <span class="tag">60 min</span></li>
+  <li>Volvé al resumen SOLO de los temas imprescindibles que no te cierran <span class="tag">45 min</span></li>
+  <li>Flashcards mezcladas, 2 materias a elección <span class="tag">15 min</span></li>
 </ul></details>
 
 <details class="day"><summary><span><input type="checkbox" class="check" data-k="d6">Día 6 · Segundo simulacro</span><span class="t">~2.5 h</span></summary>
 <ul>
-  <li>Repetí los 5 quizzes. Meta: 80% o más en cada uno <span class="tag q">2 h</span></li>
-  <li>Anotá en papel los 3 temas que peor te salieron <span class="tag q">10 min</span></li>
-  <li>Releé esos 3 temas en el resumen <span class="tag q">20 min</span></li>
+  <li>Repetí los 5 quizzes. Meta: 80% o más en cada uno <span class="tag">2 h</span></li>
+  <li>Anotá en papel los 3 temas que peor te salieron <span class="tag">10 min</span></li>
+  <li>Releé esos 3 temas en el resumen <span class="tag">20 min</span></li>
 </ul></details>
 
 <details class="day"><summary><span><input type="checkbox" class="check" data-k="d7">Día 7 · Cierre liviano</span><span class="t">~1.5 h</span></summary>
 <ul>
-  <li>Mapas conceptuales de las 5 materias, de corrido <span class="tag q">30 min</span></li>
-  <li>Flashcards de todo, una pasada rápida <span class="tag q">30 min</span></li>
-  <li>Guía 80/20: última lectura de lo imprescindible <span class="tag q">30 min</span></li>
+  <li>Mapas conceptuales de las 5 materias, de corrido <span class="tag">30 min</span></li>
+  <li>Flashcards de todo, una pasada rápida <span class="tag">30 min</span></li>
+  <li>Guía 80/20: última lectura de lo imprescindible <span class="tag">30 min</span></li>
   <li>Cortá temprano. Dormir bien suma más que una hora extra de estudio.</li>
 </ul></details>
 
@@ -144,7 +190,7 @@ a.card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.12)}
 <div class="tip"><b>Explicáselo a alguien:</b> si podés explicar un tema en voz alta sin mirar (a tu vieja, al perro, al espejo), lo sabés. Si te trabás, ahí está el agujero.</div>
 <div class="tip"><b>Ya hiciste lo más difícil:</b> tener TODO el material ordenado y masticado. Ahora es solo ejecutar el plan, un día a la vez. Vas a llegar.</div>
 
-<p class="foot">Hecho desde los apuntes de cátedra de UCES Resistencia · 1er cuatrimestre 2026<br>Sitios completos por materia: <a href="https://gerardoezequielmuro.github.io/Economia-2026/" style="color:var(--accent)">Economía</a> · <a href="https://gerardoezequielmuro.github.io/Cuanti-2026/" style="color:var(--accent)">Cuanti</a> · <a href="https://gerardoezequielmuro.github.io/Marketing-2026/" style="color:var(--accent)">Marketing</a> · <a href="https://gerardoezequielmuro.github.io/Administracion-2026/" style="color:var(--accent)">Administración</a> · <a href="https://gerardoezequielmuro.github.io/Analisis-Conceptual-2026/" style="color:var(--accent)">Análisis Conceptual</a></p>
+<p class="foot">Hecho desde los apuntes de cátedra de UCES Resistencia · 1er cuatrimestre 2026<br>Sitios completos por materia: <a href="https://gerardoezequielmuro.github.io/Economia-2026/">Economía</a> · <a href="https://gerardoezequielmuro.github.io/Cuanti-2026/">Cuanti</a> · <a href="https://gerardoezequielmuro.github.io/Marketing-2026/">Marketing</a> · <a href="https://gerardoezequielmuro.github.io/Administracion-2026/">Administración</a> · <a href="https://gerardoezequielmuro.github.io/Analisis-Conceptual-2026/">Análisis Conceptual</a></p>
 </div>
 
 <script>
