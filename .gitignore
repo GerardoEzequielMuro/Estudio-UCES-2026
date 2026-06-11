@@ -1,0 +1,8 @@
+_img/
+_extract/
+_fuentes/
+_scans/
+_marin.txt
+_extract_fei.py
+*.pyc
+__pycache__/

@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análisis Conceptual · Sistema de Estudio UCES 2026</title>
+<style>
+:root{
+  --bg:#f6f7fb; --card:#ffffff; --text:#1c2030; --muted:#5b6275;
+  --accent:#6c5ce7; --accent2:#00b894; --warn:#e17055; --soft:#eceefc;
+  --border:#e2e5f0; --quiz-ok:#d9f7ec; --quiz-bad:#ffe3dc; --chip:#f0f1f8;
+  --shadow:0 4px 18px rgba(30,34,60,.08);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#12141f; --card:#1c1f2e; --text:#e8eaf5; --muted:#9aa0b8;
+    --accent:#8d7bff; --accent2:#1fd1a5; --warn:#ff8e6e; --soft:#262a40;
+    --border:#2e3350; --quiz-ok:#15382e; --quiz-bad:#46221b; --chip:#262a40;
+    --shadow:0 4px 18px rgba(0,0,0,.35);
+  }
+}
+html[data-theme="light"]{
+  --bg:#f6f7fb; --card:#ffffff; --text:#1c2030; --muted:#5b6275;
+  --accent:#6c5ce7; --accent2:#00b894; --warn:#e17055; --soft:#eceefc;
+  --border:#e2e5f0; --quiz-ok:#d9f7ec; --quiz-bad:#ffe3dc; --chip:#f0f1f8;
+  --shadow:0 4px 18px rgba(30,34,60,.08);
+}
+html[data-theme="dark"]{
+  --bg:#12141f; --card:#1c1f2e; --text:#e8eaf5; --muted:#9aa0b8;
+  --accent:#8d7bff; --accent2:#1fd1a5; --warn:#ff8e6e; --soft:#262a40;
+  --border:#2e3350; --quiz-ok:#15382e; --quiz-bad:#46221b; --chip:#262a40;
+  --shadow:0 4px 18px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:background .3s,color .3s}
+.container{max-width:1000px;margin:0 auto;padding:0 16px 80px}
+header{padding:28px 16px 10px;max-width:1000px;margin:0 auto}
+.top-row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.back-link{color:var(--accent);text-decoration:none;font-weight:600;font-size:.95rem}
+.back-link:hover{text-decoration:underline}
+#themeToggle{background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:20px;padding:6px 14px;cursor:pointer;font-size:.9rem;box-shadow:var(--shadow)}
+h1{font-size:1.7rem;margin:14px 0 4px}
+.subtitle{color:var(--muted);font-size:.98rem;margin-bottom:14px}
+nav.tabs{position:sticky;top:0;z-index:50;background:var(--bg);display:flex;gap:6px;overflow-x:auto;padding:10px 0;border-bottom:2px solid var(--border)}
+nav.tabs button{flex:0 0 auto;background:var(--card);border:1px solid var(--border);color:var(--text);padding:9px 16px;border-radius:22px;cursor:pointer;font-size:.92rem;font-weight:600;transition:.2s;white-space:nowrap}
+nav.tabs button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+section.tab{display:none;animation:fadeIn .25s ease}
+section.tab.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin:18px 0;box-shadow:var(--shadow)}
+.card h2{font-size:1.25rem;margin-bottom:8px;color:var(--accent)}
+.card h3{font-size:1.05rem;margin:16px 0 6px}
+.card p{margin:8px 0}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:600;padding:2px 10px;border-radius:12px;background:var(--chip);border:1px solid var(--border);margin-left:8px;vertical-align:middle;letter-spacing:.01em}
+.badge::before{content:"";width:9px;height:9px;border-radius:50%;flex:0 0 auto;background:var(--prio-c)}
+.badge.p1{--prio-c:#e74c3c}
+.badge.p2{--prio-c:#e1a917}
+.badge.p3{--prio-c:#27ae60}
+.prio .dot{width:14px;height:14px;border-radius:50%;flex:0 0 auto;margin-top:4px;background:var(--prio-c)}
+.prio.p1{--prio-c:#e74c3c}
+.prio.p2{--prio-c:#e1a917}
+.prio.p3{--prio-c:#27ae60}
+/* SVG conceptuales */
+.svgfig{margin:16px 0 6px;background:var(--soft);border:1px solid var(--border);border-radius:12px;padding:14px}
+.svgfig svg{display:block;width:100%;height:auto}
+.svgfig figcaption{font-size:.82rem;color:var(--muted);text-align:center;margin-top:8px;font-style:italic}
+.svgfig text{font-family:'Segoe UI',system-ui,sans-serif}
+.s-stroke{stroke:var(--accent)}
+.s-fill{fill:var(--accent)}
+.s-fill2{fill:var(--accent2)}
+.s-card{fill:var(--card)}
+.s-soft{fill:var(--chip)}
+.s-line{stroke:var(--muted)}
+.s-txt{fill:var(--text)}
+.s-mut{fill:var(--muted)}
+.ej{background:var(--soft);border-left:4px solid var(--accent2);padding:10px 14px;border-radius:8px;margin:10px 0;font-size:.95rem}
+.ej b{color:var(--accent2)}
+ul.clean{list-style:none;padding-left:0}
+ul.clean li{padding:5px 0 5px 24px;position:relative}
+ul.clean li::before{content:"▸";position:absolute;left:6px;color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.92rem}
+th,td{border:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft)}
+/* QUIZ */
+.q{border:1px solid var(--border);border-radius:12px;padding:16px;margin:14px 0;background:var(--card)}
+.q .enun{font-weight:600;margin-bottom:10px}
+.q .opts label{display:block;padding:8px 12px;margin:6px 0;border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:.15s}
+.q .opts label:hover{border-color:var(--accent)}
+.q .opts input{margin-right:8px}
+.q .check{margin-top:10px;background:var(--accent);color:#fff;border:none;padding:7px 16px;border-radius:8px;cursor:pointer;font-weight:600}
+.q .fb{display:none;margin-top:10px;padding:10px 14px;border-radius:8px;font-size:.93rem}
+.q .fb.ok{display:block;background:var(--quiz-ok)}
+.q .fb.bad{display:block;background:var(--quiz-bad)}
+.score-bar{position:sticky;top:56px;z-index:40;background:var(--soft);border:1px solid var(--border);border-radius:10px;padding:8px 16px;margin:12px 0;font-weight:600;font-size:.95rem}
+/* FLASHCARDS */
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:14px 0}
+.fc{perspective:1000px;height:215px;cursor:pointer}
+.fc-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.fc.flip .fc-inner{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:16px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px solid var(--border);box-shadow:var(--shadow);overflow:auto}
+.fc-front{background:var(--card);font-weight:700;font-size:1.02rem}
+.fc-front small{font-weight:400;color:var(--muted);margin-top:8px}
+.fc-back{background:var(--soft);transform:rotateY(180deg);font-size:.86rem;justify-content:flex-start;padding-top:14px;text-align:left}
+.fc-back .mn{margin-top:8px;font-size:.8rem;color:var(--accent);font-weight:700}
+/* MAPA */
+.mapa{border-left:4px solid var(--accent);padding:12px 0 12px 16px;margin:12px 0}
+.nodo{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin:10px 0;box-shadow:var(--shadow)}
+.nodo>.tit{font-weight:700;color:var(--accent)}
+.nodo .sub{border-left:3px solid var(--accent2);margin:8px 0 4px 10px;padding:6px 12px;background:var(--soft);border-radius:8px;font-size:.92rem}
+.nodo .sub b{color:var(--accent2)}
+.conexion{font-size:.85rem;color:var(--muted);font-style:italic;margin:4px 0 0 10px}
+/* 80/20 */
+.prio{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border);border-radius:12px;padding:14px;margin:10px 0;background:var(--card)}
+.prio .emoji{font-size:1.4rem}
+.kicker{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}
+h2.unidad{margin:26px 0 4px;font-size:1.35rem;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+.pill{display:inline-block;background:var(--chip);border:1px solid var(--border);border-radius:14px;padding:2px 12px;font-size:.82rem;margin:3px 4px 3px 0}
+@media(max-width:600px){h1{font-size:1.35rem}.card{padding:14px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="top-row">
+    <a class="back-link" href="index.html">← Plan de estudio</a>
+    <button id="themeToggle">Tema claro / oscuro</button>
+  </div>
+  <h1>Análisis Conceptual</h1>
+  <p class="subtitle">Taller de lectura y escritura · UCES 2026 · 1er cuatrimestre · 3 unidades. Todo lo que necesitás para el parcial y el final, sin vueltas.</p>
+  <nav class="tabs" id="tabs">
+    <button data-tab="resumen" class="active">Resumen</button>
+    <button data-tab="quiz">Quiz</button>
+    <button data-tab="flash">Flashcards</button>
+    <button data-tab="mapa">Mapa conceptual</button>
+    <button data-tab="guia">Guía 80/20</button>
+  </nav>
+</header>
+
+<div class="container">
+
+<!-- ===================== RESUMEN ===================== -->
+<section class="tab active" id="resumen">
+
+<div class="card">
+  <h2>Cómo leer este resumen</h2>
+  <p>Cada concepto tiene un badge según la probabilidad de que caiga: <span class="badge p1">Imprescindible</span> cae casi seguro (está en la lista de temas del parcial que dio la cátedra), <span class="badge p2">Importante</span> muy probable (bibliografía obligatoria fuerte), <span class="badge p3">Complementario</span> lectura de apoyo. Los ejemplos cotidianos están para que entiendas, pero en el parcial usá los términos académicos: la cátedra evalúa explícitamente el "uso de términos académicos específicos" y la "justificación teórica en las respuestas".</p>
+</div>
+
+<h2 class="unidad">Unidad 1 · Lenguaje y comunicación</h2>
+
+<div class="card">
+  <h2>La comunicación: de Jakobson a Kerbrat-Orecchioni <span class="badge p2">Importante</span></h2>
+  <p>Arranquemos por el esquema clásico que viste mil veces: Roman Jakobson (1963) dijo que en toda comunicación hay 6 elementos: <b>emisor, receptor, mensaje, canal, código y referente</b> (el tema extraverbal del que se habla). Es un modelo heredado de ingenieros como Shannon, pensado para teléfonos y telégrafos.</p>
+  <p>El problema, según Marín: la comunicación humana no es mecánica. No somos parlantes que se pasan datos. Las personas estamos metidas en <b>situaciones sociales</b> que condicionan todo: el vínculo, las jerarquías, lo que cada uno sabe del mundo. Además "es imposible no comunicarse": gestos, silencios, distancias y miradas también comunican (y su código es cultural, no universal).</p>
+  <p>Por eso <b>Kerbrat-Orecchioni</b> reformula el esquema agregando lo que cada participante pone en juego:</p>
+  <ul class="clean">
+    <li><b>Competencias lingüística y paralingüística:</b> saber armar e interpretar enunciados, entonación, gestos.</li>
+    <li><b>Competencias ideológica y cultural:</b> el "conocimiento del mundo" o competencia enciclopédica.</li>
+    <li><b>Determinaciones psicológicas:</b> la imagen que tengo de mí, del otro y del vínculo.</li>
+    <li><b>Restricciones del universo del discurso:</b> la situación y el tipo de texto me imponen "lo que puede y debe decirse".</li>
+  </ul>
+  <p>También se prefiere hablar de <b>instancia emisora e instancia receptora</b> (una publicidad no tiene un emisor único: marca + agencia + redactor + medio). Y aparecen tres conceptos clave: <b>ruido</b> (toda interferencia, incluso el malentendido), <b>redundancia</b> (repetir para reducir el ruido) y <b>ambigüedad</b> (un enunciado con más de una interpretación, que se deshace con el cotexto o el contexto).</p>
+  <div class="ej"><b>Ejemplo cotidiano:</b> le escribís a un amigo "te espero en el banco". ¿Plaza o Santander? Eso es ambigüedad léxica. Si agregás "llevá la plata del alquiler", el cotexto la deshace. Y si te clava el visto, ojo: el silencio también comunica.</div>
+</div>
+
+<div class="card">
+  <h2>Funciones del lenguaje (Jakobson) <span class="badge p1">Imprescindible</span></h2>
+  <p>Tema estrella del parcial. Las funciones son las <b>finalidades del uso de la lengua</b>. Jakobson relaciona cada una con un elemento de su esquema. La tabla que tenés que saber de memoria:</p>
+  <table>
+    <tr><th>Intención</th><th>Predomina</th><th>Función</th><th>Textos típicos</th></tr>
+    <tr><td>Informar</td><td>Referente</td><td><b>Referencial / informativa</b></td><td>Textos científicos, expositivos, noticias</td></tr>
+    <tr><td>Influir sobre el otro</td><td>Receptor</td><td><b>Conativa / apelativa</b></td><td>Publicidad, discurso político</td></tr>
+    <tr><td>Expresar la subjetividad</td><td>Emisor</td><td><b>Emotiva / expresiva</b></td><td>Conversación, carta íntima</td></tr>
+    <tr><td>Mantener la comunicación</td><td>Canal</td><td><b>Fática</b></td><td>"¿Me escuchás?", "aha", "sí, sí"</td></tr>
+    <tr><td>Crear arte verbal</td><td>Mensaje</td><td><b>Poética</b></td><td>Literatura en general</td></tr>
+    <tr><td>Hablar del lenguaje</td><td>Código</td><td><b>Metalingüística</b></td><td>Definiciones, este apunte</td></tr>
+  </table>
+  <p>Claves de Marín que suelen tomar como verdadero/falso: las funciones son una <b>abstracción teórica</b> (nadie elige conscientemente "usar la fática"), cada texto vehiculiza <b>varias funciones pero siempre hay una predominante</b>, y los tipos de texto no SON funciones, las <b>vehiculizan</b>.</p>
+  <div class="ej"><b>Ejemplos cotidianos:</b> publicidad "ace-la fácil, ace-la tuya" → apelativa. Tu historia de Instagram llorando por el partido → emotiva. El "hola hola, ¿se escucha?" al arrancar la videollamada → fática. Un meme que juega con las palabras por el placer del juego → poética. La noticia del temporal → referencial. La profe explicando qué es un sustantivo → metalingüística.</div>
+  <p>Bonus Halliday (lo menciona Marín): tres macrofunciones presentes en todo uso del lenguaje: <b>ideacional</b> (expresar la experiencia), <b>interpersonal</b> (establecer relaciones sociales) y <b>textual</b> (estructurar el mensaje como texto).</p>
+</div>
+
+<div class="card">
+  <h2>Saussure: el objeto de la lingüística <span class="badge p2">Importante</span></h2>
+  <p>Saussure (Curso de lingüística general, cap. III) se pregunta: ¿cuál es el objeto de estudio de la lingüística? Y responde con la distinción más famosa de la historia de la disciplina:</p>
+  <ul class="clean">
+    <li><b>Lenguaje:</b> la facultad humana. Es heterogéneo y multiforme: físico, fisiológico y psíquico a la vez, individual y social. No se puede estudiar científicamente como un todo.</li>
+    <li><b>Lengua:</b> la parte social del lenguaje. Un <b>sistema de signos</b>, una convención adoptada por el cuerpo social, un "tesoro depositado por la práctica del habla en los sujetos de una comunidad". Es exterior al individuo: vos solo no podés crearla ni modificarla. ESTE es el objeto de la lingüística.</li>
+    <li><b>Habla:</b> el acto <b>individual</b> de voluntad e inteligencia. El uso concreto que cada hablante hace del sistema, acá y ahora.</li>
+  </ul>
+  <p>En el <b>circuito del habla</b> (los dos muñequitos A y B conversando) Saussure muestra que el signo une un <b>concepto</b> con una <b>imagen acústica</b> (no el sonido físico, sino su huella psíquica). La lengua es "un sistema de signos en el que sólo es esencial la unión del sentido y de la imagen acústica".</p>
+  <p>Y propone la <b>semiología</b>: una ciencia que estudie la vida de los signos en el seno de la vida social. La lingüística sería apenas una parte de esa ciencia general (que abarcaría ritos, costumbres, señales militares, formas de cortesía, etc.).</p>
+  <figure class="svgfig">
+    <svg viewBox="0 0 360 260" role="img" aria-label="Signo lingüístico de Saussure: significado y significante como las dos caras de una misma hoja">
+      <rect x="40" y="20" width="280" height="100" rx="14" class="s-card s-stroke" stroke-width="2"/>
+      <line x1="40" y1="70" x2="320" y2="70" class="s-line" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <text x="180" y="50" text-anchor="middle" font-size="15" font-weight="700" class="s-fill2">Significado</text>
+      <text x="180" y="65" text-anchor="middle" font-size="11" class="s-mut">(el concepto: la idea de "árbol")</text>
+      <text x="180" y="95" text-anchor="middle" font-size="15" font-weight="700" class="s-fill">Significante</text>
+      <text x="180" y="110" text-anchor="middle" font-size="11" class="s-mut">(imagen acústica: /árbol/)</text>
+      <text x="180" y="150" text-anchor="middle" font-size="13" font-weight="700" class="s-txt">= SIGNO</text>
+      <path d="M150 168 q30 22 60 0" fill="none" class="s-line" stroke-width="1.5"/>
+      <text x="180" y="200" text-anchor="middle" font-size="11" class="s-mut">Las dos caras de una misma hoja:</text>
+      <text x="180" y="216" text-anchor="middle" font-size="11" class="s-mut">no se pueden separar. La unión es</text>
+      <text x="180" y="232" text-anchor="middle" font-size="11" class="s-mut">psíquica, arbitraria y convencional.</text>
+    </svg>
+    <figcaption>El signo lingüístico de Saussure: significado + significante, inseparables.</figcaption>
+  </figure>
+  <div class="ej"><b>Ejemplo cotidiano:</b> la lengua es como las reglas del truco: existen antes que vos, las compartís con toda la comunidad y no podés cambiarlas solo. El habla es cada partida concreta que jugás. Y el signo: cuando leés "perro" en un chat, no hay ningún perro ni ningún sonido, pero en tu cabeza se unen la imagen acústica /pe-rro/ y el concepto. Esa unión psíquica es el signo.</div>
+</div>
+
+<div class="card">
+  <h2>Bajtín: los géneros discursivos <span class="badge p2">Importante</span></h2>
+  <p>Bajtín ("El problema de los géneros discursivos") parte de una idea simple: usamos la lengua siempre dentro de <b>esferas de la actividad humana</b> (la facultad, el laburo, la familia, los medios). Cada esfera elabora sus <b>géneros discursivos</b>: <b>"tipos relativamente estables de enunciados"</b>. Esa es LA definición que tenés que citar.</p>
+  <p>Cada enunciado es individual, pero cada esfera genera formas típicas reconocibles que combinan tres elementos ligados indisolublemente:</p>
+  <ul class="clean">
+    <li><b>Contenido temático:</b> de qué se puede hablar en ese género.</li>
+    <li><b>Estilo:</b> la selección de recursos léxicos, fraseológicos y gramaticales.</li>
+    <li><b>Composición:</b> cómo se estructura, cómo se organiza.</li>
+  </ul>
+  <p>La clasificación clave:</p>
+  <ul class="clean">
+    <li><b>Géneros primarios (simples):</b> se constituyen en la comunicación discursiva inmediata, cotidiana: el diálogo de todos los días, la carta, la réplica.</li>
+    <li><b>Géneros secundarios (complejos):</b> surgen en condiciones de comunicación cultural más compleja y organizada, principalmente escrita: novelas, dramas, investigaciones científicas. Lo importante: <b>absorben y reelaboran</b> géneros primarios (un diálogo dentro de una novela deja de ser conversación real y pasa a ser parte de la obra).</li>
+  </ul>
+  <p>Sobre el estilo: hay géneros que permiten mucho estilo individual (los literarios) y otros muy estandarizados que casi no lo admiten (documentos oficiales, formatos administrativos).</p>
+  <div class="ej"><b>Ejemplo cotidiano:</b> sabés sin que nadie te lo enseñe que un mensaje de WhatsApp a tu amigo ("ey, dale, nos vemos 21hs") y un mail a un profesor ("Estimada profesora: le escribo para consultarle...") son géneros distintos: cambia el tema posible, el estilo y la estructura. El audio de WhatsApp es un género primario. Una serie de Netflix que mete esos audios en su guion los reelabora: género secundario.</div>
+</div>
+
+<div class="card">
+  <h2>Variedades lingüísticas: lectos y registros <span class="badge p1">Imprescindible</span></h2>
+  <p>Tema confirmado para el parcial. La lengua como código no es uniforme: varía. La sociolingüística (Halliday) distingue dos tipos de variedades:</p>
+  <h3>1. Variedades según el usuario: LECTOS</h3>
+  <ul class="clean">
+    <li><b>Dialecto:</b> variedad por la región de origen o adopción. El "che, ¿vos vas?" rioplatense vs. el "¿tú vas?" de otros países.</li>
+    <li><b>Sociolecto:</b> variedad por el grupo social. Marca patrones jerárquicos: "pieza", "cuarto" y "habitación" nombran lo mismo en distintos grupos.</li>
+    <li><b>Cronolecto:</b> variedad por edad o generación. Tu abuela no dice "ah re" ni "tremendo".</li>
+    <li><b>Idiolecto:</b> el modo único y particular de hablar de cada individuo. Es el cruce de su dialecto + sociolecto + cronolecto.</li>
+  </ul>
+  <p>Ojo con este detalle de Marín: los lectos marcan diferencias en pronunciación, entonación y vocabulario, <b>pero no en las significaciones</b>.</p>
+  <h3>2. Variedades según la situación: REGISTROS</h3>
+  <p>No dependen de quién sos sino de dónde estás hablando. Las opciones: <b>oral / escrito</b>, <b>formal / informal</b>, <b>profesional / no profesional</b> (las jergas: médicos, abogados, gamers, marketineros con su "engagement" y su "funnel").</p>
+  <div class="ej"><b>Ejemplo cotidiano:</b> vos mismo en un día usás varios registros: audio informal oral con tus amigos, mail formal escrito a la facu, jerga profesional de CRM en el laburo. Tu idiolecto es tu mezcla única: porteño (dialecto) + estudiante universitario (sociolecto) + veintipico (cronolecto).</div>
+</div>
+
+<h2 class="unidad">Unidad 2 · El universo de los textos I</h2>
+
+<div class="card">
+  <h2>¿Qué es un texto? <span class="badge p1">Imprescindible</span></h2>
+  <p>La cátedra dio varias definiciones de autores y pidió elaborar un concepto propio (cayó así en el parcial). Las más citadas:</p>
+  <ul class="clean">
+    <li><b>Lázaro Carreter (1971):</b> "todo conjunto analizable de signos": un fragmento de conversación, una conversación entera, un verso, una novela.</li>
+    <li><b>Dressler (1973):</b> "el texto es el mayor signo lingüístico".</li>
+    <li><b>Isenberg (1976):</b> la forma primaria de organización en que se manifiesta el lenguaje humano.</li>
+    <li><b>Bernárdez (1982):</b> la unidad lingüística comunicativa fundamental, producto de la actividad verbal humana, con cierre semántico y comunicativo y coherencia.</li>
+    <li><b>Lotman (1979):</b> cualquier comunicación en un sistema de signos (hasta un ballet o un cuadro).</li>
+  </ul>
+  <p>Para Marín, la lingüística textual nace porque no nos comunicamos con palabras ni oraciones sueltas sino con <b>significados completos</b>. Un texto se define por su <b>coherencia</b> y se caracteriza por tres dimensiones: <b>finalidad comunicativa</b> (pragmática), <b>coherencia</b> (semántica) y <b>cohesión</b> (gramatical y léxica).</p>
+  <h3>Características fundamentales de los textos (cátedra)</h3>
+  <ul class="clean">
+    <li><b>Carácter comunicativo:</b> se producen en una actividad comunicativa.</li>
+    <li><b>Carácter pragmático:</b> ocurren en una situación concreta (contexto, propósito).</li>
+    <li><b>Estructurado:</b> tiene orden, reglas propias, organización interna.</li>
+    <li><b>Adecuación:</b> elegir, entre todas las opciones que da la lengua, la más apropiada para la situación.</li>
+  </ul>
+  <h3>Condiciones de los textos escritos</h3>
+  <p>Que sean <b>adecuados</b> (al destinatario y al propósito), <b>efectivos</b> (que logren su propósito), <b>coherentes</b> (información clara, sin contradicciones, bien organizada) y <b>correctos</b> (sin errores de expresión ni ortografía).</p>
+  <div class="ej"><b>Ejemplo cotidiano:</b> "¿Una lista de contactos del CRM es un texto?" Según Marín, depende de si el usuario puede darle coherencia, un sentido global. Para vos que la usás, sí. Para alguien que no sabe qué es, son palabras sueltas. La coherencia es semántica Y pragmática.</div>
+</div>
+
+<div class="card">
+  <h2>Paratexto, soporte, portador y formato <span class="badge p1">Imprescindible</span></h2>
+  <ul class="clean">
+    <li><b>Paratexto</b> (para = al lado de): elementos que acompañan al texto y preparan su recepción. <b>Icónicos</b> (fotos, gráficos, dibujos) y <b>verbales</b> (título, autor, índice, epígrafe, copete, volanta, prólogo, notas).</li>
+    <li><b>Soporte:</b> el material físico que sustenta el texto: antes arcilla, papiro, pergamino; después papel; hoy también soportes electrónicos y magnéticos.</li>
+    <li><b>Portador:</b> quien "porta" el texto: libro, revista, diario, página web, portal de noticias.</li>
+    <li><b>Formato:</b> la disposición del texto en el espacio, su distribución en el soporte: formato carta, receta, periodístico, publicitario.</li>
+  </ul>
+  <div class="ej"><b>Ejemplo cotidiano:</b> abrís una noticia en Infobae desde el celu. Soporte: pantalla (electrónico). Portador: el portal de noticias. Formato: periodístico (título, bajada, columnas). Paratextos: el titular, la foto con epígrafe, la volanta. Antes de leer una palabra del cuerpo, ya hipotetizaste de qué va. Eso hace el paratexto: te da hipótesis previas de lectura.</div>
+</div>
+
+<div class="card">
+  <h2>Macroestructura y macrorreglas (van Dijk) <span class="badge p1">Imprescindible</span></h2>
+  <p>Tema fijo de parcial. La <b>macroestructura</b> es la representación abstracta y general del <b>sentido global del texto</b>, que puede expresarse en una sola proposición (una idea). Es lo que respondés cuando te preguntan "¿de qué trata?".</p>
+  <p>¿Cómo se llega? Aplicando las <b>macrorreglas</b>: reglas que permiten reducir las proposiciones de un texto a una sola. Esa reducción es un proceso de comprensión e interpretación. Son cuatro, en dos grupos:</p>
+  <table>
+    <tr><th>Grupo</th><th>Macrorregla</th><th>Qué hace</th><th>Ejemplo</th></tr>
+    <tr><td rowspan="2">Omitir y conservar</td><td><b>1. Supresión</b></td><td>Se suprimen las proposiciones innecesarias para interpretar lo que sigue</td><td>"Tomó un taxi. Le indicó la dirección. El taxi partió" → "Tomó un taxi"</td></tr>
+    <tr><td><b>2. Selección</b></td><td>Se omite lo que es condición, parte o presuposición de la información esencial</td><td>"Se puso el saco y buscó el llavero; abrió la puerta y salió" → "Salió"</td></tr>
+    <tr><td rowspan="2">Sustituir (con tu conocimiento del mundo)</td><td><b>3. Generalización</b></td><td>Se reúnen objetos o acciones en una palabra que los agrupe</td><td>"Lápices, papeles, libros, pisapapeles" → "útiles de escritorio"</td></tr>
+    <tr><td><b>4. Construcción</b></td><td>Se reemplazan proposiciones por una frase nueva que el lector construye</td><td>"Se puso el saco, buscó el llavero, abrió la puerta y subió al Ford" → "Se fue en auto"</td></tr>
+  </table>
+  <p>Condición importante: se aplican distinto según el tipo de texto. En una narración cotidiana la macroestructura debe ser una <b>acción</b>; en un texto argumentativo a favor de algo, una <b>recomendación</b>.</p>
+  <div class="ej"><b>Ejemplo cotidiano:</b> tu amigo te manda un audio de 4 minutos contando el viaje en bondi, la cola, el precio, la pelea con el chofer. Vos le contás a otro: "le fue mal viajando". Acabás de aplicar macrorreglas sin saberlo. La macroestructura de una noticia entera puede ser "Un temporal provocó graves inconvenientes en la ciudad".</div>
+</div>
+
+<div class="card">
+  <h2>Coherencia y cohesión (presentación general) <span class="badge p1">Imprescindible</span></h2>
+  <p>Las dos propiedades esenciales del texto (las reglas de coherencia se desarrollan a fondo en la Unidad 3, donde la cátedra las dio).</p>
+  <p><b>Coherencia:</b> la propiedad que define al texto. Hace que se interprete como una <b>unidad</b> y no como una suma de oraciones sueltas. Es la relación interna de sentidos (semántica) más la interpretación del receptor con su conocimiento del mundo (pragmática). Marín aclara: el emisor construye la coherencia y el receptor la <b>reconstruye</b>.</p>
+  <p><b>Cohesión:</b> la explicitación de esas relaciones mediante recursos <b>gramaticales</b> (pronominalización, elipsis, conjunción/conectores) y <b>léxicos</b> (sinonimia, hiperonimia/hiponimia). Detalle fino que aman tomar: la cohesión NO es condición necesaria ni suficiente para que haya texto. Un poema casi sin recursos cohesivos puede ser coherente; una serie de oraciones llena de conectores puede ser incoherente.</p>
+  <h3>Recursos cohesivos que pide el programa</h3>
+  <table>
+    <tr><th>Tipo</th><th>Recurso</th><th>Ejemplo</th></tr>
+    <tr><td rowspan="3">Gramatical</td><td><b>Pronominalización</b></td><td>"¿Dónde está el libro? No <u>lo</u> encuentro"</td></tr>
+    <tr><td><b>Elipsis</b></td><td>"Mi camisa es azul, la suya verde" (se suprime "camisa")</td></tr>
+    <tr><td><b>Conjunción (conectores)</b></td><td>"pero", "por lo tanto", "en resumen": indican qué relación establecer (causa, contraste, tiempo)</td></tr>
+    <tr><td rowspan="2">Léxica</td><td><b>Sinonimia</b></td><td>"habitación" → "cuarto"</td></tr>
+    <tr><td><b>Hiperonimia / hiponimia</b></td><td>"caballo" (hiperónimo) engloba a "bayo", "zaino" (hipónimos); "flor" a "violeta", "azalea"</td></tr>
+  </table>
+  <p>Conceptos extra de Marín cap. 5 por si pinta el final: la cohesión referencial puede ser <b>exofórica</b> (remite a la realidad fuera del texto) o <b>endofórica</b> (dentro del texto), y la endofórica tiene dirección <b>anafórica</b> (hacia atrás: "los asientos eran cómodos, pero el mío...") o <b>catafórica</b> (hacia adelante: "había naranjas de dos clases: de ombligo y de jugo"). También existen la <b>reiteración</b> (repetir, legítimo en textos científicos) y la <b>nominalización</b> ("ofreció" → "el ofrecimiento").</p>
+  <div class="ej"><b>Ejemplo cotidiano:</b> en un titular: "Messi volvió a Rosario. El capitán de la Selección fue recibido por una multitud. El rosarino agradeció...". "El capitán", "el rosarino": sustituciones léxicas para no repetir "Messi". Todas correfieren a la misma persona. Eso es cohesión trabajando.</div>
+</div>
+
+<div class="card">
+  <h2>Bonorino y Cuñarro + Pagani: léxico, gramática y texto <span class="badge p2">Importante</span></h2>
+  <p>Dos capítulos del mismo libro (Lengua. Léxico, gramática y texto):</p>
+  <p><b>Bonorino y Cuñarro (cap. 5, "Cómo se establecen relaciones entre significados"):</b> las <b>relaciones léxicas</b> son conexiones semánticas y gramaticales entre palabras: <b>sinonimia, antonimia, hiperonimia, polisemia, homonimia y campo léxico</b>. Identificarlas ayuda a ver vínculos entre las distintas partes del texto y favorece la lectura y la escritura, sobre todo en textos expositivo-explicativos y argumentativos. Es la base teórica de la cohesión léxica.</p>
+  <p><b>Pagani (cap. 7, "Cómo se construyen textos"):</b> desarrolla la <b>cohesión textual</b>: se denomina texto a cualquier unidad de palabras (hablada o escrita) que constituya una totalidad unificada con un tema determinado. La coherencia es la propiedad que, por excelencia, define a un texto: sus propiedades son adecuación a un contexto determinado y unidad de sentido. La cohesión es el conjunto de posibilidades que existen en el sistema de la lengua para manifestar las vinculaciones entre los elementos que componen el texto (Halliday y Hasan, 1976): funciona como "instrucciones de procesamiento" que el escritor deja para el lector.</p>
+  <div class="ej"><b>Ejemplo cotidiano:</b> campo léxico en acción: si una publicidad dice "cremoso, untable, sabor suave", ya sabés que habla de un queso sin que lo nombre. Las palabras se conectan entre sí por sus significados y vos reconstruís el tema.</div>
+</div>
+
+<div class="card">
+  <h2>Cassany: Tras las líneas (leer hoy) <span class="badge p3">Complementario</span></h2>
+  <p>Cassany pregunta: ¿qué es leer? Y responde con tres concepciones, de la más simple a la más completa:</p>
+  <ul class="clean">
+    <li><b>Concepción lingüística:</b> el significado está EN el texto. Leer es recuperar el valor semántico de cada palabra. El significado sería único, estable y objetivo. Visión positivista y simple.</li>
+    <li><b>Concepción psicolingüística:</b> el significado se construye <b>en la mente del lector</b>. Entendemos cosas que no fueron dichas: aportamos conocimiento previo, hacemos hipótesis e inferencias. Por eso lectores distintos entienden distinto el mismo texto. Acá entra la <b>alfabetización funcional</b>: comprender, no solo descifrar (el analfabeto funcional oraliza pero no comprende).</li>
+    <li><b>Concepción sociocultural:</b> leer también es una <b>práctica social</b> situada en una comunidad con historia, hábitos y prácticas propias. El significado y el conocimiento previo tienen origen social; detrás de todo discurso hay alguien con una visión del mundo; cada género se usa de modo particular en cada institución. "Leer es un verbo transitivo": no hay UNA manera de leer, sino múltiples maneras según el género, la disciplina y la comunidad.</li>
+  </ul>
+  <div class="ej"><b>Ejemplo cotidiano:</b> "¡Obtuve un 7!" significa buena nota en España (escala 1-10) y nota perfecta en Chile (escala 1-7). El mismo enunciado cambia de significado según la comunidad. O el "Gracias." en el tacho del fast food vs. en una tarjeta de regalo: misma palabra, prácticas letradas distintas.</div>
+</div>
+
+<div class="card">
+  <h2>Vandendorpe: Del papiro al hipertexto <span class="badge p3">Complementario</span></h2>
+  <p>Ensayo sobre cómo mutan el texto y la lectura con la tecnología. Ideas clave:</p>
+  <ul class="clean">
+    <li>La computadora revoluciona cómo la civilización crea, almacena y transmite el saber. Como el texto solo existe en función de la lectura, si muta uno muta la otra.</li>
+    <li><b>Linealidad vs. tabularidad:</b> el hilo conductor del libro. El texto tabular espacializa la información y deja que el ojo vaya directo a lo que le interesa (como un diario o una web). El hipertexto lleva la tabularidad al extremo.</li>
+    <li><b>Libro vs. hipertexto:</b> el libro totaliza y "cava"; el hipertexto multiplica vínculos y se "extiende como mancha de aceite". La lectura del libro es duración y continuidad; la del hipertexto es urgencia, discontinuidad y elección constante (¿cliqueo o abandono?).</li>
+    <li>El libro responde a dos imperativos: <b>transportabilidad y permanencia</b>. El texto electrónico gana en almacenamiento y manipulación pero es frágil y lábil ("un hipertexto jamás está cerrado": el autor puede modificarlo siempre).</li>
+    <li><b>Metáforas de la lectura:</b> leer viene del latín legere, "recoger". Hoy al hipermedio no se lo lee: se lo <b>navega</b> o se lo surfea. Mark Heyer distingue tres posturas: <b>atiborramiento</b> (tragar todo sistemáticamente), <b>exploración</b> (recorrer sin objetivo fijo) y <b>caza</b> (buscar una información precisa).</li>
+  </ul>
+  <div class="ej"><b>Ejemplo cotidiano:</b> es la diferencia entre leer una novela en la playa (lineal, continua, hasta el "Fin") y caer en Wikipedia a las 2 AM saltando de link en link hasta terminar leyendo sobre la guerra de Crimea (navegación asociativa, discontinua). Scrollear TikTok es exploración; googlear "horario parcial UCES" es caza.</div>
+</div>
+
+<h2 class="unidad">Unidad 3 · El universo de los textos II</h2>
+
+<div class="card">
+  <h2>Las reglas de la coherencia <span class="badge p1">Imprescindible</span></h2>
+  <p>Confirmado para el parcial. Un texto es coherente cuando cumple estas cinco reglas (cátedra):</p>
+  <ul class="clean">
+    <li><b>1. Reiteración:</b> las ideas del texto se deben relacionar con el tema principal.</li>
+    <li><b>2. Progresión:</b> la información debe avanzar: se retoma el tema pero aportando información nueva.</li>
+    <li><b>3. Distribución:</b> la información se distribuye según su grado de importancia y sus relaciones (causas y consecuencias, antes y después).</li>
+    <li><b>4. No contradicción:</b> lo nuevo no puede contradecir lo ya dicho.</li>
+    <li><b>5. Información necesaria:</b> el texto debe contener toda la información que el lector necesita para comprenderlo.</li>
+  </ul>
+  <p>Síntesis de la cátedra: la coherencia se relaciona con la <b>cantidad, calidad y disposición</b> de la información. Es la propiedad que permite comprender el texto como una unidad.</p>
+  <div class="ej"><b>Ejemplo cotidiano:</b> la carta al director de los alumnos que quieren ir de campamento (la vimos en clase): repite "campamento" mil veces sin avanzar (falla progresión), amenaza y después pide por favor (contradicción de tono), y no explica fechas ni lugar (falta información necesaria). Por eso suena incoherente aunque cada oración esté "bien escrita".</div>
+</div>
+
+<div class="card">
+  <h2>Secuencias / tramas textuales <span class="badge p1">Imprescindible</span></h2>
+  <p>Según J. M. Adam, las secuencias textuales son <b>unidades mínimas de composición textual</b>: conjuntos de enunciados con una organización interna propia que permite reconocerlos. Características que dio la cátedra:</p>
+  <ul class="clean">
+    <li>Se pueden descomponer en partes (organización propia) y a la vez dependen del texto en que se realizan.</li>
+    <li>Se combinan jerárquicamente: es muy difícil encontrar textos "puros", pero <b>siempre hay una secuencia que predomina</b>.</li>
+    <li>Relaciones de <b>inserción y dominancia</b>: una secuencia puede ser <b>dominante</b> (mayor presencia en el texto), <b>envolvente</b> (enmarca y da sentido al conjunto) o <b>incrustada</b> (metida dentro de otra).</li>
+  </ul>
+  <table>
+    <tr><th>Secuencia</th><th>Rasgo principal</th><th>Ejemplos</th><th>Marcas lingüísticas</th></tr>
+    <tr><td><b>Narrativa</b></td><td>Sucesión temporal y causal de acciones o eventos; transformación de un estado inicial</td><td>Novela, crónica, noticia, cuento</td><td>Pretéritos (perfecto simple e imperfecto), conectores temporales y causales, sujetos que hacen o sufren</td></tr>
+    <tr><td><b>Descriptiva</b></td><td>Rasgos salientes de un objeto, persona, paisaje o acción; sin jerarquía causal, partes coordinadas y yuxtapuestas</td><td>Catálogo, receta, definición de diccionario</td><td>Sustantivos y adjetivos; presente y pretérito imperfecto</td></tr>
+    <tr><td><b>Expositiva-explicativa</b></td><td>Responde a una pregunta (explícita o implícita); hace comprender algo. Asimetría: el experto explica al lego</td><td>Respuesta de parcial, informe, reseña, artículo científico</td><td>Definición + desarrollo; conectores lógicos; presente genérico</td></tr>
+    <tr><td><b>Argumentativa</b></td><td>Posturas opuestas sobre un problema controvertido (opinable); busca convencer o persuadir con razonamientos</td><td>Nota de opinión, debate, ensayo, publicidad</td><td>Cuestión, posición, pruebas, conclusión; subordinadas; conectores de causa, consecuencia, contraste</td></tr>
+    <tr><td><b>Conversacional / dialogal</b></td><td>Intercambio: alternancia de turnos de palabra; los participantes construyen un texto único</td><td>Obra de teatro, entrevista, chat</td><td>Pronombres personales (1ª y 2ª), guiones de diálogo</td></tr>
+  </table>
+  <div class="ej"><b>Ejemplo cotidiano:</b> una publicidad de auto que arranca contando la historia de un padre que lleva a la hija al colegio (narrativa incrustada), describe el motor y el diseño (descriptiva) y cierra con "elegí seguridad, elegí X" (argumentativa, que es la envolvente: todo el texto existe para convencerte). En el parcial te van a dar un texto y vas a tener que identificar la secuencia predominante y las secundarias.</div>
+</div>
+
+<div class="card">
+  <h2>Teoría de la enunciación <span class="badge p2">Importante</span></h2>
+  <p>Base: Benveniste y Kerbrat-Orecchioni. La <b>enunciación</b> es el acto individual de apropiación y utilización del sistema de la lengua. Cuando enunciás, no transmitís solo información: transmitís la manera en que considerás esa información (deseo, emoción, ideología). El <b>enunciado</b> es el producto; la enunciación, el acto.</p>
+  <p>La clave: el sujeto deja <b>huellas o marcas</b> en su enunciado. Son formas gramaticales y léxicas elegidas, y esa elección significa. Las huellas que categorizó la teoría:</p>
+  <h3>1. Deícticos (índices de persona, espacio y tiempo)</h3>
+  <p>Palabras que <b>señalan</b> (deixis viene del griego "indicar, mostrar") a los participantes y a la situación de enunciación: solo se entienden desde el acá y ahora de quien habla.</p>
+  <ul class="clean">
+    <li><b>De persona:</b> yo, vos, nosotros + desinencias verbales. Instauran locutor y destinatario.</li>
+    <li><b>De espacio:</b> acá, ahí, allá, este, ese, aquel, venir/ir (cuando marcan posición del hablante).</li>
+    <li><b>De tiempo:</b> hoy, ayer, mañana, ahora, la semana pasada, el año próximo.</li>
+  </ul>
+  <p>Trampa clásica de examen: "ayer no llovió" ES deíctico (se ancla en el momento de enunciación), pero "al día siguiente se levantó temprano" NO es deíctico: es cotextual, remite a otro hecho del relato, no al momento en que se habla. "El 10 de septiembre salió de viaje" tampoco (fecha puntual).</p>
+  <h3>2. Tiempos verbales</h3>
+  <p>El <b>presente es el tiempo eje de toda enunciación</b>. Desde ahí se organizan el pasado (pretérito perfecto: hechos cuyo efecto llega al presente) y el futuro. Ojo con los presentes que NO marcan enunciación: el <b>presente genérico o de definición</b> ("dos más dos son cuatro") y el <b>presente histórico</b> (narrar el pasado en presente para dramatizar). En la narración los ejes son dos: <b>pretérito perfecto simple</b> para los hechos nucleares y <b>pretérito imperfecto</b> para lo secundario, descripciones y explicaciones (la "puesta en relieve"). Para hechos anteriores al relato: pluscuamperfecto ("había vivido").</p>
+  <h3>3. Subjetivemas (cargas valorativas del léxico)</h3>
+  <p>Palabras, construcciones y expresiones que portan la subjetividad del enunciador. Clasificación de Kerbrat-Orecchioni:</p>
+  <ul class="clean">
+    <li><b>Nominales afectivos:</b> emoción del enunciador: "el <u>terrible</u> crimen", "una <u>casita</u> humilde".</li>
+    <li><b>Nominales evaluativos no axiológicos:</b> evaluación cuantitativa sin juicio de valor explícito: "el <u>enorme</u> edificio".</li>
+    <li><b>Nominales evaluativos axiológicos:</b> juicio de valor directo: "las ambiciones de X son <u>intolerables</u>".</li>
+    <li><b>Verbales:</b> verbos que evalúan la acción ("aporreó el piano", "ladra a los empleados") y sobre todo los <b>verbos de decir o introductorios</b>: no es lo mismo "el ministro <u>dijo</u>" que "el ministro <u>admitió</u>", "confesó" o "pretendió". Casi ninguno es neutro (salvo "decir").</li>
+  </ul>
+  <p>El programa suma los <b>modalizadores</b>: expresiones que muestran la actitud del enunciador frente a lo que dice (certeza, duda, valoración): "sin duda", "quizás", "lamentablemente".</p>
+  <h3>4. Polifonía</h3>
+  <p>La aparición de <b>otras voces</b> dentro de un enunciado (poli = muchos, foné = sonido). Procedimientos:</p>
+  <ul class="clean">
+    <li><b>Discurso directo:</b> teatraliza otra enunciación, con ruptura sintáctica y marcas tipográficas (guiones, comillas). En el periodismo crea "efecto de verdad".</li>
+    <li><b>Discurso indirecto:</b> relata las palabras del otro, sin ruptura ("me dijo que no lo esperara").</li>
+    <li><b>Discurso indirecto libre:</b> mezcla las voces sin marcas claras (propio de la literatura, como "La señorita Cora" de Cortázar).</li>
+    <li><b>Ironía:</b> hacer oír la voz de otro locutor que sostiene un punto de vista absurdo: decís una cosa dando a entender lo contrario ("lindo día, ¿no?" bajo el diluvio).</li>
+    <li><b>Citas intertextuales:</b> de autoridad (respaldo), defensiva, desautorizada, ejemplar.</li>
+    <li><b>Comillas:</b> marcan distancia del enunciador con esas palabras ("no son mías" o "no adhiero").</li>
+  </ul>
+  <h3>5. Enunciador y enunciatario (Sosa de Montyn y Mazzuchino)</h3>
+  <p>Distinción fina: el <b>emisor/autor</b> es externo, de carne y hueso (posición de producción) y el <b>receptor/lector</b> también (recepción). En cambio el <b>enunciador</b> y el <b>enunciatario</b> son figuras construidas <b>dentro del discurso</b>: la imagen que el texto arma de quien habla y de a quién le habla. El enunciador puede coincidir o no con el emisor empírico. Además distinguen <b>situación de comunicación</b> (el entorno extralingüístico) y <b>situación de enunciación</b> (interna al discurso, reconstruible por sus huellas).</p>
+  <div class="ej"><b>Ejemplo cotidiano:</b> una noticia dice "el jugador <u>reconoció</u> que falló el penal a propósito". Ese "reconoció" (subjetivema verbal) ya te dice que el diario da por cierta la acusación. Si dijera "afirmó", la postura cambia. Y en tu chat: "JAJAJA sí, obvio, Boca jugó ESPECTACULAR" después de perder 4 a 0: ironía pura, polifonía en WhatsApp. El "te espero acá mañana" de tu amigo es incomprensible si no sabés quién, dónde y cuándo lo enunció: eso son los deícticos.</div>
+</div>
+
+</section>
+
+<!-- ===================== QUIZ ===================== -->
+<section class="tab" id="quiz">
+<div class="score-bar">Puntaje: <span id="scoreNum">0</span> / <span id="scoreTot">0</span> respondidas correctas · <span id="scoreAns">0</span> respondidas</div>
+
+<div class="card"><h2>Unidad 1 · Lenguaje y comunicación</h2></div>
+<div id="quizU1"></div>
+<div class="card"><h2>Unidad 2 · El universo de los textos I</h2></div>
+<div id="quizU2"></div>
+<div class="card"><h2>Unidad 3 · El universo de los textos II</h2></div>
+<div id="quizU3"></div>
+</section>
+
+<!-- ===================== FLASHCARDS ===================== -->
+<section class="tab" id="flash">
+<div class="card">
+  <h2>Flashcards</h2>
+  <p>Tocá la tarjeta para girarla. El reverso tiene la definición y una mnemotecnia (autor = concepto) para que en el parcial no mezcles quién dijo qué.</p>
+</div>
+<div class="card"><h2>Unidad 1</h2><div class="fc-grid" id="fcU1"></div></div>
+<div class="card"><h2>Unidad 2</h2><div class="fc-grid" id="fcU2"></div></div>
+<div class="card"><h2>Unidad 3</h2><div class="fc-grid" id="fcU3"></div></div>
+</section>
+
+<!-- ===================== MAPA ===================== -->
+<section class="tab" id="mapa">
+
+<div class="card">
+  <h2>Unidad 1 · Lenguaje y comunicación</h2>
+  <div class="mapa">
+    <div class="nodo"><span class="tit">LA COMUNICACIÓN</span>
+      <div class="sub"><b>Jakobson (1963):</b> esquema de 6 elementos (emisor, receptor, mensaje, canal, código, referente) → de ahí salen las funciones del lenguaje</div>
+      <div class="sub"><b>Kerbrat-Orecchioni:</b> lo reformula → instancias emisora/receptora + competencias (lingüística, paralingüística, ideológica, cultural) + determinaciones psicológicas + restricciones del discurso</div>
+      <div class="sub"><b>Comunicología:</b> "es imposible no comunicarse" → lo no verbal (gestos, silencio, distancia) es cultural · ruido, redundancia, ambigüedad</div>
+      <p class="conexion">El esquema de Jakobson es la base; Kerbrat lo humaniza. Las funciones clasifican después los tipos de texto (conecta con U3).</p>
+    </div>
+    <div class="nodo"><span class="tit">FUNCIONES DEL LENGUAJE · Jakobson</span>
+      <div class="sub">Referencial (referente) · Conativa (receptor) · Emotiva (emisor) · Fática (canal) · Poética (mensaje) · Metalingüística (código)</div>
+      <div class="sub"><b>Halliday:</b> ideacional, interpersonal, textual + variedades lingüísticas</div>
+      <p class="conexion">Toda comunicación vehiculiza varias funciones; una predomina. Sirve para clasificar textos (función + trama, U3).</p>
+    </div>
+    <div class="nodo"><span class="tit">SAUSSURE · objeto de la lingüística</span>
+      <div class="sub"><b>Lenguaje</b> (facultad, heterogéneo) ≠ <b>Lengua</b> (sistema de signos, social, objeto de la lingüística) ≠ <b>Habla</b> (acto individual)</div>
+      <div class="sub"><b>Signo:</b> unión de concepto + imagen acústica (circuito del habla)</div>
+      <div class="sub"><b>Semiología:</b> ciencia de los signos en la vida social; la lingüística es parte de ella</div>
+      <p class="conexion">La lengua-sistema de Saussure es lo que Bajtín pone a funcionar en enunciados reales y Marín en textos.</p>
+    </div>
+    <div class="nodo"><span class="tit">BAJTÍN · géneros discursivos</span>
+      <div class="sub"><b>Definición:</b> tipos relativamente estables de enunciados, elaborados por cada esfera de la actividad humana</div>
+      <div class="sub">Tres elementos: contenido temático + estilo + composición</div>
+      <div class="sub"><b>Primarios</b> (simples, cotidianos: diálogo, carta) vs. <b>secundarios</b> (complejos: novela, investigación; absorben y reelaboran los primarios)</div>
+      <p class="conexion">Los géneros son el "marco social" que estandariza los tipos de texto: puente directo con la tipología textual de U3.</p>
+    </div>
+    <div class="nodo"><span class="tit">VARIEDADES LINGÜÍSTICAS · Halliday</span>
+      <div class="sub"><b>Lectos</b> (según el usuario): dialecto (región) + sociolecto (grupo social) + cronolecto (edad) → su cruce = idiolecto</div>
+      <div class="sub"><b>Registros</b> (según la situación): oral/escrito · formal/informal · profesional/no profesional</div>
+      <p class="conexion">La adecuación del registro a la situación comunicativa es una de las condiciones del buen texto (U2).</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Unidad 2 · El universo de los textos I</h2>
+  <div class="mapa">
+    <div class="nodo"><span class="tit">EL TEXTO</span>
+      <div class="sub"><b>Definiciones:</b> Lázaro Carreter (conjunto analizable de signos) · Dressler (mayor signo lingüístico) · Bernárdez (unidad comunicativa fundamental, cierre semántico, coherencia) · Lotman (cualquier sistema de signos)</div>
+      <div class="sub"><b>Características:</b> comunicativo, pragmático, estructurado, adecuación</div>
+      <div class="sub"><b>3 dimensiones (Marín):</b> finalidad (pragmática) + coherencia (semántica) + cohesión (gramatical y léxica)</div>
+      <p class="conexion">Marín funda la lingüística del texto: no nos comunicamos con oraciones sueltas sino con significados completos.</p>
+    </div>
+    <div class="nodo"><span class="tit">PARATEXTO · SOPORTE · PORTADOR · FORMATO</span>
+      <div class="sub">Paratexto: icónico + verbal, prepara la lectura · Soporte: material físico · Portador: libro, diario, web · Formato: disposición espacial</div>
+      <p class="conexion">El paratexto genera hipótesis previas de lectura → conecta con Cassany (leer es construir significado).</p>
+    </div>
+    <div class="nodo"><span class="tit">VAN DIJK · macroestructura y macrorreglas</span>
+      <div class="sub"><b>Macroestructura:</b> sentido global en una proposición</div>
+      <div class="sub"><b>Macrorreglas:</b> supresión + selección (omiten) · generalización + construcción (sustituyen con conocimiento del mundo)</div>
+      <p class="conexion">Aplicar macrorreglas ES comprender: la herramienta concreta para resumir cualquier texto del parcial.</p>
+    </div>
+    <div class="nodo"><span class="tit">COHERENCIA Y COHESIÓN</span>
+      <div class="sub"><b>Coherencia:</b> unidad de sentido; el emisor la construye, el receptor la reconstruye</div>
+      <div class="sub"><b>Cohesión gramatical:</b> pronominalización, elipsis, conjunción/conectores · <b>Cohesión léxica:</b> sinonimia, hiper/hiponimia</div>
+      <div class="sub"><b>Bonorino y Cuñarro:</b> relaciones léxicas (sinonimia, antonimia, hiperonimia, polisemia, campo léxico) · <b>Pagani:</b> la cohesión como "instrucciones de procesamiento" del texto</div>
+      <p class="conexion">La cohesión explicita la coherencia pero no la garantiza ni es imprescindible. Las reglas de coherencia se desarrollan en U3.</p>
+    </div>
+    <div class="nodo"><span class="tit">LA LECTURA · Cassany y Vandendorpe</span>
+      <div class="sub"><b>Cassany:</b> 3 concepciones: lingüística (significado en el texto) → psicolingüística (en la mente del lector) → sociocultural (práctica social situada); "leer es un verbo transitivo"</div>
+      <div class="sub"><b>Vandendorpe:</b> del papiro al hipertexto: linealidad vs. tabularidad · libro = transportabilidad + permanencia · navegar/surfear · atiborramiento, exploración, caza</div>
+      <p class="conexion">Los dos historizan la lectura: lo que Saussure hizo con la lengua, ellos lo hacen con el acto de leer.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Unidad 3 · El universo de los textos II</h2>
+  <div class="mapa">
+    <div class="nodo"><span class="tit">REGLAS DE LA COHERENCIA</span>
+      <div class="sub">1. Reiteración · 2. Progresión · 3. Distribución · 4. No contradicción · 5. Información necesaria</div>
+      <p class="conexion">Cierra lo abierto en U2: cantidad, calidad y disposición de la información hacen del texto una unidad.</p>
+    </div>
+    <div class="nodo"><span class="tit">SECUENCIAS / TRAMAS TEXTUALES · Adam</span>
+      <div class="sub"><b>Definición:</b> unidades mínimas de composición textual con organización interna propia</div>
+      <div class="sub">Narrativa (noticia, cuento) · Descriptiva (receta, catálogo) · Expositiva-explicativa (informe, respuesta de parcial) · Argumentativa (nota de opinión, publicidad) · Conversacional/dialogal (teatro, entrevista)</div>
+      <div class="sub"><b>Relaciones:</b> dominante · envolvente · incrustada (inserción y dominancia)</div>
+      <p class="conexion">Se cruzan con las funciones del lenguaje de U1 (criterios de función + trama, Kauffman y Rodríguez) para clasificar los textos de circulación social.</p>
+    </div>
+    <div class="nodo"><span class="tit">TEORÍA DE LA ENUNCIACIÓN · Benveniste / Kerbrat</span>
+      <div class="sub"><b>Enunciación</b> = acto individual de apropiación del sistema · <b>Enunciado</b> = producto · el sujeto deja <b>huellas</b></div>
+      <div class="sub"><b>Deícticos:</b> persona (yo, vos) + espacio (acá, este) + tiempo (hoy, mañana); solo valen desde el momento de enunciación</div>
+      <div class="sub"><b>Tiempos verbales:</b> presente = eje; narración = pret. perfecto simple (núcleos) + imperfecto (fondo)</div>
+      <div class="sub"><b>Subjetivemas:</b> nominales (afectivos, evaluativos) + verbales (verbos de decir: admitió ≠ dijo) · <b>modalizadores</b></div>
+      <div class="sub"><b>Polifonía:</b> ironía + discurso referido (directo, indirecto, indirecto libre) + citas + comillas</div>
+      <div class="sub"><b>Sosa de Montyn y Mazzuchino:</b> enunciador/enunciatario (internos al discurso) ≠ emisor/receptor (externos)</div>
+      <p class="conexion">Conecta todo: el hablante de Saussure (habla), el sujeto de Bajtín (enunciado) y la subjetividad en el léxico. El lenguaje nunca es neutro.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== GUIA 80/20 ===================== -->
+<section class="tab" id="guia">
+
+<div class="card">
+  <h2>Guía 80/20: dónde meter las horas</h2>
+  <p>Dato de oro: la cátedra mostró en una presentación la <b>lista exacta de temas del parcial</b>. Eso convierte esta guía en casi una certeza, no una apuesta. Además los criterios de evaluación piden términos académicos específicos y justificación teórica: no alcanza con "entender", tenés que poder definir con las palabras de los autores.</p>
+</div>
+
+<div class="card">
+  <h2>Temas por probabilidad</h2>
+  <div class="prio p1"><span class="dot"></span><div><b>Imprescindible · caen casi seguro (lista oficial del parcial)</b><br>
+  <span class="pill">Funciones del lenguaje (Jakobson) + aplicación a enunciados</span>
+  <span class="pill">Variedades lingüísticas: lectos y registros</span>
+  <span class="pill">Texto: conceptos + elaborar definición propia</span>
+  <span class="pill">Características y condiciones de los textos</span>
+  <span class="pill">Paratexto, soporte, portador, formato</span>
+  <span class="pill">van Dijk: macroestructura + 4 macrorreglas</span>
+  <span class="pill">Secuencias/tramas: las 5, con identificación en textos</span>
+  <span class="pill">Reglas de la coherencia (las 5)</span>
+  <span class="pill">Cohesión gramatical (pronominalización, elipsis, conjunción) y léxica (sinonimia, hiper/hiponimia)</span>
+  <br><b>Probabilidad: 90%+.</b> El parcial típico: identificar función predominante en un enunciado, aplicar macrorreglas a un texto, reconocer secuencias y reescribir un texto incoherente. También producir un texto narrativo con secuencias secundarias.</div></div>
+
+  <div class="prio p2"><span class="dot"></span><div><b>Importante · muy probables (bibliografía obligatoria núcleo, seguro en el final)</b><br>
+  <span class="pill">Saussure: lengua/habla/lenguaje + signo + semiología</span>
+  <span class="pill">Bajtín: definición de género discursivo + primarios vs. secundarios</span>
+  <span class="pill">Enunciación: deícticos, subjetivemas, modalizadores</span>
+  <span class="pill">Polifonía: discurso directo/indirecto, ironía, comillas</span>
+  <span class="pill">Enunciador/enunciatario vs. emisor/receptor</span>
+  <span class="pill">Kerbrat-Orecchioni: reformulación del esquema</span>
+  <br><b>Probabilidad: 60-75%.</b> Son el sustento teórico que la cátedra pide citar para justificar. En un final oral, "¿qué es un género discursivo según Bajtín?" es pregunta cantada.</div></div>
+
+  <div class="prio p3"><span class="dot"></span><div><b>Complementario · lectura de apoyo (suman para justificar, raro como pregunta directa)</b><br>
+  <span class="pill">Cassany: 3 concepciones de la lectura</span>
+  <span class="pill">Vandendorpe: papiro → hipertexto, metáforas de la lectura</span>
+  <span class="pill">Halliday: funciones ideacional/interpersonal/textual</span>
+  <span class="pill">Ruido, redundancia, ambigüedad</span>
+  <span class="pill">Anáfora/catáfora, nominalización (detalle fino de Marín cap. 5)</span>
+  <br><b>Probabilidad: 25-40%.</b> Leelos una vez, quedate con la idea central de cada autor y un ejemplo.</div></div>
+</div>
+
+<div class="card">
+  <h2>Plan de ataque (orden de estudio)</h2>
+  <table>
+    <tr><th>#</th><th>Bloque</th><th>Tiempo</th><th>Por qué este orden</th></tr>
+    <tr><td>1</td><td>Funciones del lenguaje + práctica de identificación</td><td>1.5 h</td><td>Es lo más rendidor: cae seguro y es la base para clasificar textos. Practicá con publicidades y noticias reales.</td></tr>
+    <tr><td>2</td><td>Macroestructura + macrorreglas con ejercicios</td><td>1.5 h</td><td>Cae seguro y es procedimental: si no practicás con textos, en el parcial te trabás. Usá los ejemplos del saco y el Ford.</td></tr>
+    <tr><td>3</td><td>Secuencias textuales + reglas de coherencia + cohesión</td><td>2 h</td><td>El combo más grande del parcial. Armate la tabla de las 5 secuencias con ejemplos y memorizá las 5 reglas.</td></tr>
+    <tr><td>4</td><td>Texto: definiciones, características, paratexto/soporte/portador/formato</td><td>1 h</td><td>Es memoria pura y rinde: son listas cortas. Redactá TU definición de texto (la piden).</td></tr>
+    <tr><td>5</td><td>Lectos y registros</td><td>45 min</td><td>Corto y seguro. La mnemotecnia DiSoCrono (dialecto, sociolecto, cronolecto) te salva.</td></tr>
+    <tr><td>6</td><td>Saussure + Bajtín</td><td>1.5 h</td><td>Los dos autores teóricos de U1. Definiciones textuales: "tipos relativamente estables de enunciados" y lengua/habla.</td></tr>
+    <tr><td>7</td><td>Enunciación completa (deícticos, subjetivemas, polifonía)</td><td>2 h</td><td>Denso pero estructurado. Clave para el final. Practicá detectar deícticos verdaderos vs. cotextuales.</td></tr>
+    <tr><td>8</td><td>Cassany + Vandendorpe (lectura rápida)</td><td>45 min</td><td>Una pasada por las ideas centrales y un ejemplo de cada uno alcanza.</td></tr>
+  </table>
+  <p><b>Total: ~11 horas</b> repartidas en una semana. Después: quiz completo de este HTML, flashcards en días alternos, y releé solo lo que falles.</p>
+</div>
+
+<div class="card">
+  <h2>Avisos de último minuto</h2>
+  <ul class="clean">
+    <li>El parcial tiene parte práctica de <b>producción</b>: te piden escribir un texto narrativo con título y dos secuencias secundarias. Practicá escribir, no solo leer.</li>
+    <li>Aplicación &gt; teoría: la pregunta no va a ser "definí función fática" sino "¿qué función predomina en este enunciado?". Por eso el quiz de acá tiene ese formato.</li>
+    <li>No mezcles autores: van Dijk = macrorreglas, Adam = secuencias, Jakobson = funciones, Bajtín = géneros, Saussure = lengua/habla. Si citás al autor correcto, sumás puntos por "fundamentación teórica".</li>
+    <li>Cuidá tu propia coherencia y cohesión al escribir las respuestas: en esta materia LA FORMA también es contenido. Te están evaluando como usuario de la lengua.</li>
+  </ul>
+</div>
+</section>
+
+</div>
+
+<script>
+/* ====== TABS ====== */
+const tabs=document.querySelectorAll('nav.tabs button');
+tabs.forEach(b=>b.addEventListener('click',()=>{
+  tabs.forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('section.tab').forEach(s=>s.classList.remove('active'));
+  b.classList.add('active');
+  document.getElementById(b.dataset.tab).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}));
+
+/* ====== THEME ====== */
+const tBtn=document.getElementById('themeToggle');
+const saved=localStorage.getItem('ac-theme');
+if(saved){document.documentElement.setAttribute('data-theme',saved);}
+tBtn.addEventListener('click',()=>{
+  const cur=document.documentElement.getAttribute('data-theme')||
+    (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  const next=cur==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('ac-theme',next);
+});
+
+/* ====== QUIZ DATA ====== */
+const quiz={
+U1:[
+ {q:"Según Saussure, ¿cuál es el objeto de estudio de la lingüística?",opts:["El lenguaje, porque abarca todo lo humano","La lengua: sistema de signos, parte social del lenguaje","El habla, porque es lo único observable","La escritura, porque fija los signos"],a:1,exp:"Saussure descarta el lenguaje (heterogéneo, inclasificable) y elige la lengua: un sistema de signos, una convención social, 'un todo en sí y un principio de clasificación'. El habla es el acto individual."},
+ {q:"Verdadero o falso: para Saussure, el habla es un acto individual de voluntad e inteligencia, mientras que la lengua es social y exterior al individuo.",opts:["Verdadero","Falso"],a:0,exp:"Exacto. La lengua es el 'tesoro depositado por la práctica del habla' en la comunidad; nadie puede crearla ni modificarla solo. El habla es cada uso concreto e individual."},
+ {q:"En una videollamada decís: '¿Hola? ¿Me escuchás? ¿Se corta?'. ¿Qué función del lenguaje predomina?",opts:["Emotiva","Metalingüística","Fática","Referencial"],a:2,exp:"Función fática: el interés es verificar que el canal de comunicación siga abierto. Son enunciados aparentemente triviales destinados a comprobar el contacto."},
+ {q:"La publicidad 'A la hora de lavar, ace-la fácil, ace-la tuya' vehiculiza predominantemente la función...",opts:["Poética, por el juego de palabras","Conativa/apelativa, porque busca influir en el receptor","Referencial, porque informa sobre el producto","Fática"],a:1,exp:"Es el ejemplo que dio la cátedra: la publicidad apela al receptor para que actúe (compre). Hay juego de palabras (rasgo poético secundario), pero la función PREDOMINANTE es la conativa: el texto existe para influirte."},
+ {q:"Verdadero o falso: según Marín, cada tipo de texto vehiculiza una sola función del lenguaje.",opts:["Verdadero","Falso"],a:1,exp:"Falso. Cada texto vehiculiza varias funciones, pero siempre hay una predominante. Además los hablantes no eligen funciones: eligen tipos de texto adecuados a la situación."},
+ {q:"¿Cómo define Bajtín a los géneros discursivos?",opts:["Estructuras gramaticales fijas de la lengua","Tipos relativamente estables de enunciados, elaborados por cada esfera del uso de la lengua","Clasificaciones literarias: novela, cuento, poesía","Las funciones del lenguaje aplicadas a textos"],a:1,exp:"La definición textual: cada esfera de la actividad humana elabora 'tipos relativamente estables de enunciados', que combinan contenido temático, estilo y composición."},
+ {q:"Un audio de WhatsApp a un amigo y una novela que incluye diálogos cotidianos son, respectivamente...",opts:["Género secundario y género primario","Ambos géneros primarios","Género primario y género secundario","Ambos secundarios, porque usan tecnología"],a:2,exp:"El audio pertenece a la comunicación discursiva inmediata: género primario (simple). La novela es un género secundario (complejo) que absorbe y reelabora géneros primarios: el diálogo dentro de ella ya no es conversación real."},
+ {q:"Tu hermano de 15 dice 'ah re, qué tremendo'. Tu abuela jamás lo diría. Esa diferencia corresponde a...",opts:["Un dialecto","Un cronolecto","Un registro profesional","Un idiolecto"],a:1,exp:"Cronolecto: variedad debida al factor edad o generacional. Recordá: dialecto = región, sociolecto = grupo social, cronolecto = edad, y el cruce de los tres es tu idiolecto."},
+ {q:"Verdadero o falso: el registro depende del origen y la edad del hablante.",opts:["Verdadero","Falso"],a:1,exp:"Falso. Eso son los LECTOS (variedades según el usuario). El registro depende de la SITUACIÓN comunicativa: oral/escrito, formal/informal, profesional/no profesional."},
+ {q:"Kerbrat-Orecchioni reformula el esquema de Jakobson porque...",opts:["Faltaba el canal de comunicación","La comunicación humana no es mecánica: intervienen competencias, determinaciones psicológicas y restricciones del discurso","Jakobson no consideraba el mensaje","El esquema tenía demasiados elementos"],a:1,exp:"El modelo de Jakobson viene de la ingeniería (Shannon) y es mecanicista. Kerbrat agrega las competencias lingüística/paralingüística e ideológica/cultural, las determinaciones psicológicas y las restricciones del universo del discurso."}
+],
+U2:[
+ {q:"La macroestructura de un texto es...",opts:["Su estructura de párrafos y títulos","La representación abstracta del sentido global, expresable en una sola proposición","La lista de sus ideas secundarias","El esquema de introducción, desarrollo y cierre"],a:1,exp:"Van Dijk: la macroestructura es la representación abstracta y general del sentido del texto, que puede expresarse como una única idea. Es la respuesta a '¿de qué trata?'."},
+ {q:"'Se puso el saco y buscó el llavero; luego abrió la puerta y subió al Ford' → 'Se fue en auto'. ¿Qué macrorregla se aplicó?",opts:["Supresión","Selección","Generalización","Construcción"],a:3,exp:"Construcción: el lector reemplaza las proposiciones por una frase NUEVA que él mismo produce gracias a su conocimiento del mundo. No se eligió una oración del texto: se construyó otra."},
+ {q:"'Tomó un taxi. Le indicó la dirección. El taxi partió' → 'Tomó un taxi'. ¿Qué macrorregla es?",opts:["Supresión","Construcción","Generalización","Macroestructura"],a:0,exp:"Supresión: se eliminan las proposiciones que no son necesarias para interpretar lo que sigue y se conserva la esencial tal cual estaba en el texto."},
+ {q:"'En la mesa había lápices, papeles, libros y pisapapeles' → 'útiles de escritorio'. Macrorregla aplicada:",opts:["Selección","Generalización","Supresión","Construcción"],a:1,exp:"Generalización: se reúnen objetos o acciones bajo una palabra que los agrupa. Condición: no perder ningún dato importante (por eso la 'taza de café' del ejemplo de Marín no se podía incluir)."},
+ {q:"En una noticia de Infobae, la pantalla del celular, el portal y la disposición en titular + bajada + cuerpo son, respectivamente...",opts:["Portador, soporte y paratexto","Soporte, portador y formato","Formato, soporte y portador","Soporte, formato y portador"],a:1,exp:"Soporte = material físico (pantalla/electrónico), portador = quien porta el texto (el portal, como un diario o un libro), formato = disposición del texto en el espacio."},
+ {q:"Verdadero o falso: la cohesión es condición necesaria y suficiente para que un conjunto de palabras sea un texto.",opts:["Verdadero","Falso"],a:1,exp:"Falso, y es LA trampa clásica. Un poema puede tener coherencia casi sin recursos cohesivos, y una serie de oraciones con conectores puede ser incoherente. Lo que define al texto es la coherencia."},
+ {q:"Para Cassany, la concepción que sostiene que el significado se construye en la mente del lector aportando conocimientos previos e inferencias es la...",opts:["Lingüística","Psicolingüística","Sociocultural","Funcional"],a:1,exp:"Concepción psicolingüística: el significado no está alojado en el texto, se elabora con el conocimiento previo del lector; por eso varía entre lectores. La sociocultural agrega que todo eso tiene origen social."},
+ {q:"¿Qué quiere decir Cassany con 'leer es un verbo transitivo'?",opts:["Que siempre se lee en voz alta","Que no existe UNA manera neutra de leer: cada género, disciplina y comunidad exige maneras propias de leer","Que leer requiere un objeto directo gramatical","Que la lectura transita del papel a la pantalla"],a:1,exp:"No hay actividad de lectura abstracta o esencial: hay múltiples maneras de acercarse a cada género discursivo en cada comunidad. Leer la Biblia, un contrato o un chat son prácticas distintas."},
+ {q:"Según Vandendorpe, el libro responde a dos imperativos mayores:",opts:["Belleza y economía","Transportabilidad y permanencia","Linealidad y velocidad","Originalidad y autoría"],a:1,exp:"Un libro es portátil y conserva: 'la quintaesencia del testigo cultural'. El texto electrónico gana en almacenamiento pero pierde en conservación: es frágil y lábil, y 'un hipertexto jamás está cerrado'."},
+ {q:"Verdadero o falso: para Bonorino y Cuñarro, la sinonimia, la antonimia, la hiperonimia y la polisemia son relaciones léxicas que permiten identificar vínculos entre las partes del texto.",opts:["Verdadero","Falso"],a:0,exp:"Verdadero. Las relaciones léxicas son conexiones semánticas y gramaticales entre palabras; reconocerlas ayuda a la comprensión y producción, sobre todo en textos expositivos y argumentativos."}
+],
+U3:[
+ {q:"Un texto retoma su tema pero no aporta nunca información nueva: repite lo mismo con otras palabras. ¿Qué regla de coherencia falla?",opts:["No contradicción","Progresión","Distribución","Información necesaria"],a:1,exp:"Progresión: la información referida al tema debe avanzar. Si el texto 'gira en el lugar', es repetitivo aunque cumpla la reiteración (relación con el tema)."},
+ {q:"Una receta de cocina presenta los rasgos de un plato y sus pasos sin jerarquía causal. ¿Qué secuencia predomina?",opts:["Narrativa","Descriptiva","Argumentativa","Conversacional"],a:1,exp:"Descriptiva: comunica características de objetos, personas o procesos, con partes coordinadas y yuxtapuestas. La cátedra dio como ejemplos el catálogo, la receta y la definición de diccionario."},
+ {q:"Una noticia que cuenta hechos encadenados temporal y causalmente, con verbos en pretérito, tiene secuencia predominante...",opts:["Expositiva","Descriptiva","Narrativa","Dialogal"],a:2,exp:"Narrativa: sucesión temporal y causal de acciones que transforman un estado inicial, con pretéritos perfecto simple e imperfecto. Ejemplos de la cátedra: novela, crónica, noticia, cuento."},
+ {q:"Un texto que responde a una pregunta (explícita o implícita) y donde un experto hace comprender algo a un lego es de secuencia...",opts:["Argumentativa","Expositiva-explicativa","Narrativa","Descriptiva"],a:1,exp:"Expositiva-explicativa: despliegue de un conocimiento que el receptor no tiene, con asimetría entre quien produce y quien recibe. Tu respuesta de parcial es exactamente eso."},
+ {q:"Cuando una secuencia enmarca y da sentido al conjunto del texto, dentro del cual aparecen otras metidas, se la llama...",opts:["Dominante","Incrustada","Envolvente","Primaria"],a:2,exp:"Envolvente: constituye el marco donde otras secuencias aparecen incrustadas. La dominante es la de mayor presencia. Pueden coincidir o no."},
+ {q:"En el mensaje 'Te espero acá mañana', ¿cuáles son los deícticos?",opts:["Solo 'mañana'","'Te', 'acá' y 'mañana'","Solo 'acá' y 'mañana'","'Espero' y 'mañana'"],a:1,exp:"Los tres: 'te' es índice de persona (señala al destinatario), 'acá' índice espacial y 'mañana' índice temporal. Ninguno se entiende sin conocer la situación de enunciación."},
+ {q:"Verdadero o falso: en 'Se acostó preocupada. Al día siguiente se levantó temprano', la expresión 'al día siguiente' es un deíctico.",opts:["Verdadero","Falso"],a:1,exp:"Falso. No remite al momento de la enunciación sino a un hecho mencionado en el mismo enunciado: es cotextual. Deícticos temporales serían 'hoy', 'ayer', 'mañana', 'la semana pasada'."},
+ {q:"Un diario titula: 'El ministro ADMITIÓ que la crisis es seria'. El verbo 'admitió' es...",opts:["Un deíctico de persona","Un subjetivema verbal: verbo introductorio con carga valorativa","Un conector causal","Un caso de discurso directo"],a:1,exp:"Es el ejemplo de Marín: 'admitió' implica una toma de posición sobre el valor de verdad (algo se reconoce a regañadientes). Casi ningún verbo de decir es neutro, salvo 'decir'."},
+ {q:"Llueve a baldes y tu amigo dice: 'Lindo día, ¿no?'. Según la teoría de la enunciación, la ironía consiste en...",opts:["Mentir para generar humor","Hacer oír la voz de otro locutor que sostiene un punto de vista absurdo, dando a entender lo contrario de lo dicho","Usar comillas en la oralidad","Exagerar una descripción"],a:1,exp:"La ironía es un fenómeno de POLIFONÍA: el hablante muestra una voz con un punto de vista insostenible y confía en que el otro interprete lo contrario. Pone distancia entre enunciador y enunciado."},
+ {q:"Verdadero o falso: según Sosa de Montyn y Mazzuchino, el enunciador es la figura construida dentro del discurso y puede no coincidir con el emisor de carne y hueso.",opts:["Verdadero","Falso"],a:0,exp:"Verdadero. Emisor/autor y receptor son externos (producción y recepción reales); enunciador y enunciatario son figuras internas al discurso, construidas por las huellas del texto."},
+ {q:"En la narración, ¿cómo se reparten los tiempos verbales según Marín?",opts:["Presente para los núcleos, pasado para el fondo","Pretérito perfecto simple para los hechos nucleares e imperfecto para descripciones y hechos secundarios","Imperfecto para los núcleos y perfecto simple para el fondo","Futuro para las acciones y condicional para los diálogos"],a:1,exp:"Es la 'puesta en relieve': perfecto simple = esqueleto del relato (núcleos); imperfecto = lo accesorio, descripciones, explicaciones. Para hechos anteriores al relato: pluscuamperfecto."}
+]
+};
+
+/* ====== QUIZ RENDER ====== */
+let answered=0,correct=0;
+const totalQ=quiz.U1.length+quiz.U2.length+quiz.U3.length;
+document.getElementById('scoreTot').textContent=totalQ;
+function renderQuiz(unit,elId){
+  const cont=document.getElementById(elId);
+  quiz[unit].forEach((item,i)=>{
+    const d=document.createElement('div');d.className='q';
+    const name=unit+'_'+i;
+    let optsHtml=item.opts.map((o,j)=>'<label><input type="radio" name="'+name+'" value="'+j+'">'+o+'</label>').join('');
+    d.innerHTML='<div class="enun">'+(i+1)+'. '+item.q+'</div><div class="opts">'+optsHtml+'</div><button class="check">Corregir</button><div class="fb"></div>';
+    d.querySelector('.check').addEventListener('click',()=>{
+      const sel=d.querySelector('input[name="'+name+'"]:checked');
+      const fb=d.querySelector('.fb');
+      if(!sel){fb.className='fb bad';fb.textContent='Elegí una opción primero, dale.';return;}
+      if(d.dataset.done)return;
+      d.dataset.done='1';answered++;
+      const ok=parseInt(sel.value)===item.a;
+      if(ok){correct++;fb.className='fb ok';fb.innerHTML='✅ ¡Correcta! '+item.exp;}
+      else{fb.className='fb bad';fb.innerHTML='❌ No. La correcta es: "'+item.opts[item.a]+'". '+item.exp;}
+      d.querySelectorAll('input').forEach(x=>x.disabled=true);
+      d.querySelector('.check').disabled=true;
+      document.getElementById('scoreNum').textContent=correct;
+      document.getElementById('scoreAns').textContent=answered;
+    });
+    cont.appendChild(d);
+  });
+}
+renderQuiz('U1','quizU1');renderQuiz('U2','quizU2');renderQuiz('U3','quizU3');
+
+/* ====== FLASHCARDS ====== */
+const cards={
+U1:[
+ {f:"Saussure",h:"¿Qué aporta y cuál es su distinción clave?",b:"El objeto de la lingüística es la LENGUA: sistema de signos, parte social del lenguaje, exterior al individuo. El HABLA es el acto individual. El signo une concepto + imagen acústica. Propone la semiología.",m:"Saussure = SIGNO y lengua/habla. 'Saussure Sistematiza'."},
+ {f:"Bajtín",h:"¿Qué son los géneros discursivos?",b:"'Tipos relativamente estables de enunciados' que elabora cada esfera de la actividad humana. Combinan tema + estilo + composición. Primarios (simples, cotidianos) y secundarios (complejos, que absorben los primarios).",m:"Bajtín = GÉNEROS. 'BaGé': Bajtín-Géneros."},
+ {f:"Jakobson",h:"¿Qué propone?",b:"El esquema de la comunicación (6 elementos) y las 6 funciones del lenguaje, una por elemento: referencial, conativa, emotiva, fática, poética, metalingüística.",m:"Jakobson = FUNCIONES. 'JakoFun'. 6 elementos, 6 funciones."},
+ {f:"Kerbrat-Orecchioni",h:"¿Por qué reformula a Jakobson?",b:"La comunicación no es mecánica. Agrega: competencias lingüística y paralingüística, competencias ideológica y cultural, determinaciones psicológicas y restricciones del universo del discurso. Instancia emisora/receptora.",m:"Kerbrat = COMPLETA el esquema (la 'K' de complejizar). También vuelve en U3 con los subjetivemas."},
+ {f:"Las 6 funciones del lenguaje",h:"¿Cuáles son y qué elemento predomina?",b:"Referencial (referente), Conativa (receptor), Emotiva (emisor), Fática (canal), Poética (mensaje), Metalingüística (código).",m:"RE-CO-EMO-FA-PO-META: 'REcordá COn EMOción FAmosa POesía META'."},
+ {f:"Lengua vs. Habla",h:"La distinción saussureana",b:"Lengua: sistema, social, abstracta, convención de la comunidad, no modificable por el individuo. Habla: uso, individual, concreto, acto de voluntad e inteligencia.",m:"Lengua = Ley social. Habla = Hecho individual."},
+ {f:"Signo lingüístico",h:"¿Qué une?",b:"La unión de un concepto y una imagen acústica (la huella psíquica del sonido, no el sonido físico). Ambas caras son psíquicas. Se ve en el circuito del habla entre A y B.",m:"Signo = Concepto + Imagen acústica (C+IA). Dos caras de la misma moneda mental."},
+ {f:"Géneros primarios vs. secundarios",h:"Bajtín",b:"Primarios: simples, de la comunicación inmediata (diálogo cotidiano, carta, audio de WhatsApp). Secundarios: complejos, de comunicación cultural organizada (novela, investigación científica); absorben y reelaboran los primarios.",m:"Primario = Primera mano (cara a cara). Secundario = Sofisticado (lo reelabora)."},
+ {f:"Lectos",h:"Variedades según el usuario",b:"Dialecto (región), sociolecto (grupo social), cronolecto (edad). El cruce de los tres en cada hablante forma su idiolecto. Marcan pronunciación, entonación y vocabulario, no significaciones.",m:"DiSoCrono → Idio. 'DIme de DÓnde sos (Dia), con quién andás (Socio) y cuántos años tenés (Crono)'."},
+ {f:"Registros",h:"Variedades según la situación",b:"Dependen de la situación comunicativa, no del hablante: oral/escrito, formal/informal, profesional/no profesional (jergas: médicos, abogados, marketing).",m:"Registro = el Ropero: te cambiás según el evento, no según quién sos."},
+ {f:"Ruido, redundancia y ambigüedad",h:"Tres conceptos de la comunicación",b:"Ruido: toda interferencia (incluido el malentendido, constitutivo de la comunicación). Redundancia: repetición que reduce el ruido. Ambigüedad: más de una interpretación; se deshace con cotexto, contexto o redundancia.",m:"'Te espero en el banco' (ambigüedad) + 'el que cierra a las 15' (redundancia que mata el ruido)."}
+],
+U2:[
+ {f:"Texto",h:"¿Cómo lo definen los autores?",b:"Lázaro Carreter: todo conjunto analizable de signos. Dressler: el mayor signo lingüístico. Bernárdez: unidad lingüística comunicativa fundamental, con cierre semántico y coherencia. Para Marín se define por su coherencia: entretejido (textum) de significaciones.",m:"TEXTO viene de TEXTUM = tejido. Un texto es una tela: si cortás un hilo se desarma."},
+ {f:"Coherencia",h:"La propiedad que define al texto",b:"Propiedad semántica y pragmática: relación entre las ideas + posibilidad del receptor de reconstruir el sentido global. El emisor la construye, el receptor la RE-construye con su conocimiento del mundo.",m:"COherencia = COnexión de COntenidos. Sin ella no hay texto, hay oraciones sueltas."},
+ {f:"Cohesión",h:"¿Qué es y cuáles son sus recursos?",b:"La explicitación de las relaciones del texto mediante recursos gramaticales (pronominalización, elipsis, conjunción/conectores) y léxicos (sinonimia, hiper/hiponimia). NO es condición necesaria ni suficiente para que haya texto.",m:"COHESIÓN = los GANCHOS visibles del tejido. Coherencia es el dibujo; cohesión, las costuras."},
+ {f:"Macroestructura",h:"van Dijk",b:"Representación abstracta y general del sentido global del texto, expresable en una sola proposición. Se obtiene aplicando las macrorreglas. Responde '¿de qué trata el texto?'.",m:"MACRO = la foto satelital del texto: un solo enunciado que lo resume todo."},
+ {f:"Las 4 macrorreglas",h:"van Dijk",b:"Supresión (omitir lo innecesario), Selección (omitir condiciones y presuposiciones), Generalización (agrupar con una palabra que englobe), Construcción (sustituir por una frase nueva hecha con conocimiento del mundo).",m:"SU-SE-GE-CO: 'SUbí, SEñora, GErente COnstruye'. Las 2 primeras omiten, las 2 últimas sustituyen."},
+ {f:"Paratexto",h:"¿Qué es y qué tipos hay?",b:"Elementos que acompañan al texto y preparan su recepción (para = al lado de). Icónicos: fotos, gráficos, dibujos. Verbales: título, autor, índice, prólogo, epígrafe, copete, volanta, notas.",m:"PARAtexto = lo que está AL LADO del texto y te hace hipotetizar ANTES de leer."},
+ {f:"Soporte, portador y formato",h:"Tres conceptos que siempre se mezclan",b:"Soporte: material físico (papel, pantalla, pergamino). Portador: quien porta el texto (libro, diario, web). Formato: disposición espacial del texto (carta, receta, periodístico).",m:"SoPoFo: el Soporte se toca, el Portador se compra o se abre, el Formato se ve de lejos sin leer."},
+ {f:"Cassany",h:"Las 3 concepciones de la lectura",b:"Lingüística: el significado está en el texto. Psicolingüística: se construye en la mente del lector (inferencias, conocimiento previo). Sociocultural: leer es práctica social situada en una comunidad. 'Leer es un verbo transitivo'.",m:"Cassany = CÓMO LEEMOS. Texto → Mente → Comunidad: tres círculos cada vez más grandes."},
+ {f:"Vandendorpe",h:"Del papiro al hipertexto",b:"Las tecnologías mutan el texto y la lectura. Linealidad (libro) vs. tabularidad (hipertexto). El libro: transportabilidad + permanencia. El hipertexto: lectura discontinua, nunca cerrado. Metáforas: navegar, surfear; atiborramiento, exploración, caza (Heyer).",m:"Vandendorpe = VIAJE del texto: papiro → libro → pantalla. El que 'navega' en vez de leer."},
+ {f:"Bonorino y Cuñarro",h:"Relaciones léxicas (cap. 5)",b:"Sinonimia, antonimia, hiperonimia, polisemia, homonimia y campo léxico: conexiones semánticas entre palabras que permiten ver vínculos entre las partes del texto y mejorar lectura y escritura.",m:"Bonorino y Cuñarro = relaciones entre SIGNIFICADOS (léxico). Base teórica de la cohesión léxica."},
+ {f:"Hiperónimo / hipónimo",h:"¿Cuál engloba a cuál?",b:"Hiperónimo: clase superior que engloba ('flor', 'caballo'). Hipónimo: clase menor englobada ('violeta', 'bayo'). Recurso de cohesión léxica por sustitución.",m:"HIPER = por encima (como HIPERmercado: tiene de todo). HIPO = por debajo."}
+],
+U3:[
+ {f:"Secuencias textuales",h:"Definición de Adam",b:"Unidades mínimas de composición textual: conjuntos de enunciados con organización interna propia que permite reconocerlos. Se combinan jerárquicamente; no hay textos puros pero siempre una predomina.",m:"Adam = secuencias (las unidades 'atómicas': Adam/átomo). 5 tramas: NA-DE-EX-AR-CO."},
+ {f:"Las 5 secuencias/tramas",h:"¿Cuáles son?",b:"Narrativa (hechos en orden temporal-causal), Descriptiva (rasgos sin jerarquía), Expositiva-explicativa (responde una pregunta, hace comprender), Argumentativa (posturas sobre algo opinable, busca convencer), Conversacional/dialogal (turnos de palabra).",m:"NA-DE-EX-AR-CO: 'NADie EXplica ARgumentos COnversando'."},
+ {f:"Dominante, envolvente, incrustada",h:"Relaciones entre secuencias",b:"Dominante: la de mayor presencia en el texto. Envolvente: la que enmarca y da sentido al conjunto. Incrustada: la que aparece metida dentro de otra. Se detectan por la intencionalidad.",m:"Pensalo como una publicidad: la historia (incrustada) vive dentro del 'compralo' (envolvente)."},
+ {f:"Enunciación vs. enunciado",h:"La base de la teoría",b:"Enunciación: acto individual de apropiación y uso del sistema de la lengua (Benveniste). Enunciado: el producto de ese acto. En el enunciado quedan HUELLAS del sujeto que lo produjo.",m:"EnunciaCIÓN = aCCIÓN. EnunciaDO = lo ya hecho, el resultaDO."},
+ {f:"Deícticos",h:"¿Qué son y qué tipos hay?",b:"Palabras que señalan (deixis = mostrar) a los participantes y a la situación: de persona (yo, vos), de espacio (acá, este, venir/ir), de tiempo (hoy, ayer, mañana). Solo se interpretan desde el momento de la enunciación.",m:"Deíctico = DEDO que señala. Si no sabés quién/dónde/cuándo lo dijo, no entendés nada."},
+ {f:"Deíctico vs. cotextual",h:"La trampa de examen",b:"'Ayer no llovió' = deíctico (ancla en la enunciación). 'Al día siguiente se levantó' = NO deíctico: remite a otro hecho del relato (cotexto). 'El 10 de septiembre' = fecha puntual, no deíctica.",m:"Preguntate: ¿necesito saber CUÁNDO se dijo para entenderlo? Sí → deíctico. No → cotextual."},
+ {f:"Subjetivemas",h:"Kerbrat-Orecchioni",b:"Palabras y expresiones que portan la subjetividad del enunciador. Nominales: afectivos ('terrible crimen'), evaluativos no axiológicos ('enorme'), axiológicos ('intolerable'). Verbales: 'aporreó el piano' y los verbos de decir ('admitió' vs. 'dijo').",m:"SUBJETIVEMA = SUBJETIVIDAD en una palabra. El verbo de decir es el más traicionero: 'confesó' ya te condena."},
+ {f:"Modalizadores",h:"¿Qué muestran?",b:"Expresiones que muestran la actitud del enunciador frente a lo que dice: certeza ('sin duda'), duda ('quizás'), valoración ('lamentablemente'). Junto a deícticos y subjetivemas, son huellas del enunciador en el discurso.",m:"MODALizador = el MODO en que te parás frente a tu propio enunciado."},
+ {f:"Polifonía",h:"¿Qué es y qué procedimientos abarca?",b:"La presencia de otras voces en un enunciado (poli = muchas, foné = voz): discurso referido (directo, indirecto, indirecto libre), ironía, citas intertextuales (de autoridad, defensiva, desautorizada, ejemplar) y comillas.",m:"POLIfonía = POLIcía de voces: ¿quién habla acá? Siempre hay más voces de las que parece."},
+ {f:"Discurso directo / indirecto / indirecto libre",h:"Las 3 formas del discurso referido",b:"Directo: teatraliza, con ruptura sintáctica y marcas (guiones, comillas). Indirecto: relata las palabras de otro ('me dijo que...'). Indirecto libre: mezcla las voces sin marcas claras (Cortázar, 'La señorita Cora').",m:"Directo = escena. Indirecto = relato. Indirecto libre = mezcla sin carteles."},
+ {f:"Enunciador / enunciatario",h:"Sosa de Montyn y Mazzuchino",b:"Figuras construidas DENTRO del discurso (posición interna), distintas del emisor/autor y receptor reales (externos). El enunciador puede no coincidir con el emisor. Situación de comunicación (externa) ≠ situación de enunciación (interna).",m:"Emisor = persona de carne y hueso. Enunciador = el personaje que el texto construye de quien habla."},
+ {f:"Tiempos de la narración",h:"La puesta en relieve",b:"Pretérito perfecto simple: hechos nucleares (esqueleto del relato). Pretérito imperfecto: lo secundario, descripciones, explicaciones. Pluscuamperfecto: hechos anteriores al relato. El presente es el eje de la enunciación y reaparece en diálogos y comentarios.",m:"Perfecto simple = los LADRILLOS. Imperfecto = el PAISAJE de fondo. 'Caminaba (fondo) y de pronto cayó (núcleo)'."}
+]
+};
+function renderCards(unit,elId){
+  const cont=document.getElementById(elId);
+  cards[unit].forEach(c=>{
+    const d=document.createElement('div');d.className='fc';
+    d.innerHTML='<div class="fc-inner"><div class="fc-face fc-front">'+c.f+'<small>'+c.h+'</small></div><div class="fc-face fc-back"><div>'+c.b+'</div><div class="mn">Regla mnemotécnica: '+c.m+'</div></div></div>';
+    d.addEventListener('click',()=>d.classList.toggle('flip'));
+    cont.appendChild(d);
+  });
+}
+renderCards('U1','fcU1');renderCards('U2','fcU2');renderCards('U3','fcU3');
+</script>
+</body>
+</html>

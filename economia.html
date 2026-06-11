@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fundamentos de Economía I · Sistema de Estudio UCES 2026</title>
+<style>
+:root{
+  --bg:#f4f6fb; --card:#ffffff; --text:#1c2330; --muted:#5b6678; --border:#e2e6ef;
+  --accent:#4f46e5; --accent-soft:#eef0ff; --ok:#16a34a; --ok-soft:#e8f7ee;
+  --bad:#dc2626; --bad-soft:#fdecec; --warn:#d97706; --warn-soft:#fef3e2;
+  --green:#15803d; --shadow:0 2px 10px rgba(20,25,50,.07);
+}
+html[data-theme="dark"]{
+  --bg:#0f1320; --card:#181d2e; --text:#e8eaf2; --muted:#9aa3b8; --border:#2a3146;
+  --accent:#818cf8; --accent-soft:#23284a; --ok:#4ade80; --ok-soft:#15301f;
+  --bad:#f87171; --bad-soft:#3a1a1a; --warn:#fbbf24; --warn-soft:#352a12;
+  --green:#4ade80; --shadow:0 2px 10px rgba(0,0,0,.35);
+}
+@media (prefers-color-scheme: dark){
+  html:not([data-theme]){
+    --bg:#0f1320; --card:#181d2e; --text:#e8eaf2; --muted:#9aa3b8; --border:#2a3146;
+    --accent:#818cf8; --accent-soft:#23284a; --ok:#4ade80; --ok-soft:#15301f;
+    --bad:#f87171; --bad-soft:#3a1a1a; --warn:#fbbf24; --warn-soft:#352a12;
+    --green:#4ade80; --shadow:0 2px 10px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--accent)}
+header.top{max-width:1000px;margin:0 auto;padding:18px 16px 6px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+header.top .back{text-decoration:none;font-weight:600;font-size:.95rem}
+header.top h1{font-size:1.35rem;margin:6px 0 0;width:100%}
+header.top .sub{color:var(--muted);font-size:.9rem;width:100%;margin-top:2px}
+#themeToggle{background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:99px;padding:6px 14px;cursor:pointer;font-size:.9rem;box-shadow:var(--shadow)}
+nav.tabs{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border);padding:10px 8px;display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+nav.tabs button{border:1px solid var(--border);background:var(--card);color:var(--text);padding:8px 14px;border-radius:99px;cursor:pointer;font-size:.92rem;font-weight:600}
+nav.tabs button.active{background:var(--accent);border-color:var(--accent);color:#fff}
+main{max-width:1000px;margin:0 auto;padding:20px 16px 70px}
+section.tab{display:none}
+section.tab.show{display:block}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin-bottom:18px;box-shadow:var(--shadow)}
+.card h2{margin-top:0;font-size:1.2rem}
+.card h3{font-size:1.02rem;margin:18px 0 6px}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;padding:2px 10px;border-radius:99px;margin-left:6px;vertical-align:middle;white-space:nowrap}
+.badge::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;flex:0 0 auto}
+.b-rojo{background:var(--bad-soft);color:var(--bad)}
+.b-ama{background:var(--warn-soft);color:var(--warn)}
+.b-ver{background:var(--ok-soft);color:var(--green)}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px;vertical-align:middle}
+.d-rojo{background:var(--bad)}
+.d-ama{background:var(--warn)}
+.d-ver{background:var(--green)}
+.formula{background:var(--accent-soft);border:1px dashed var(--accent);border-radius:8px;padding:6px 12px;display:inline-block;font-family:Consolas,Menlo,monospace;font-size:.92rem;margin:4px 0}
+.unit-pill{display:inline-block;background:var(--accent);color:#fff;border-radius:8px;padding:2px 10px;font-size:.85rem;font-weight:700}
+/* DIAGRAMAS y FIGURAS */
+figure.diag{margin:16px 0;padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--bg)}
+figure.diag svg{display:block;width:100%;height:auto;max-width:520px;margin:0 auto}
+figure.diag figcaption{margin-top:8px;font-size:.82rem;color:var(--muted);text-align:center}
+.diag-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;max-width:560px;margin:0 auto}
+.diag-grid svg{max-width:100%}
+svg.eco{--axis:var(--muted);--curveA:var(--accent);--curveB:var(--bad);--curveC:var(--green);--guide:var(--border);--lab:var(--text)}
+svg.eco text{fill:var(--lab);font-family:system-ui,sans-serif;font-size:11px}
+svg.eco .ax{stroke:var(--axis);stroke-width:1.4}
+svg.eco .cA{stroke:var(--curveA);stroke-width:2.4;fill:none}
+svg.eco .cB{stroke:var(--curveB);stroke-width:2.4;fill:none}
+svg.eco .cC{stroke:var(--curveC);stroke-width:2.4;fill:none}
+svg.eco .gd{stroke:var(--guide);stroke-width:1;stroke-dasharray:4 3}
+svg.eco .pt{fill:var(--lab)}
+svg.eco .mut{fill:var(--muted);font-size:10px}
+/* QUIZ */
+.q{border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin:12px 0;background:var(--card)}
+.q .enun{font-weight:600;margin-bottom:8px}
+.q .opt{display:block;width:100%;text-align:left;margin:5px 0;padding:9px 12px;border-radius:9px;border:1px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer;font-size:.93rem}
+.q .opt:hover{border-color:var(--accent)}
+.q .opt.correcta{background:var(--ok-soft);border-color:var(--ok);font-weight:700}
+.q .opt.mal{background:var(--bad-soft);border-color:var(--bad)}
+.q .opt:disabled{cursor:default;opacity:.92}
+.q .exp{display:none;margin-top:9px;padding:9px 12px;border-radius:9px;font-size:.9rem;background:var(--accent-soft)}
+.q .exp.show{display:block}
+.scorebar{position:sticky;top:54px;z-index:40;background:var(--accent);color:#fff;border-radius:12px;padding:9px 16px;font-weight:700;margin-bottom:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.scorebar button{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:8px;padding:3px 12px;cursor:pointer}
+.unidad-head{margin:26px 0 4px;font-size:1.05rem;font-weight:800;color:var(--accent)}
+/* FLASHCARDS */
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin:12px 0 24px}
+.fc{perspective:1000px;min-height:185px;cursor:pointer}
+.fc-inner{position:relative;width:100%;height:100%;min-height:185px;transition:transform .5s;transform-style:preserve-3d}
+.fc.flip .fc-inner{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:13px;padding:16px;display:flex;flex-direction:column;justify-content:center;border:1px solid var(--border);box-shadow:var(--shadow)}
+.fc-front{background:var(--card)}
+.fc-front .t{font-weight:800;font-size:1.02rem}
+.fc-front .hint{color:var(--muted);font-size:.78rem;margin-top:10px}
+.fc-back{background:var(--accent-soft);transform:rotateY(180deg);font-size:.86rem;overflow:auto}
+.fc-back .mnemo{margin-top:8px;font-style:italic;color:var(--accent);font-weight:600}
+/* MAPA */
+.mapa{margin-bottom:30px}
+.nodo{border-radius:11px;padding:8px 13px;margin:7px 0;border:1px solid var(--border);background:var(--card);font-size:.9rem}
+.nodo.root{background:var(--accent);color:#fff;font-weight:800;font-size:1rem;display:inline-block}
+.rama{margin-left:18px;padding-left:16px;border-left:2px solid var(--accent)}
+.rama>.nodo.titulo{background:var(--accent-soft);font-weight:700;border-color:var(--accent)}
+.hoja{background:var(--bg);color:var(--muted);font-size:.85rem;padding:5px 11px}
+/* GUIA */
+table{width:100%;border-collapse:collapse;font-size:.9rem;margin:10px 0}
+th,td{border:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--accent-soft)}
+.orden{counter-reset:paso;list-style:none;padding:0}
+.orden li{counter-increment:paso;margin:9px 0;padding:11px 14px 11px 52px;position:relative;background:var(--card);border:1px solid var(--border);border-radius:11px}
+.orden li::before{content:counter(paso);position:absolute;left:13px;top:50%;transform:translateY(-50%);background:var(--accent);color:#fff;width:27px;height:27px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem}
+@media (max-width:640px){ main{padding:14px 10px 60px} .card{padding:14px} nav.tabs button{padding:7px 10px;font-size:.85rem} }
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="back" href="index.html">&larr; Plan de estudio</a>
+  <button id="themeToggle" onclick="toggleTheme()">Tema claro / oscuro</button>
+  <h1>Fundamentos de Economía I</h1>
+  <div class="sub">UCES 2026 · Cátedra Lagraña · 5 unidades · Apunte oficial de cátedra como única fuente</div>
+</header>
+
+<nav class="tabs">
+  <button class="active" data-tab="resumen" onclick="goTab('resumen')">Resumen</button>
+  <button data-tab="quiz" onclick="goTab('quiz')">Quiz</button>
+  <button data-tab="flash" onclick="goTab('flash')">Flashcards</button>
+  <button data-tab="mapa" onclick="goTab('mapa')">Mapas</button>
+  <button data-tab="guia" onclick="goTab('guia')">Guía 80/20</button>
+</nav>
+
+<main>
+
+<!-- ============ RESUMEN ============ -->
+<section class="tab show" id="tab-resumen">
+
+<div class="card">
+<h2><span class="unit-pill">U1</span> Introducción a la Economía</h2>
+<p>Arranquemos por lo más básico: la economía existe porque querés más cosas de las que podés tener. Así de simple. Las necesidades son ilimitadas (siempre aparece algo nuevo que querés) pero los recursos son limitados. Esa tensión es <strong>el problema económico</strong> <span class="badge b-rojo">Imprescindible</span>. Ojo con esto: la escasez NO es un problema tecnológico, es la disparidad entre lo que la gente desea y los medios disponibles. Por eso a la economía la llaman "la ciencia de la elección".</p>
+<p>Las <strong>necesidades</strong> son sensaciones de carencia con deseo de satisfacerlas: ilimitadas, recurrentes (comés hoy y mañana tenés hambre de vuelta), creables artificialmente (hola, publicidad) y complementarias. Se clasifican por urgencia (primarias/secundarias), asiduidad (regulares/ocasionales), tiempo (presentes/futuras) y sujeto (individuales/colectivas) <span class="badge b-ama">Importante</span>.</p>
+<p>Un <strong>bien económico</strong> tiene que cumplir 3 requisitos: satisfacer una necesidad, ser escaso y ser accesible <span class="badge b-rojo">Imprescindible</span>. Si pierde alguno, deja de ser bien económico. Después hay mil clasificaciones (materiales/inmateriales, libres/económicos/raros, directos/indirectos, durables/no durables, presentes/futuros, privados/públicos, normales/inferiores) <span class="badge b-ver">Complementario</span>, pero quedate con la idea: el aire es un bien libre, tu celu es un bien económico durable directo.</p>
+<p>Los <strong>interrogantes básicos</strong>: ¿qué producir?, ¿cómo producir? y ¿para quién producir? <span class="badge b-rojo">Imprescindible</span>. Todo sistema económico tiene que responderlos. Y acá entran los <strong>sistemas económicos</strong>: capitalista o de mercado (los precios coordinan todo, tipo EE.UU.), de planificación centralizada (el gobierno decide qué, cómo y cuánto, tipo la ex URSS) y mixto (combinación, el Estado se queda con sectores estratégicos) <span class="badge b-rojo">Imprescindible</span>.</p>
+<p>Los <strong>factores productivos</strong> y sus retribuciones son finos para la facu: trabajo cobra salario, capital cobra interés, recursos naturales cobran renta, tecnología cobra regalías y capacidad empresarial cobra beneficios <span class="badge b-rojo">Imprescindible</span>. Pensalo como el "sueldo" de cada factor. El <strong>flujo circular de la economía</strong> conecta familias y empresas: flujo real (bienes y factores) y flujo monetario (la plata que circula en sentido contrario).</p>
+<p>La <strong>FPP (Frontera de Posibilidades de Producción)</strong> <span class="badge b-rojo">Imprescindible</span> muestra el máximo que podés producir de dos bienes con los recursos y la tecnología que tenés. Si querés más compus, sacrificás celulares: eso es el <strong>costo de oportunidad</strong>, aquello a lo que renunciás para conseguir algo. Es como cuando elegís ir al recital en vez de juntar para las vacaciones: el costo real del recital son las vacaciones que no te tomaste. La FPP se desplaza hacia afuera con mejoras tecnológicas, más recursos, más capacitación (capital humano) o cambios en la fuerza laboral.</p>
+<p><strong>Economía positiva vs normativa</strong> <span class="badge b-rojo">Imprescindible</span>: la positiva describe lo que es o podría ser ("si el Estado grava las telas, baja la demanda"). La normativa dice lo que debería ser, con juicios de valor ("Argentina debería tener libre comercio"). Truco: si lees "debería", es normativa. Dentro de la positiva están la economía descriptiva y la teoría económica, que se divide en <strong>microeconomía</strong> (agentes y mercados individuales: el mercado de la yerba mate) y <strong>macroeconomía</strong> (agregados: PBI, inflación, consumo agregado) <span class="badge b-rojo">Imprescindible</span>.</p>
+<p>Los <strong>modelos económicos</strong> son simplificaciones de la realidad. Supuestos clásicos: los agentes son racionales y maximizan algo. Las teorías no se evalúan por el realismo de los supuestos sino por la validez de sus predicciones <span class="badge b-ama">Importante</span>. Y la condición <strong>ceteris paribus</strong>: "todo lo demás constante", para aislar el efecto de una variable.</p>
+<p>Cierre macro de la unidad <span class="badge b-ama">Importante</span>: el <strong>PIB</strong> es el valor monetario de todos los bienes y servicios finales producidos dentro de un territorio en un período (importan las fronteras, no la nacionalidad). El <strong>ingreso nacional</strong> suma los ingresos de los factores según nacionalidad:</p>
+<p><span class="formula">Ingreso nacional = PIB + RRN - RRE</span><br><small>RRN: rentas de residentes nacionales en el extranjero · RRE: rentas de residentes extranjeros en el país</small></p>
+<p>La <strong>demanda agregada</strong> es el gasto total de la economía:</p>
+<p><span class="formula">DA = C + I + G + (X-M)</span></p>
+<p>Pendiente negativa: si bajan los precios, todos demandan más. La <strong>oferta agregada</strong> tiene pendiente positiva: más producción implica más costos unitarios y precios más altos. El <strong>equilibrio macroeconómico</strong> está donde se cruzan DA y OA: el único punto donde gasto y producción cierran para todos.</p>
+</div>
+
+<div class="card">
+<h2><span class="unit-pill">U2</span> La conducta de los consumidores</h2>
+<p>Esta unidad es vos eligiendo en el súper con plata limitada. El consumidor busca <strong>maximizar su utilidad</strong> (satisfacción) con un presupuesto que no alcanza para todo. Tres patas: preferencias, maximización de utilidad y restricción presupuestaria <span class="badge b-rojo">Imprescindible</span>.</p>
+<p>La <strong>utilidad total</strong> es la satisfacción total de consumir cierta cantidad; la <strong>utilidad marginal</strong> es la satisfacción extra de la última unidad. "Marginal" en economía siempre significa adicional o extra. La <strong>ley de la utilidad marginal decreciente</strong> <span class="badge b-rojo">Imprescindible</span>: la primera porción de pizza es gloriosa, la sexta ya no tanto. Cada unidad extra suma menos que la anterior.</p>
+<p><span class="formula">Utilidad marginal = cambio en la utilidad total / cambio en la cantidad consumida</span></p>
+<p>Las <strong>curvas de indiferencia</strong> <span class="badge b-rojo">Imprescindible</span> muestran combinaciones de dos bienes que te dan la misma utilidad (te da igual una u otra). Características: convexas al origen, no se cruzan nunca, y cuanto más lejos del origen, más utilidad. El conjunto de curvas es el <strong>mapa de indiferencia</strong>. La pendiente es la <strong>TMS (Tasa Marginal de Sustitución)</strong>: cuánto de un bien estás dispuesto a soltar por una unidad más del otro, manteniendo la utilidad. Y es decreciente: cuanto más jugo tenés, menos helado soltás por más jugo.</p>
+<p><span class="formula">TMSxy = - (Y1 - Y0) / (X1 - X0)</span> &nbsp; <span class="formula">TMSxy = UMx / UMy = |ΔY/ΔX|</span> &nbsp; <span class="formula">TMSyx = 1/TMSxy</span></p>
+<p>La <strong>recta de presupuesto (o de balance)</strong> <span class="badge b-rojo">Imprescindible</span> muestra las combinaciones máximas que podés comprar con tu ingreso y los precios dados. Su pendiente es el cociente de precios. Si sube tu ingreso (o bajan ambos precios en igual proporción), la recta se desplaza paralela. Si cambia el precio de un solo bien, la recta gira sobre el eje del otro bien.</p>
+<p><span class="formula">Y = Pj.Qj + Ph.Qh</span></p>
+<p>El <strong>equilibrio del consumidor</strong> <span class="badge b-rojo">Imprescindible</span>: el punto donde la curva de indiferencia es tangente a la recta de presupuesto. Ahí la TMS iguala la relación de precios y se cumple la Ley de Igualdad de las Utilidades Marginales ponderadas:</p>
+<p><span class="formula">- Px/Py = - UMg x/UMg y</span> &nbsp;que implica&nbsp; <span class="formula">UMg x/Px = UMg y/Py</span></p>
+<p>Traducción: el último peso gastado en cada bien te tiene que rendir la misma satisfacción. Si la birra te rinde más por peso que el fernet, comprás más birra hasta que se emparejen.</p>
+<p><strong>Demanda</strong> <span class="badge b-rojo">Imprescindible</span>: cantidades que los consumidores desean Y pueden comprar (demandar es intención, comprar es acción). La <strong>ley de la demanda</strong>: relación inversa entre precio y cantidad demandada. ¿Por qué? Dos efectos: <strong>efecto sustitución</strong> (si sube el precio del avión, te vas en micro) y <strong>efecto ingreso</strong> (si sube el precio, tu ingreso real rinde menos y comprás menos de casi todo). La función de demanda: <span class="formula">QA = D (PA, Y, PB, G, N)</span>. Si cambia el precio del propio bien, hay <strong>movimiento sobre la curva</strong>; si cambia cualquier otro factor (ingreso, gustos, precios de otros bienes), la curva se <strong>desplaza</strong> <span class="badge b-ama">Importante</span>. Esta distinción la toman siempre.</p>
+<p>El <strong>excedente del consumidor</strong> <span class="badge b-ama">Importante</span>: diferencia entre lo máximo que estabas dispuesto a pagar y lo que efectivamente pagás. Si valorás el primer kilo de helado en 7 pesos y pagás 1, te llevás 6 de "ganancia" subjetiva. Surge porque la utilidad marginal es decreciente.</p>
+<p><strong>Elasticidad</strong> <span class="badge b-rojo">Imprescindible</span>: sensibilidad de una variable ante cambios en otra. La elasticidad-precio de la demanda:</p>
+<p><span class="formula">Ep = Variación porcentual de la cantidad demandada / Variación porcentual del precio</span> &nbsp; <span class="formula">Ep = (ΔQ/Q) / (ΔP/P)</span></p>
+<p>Categorías: <strong>elástica</strong> (Ep &gt; 1), <strong>unitaria</strong> (Ep = 1), <strong>inelástica</strong> (Ep &lt; 1), <strong>perfectamente inelástica o rígida</strong> (Ep = 0, como la insulina: la necesitás sí o sí) y <strong>perfectamente elástica</strong> (Ep = ∞, curva horizontal). Se trabaja en valor absoluto (se multiplica por -1). Condicionantes: tipo de necesidad (primera necesidad = inelástica, lujo = elástica), sustitutos disponibles, proporción del ingreso gastada y período considerado (a largo plazo, más elástica).</p>
+<p>Para cambios grandes se usa la <strong>elasticidad en el arco</strong> (método del punto medio, promedia entre dos puntos). La <strong>elasticidad en el punto</strong> es la pendiente por el cociente P/Q: en una demanda lineal, la elasticidad es alta con precios altos y baja con precios bajos; en el punto medio es unitaria <span class="badge b-ama">Importante</span>.</p>
+<p>Relación con el <strong>ingreso total (IT = P . Q)</strong> <span class="badge b-rojo">Imprescindible</span>, esto es pregunta fija: si la demanda es elástica y bajás el precio, el IT sube (precio e IT van en sentido contrario). Si es inelástica, bajar el precio te baja el IT (van en el mismo sentido). Si es unitaria, el IT no cambia y ahí se maximiza el ingreso total.</p>
+<p><strong>Elasticidad cruzada</strong> <span class="badge b-ama">Importante</span>: cómo responde la cantidad de un bien al precio de otro. Positiva = sustitutos (nafta sube, vendés más motos... perdón, más bondis). Negativa = complementarios (nafta sube, caen los autos). Nula = independientes. <strong>Elasticidad ingreso</strong>: positiva = bien normal, negativa = bien inferior, mayor que 1 = bien de lujo, menor que 1 = bien necesario. La <strong>curva de Engel</strong> <span class="badge b-ver">Complementario</span> grafica demanda vs ingreso: pendiente positiva para bienes normales, negativa para inferiores (cuando cobrás mejor, dejás el pan duro y comprás factura).</p>
+</div>
+
+<div class="card">
+<h2><span class="unit-pill">U3</span> La conducta de los productores</h2>
+<p>Ahora pasamos al otro lado del mostrador: la empresa. Su función es transformar factores de producción en bienes y servicios, y su decisión básica es <strong>cuánto producir</strong> para <strong>maximizar beneficios</strong> (ingresos menos costos) <span class="badge b-rojo">Imprescindible</span>. La <strong>productividad</strong> (bienes producidos por trabajador por hora) explica buena parte del nivel de vida de un país.</p>
+<p>La <strong>función de producción</strong> indica la cantidad máxima de producto que se obtiene con una cantidad dada de factores, para una tecnología dada <span class="badge b-rojo">Imprescindible</span>. En el <strong>corto plazo</strong> hay factores fijos (la planta, las máquinas) y variables (trabajo, materiales). Dato clave: la distinción corto/largo plazo en economía se define únicamente por la existencia o no de factores fijos <span class="badge b-ama">Importante</span>.</p>
+<p>Conceptos estrella <span class="badge b-rojo">Imprescindible</span>:</p>
+<p><span class="formula">PML = ΔPT / ΔL</span> &nbsp;(producto marginal: cuánto suma el último trabajador)<br>
+<span class="formula">PMeL = PT / L</span> &nbsp;(producto medio: producción por trabajador, o sea la productividad)</p>
+<p>La <strong>ley de los rendimientos decrecientes</strong> <span class="badge b-rojo">Imprescindible</span>: pasado cierto nivel, cada trabajador extra agrega menos producto que el anterior (los demás factores quedan constantes). Imaginate una parrilla con una sola parrilla física: el quinto asador ya molesta más de lo que ayuda. El máximo del PMe se llama <strong>óptimo técnico</strong>, y el PM corta al PMe justo en ese máximo. En el <strong>largo plazo</strong> todo es variable y hablamos de <strong>rendimientos de escala</strong>: crecientes (duplicás factores y obtenés más del doble), constantes o decrecientes <span class="badge b-ama">Importante</span>.</p>
+<p><strong>Costos</strong> <span class="badge b-rojo">Imprescindible</span>: valor monetario de los factores usados. Los <strong>explícitos</strong> son los gastos de bolsillo (sueldos, alquiler); los <strong>implícitos</strong> son costos de oportunidad (el alquiler que no cobrás por usar tu propio local, el sueldo que resignás por no trabajar de otra cosa). <strong>Costo económico = explícitos + implícitos</strong>. Ejemplo del apunte: $10.000 explícitos + $7.000 implícitos = $17.000 de costo económico. De ahí: <strong>beneficio contable</strong> = IT menos costos explícitos; <strong>beneficio económico</strong> = IT menos TODOS los costos. Para que un negocio sea rentable económicamente, el ingreso tiene que cubrir todos los costos de oportunidad.</p>
+<p>Familia de costos de corto plazo <span class="badge b-rojo">Imprescindible</span>:</p>
+<p><span class="formula">CT = CF + CV</span> &nbsp; <span class="formula">CFMe = CF/q</span> &nbsp; <span class="formula">CVMe = CV/q</span> &nbsp; <span class="formula">CTMe = CT/q</span></p>
+<p>El <strong>costo marginal (CM)</strong> mide la variación del costo total al producir una unidad más. CM y CMe tienen forma de U (por los rendimientos decrecientes) y regla de oro: <strong>la curva de CM corta a la de CMe en su mínimo</strong> (CM = CMe en el mínimo del costo medio). El mínimo del CTMe es la <strong>escala eficiente</strong>. El CFMe solo baja a medida que producís más (repartís los fijos entre más unidades).</p>
+<p><strong>Maximización de beneficios</strong> <span class="badge b-rojo">Imprescindible</span>: se produce donde el ingreso marginal iguala al costo marginal:</p>
+<p><span class="formula">IM = CM</span></p>
+<p>Tres escenarios según IT vs CT: <strong>beneficios normales o nulos</strong> (IT = CT, o sea P = CTMe: ganás lo mismo que en tu mejor alternativa, no es estar fundido), <strong>beneficios extraordinarios</strong> (P &gt; CTMe) y <strong>pérdidas</strong> (P &lt; CTMe). Y dentro de pérdidas, la decisión de seguir o cerrar <span class="badge b-rojo">Imprescindible</span>: si CVMe &gt; P cerrás (perdés más produciendo); si CVMe = P te da igual; si CVMe &lt; P seguís produciendo aunque pierdas, porque al menos cubrís parte de los fijos que igual tendrías que pagar.</p>
+<p>El <strong>punto de equilibrio</strong> (cantidad que cubre los costos) <span class="badge b-rojo">Imprescindible</span>:</p>
+<p><span class="formula">Qe = CF / (P - CVu)</span></p>
+<p>Ejemplo del apunte: CF = $1.000, P = $20, CVu = $10, entonces Qe = 1.000/(20-10) = 100 unidades para cubrir costos.</p>
+<p><strong>Isocuanta e isocosto</strong> <span class="badge b-ama">Importante</span>: la <strong>isocuanta</strong> muestra las combinaciones de trabajo (L) y capital (K) que producen la misma cantidad (convexa, pendiente negativa, no se cruzan). Su pendiente es la relación PML/PMK, llamada tasa marginal de sustitución técnica (TMST). La <strong>isocosto</strong> muestra las combinaciones de factores que cuestan lo mismo: <span class="formula">CT0 = wL + rK</span> (w = precio del trabajo, r = precio del capital), con pendiente -w/r. La <strong>minimización de costos</strong> se da en la tangencia isocuanta-isocosto: la razón de precios de los factores se iguala a la razón de sus productos marginales. El último peso gastado rinde igual en cualquier factor.</p>
+<p><strong>La oferta</strong> <span class="badge b-rojo">Imprescindible</span>: ofrecer es la intención de vender. La <strong>ley de la oferta</strong>: relación directa entre precio y cantidad ofrecida (a mayor precio, más beneficio potencial, más ganas de vender). Función de oferta: depende del precio del bien, precios de otros bienes, precios de los factores (r), tecnología (z) y número de empresas (H). La curva se desplaza a la derecha si bajan los precios de los factores, mejora la tecnología o entran más empresas. <strong>Excedente del productor</strong> <span class="badge b-ama">Importante</span>:</p>
+<p><span class="formula">Excedente del Productor = Precio de Mercado - Costo Mínimo Aceptable</span></p>
+<p>Si estabas dispuesto a vender a $50 y el mercado paga $80, tu excedente es $30. <strong>Elasticidad de la oferta</strong> <span class="badge b-ama">Importante</span>: siempre positiva (la curva sube). Elástica si &gt; 1, inelástica si &lt; 1, unitaria si = 1, cero si la curva es vertical, infinita si es horizontal. A largo plazo la oferta es más elástica (te da tiempo a ampliar la fábrica).</p>
+</div>
+
+<div class="card">
+<h2><span class="unit-pill">U4</span> Los mercados. Competencia pura y perfecta</h2>
+<p>Acá juntamos las dos curvas. El <strong>equilibrio de mercado</strong> <span class="badge b-rojo">Imprescindible</span> está donde se cruzan oferta y demanda: ahí tenés el <strong>precio de equilibrio</strong> y la <strong>cantidad de equilibrio</strong>. Si el precio está por debajo del equilibrio hay <strong>exceso de demanda (escasez)</strong> y el precio tiende a subir; si está por encima hay <strong>exceso de oferta (excedente)</strong> y tiende a bajar. La <strong>ley de la oferta y la demanda</strong>: el precio se ajusta solo para equilibrar el mercado.</p>
+<figure class="diag">
+<svg class="eco" viewBox="0 0 320 220" role="img" aria-label="Curva de oferta y demanda con punto de equilibrio">
+  <line class="ax" x1="40" y1="20" x2="40" y2="190"/>
+  <line class="ax" x1="40" y1="190" x2="300" y2="190"/>
+  <polygon class="pt" points="40,14 36,24 44,24"/>
+  <polygon class="pt" points="306,190 296,186 296,194"/>
+  <text x="20" y="22">P</text>
+  <text x="296" y="208">Q</text>
+  <line class="cA" x1="60" y1="40" x2="270" y2="170"/>
+  <line class="cB" x1="60" y1="175" x2="270" y2="55"/>
+  <text class="mut" x="262" y="48" fill="var(--bad)">Oferta</text>
+  <text class="mut" x="248" y="182" fill="var(--accent)">Demanda</text>
+  <line class="gd" x1="40" y1="112" x2="172" y2="112"/>
+  <line class="gd" x1="172" y1="190" x2="172" y2="112"/>
+  <circle class="pt" cx="172" cy="112" r="3.6"/>
+  <text x="24" y="116">P*</text>
+  <text x="166" y="206">Q*</text>
+</svg>
+<figcaption>U4: equilibrio de mercado. La oferta y la demanda se cruzan en (Q*, P*).</figcaption>
+</figure>
+<p><strong>Desplazamientos</strong> <span class="badge b-rojo">Imprescindible</span>: si la demanda se desplaza a la derecha, suben precio y cantidad de equilibrio. Si la oferta se desplaza a la derecha, baja el precio y sube la cantidad. Si se desplazan las dos a la vez, la cantidad sube pero el precio es ambiguo (depende de la intensidad de cada movimiento). Y de nuevo la distinción clave: aumento de demanda (se mueve la curva) no es lo mismo que aumento de la cantidad demandada (te movés sobre la curva).</p>
+<p><strong>Controles de precios</strong> <span class="badge b-rojo">Imprescindible</span>, tema bien argentino: un <strong>precio máximo</strong> es el precio legal más alto al que puede venderse un bien. Para que sea relevante tiene que estar POR DEBAJO del equilibrio, y genera escasez (la cantidad demandada supera la ofrecida), colas, racionamiento e ineficiencias. Pensá en precios cuidados y góndolas vacías. Un <strong>precio mínimo</strong> es el precio legal más bajo; es relevante si está POR ENCIMA del equilibrio y genera excedente (sobra producción), típico de los mercados agrícolas.</p>
+<p><strong>Análisis algebraico</strong> <span class="badge b-rojo">Imprescindible</span>, esto cae en el parcial con números:</p>
+<p><span class="formula">Qd = a - bP &nbsp;&nbsp;(a &gt; 0, b &gt; 0)</span> &nbsp; <span class="formula">Qo = c + dP &nbsp;&nbsp;(c ≥ 0, d &gt; 0)</span></p>
+<p>Para encontrar P* y Q* igualás Qd = Qo y despejás. Listo, no tiene más secreto que la ecuación de primer grado.</p>
+<p><strong>Clasificación de mercados</strong> <span class="badge b-rojo">Imprescindible</span>: según número de empresas, diferenciación del producto, capacidad de fijar precio y barreras de entrada. El espectro: competencia perfecta (muchos, homogéneo), competencia monopolística (muchos, diferenciado), oligopolio (pocos) y monopolio (uno solo). Cuantos más participantes, más competitivo el mercado.</p>
+<p><strong>Competencia pura o perfecta</strong>, las 5 características <span class="badge b-rojo">Imprescindible</span>: 1) libre concurrencia (sin barreras de entrada ni salida), 2) muchísimos compradores y vendedores (mercado atomizado), 3) producto homogéneo (idéntico, no distinguís quién lo hizo), 4) empresas <strong>precio-aceptantes</strong> (ninguna puede influir en el precio, lo toman como dato) y 5) información perfecta. Ejemplo mental: un productor de trigo en Pergamino no decide el precio del trigo, lo acepta.</p>
+<p>Consecuencia gráfica: la empresa competitiva enfrenta una <strong>demanda horizontal (perfectamente elástica)</strong> <span class="badge b-rojo">Imprescindible</span>: puede vender todo lo que quiera al precio de mercado, pero si cobra un peso más pierde todos los clientes. Por eso:</p>
+<p><span class="formula">IMe = IM = P</span></p>
+<p>El ingreso medio y el marginal son iguales al precio, porque vender una unidad más no te obliga a bajar el precio.</p>
+<p><strong>Maximización del beneficio</strong> <span class="badge b-rojo">Imprescindible</span>: produce donde</p>
+<p><span class="formula">P = CM</span></p>
+<p>Mientras IM &gt; CM te conviene producir más (cada unidad suma más a los ingresos que a los costos); si IM &lt; CM, producí menos. Frenás justo donde se igualan.</p>
+<p>La <strong>curva de oferta de corto plazo</strong> de la empresa competitiva <span class="badge b-rojo">Imprescindible</span>: es el tramo de su curva de CM que está por encima del mínimo del CVMe. Dos puntos con nombre: el <strong>punto de nivelación</strong> (CM corta al CTMe en su mínimo: beneficio cero) y el <strong>punto de cierre</strong> (CM corta al CVMe en su mínimo: si el precio cae por debajo, cerrás). Entre ambos, producís con pérdidas pero cubrís los variables y parte de los fijos. Los <strong>costos fijos son costos hundidos</strong> <span class="badge b-ama">Importante</span>: los pagás produzcas o no, así que no cuentan para decidir si producir.</p>
+</div>
+
+<div class="card">
+<h2><span class="unit-pill">U5</span> Mercados de competencia impura o imperfecta</h2>
+<p>En la competencia imperfecta las empresas SÍ pueden influir en el precio actuando individualmente. La diferencia gráfica clave <span class="badge b-rojo">Imprescindible</span>: la empresa imperfecta enfrenta una demanda con <strong>pendiente negativa</strong> (para vender más tiene que bajar el precio), mientras que la competitiva la tiene horizontal. <strong>Causas de imperfección</strong>: costos de producción (economías de escala que favorecen a las grandes) y <strong>barreras de entrada</strong>: restricciones legales (patentes), publicidad y diferenciación del producto, y elevados costos de entrada (tender una red de telecomunicaciones no es para cualquiera) <span class="badge b-rojo">Imprescindible</span>.</p>
+<p><strong>Monopolio</strong> <span class="badge b-rojo">Imprescindible</span>: un único vendedor de un producto sin sustitutos cercanos. Su curva de demanda ES la del mercado. El <strong>monopolio natural</strong> surge cuando una sola empresa puede abastecer todo el mercado con menos costos que dos o más (gas, agua: sería un despilfarro duplicar cañerías). Cuando el monopolista vende una unidad más hay dos efectos: <strong>efecto producción</strong> (Q sube) y <strong>efecto precio</strong> (P baja para todas las unidades). Por eso su ingreso marginal es menor que el precio: <span class="formula">IM &lt; P</span>. Maximiza donde IM = CM, pero cobra el precio que marca la curva de demanda. Comparado con competencia perfecta: <strong>el monopolio reduce la producción y eleva el precio</strong>, generando un <strong>costo social o pérdida irrecuperable de eficiencia</strong> (el triángulo entre la demanda y el CM) <span class="badge b-ama">Importante</span>.</p>
+<p>Los poderes públicos pueden: regular el monopolio, aumentar la competencia con leyes antimonopolio (en Argentina, la ley 25.156 y la CNDC, como en la fusión Quilmes-Brahma) o convertirlo en empresa pública. En la <strong>regulación</strong> <span class="badge b-ama">Importante</span> hay dos criterios: fijar <strong>P = CM</strong> (eficiente, pero como el CTMe es decreciente, el monopolio natural pierde plata y habría que subsidiarlo) o fijar <strong>P = CTMe</strong> (beneficio económico nulo, pero queda pérdida de eficiencia). En ambos casos, sin incentivos para bajar costos.</p>
+<p><strong>Discriminación de precios</strong> <span class="badge b-ama">Importante</span>: cobrar precios distintos a distintos compradores según sus elasticidades de demanda. Condiciones: 1) poder fraccionar el mercado e identificar los segmentos y 2) que no exista reventa. Ejemplos: cine más barato ciertos días, tarifas aéreas, descuentos por cantidad. Dato no intuitivo: puede aumentar el bienestar económico porque más gente accede al bien.</p>
+<p><strong>Oligopolio</strong> <span class="badge b-rojo">Imprescindible</span>: pocas empresas, producto homogéneo o diferenciado. Caso extremo: <strong>duopolio</strong> (dos productores). Lo que lo define: la <strong>interdependencia estratégica</strong>, cada empresa influye en las decisiones de sus rivales y es influida por ellas. De ahí las <strong>colusiones</strong>: acuerdos sobre cantidades o precios. El <strong>cartel</strong> es la organización de empresas que limita la competencia con acuerdos de precios y producción; funcionando bien, actúa como un monopolio multiplanta. Pero es inestable: cada miembro tiene incentivos para traicionar y vender más barato, lo que dispara guerras de precios. El <strong>dilema del prisionero</strong> <span class="badge b-ama">Importante</span> (Al Capone y Corleone) muestra por qué: confesar es la estrategia dominante para ambos, y terminan peor que si hubieran cooperado. Igual que los carteles: cooperar conviene, pero es dificilísimo de sostener.</p>
+<p><strong>La publicidad y los oligopolios</strong> <span class="badge b-rojo">Imprescindible</span> (tema marcado de esta unidad): la publicidad no solo informa, construye marca y preferencia emocional (<strong>branding</strong>). En oligopolios sirve para: a) diferenciar productos casi iguales (Coca vs Pepsi), b) competir sin guerra de precios (compiten por imagen, no por plata), c) crear barreras de entrada (¿quién puede igualar esas campañas?) y d) manipular preferencias generando demanda inducida. Efecto clave: la lealtad de marca hace la demanda <strong>más inelástica</strong>.</p>
+<p><strong>Competencia monopolística</strong> <span class="badge b-rojo">Imprescindible</span>, el corazón de la U5: muchas empresas venden productos similares pero no idénticos. Las 4 características: 1) mercado atomizado, 2) productos diferenciados (cada empresa es monopolio de su propia marca), 3) poder limitado para fijar precio (podés cobrar un toque más caro sin perder a todos, pero si te zarpás se van) y 4) sin barreras de entrada. Ejemplos: restaurantes, cafeterías, peluquerías, indumentaria, panaderías. Tu café de especialidad del barrio: parecido a mil cafés, pero vos elegís ese.</p>
+<p><strong>Equilibrio de corto plazo</strong> <span class="badge b-rojo">Imprescindible</span>: igual que el monopolio. Demanda con pendiente negativa, IM menor que P, produce donde <span class="formula">IM = CM</span> y el precio lo fija la curva de demanda. Puede haber beneficios extraordinarios. <strong>Equilibrio de largo plazo</strong>: como no hay barreras, esos beneficios atraen competidores, la demanda de cada empresa se corre a la izquierda, y el proceso sigue hasta que <strong>la curva de demanda queda tangente a la curva de costos medios</strong>: beneficios extraordinarios cero. Es más lento que en competencia perfecta porque los clientes son fieles a su marca.</p>
+<p><strong>Vs competencia perfecta</strong> <span class="badge b-rojo">Imprescindible</span>, dos diferencias: 1) <strong>exceso de capacidad</strong>: produce menos que la escala eficiente (el mínimo del costo medio), podría producir más y bajar el CTMe pero no lo hace; es el "costo" de tener productos diferenciados (teorema del exceso de capacidad). 2) <strong>P &gt; CM</strong>: siempre conserva algo de poder de mercado, por eso siempre le conviene un cliente más. La competitiva perfecta, en cambio, produce en la escala eficiente y con P = CM.</p>
+<p><strong>Imperfecciones de la demanda</strong> <span class="badge b-rojo">Imprescindible</span>: <strong>monopsonio</strong> = un solo comprador, muchos vendedores (la única minera del pueblo que contrata, la procesadora de leche única compradora de los tamberos). El comprador fija el precio por debajo del competitivo; en el mercado laboral, el salario monopsonista es más bajo y el empleo menor que en competencia, con pérdida de eficiencia. <strong>Oligopsonio</strong> = pocos compradores, muchos vendedores (los grandes supermercados comprándole a productores agrícolas chicos). Resultado intermedio entre competencia perfecta y monopsonio, con posible coordinación tácita entre compradores. Y el <strong>oligopolio bilateral</strong>: pocos oferentes y pocos demandantes a la vez.</p>
+</div>
+
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section class="tab" id="tab-quiz">
+  <div class="scorebar"><span>Aciertos: <span id="score">0</span> / <span id="answered">0</span> respondidas (<span id="totalq">0</span> en total)</span><button onclick="resetQuiz()">Reiniciar</button></div>
+  <div class="card" style="padding:12px 16px"><strong>¿Cómo funciona?</strong> Tocá una opción y al toque te dice si está bien o mal, con la explicación. Sin vueltas. Si te equivocás, leé la explicación: ahí está el oro.</div>
+  <div id="quizBox"></div>
+</section>
+
+<!-- ============ FLASHCARDS ============ -->
+<section class="tab" id="tab-flash">
+  <div class="card" style="padding:12px 16px"><strong>Tocá la tarjeta para darla vuelta.</strong> Adelante el concepto, atrás la definición con una mnemotecnia o analogía para que se te grabe. Repasalas hasta que las cantes de memoria.</div>
+  <div id="flashBox"></div>
+</section>
+
+<!-- ============ MAPA ============ -->
+<section class="tab" id="tab-mapa">
+
+<div class="card mapa">
+<h2><span class="unit-pill">U1</span> Mapa: Introducción a la Economía</h2>
+<div class="nodo root">ECONOMÍA: necesidades ilimitadas vs recursos escasos</div>
+<div class="rama">
+  <div class="nodo titulo">Necesidades y bienes</div>
+  <div class="rama">
+    <div class="nodo">Necesidades: ilimitadas · recurrentes · creables · complementarias</div>
+    <div class="nodo hoja">Clasificación: primarias/secundarias · regulares/ocasionales · presentes/futuras · individuales/colectivas</div>
+    <div class="nodo">Bien económico: satisface necesidad + escaso + accesible</div>
+  </div>
+  <div class="nodo titulo">Interrogantes básicos</div>
+  <div class="rama"><div class="nodo">¿Qué producir? · ¿Cómo producir? · ¿Para quién producir?</div></div>
+  <div class="nodo titulo">Sistemas económicos</div>
+  <div class="rama">
+    <div class="nodo">Capitalista (mercado y precios) · Planificación centralizada (Estado decide) · Mixto</div>
+    <div class="nodo hoja">Política económica: fiscal (gasto e impuestos) y monetaria (masa monetaria y tasas), expansivas o restrictivas</div>
+  </div>
+  <div class="nodo titulo">Factores productivos y retribuciones</div>
+  <div class="rama">
+    <div class="nodo">Trabajo → salario · Capital → interés · Rec. naturales → renta · Tecnología → regalías · Cap. empresarial → beneficios</div>
+    <div class="nodo hoja">Flujo circular: flujo real (bienes y factores) + flujo monetario (ingresos y precios)</div>
+    <div class="nodo hoja">Sectores: primario (extracción) · secundario (industria) · terciario (servicios)</div>
+  </div>
+  <div class="nodo titulo">FPP y costo de oportunidad</div>
+  <div class="rama">
+    <div class="nodo">FPP: máximo producible de dos bienes con recursos y tecnología dados</div>
+    <div class="nodo">Costo de oportunidad: aquello a lo que renunciás para conseguir algo</div>
+    <div class="nodo hoja">Se desplaza por: tecnología · recursos · capital humano · fuerza laboral</div>
+  </div>
+  <div class="nodo titulo">Ramas de la economía</div>
+  <div class="rama">
+    <div class="nodo">Positiva (lo que es): descriptiva + teoría económica (micro y macro)</div>
+    <div class="nodo">Normativa (lo que debería ser): política económica, juicios de valor</div>
+  </div>
+  <div class="nodo titulo">Macromagnitudes</div>
+  <div class="rama">
+    <div class="nodo">PIB (territorio) vs Ingreso Nacional (nacionalidad): IN = PIB + RRN - RRE</div>
+    <div class="nodo">DA = C + I + G + (X-M), pendiente negativa · OA pendiente positiva · Equilibrio donde se cruzan</div>
+  </div>
+</div>
+</div>
+
+<div class="card mapa">
+<h2><span class="unit-pill">U2</span> Mapa: Conducta de los consumidores</h2>
+<div class="nodo root">CONSUMIDOR: maximizar utilidad con presupuesto limitado</div>
+<div class="rama">
+  <div class="nodo titulo">Utilidad</div>
+  <div class="rama">
+    <div class="nodo">Utilidad total: satisfacción total · Utilidad marginal: satisfacción de la última unidad</div>
+    <div class="nodo">Ley de utilidad marginal decreciente: cada unidad extra suma menos</div>
+  </div>
+  <div class="nodo titulo">Curvas de indiferencia</div>
+  <div class="rama">
+    <div class="nodo">Combinaciones con igual utilidad · convexas · no se cruzan · más lejos del origen = más utilidad</div>
+    <div class="nodo">TMS = UMx/UMy = |ΔY/ΔX| · decreciente · pendiente de la curva</div>
+  </div>
+  <div class="nodo titulo">Recta de presupuesto</div>
+  <div class="rama">
+    <div class="nodo">Y = Pj.Qj + Ph.Qh · pendiente = cociente de precios</div>
+    <div class="nodo hoja">Cambia ingreso → desplazamiento paralelo · Cambia un precio → gira</div>
+  </div>
+  <div class="nodo titulo">Equilibrio del consumidor</div>
+  <div class="rama"><div class="nodo">Tangencia curva de indiferencia con recta de presupuesto → UMg x/Px = UMg y/Py</div></div>
+  <div class="nodo titulo">Demanda</div>
+  <div class="rama">
+    <div class="nodo">Ley de la demanda: relación inversa P y Q · por efecto sustitución + efecto ingreso</div>
+    <div class="nodo">QA = D (PA, Y, PB, G, N) · precio: movimiento sobre la curva · otros factores: desplazamiento</div>
+    <div class="nodo hoja">Excedente del consumidor: lo que valorás menos lo que pagás</div>
+  </div>
+  <div class="nodo titulo">Elasticidad</div>
+  <div class="rama">
+    <div class="nodo">Ep = var % cantidad / var % precio · elástica &gt;1 · unitaria =1 · inelástica &lt;1 · rígida =0 · perfecta =∞</div>
+    <div class="nodo">Ep e IT: elástica → P e IT en sentido contrario · inelástica → mismo sentido · unitaria → IT máximo</div>
+    <div class="nodo">Cruzada: + sustitutos · - complementarios · 0 independientes</div>
+    <div class="nodo">Ingreso: + normal · - inferior · &gt;1 lujo · &lt;1 necesario → Curva de Engel</div>
+  </div>
+</div>
+</div>
+
+<div class="card mapa">
+<h2><span class="unit-pill">U3</span> Mapa: Conducta de los productores</h2>
+<div class="nodo root">EMPRESA: transformar factores en bienes maximizando beneficios</div>
+<div class="rama">
+  <div class="nodo titulo">Producción de corto plazo</div>
+  <div class="rama">
+    <div class="nodo">Función de producción · factores fijos y variables · PML = ΔPT/ΔL · PMeL = PT/L</div>
+    <div class="nodo">Ley de rendimientos decrecientes · óptimo técnico = máximo del PMe · PM corta PMe en su máximo</div>
+  </div>
+  <div class="nodo titulo">Producción de largo plazo</div>
+  <div class="rama"><div class="nodo">Todo variable → rendimientos de escala: crecientes · constantes · decrecientes</div></div>
+  <div class="nodo titulo">Costos</div>
+  <div class="rama">
+    <div class="nodo">Explícitos (de bolsillo) + Implícitos (oportunidad) = Costo económico</div>
+    <div class="nodo">CT = CF + CV · CFMe = CF/q · CVMe = CV/q · CTMe = CT/q · CM = variación del CT por unidad</div>
+    <div class="nodo">CM corta CMe en su mínimo · mínimo del CTMe = escala eficiente · curvas en U</div>
+  </div>
+  <div class="nodo titulo">Beneficios</div>
+  <div class="rama">
+    <div class="nodo">Máximo beneficio: IM = CM</div>
+    <div class="nodo">Normales (P = CTMe) · Extraordinarios (P &gt; CTMe) · Pérdidas (P &lt; CTMe)</div>
+    <div class="nodo">Con pérdidas: CVMe &gt; P cierra · CVMe = P indiferente · CVMe &lt; P sigue produciendo</div>
+    <div class="nodo hoja">Punto de equilibrio: Qe = CF / (P - CVu)</div>
+  </div>
+  <div class="nodo titulo">Isocuanta + isocosto</div>
+  <div class="rama">
+    <div class="nodo">Isocuanta: combinaciones L,K con igual producción · pendiente = PML/PMK (TMST)</div>
+    <div class="nodo">Isocosto: CT0 = wL + rK · pendiente -w/r · mínimo costo en la tangencia</div>
+  </div>
+  <div class="nodo titulo">Oferta</div>
+  <div class="rama">
+    <div class="nodo">Ley de la oferta: relación directa P y Q · desplazan: factores, bienes relacionados, tecnología, nº de empresas</div>
+    <div class="nodo hoja">Excedente del productor = precio de mercado - costo mínimo aceptable · Elasticidad de oferta siempre positiva</div>
+  </div>
+</div>
+</div>
+
+<div class="card mapa">
+<h2><span class="unit-pill">U4</span> Mapa: Equilibrio y competencia perfecta</h2>
+<div class="nodo root">MERCADO: oferta y demanda se cruzan</div>
+<div class="rama">
+  <div class="nodo titulo">Equilibrio</div>
+  <div class="rama">
+    <div class="nodo">P &lt; equilibrio → exceso de demanda (escasez) · P &gt; equilibrio → exceso de oferta (excedente)</div>
+    <div class="nodo">Algebraico: Qd = a - bP · Qo = c + dP · igualar Qd = Qo para hallar P* y Q*</div>
+    <div class="nodo hoja">Desplazamientos simultáneos: cantidad sube, precio ambiguo</div>
+  </div>
+  <div class="nodo titulo">Controles de precios</div>
+  <div class="rama">
+    <div class="nodo">Precio máximo (relevante si &lt; equilibrio) → escasez, colas, racionamiento</div>
+    <div class="nodo">Precio mínimo (relevante si &gt; equilibrio) → excedente, acumulación</div>
+  </div>
+  <div class="nodo titulo">Clasificación de mercados</div>
+  <div class="rama"><div class="nodo">Nº de empresas · diferenciación · capacidad de fijar precio · barreras de entrada</div></div>
+  <div class="nodo titulo">Competencia perfecta: 5 características</div>
+  <div class="rama">
+    <div class="nodo">Libre concurrencia · atomizado · producto homogéneo · precio-aceptantes · información perfecta</div>
+    <div class="nodo">Demanda de la empresa: horizontal (perfectamente elástica) · IMe = IM = P</div>
+  </div>
+  <div class="nodo titulo">Decisión de producción</div>
+  <div class="rama">
+    <div class="nodo">Maximiza donde P = CM</div>
+    <div class="nodo">Oferta de corto plazo = tramo del CM sobre el mínimo del CVMe</div>
+    <div class="nodo">Punto de nivelación: CM corta CTMe en su mínimo · Punto de cierre: CM corta CVMe en su mínimo</div>
+    <div class="nodo hoja">Costos fijos = hundidos: no cuentan para decidir producir o no</div>
+  </div>
+</div>
+</div>
+
+<div class="card mapa">
+<h2><span class="unit-pill">U5</span> Mapa: Competencia imperfecta</h2>
+<div class="nodo root">COMPETENCIA IMPERFECTA: las empresas influyen en el precio · demanda con pendiente negativa</div>
+<div class="rama">
+  <div class="nodo titulo">Causas</div>
+  <div class="rama"><div class="nodo">Costos (economías de escala) + barreras de entrada (legales/patentes · publicidad y diferenciación · costos de entrada)</div></div>
+  <div class="nodo titulo">Monopolio (1 vendedor)</div>
+  <div class="rama">
+    <div class="nodo">Demanda del mercado · efecto producción + efecto precio → IM &lt; P · equilibrio IM = CM</div>
+    <div class="nodo">Vs comp. perfecta: menos cantidad, mayor precio → costo social (pérdida irrecuperable de eficiencia)</div>
+    <div class="nodo">Poderes públicos: regular (P = CM o P = CTMe) · leyes antimonopolio (ley 25.156, CNDC) · empresa pública</div>
+    <div class="nodo hoja">Discriminación de precios: segmentar mercado + sin reventa · puede mejorar el bienestar</div>
+  </div>
+  <div class="nodo titulo">Oligopolio (pocos vendedores)</div>
+  <div class="rama">
+    <div class="nodo">Interdependencia estratégica · duopolio = 2 · colusión y cartel (actúa como monopolio multiplanta, pero inestable)</div>
+    <div class="nodo">Dilema del prisionero: la estrategia dominante rompe la cooperación</div>
+    <div class="nodo">Publicidad: diferenciación · competencia sin precios · barrera de entrada · demanda inducida · demanda más inelástica</div>
+  </div>
+  <div class="nodo titulo">Competencia monopolística (muchos, diferenciado)</div>
+  <div class="rama">
+    <div class="nodo">4 características: atomizado · producto diferenciado (monopolio de marca) · poder limitado de precio · sin barreras</div>
+    <div class="nodo">Corto plazo: IM = CM, precio según demanda, posibles beneficios extraordinarios</div>
+    <div class="nodo">Largo plazo: entran competidores → demanda tangente al costo medio → beneficio extraordinario cero</div>
+    <div class="nodo">Vs comp. perfecta: exceso de capacidad (produce bajo la escala eficiente) + P &gt; CM</div>
+  </div>
+  <div class="nodo titulo">Imperfecciones de la demanda</div>
+  <div class="rama">
+    <div class="nodo">Monopsonio: 1 comprador, muchos vendedores → precio/salario más bajo, menos empleo</div>
+    <div class="nodo">Oligopsonio: pocos compradores, muchos vendedores → resultado intermedio · posible coordinación tácita</div>
+    <div class="nodo hoja">Oligopolio bilateral: pocos de los dos lados</div>
+  </div>
+</div>
+</div>
+
+</section>
+
+<!-- ============ GUIA 80/20 ============ -->
+<section class="tab" id="tab-guia">
+
+<div class="card">
+<h2>Guía 80/20: lo que más rinde estudiar primero</h2>
+<p>La idea es simple: el 20% de los temas explica el 80% de las preguntas de examen. Esta tabla prioriza según peso conceptual en el apunte y conexión entre unidades. Tiempo total estimado del plan completo: <strong>unas 14 a 16 horas</strong> bien aprovechadas.</p>
+
+<h3><span class="dot d-rojo"></span>Prioridad ALTA (estudiá esto sí o sí)</h3>
+<table>
+<tr><th>Tema</th><th>Unidad</th><th>Probabilidad de examen</th><th>Tiempo</th></tr>
+<tr><td>Equilibrio de mercado + desplazamientos + Qd = a - bP / Qo = c + dP</td><td>U4</td><td>Muy alta: combina teoría y ejercicio numérico</td><td>1,5 h</td></tr>
+<tr><td>Maximización de beneficios: IM = CM, P = CM en competencia perfecta, beneficios normales/extraordinarios/pérdidas, punto de cierre</td><td>U3-U4</td><td>Muy alta: es el eje de medio programa</td><td>2 h</td></tr>
+<tr><td>Elasticidad precio de la demanda: tipos, cálculo y relación con el ingreso total</td><td>U2</td><td>Muy alta: cae con cálculo y con interpretación</td><td>1,5 h</td></tr>
+<tr><td>Competencia monopolística: características, equilibrio corto/largo plazo, vs competencia perfecta (exceso de capacidad, P &gt; CM)</td><td>U5</td><td>Muy alta: tema central de la última unidad</td><td>1,5 h</td></tr>
+<tr><td>Costos: CT = CF + CV, medios, marginal, CM corta CMe en el mínimo, Qe = CF/(P - CVu)</td><td>U3</td><td>Muy alta: base de todo lo que sigue</td><td>1,5 h</td></tr>
+<tr><td>Equilibrio del consumidor: curvas de indiferencia + recta de presupuesto + UMgx/Px = UMgy/Py</td><td>U2</td><td>Alta: pregunta teórica y gráfica clásica</td><td>1 h</td></tr>
+<tr><td>Escasez, costo de oportunidad y FPP</td><td>U1</td><td>Alta: arranque seguro de cualquier parcial</td><td>45 min</td></tr>
+<tr><td>Monopolio: IM &lt; P, equilibrio, comparación con competencia perfecta y costo social</td><td>U5</td><td>Alta</td><td>1 h</td></tr>
+<tr><td>Estructuras de mercado: cuadro comparativo de las 4 (perfecta, monopolística, oligopolio, monopolio) + monopsonio y oligopsonio</td><td>U4-U5</td><td>Alta: pregunta de clasificar ejemplos</td><td>45 min</td></tr>
+</table>
+
+<h3><span class="dot d-ama"></span>Prioridad MEDIA (después de lo rojo)</h3>
+<table>
+<tr><th>Tema</th><th>Unidad</th><th>Probabilidad de examen</th><th>Tiempo</th></tr>
+<tr><td>Controles de precios: máximos y mínimos, escasez y excedente</td><td>U4</td><td>Media-alta: ejemplo argentino cantado</td><td>30 min</td></tr>
+<tr><td>Producción: PML, PMe, ley de rendimientos decrecientes, óptimo técnico</td><td>U3</td><td>Media-alta</td><td>45 min</td></tr>
+<tr><td>Economía positiva vs normativa + micro vs macro</td><td>U1</td><td>Media-alta: distinción fácil de evaluar</td><td>30 min</td></tr>
+<tr><td>Elasticidad cruzada y elasticidad ingreso (sustitutos, complementarios, normal, inferior, lujo)</td><td>U2</td><td>Media</td><td>40 min</td></tr>
+<tr><td>Oligopolio: cartel, colusión, dilema del prisionero, publicidad y branding</td><td>U5</td><td>Media: la publicidad está marcada en el programa</td><td>45 min</td></tr>
+<tr><td>Costos explícitos/implícitos, beneficio económico vs contable</td><td>U3</td><td>Media: ejercicio numérico cortito</td><td>30 min</td></tr>
+<tr><td>Factores productivos y sus retribuciones + flujo circular</td><td>U1</td><td>Media</td><td>30 min</td></tr>
+<tr><td>Excedente del consumidor y del productor</td><td>U2-U3</td><td>Media</td><td>30 min</td></tr>
+<tr><td>Discriminación de precios y regulación del monopolio (P = CM vs P = CTMe)</td><td>U5</td><td>Media</td><td>30 min</td></tr>
+<tr><td>PIB, ingreso nacional, DA = C + I + G + (X-M), oferta agregada</td><td>U1</td><td>Media</td><td>40 min</td></tr>
+</table>
+
+<h3><span class="dot d-ver"></span>Prioridad BAJA (si te sobra tiempo, suman para el 10)</h3>
+<table>
+<tr><th>Tema</th><th>Unidad</th><th>Probabilidad de examen</th><th>Tiempo</th></tr>
+<tr><td>Clasificaciones completas de necesidades y bienes</td><td>U1</td><td>Baja: alcanza con los 3 requisitos del bien económico</td><td>20 min</td></tr>
+<tr><td>Métodos científicos y clasificación de las ciencias</td><td>U1</td><td>Baja</td><td>15 min</td></tr>
+<tr><td>Curva de Engel en detalle</td><td>U2</td><td>Baja: con saber pendiente positiva/negativa va</td><td>15 min</td></tr>
+<tr><td>Isocuanta e isocosto con tangencia</td><td>U3</td><td>Baja-media: leélo una vez, entendé la lógica</td><td>30 min</td></tr>
+<tr><td>Política fiscal y monetaria, organismos internacionales</td><td>U1</td><td>Baja</td><td>20 min</td></tr>
+<tr><td>Poderes públicos y oligopolios (instrumentos), ley 25.156</td><td>U5</td><td>Baja: con la idea general alcanza</td><td>15 min</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h2>Orden de estudio recomendado</h2>
+<p>No estudies en el orden del programa: estudiá en orden de dependencia conceptual. Así cada tema te sirve de base para el siguiente y no repetís esfuerzo.</p>
+<ol class="orden">
+<li><strong>U1 esencial</strong> (escasez, costo de oportunidad, FPP, positiva/normativa, micro/macro). Es el vocabulario de toda la materia. 1,5 h.</li>
+<li><strong>U2 demanda y elasticidad</strong> (ley de demanda, efectos sustitución/ingreso, elasticidades, IT). Antes que las curvas de indiferencia: es lo más rendidor. 2 h.</li>
+<li><strong>U2 equilibrio del consumidor</strong> (indiferencia, presupuesto, tangencia, utilidades marginales). 1 h.</li>
+<li><strong>U3 producción y costos</strong> (PML, PMe, rendimientos decrecientes, toda la familia de costos, Qe). La unidad bisagra: sin esto no entendés U4 ni U5. 2,5 h.</li>
+<li><strong>U4 completa</strong> (equilibrio, álgebra, controles de precios, competencia perfecta, P = CM, cierre y nivelación). Acá se conecta todo lo anterior. 2,5 h.</li>
+<li><strong>U5 monopolio y competencia monopolística</strong> (IM &lt; P, costo social, las 4 características, corto/largo plazo, exceso de capacidad). 2 h.</li>
+<li><strong>U5 oligopolio, publicidad y mercados de demanda</strong> (cartel, dilema del prisionero, branding, monopsonio, oligopsonio). 1,5 h.</li>
+<li><strong>Vuelta completa con el quiz y las flashcards</strong> de este archivo. Lo que falles, volvés al resumen. 1,5 h.</li>
+<li><strong>Repaso de fórmulas</strong> el día antes: Qe, Ep, Qd/Qo, IM = CM, P = CM, IN, DA, CT, los cuatro costos medios. 45 min.</li>
+</ol>
+<p><strong>Vos podés con esto.</strong> La materia parece mucha pero es una sola historia contada cinco veces: alguien quiere maximizar algo (utilidad o beneficio) con restricciones. Si entendés esa lógica, el resto son detalles. Dale para adelante.</p>
+</div>
+
+</section>
+
+</main>
+
+<script>
+/* ====== THEME ====== */
+function applyTheme(t){ if(t){document.documentElement.setAttribute('data-theme',t);} else {document.documentElement.removeAttribute('data-theme');} }
+function toggleTheme(){
+  var cur = document.documentElement.getAttribute('data-theme');
+  if(!cur){ cur = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  var next = cur === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('eco-theme', next); applyTheme(next);
+}
+(function(){ var saved = localStorage.getItem('eco-theme'); if(saved) applyTheme(saved); })();
+
+/* ====== TABS ====== */
+function goTab(id){
+  document.querySelectorAll('section.tab').forEach(function(s){ s.classList.remove('show'); });
+  document.getElementById('tab-'+id).classList.add('show');
+  document.querySelectorAll('nav.tabs button').forEach(function(b){ b.classList.toggle('active', b.dataset.tab===id); });
+  window.scrollTo({top:0});
+}
+
+/* ====== QUIZ DATA ====== */
+const QUIZ = [
+/* U1 */
+{u:1,t:'mc',q:'¿Por qué surge el problema económico?',o:['Porque la tecnología no avanza lo suficiente','Porque las necesidades humanas son ilimitadas y los recursos son limitados','Porque los gobiernos administran mal los recursos','Porque la población crece más rápido que la producción'],a:1,e:'El apunte es clarísimo: las necesidades son ilimitadas en la práctica y los recursos económicos son limitados. La escasez no es un problema tecnológico sino de disparidad entre deseos humanos y medios disponibles.'},
+{u:1,t:'vf',q:'La escasez es un problema tecnológico que se resuelve con más innovación.',a:1,e:'Falso. La escasez no es un problema tecnológico sino de disparidad entre los deseos humanos y los medios disponibles para satisfacerlos. Es un concepto relativo: siempre vas a querer más de lo que hay.'},
+{u:1,t:'mc',q:'¿Cuál de estos NO es un requisito para que un bien sea considerado económico?',o:['Ser capaz de satisfacer una necesidad','Ser escaso','Ser accesible a los sujetos económicos','Ser durable'],a:3,e:'Los 3 requisitos son: satisfacer una necesidad, ser escaso (su disponibilidad requiere un sacrificio) y ser accesible. La durabilidad es solo una clasificación (durables vs no durables), no un requisito.'},
+{u:1,t:'mc',q:'Te ganaste una entrada para un recital, pero esa noche podías trabajar y ganar $30.000. ¿Cuál es el costo de oportunidad de ir al recital?',o:['Cero, porque la entrada fue gratis','Los $30.000 que dejás de ganar','El precio de la entrada','La nafta para llegar'],a:1,e:'El costo de oportunidad es aquello a lo que renunciás para conseguir algo. La entrada fue gratis, pero renunciaste a $30.000 de laburo. Ese es el verdadero costo.'},
+{u:1,t:'vf',q:'La FPP se desplaza hacia afuera (derecha) cuando hay avances en la tecnología o más capital humano.',a:0,e:'Verdadero. El apunte lista las causas del desplazamiento: avances en tecnología, cambios en los recursos, más educación o capacitación (capital humano) y cambios en la fuerza laboral.'},
+{u:1,t:'mc',q:'"La Argentina debería cuidar más su desarrollo industrial con una política más proteccionista". Esta afirmación es de economía...',o:['Positiva, porque describe la realidad','Normativa, porque expresa lo que debería ser con juicios de valor','Descriptiva, porque observa datos','Teórica, porque formula un modelo'],a:1,e:'Apareció el "debería": economía normativa, que efectúa proposiciones sobre lo que debería ser según criterios éticos, ideológicos o políticos. Es uno de los ejemplos textuales del apunte.'},
+{u:1,t:'mc',q:'Estudiar el mercado de la yerba mate, sus precios y su oferta de manera aislada corresponde a...',o:['La macroeconomía','La economía normativa','La microeconomía','La política económica'],a:2,e:'La microeconomía estudia el comportamiento de los agentes económicos y los mercados considerados de manera aislada. El mercado de la yerba mate es el ejemplo que usa el propio apunte.'},
+{u:1,t:'mc',q:'En la fórmula DA = C + I + G + (X-M), ¿qué representa (X-M)?',o:['El gasto del Estado','Las exportaciones netas (exportaciones menos importaciones)','El consumo de las familias','La inversión de las empresas'],a:1,e:'(X-M) son las exportaciones netas: exportaciones menos importaciones. C es consumo, I inversión y G el gasto del Estado.'},
+{u:1,t:'vf',q:'En el flujo circular de la economía, el trabajo recibe intereses y el capital recibe salarios.',a:1,e:'Falso, está al revés. El trabajo recibe salarios, el capital recibe intereses, los recursos naturales reciben rentas, la tecnología recibe regalías y la capacidad empresarial recibe beneficios.'},
+{u:1,t:'mc',q:'¿Qué diferencia al PIB del ingreso nacional?',o:['Son lo mismo con distinto nombre','El PIB mide por territorio (fronteras) y el ingreso nacional por nacionalidad de los factores','El PIB incluye la economía sumergida y el ingreso nacional no','El ingreso nacional solo cuenta los salarios'],a:1,e:'En el PIB importan los límites del país: todo lo generado dentro del territorio, sea de nacionales o extranjeros. En el ingreso nacional lo que define es la nacionalidad del factor. Por eso IN = PIB + RRN - RRE.'},
+/* U2 */
+{u:2,t:'mc',q:'Una curva de indiferencia muestra...',o:['Las cantidades máximas que podés comprar con tu ingreso','El conjunto de combinaciones de bienes que le dan al consumidor el mismo nivel de utilidad','La relación entre precio y cantidad demandada','Cómo varía la demanda cuando cambia el ingreso'],a:1,e:'Es la definición textual: combinaciones ante las cuales el consumidor es indiferente porque cada una le reporta el mismo nivel de utilidad. La primera opción es la recta de presupuesto y la tercera es la curva de demanda.'},
+{u:2,t:'vf',q:'Dos curvas de indiferencia pueden cruzarse si el consumidor cambia de gustos.',a:1,e:'Falso. Las curvas de indiferencia nunca se cruzan: implicaría una contradicción en las preferencias del consumidor. Es una de sus características clave junto con la convexidad.'},
+{u:2,t:'mc',q:'La TMS (Tasa Marginal de Sustitución) mide...',o:['Cuánto sube el precio de un bien cuando sube el del otro','La cantidad de un bien a la que el consumidor renuncia por una unidad adicional de otro, manteniendo la utilidad constante','El cociente entre el ingreso y los precios','La variación porcentual de la cantidad demandada'],a:1,e:'TMS: cuánto de un bien estás dispuesto a soltar para obtener una unidad más del otro sin cambiar tu utilidad. Es la pendiente de la curva de indiferencia y es decreciente.'},
+{u:2,t:'mc',q:'¿Dónde se alcanza el equilibrio del consumidor?',o:['Donde la curva de indiferencia corta a la recta de presupuesto','En el punto más alto de la curva de utilidad total','Donde la curva de indiferencia es tangente a la recta de presupuesto','Donde el precio iguala al costo marginal'],a:2,e:'En la tangencia: ahí la TMS iguala la relación de precios y se cumple UMg x/Px = UMg y/Py (Ley de Igualdad de las Utilidades Marginales ponderadas). Si cortara en vez de ser tangente, podrías alcanzar una curva más alta.'},
+{u:2,t:'mc',q:'La ley de la utilidad marginal decreciente dice que...',o:['La utilidad total siempre disminuye','Cada unidad adicional consumida reporta menos satisfacción extra que la anterior','Los bienes caros dan menos utilidad','El consumidor nunca se satisface'],a:1,e:'Cuanto más consumís de un bien, menos satisfacción adicional te da cada nueva unidad. La utilidad total sigue creciendo, pero a ritmo decreciente. Pizza uno: gloria. Pizza seis: meh.'},
+{u:2,t:'mc',q:'Si la elasticidad-precio de la demanda es Ep = 2, la demanda es...',o:['Inelástica','Unitaria','Elástica','Perfectamente inelástica'],a:2,e:'Ep > 1 es demanda elástica: la cantidad responde proporcionalmente más que el precio. Es justo el ejemplo del apunte (Ep = 2). Inelástica sería Ep < 1 y unitaria Ep = 1.'},
+{u:2,t:'mc',q:'Tenés un teatro y la demanda de entradas es elástica. Si bajás el precio, el ingreso total...',o:['Aumenta, porque la cantidad sube más que proporcionalmente','Disminuye siempre','No cambia','Depende del costo marginal'],a:0,e:'Con demanda elástica, precio e ingreso total varían en sentido contrario: bajás el precio y el IT sube. El IT se maximiza donde la elasticidad es unitaria (en el ejemplo del apunte, a $25 la entrada).'},
+{u:2,t:'mc',q:'La elasticidad cruzada entre dos bienes es positiva. Entonces son...',o:['Complementarios','Independientes','Sustitutos','Inferiores'],a:2,e:'Cruzada positiva = sustitutos (sube el precio de uno, sube la demanda del otro). Negativa = complementarios, como el combustible y los autos. Nula = independientes.'},
+{u:2,t:'vf',q:'Un bien inferior tiene elasticidad-ingreso de la demanda negativa.',a:0,e:'Verdadero. Bien inferior: cuando sube tu ingreso, comprás menos (chau pan duro, hola factura). Bien normal: elasticidad-ingreso positiva. Lujo: mayor que 1. Necesario: menor que 1.'},
+{u:2,t:'mc',q:'Valorás el primer kilo de helado en $7 pero lo pagás $1. Esos $6 de diferencia son...',o:['El excedente del productor','La utilidad marginal','El excedente del consumidor','El efecto ingreso'],a:2,e:'Excedente del consumidor: la diferencia entre lo máximo que estabas dispuesto a pagar y lo que realmente pagás. Surge porque la utilidad marginal es decreciente. Es el ejemplo numérico del apunte.'},
+/* U3 */
+{u:3,t:'mc',q:'La ley de los rendimientos decrecientes establece que...',o:['Los costos siempre bajan al producir más','Pasado cierto nivel, el producto marginal de un factor variable disminuye al agregar más unidades de ese factor, con los demás constantes','Las empresas grandes siempre producen más barato','La producción total siempre decrece'],a:1,e:'Definición textual del apunte: el producto marginal del factor variable disminuye, traspasado un cierto nivel, al incrementarse la cantidad de ese factor, permaneciendo los demás constantes. El quinto asador en la misma parrilla molesta.'},
+{u:3,t:'vf',q:'En economía, la distinción entre corto y largo plazo se establece únicamente por la existencia o no de factores fijos.',a:0,e:'Verdadero y textual del apunte. Corto plazo: hay factores fijos (la planta, las máquinas). Largo plazo: todo se puede modificar, incluido el capital. No es una cuestión de meses o años.'},
+{u:3,t:'mc',q:'El óptimo técnico es...',o:['El punto donde el producto total es máximo','El máximo de la curva de producto medio (PMe)','El punto donde el costo marginal es mínimo','Donde el producto marginal es cero'],a:1,e:'El máximo del PMe se denomina óptimo técnico: la combinación más eficiente en producción media por unidad de insumo. Ojo: el máximo del producto TOTAL es el máximo técnico, no lo confundas.'},
+{u:3,t:'vf',q:'La curva de costo marginal corta a la curva de costo medio en el punto mínimo de esta última.',a:0,e:'Verdadero. Si producir una unidad más baja el costo medio, el CM está por debajo del CMe; si lo sube, está por encima. Por lógica, se cruzan justo en el mínimo del CMe. Ahí CM = CMe.'},
+{u:3,t:'mc',q:'Un fabricante paga $10.000 de materias primas y sueldos, resigna $5.000 de alquiler de su local propio y $2.000 de sueldo como electricista. Su costo económico es...',o:['$10.000','$15.000','$17.000','$7.000'],a:2,e:'Costo económico = costos explícitos ($10.000) + costos implícitos ($5.000 + $2.000 = $7.000) = $17.000. Es el ejemplo exacto del apunte. El costo económico incluye todos los costos de oportunidad.'},
+{u:3,t:'mc',q:'Una empresa obtiene beneficios normales o nulos cuando...',o:['P > CTMe','P = CTMe','P < CVMe','IT > CT'],a:1,e:'Beneficio normal o nulo: IT = CT, que en términos unitarios es P = CTMe. Significa que la empresa gana lo mismo que ganarían sus recursos en la mejor alternativa. No es estar fundido, es estar empatado con la mejor opción.'},
+{u:3,t:'mc',q:'Con CF = $1.000, precio = $20 y costo variable unitario = $10, ¿cuántas unidades necesita producir la empresa para cubrir sus costos?',o:['50','100','200','1.000'],a:1,e:'Qe = CF / (P - CVu) = 1.000 / (20 - 10) = 100 unidades. Es el ejemplo numérico del apunte. Grabate esa fórmula que cae seguro.'},
+{u:3,t:'mc',q:'Una curva isocuanta muestra...',o:['Las combinaciones de dos factores que cuestan lo mismo','Las combinaciones de dos factores de producción que generan la misma cantidad producida','Las combinaciones de bienes con igual utilidad','La relación entre precio y cantidad ofrecida'],a:1,e:'Isocuanta: misma cantidad producida con distintas combinaciones de factores (L y K). La primera opción es la isocosto, la tercera es la curva de indiferencia (su prima del lado del consumidor).'},
+{u:3,t:'vf',q:'Si una empresa tiene pérdidas menores que sus costos fijos, le conviene seguir produciendo.',a:0,e:'Verdadero. Cuando CVMe < P, produciendo cubre todos los variables y parte de los fijos, que igual tendría que pagar si cerrara. Pierde menos produciendo que cerrando. Si CVMe > P, ahí sí conviene cerrar.'},
+{u:3,t:'mc',q:'Estás dispuesto a vender tu producto a $50 como mínimo y el mercado paga $80. Tu excedente del productor es...',o:['$130','$80','$50','$30'],a:3,e:'Excedente del Productor = Precio de Mercado - Costo Mínimo Aceptable = 80 - 50 = $30. Es el ejemplo del apunte. Gráficamente: el área entre el precio y la curva de oferta.'},
+/* U4 */
+{u:4,t:'mc',q:'Si el precio de mercado está por debajo del precio de equilibrio, hay...',o:['Exceso de oferta (excedente) y el precio tiende a bajar','Exceso de demanda (escasez) y el precio tiende a subir','Equilibrio estable','Deflación'],a:1,e:'A un precio bajo, todos quieren comprar pero pocos quieren vender: exceso de demanda o escasez, y la competencia entre compradores empuja el precio para arriba hasta el equilibrio.'},
+{u:4,t:'mc',q:'Si Qd = 100 - 2P y Qo = 20 + 2P, el precio de equilibrio es...',o:['P* = 10','P* = 20','P* = 30','P* = 40'],a:1,e:'Igualás Qd = Qo: 100 - 2P = 20 + 2P, entonces 80 = 4P, P* = 20 (y Q* = 60). Esa es toda la técnica del análisis algebraico del equilibrio: igualar y despejar.'},
+{u:4,t:'vf',q:'Para que un precio máximo sea relevante y tenga efectos económicos, debe fijarse por encima del precio de equilibrio.',a:1,e:'Falso, es al revés: debe ser INFERIOR al precio de equilibrio. Si lo fijan por encima, el mercado ya está vendiendo más barato y la medida no cambia nada.'},
+{u:4,t:'mc',q:'El Gobierno fija un precio máximo relevante para una vacuna. ¿Qué pasa en ese mercado?',o:['Aparece un excedente del producto','Aparece escasez: la cantidad demandada supera la ofrecida, con colas y racionamiento','Sube la oferta para compensar','El precio de equilibrio baja naturalmente'],a:1,e:'Precio máximo relevante = escasez. Hay que racionar de alguna forma (colas, prioridades), lo que genera ineficiencias: el bien no siempre lo consigue quien más lo valora. El ejemplo del apunte es justamente una vacuna.'},
+{u:4,t:'mc',q:'Un precio mínimo fijado por encima del equilibrio (típico en mercados agrícolas) genera...',o:['Escasez del bien','Exceso de oferta o excedente que se acumula','Más demanda','Equilibrio inmediato'],a:1,e:'Con un piso por encima del equilibrio, los productores ofrecen más de lo que los consumidores quieren comprar a ese precio: exceso de oferta. En el ejemplo del trigo del apunte, sobran 40 kg.'},
+{u:4,t:'mc',q:'¿Cuál de estas NO es una característica de la competencia perfecta?',o:['Producto homogéneo','Mercado atomizado','Las empresas pueden fijar individualmente el precio','Información perfecta'],a:2,e:'En competencia perfecta las empresas son precio-aceptantes: toman el precio como un dato del mercado y no pueden influir en él. Las otras tres sí son características (junto con la libre concurrencia).'},
+{u:4,t:'mc',q:'La curva de demanda que enfrenta una empresa individual en competencia perfecta es...',o:['De pendiente negativa','Vertical','Horizontal (perfectamente elástica)','Igual a la del mercado'],a:2,e:'Horizontal: puede vender todo lo que quiera al precio de mercado, pero si cobra apenas más, pierde todos los clientes. Por eso IMe = IM = P. La demanda del mercado sí tiene pendiente negativa, pero la de la empresa individual no.'},
+{u:4,t:'mc',q:'La empresa competitiva maximiza beneficios produciendo donde...',o:['P = CTMe','P = CM (el precio iguala al costo marginal)','CF = CV','IT es máximo'],a:1,e:'Regla de oro: P = CM (como IM = P en competencia perfecta, equivale a IM = CM). Mientras IM > CM conviene producir más; cuando IM < CM, menos. Se frena justo donde se igualan.'},
+{u:4,t:'mc',q:'El punto de cierre de la empresa competitiva se encuentra donde...',o:['La curva de CM corta a la de CTMe en su mínimo','La curva de CM corta a la de CVMe en su mínimo','El ingreso total es cero','El costo fijo es máximo'],a:1,e:'Punto de cierre: CM corta al CVMe en su mínimo. Si P < CVMe, la empresa cierra porque ni siquiera cubre los variables. El punto donde CM corta al CTMe en su mínimo es el de NIVELACIÓN (beneficio cero). No los mezcles.'},
+{u:4,t:'vf',q:'Los costos fijos son relevantes para decidir si la empresa produce o no en el corto plazo.',a:1,e:'Falso. Los costos fijos son costos hundidos: los pagás produzcas o no, así que no cuentan para la decisión. Lo relevante es cubrir los costos variables (P vs CVMe).'},
+/* U5 */
+{u:5,t:'mc',q:'La diferencia gráfica básica entre competencia perfecta e imperfecta es que en la imperfecta...',o:['La demanda de la empresa es horizontal','La demanda que enfrenta la empresa tiene pendiente negativa: para vender más debe bajar el precio','No existe curva de demanda','La oferta es vertical'],a:1,e:'En competencia imperfecta la empresa puede influir en el precio, y su demanda tiene pendiente negativa: si quiere vender más, tiene que bajar el precio. La competitiva perfecta enfrenta demanda horizontal.'},
+{u:5,t:'mc',q:'¿Por qué el ingreso marginal del monopolista es menor que el precio (IM < P)?',o:['Porque produce con costos más altos','Porque para vender una unidad más debe bajar el precio de TODAS las unidades (efecto precio)','Porque el Estado le cobra impuestos','Porque la demanda es horizontal'],a:1,e:'Al vender una unidad más hay efecto producción (Q sube) pero también efecto precio (P baja para todas las unidades, incluso las que ya vendía). Esa pérdida hace que IM < P. En competencia perfecta no hay efecto precio y por eso IM = P.'},
+{u:5,t:'mc',q:'Comparado con la competencia perfecta, el monopolio...',o:['Produce más y cobra menos','Produce menos y cobra un precio mayor','Produce lo mismo a otro precio','Siempre tiene pérdidas'],a:1,e:'El monopolio reduce la producción y eleva el precio. Eso genera el costo social o pérdida irrecuperable de eficiencia: el triángulo entre la curva de demanda y la de costo marginal, intercambios beneficiosos que no se realizan.'},
+{u:5,t:'mc',q:'Si se regula un monopolio natural fijando P = CM, ¿qué problema aparece?',o:['El monopolista gana de más','Como el CTMe es decreciente, CM < CTMe y el monopolio incurre en pérdidas (habría que subsidiarlo)','La demanda desaparece','Suben los costos marginales'],a:1,e:'En el monopolio natural el costo total medio es decreciente, así que el CM queda por debajo del CTMe. Si P = CM, el precio no cubre el costo medio: pérdidas. La alternativa es P = CTMe (beneficio nulo), pero deja pérdida de eficiencia.'},
+{u:5,t:'mc',q:'¿Cuáles son las dos condiciones para que un monopolista pueda discriminar precios?',o:['Tener patente y publicidad','Poder fraccionar el mercado identificando segmentos y que no exista reventa','Producto homogéneo y demanda elástica','Costos bajos y barreras de salida'],a:1,e:'Textual del apunte: 1) que el mercado pueda fraccionarse y el monopolista identifique cada segmento, y 2) que no exista reventa entre consumidores. Ejemplos: cine más barato ciertos días, tarifas aéreas, descuentos por cantidad.'},
+{u:5,t:'vf',q:'El caso extremo del oligopolio, con solo dos productores, se denomina duopolio.',a:0,e:'Verdadero. Oligopolio: pocas empresas, con producto homogéneo o diferenciado, e interdependencia estratégica. Con solo dos productores se llama duopolio.'},
+{u:5,t:'mc',q:'Un cartel es...',o:['Una empresa estatal regulada','Una organización de empresas que acuerda precios y niveles de producción para limitar la competencia','Un impuesto al monopolio','Una marca registrada'],a:1,e:'El cartel limita la acción de las fuerzas de la competencia mediante acuerdos de precios y producción. Funcionando bien actúa como monopolio multiplanta, pero es inestable: cada miembro tiene incentivos para traicionar y vender más barato.'},
+{u:5,t:'mc',q:'En el dilema del prisionero del apunte, ¿cuál es la estrategia dominante de Al Capone y Corleone?',o:['Permanecer en silencio los dos','Confesar, independientemente de lo que haga el otro','Negociar entre ellos','Confesar solo si el otro confiesa'],a:1,e:'Confesar es la estrategia dominante para ambos: a cada uno le conviene sin importar qué haga el otro. Resultado: los dos confiesan y terminan peor (7 años) que si hubieran cooperado (2 años). Así se rompen los carteles.'},
+{u:5,t:'mc',q:'¿Por qué la publicidad es clave en los oligopolios?',o:['Porque baja los costos de producción','Porque diferencia productos, evita guerras de precios, crea barreras de entrada y vuelve la demanda más inelástica','Porque la exige el Estado','Porque reemplaza al branding'],a:1,e:'Las cuatro razones del apunte: diferenciación (Coca vs Pepsi), competencia no basada en precios, barreras de entrada (campañas imposibles de igualar) y demanda inducida. La lealtad de marca hace la demanda más inelástica.'},
+{u:5,t:'mc',q:'¿Cuál de estas NO es una característica de la competencia monopolística?',o:['Mercado atomizado','Productos diferenciados','Existen fuertes barreras de entrada','Cada empresa tiene poder limitado para fijar el precio'],a:2,e:'En competencia monopolística NO hay barreras de entrada y salida: hay libre concurrencia. Justamente por eso los beneficios extraordinarios desaparecen a largo plazo cuando entran competidores.'},
+{u:5,t:'mc',q:'¿Cuándo se alcanza el equilibrio de largo plazo en competencia monopolística?',o:['Cuando P = CM','Cuando la curva de demanda de cada empresa es tangente a su curva de costos medios y el beneficio extraordinario desaparece','Cuando el IM es máximo','Cuando se forman carteles'],a:1,e:'La libre entrada de competidores corre la demanda de cada empresa a la izquierda hasta que queda tangente a la curva de costos medios: beneficios extraordinarios cero. Es más lento que en competencia perfecta por la fidelidad a las marcas.'},
+{u:5,t:'mc',q:'El teorema del exceso de capacidad dice que la empresa de competencia monopolística...',o:['Produce más que la escala eficiente','Produce una cantidad inferior al mínimo del costo medio: podría producir más y bajar el CTMe','Tiene capacidad infinita','Produce justo en el mínimo del costo medio'],a:1,e:'Produce por debajo de la escala eficiente porque su demanda es decreciente (monopoliza su marca). Ese despilfarro es el "costo" de fabricar productos diferenciados. Además, P > CM: por eso siempre quiere un cliente más.'},
+{u:5,t:'mc',q:'Una procesadora de leche es la única compradora de todos los tamberos de la zona. Eso es un...',o:['Monopolio','Oligopsonio','Monopsonio','Duopolio'],a:2,e:'Monopsonio: UN solo comprador y muchos vendedores. Es el ejemplo textual del apunte. Resultado: precio de compra (o salario) por debajo del competitivo y menor cantidad, con pérdida de eficiencia.'},
+{u:5,t:'mc',q:'El oligopsonio se caracteriza por...',o:['Pocos vendedores y muchos compradores','Pocos compradores con gran poder de negociación frente a muchos vendedores','Un solo comprador','Muchos compradores y muchos vendedores'],a:1,e:'Oligopsonio: pocos compradores, muchos vendedores (los grandes supermercados frente a productores agrícolas chicos). El resultado es intermedio entre competencia perfecta y monopsonio, y puede haber coordinación tácita entre compradores.'},
+{u:5,t:'vf',q:'En competencia monopolística, el precio es igual al costo marginal en el largo plazo, igual que en competencia perfecta.',a:1,e:'Falso. Aun en el largo plazo, P > CM porque la empresa conserva algo de poder de mercado sobre su marca. En competencia perfecta sí se cumple P = CM. Esa es una de las dos grandes diferencias (la otra es el exceso de capacidad).'}
+];
+
+/* ====== FLASHCARD DATA ====== */
+const CARDS = [
+/* U1 */
+{u:1,f:'Economía',b:'Ciencia que se ocupa de cómo se administran los recursos escasos para producir bienes y distribuirlos para el consumo. También llamada "la ciencia de la elección".',m:'Viene de oikos (casa) + nomos (norma): administrar la casa. Pensala como administrar tu sueldo a fin de mes.'},
+{u:1,f:'Escasez',b:'Concepto relativo: el deseo de adquirir bienes y servicios supera lo disponible. No es un problema tecnológico sino de disparidad entre deseos y medios.',m:'No importa cuánto tengas: siempre querés más. La escasez vive en la brecha querer/poder.'},
+{u:1,f:'Bien económico: 3 requisitos',b:'1) Satisfacer una necesidad, 2) ser escaso (requiere erogación o sacrificio), 3) ser accesible. Si pierde uno, deja de ser bien económico.',m:'SEA: Satisface, Escaso, Accesible. El aire no es SEA (no es escaso): bien libre.'},
+{u:1,f:'Costo de oportunidad',b:'Aquello a lo que se renuncia para conseguir algo. El verdadero costo de una cosa es la mejor alternativa sacrificada.',m:'El asado del domingo te "cuesta" la salida del sábado que no hiciste para juntarte la plata.'},
+{u:1,f:'FPP (Frontera de Posibilidades de Producción)',b:'Muestra la cantidad máxima de unos bienes que puede producir una economía con sus recursos y tecnología, dadas las cantidades de los otros bienes. Se desplaza por tecnología, recursos, capital humano y fuerza laboral.',m:'Es el "techo" productivo del país. Más compus = menos celulares: moverte SOBRE la curva es costo de oportunidad; CORRER la curva es crecer.'},
+{u:1,f:'Sistemas económicos (3)',b:'Capitalista o de mercado (propiedad privada, precios libres), planificación centralizada (el Estado decide qué, cómo y cuánto, precios por decreto) y mixto (privados + Estado en sectores estratégicos).',m:'EE.UU., la ex URSS, y Argentina con YPF: uno de cada uno.'},
+{u:1,f:'Factores productivos y retribuciones',b:'Trabajo → salario · Capital → interés · Recursos naturales → renta · Tecnología → regalías · Capacidad empresarial → beneficios.',m:'Cada factor cobra su "sueldo" con nombre propio: T-S, C-I, RN-R, Tec-Reg, CE-B.'},
+{u:1,f:'Economía positiva vs normativa',b:'Positiva: explicaciones objetivas de lo que es o podría ser. Normativa: lo que debería ser, con juicios de valor. La positiva incluye la descriptiva y la teoría económica (micro y macro).',m:'Si la frase tiene "debería", es normativa. Sin "debería", positiva. Así de simple.'},
+{u:1,f:'Microeconomía vs Macroeconomía',b:'Micro: agentes y mercados individuales considerados de manera aislada (el mercado de la yerba mate). Macro: agregados económicos (PBI, inflación, consumo agregado, exportaciones).',m:'Micro = con lupa, un mercado. Macro = desde el avión, el país entero.'},
+{u:1,f:'PIB e Ingreso Nacional',b:'PIB: valor monetario de los bienes y servicios finales producidos DENTRO del territorio en un período. Ingreso nacional: suma de ingresos de los factores según NACIONALIDAD. IN = PIB + RRN - RRE.',m:'PIB = fronteras (dónde se produce). IN = pasaporte (quién lo gana).'},
+{u:1,f:'Demanda y oferta agregada',b:'DA = C + I + G + (X-M), pendiente negativa: a menores precios, más gasto total. OA: pendiente positiva, más producción implica mayores costos unitarios y precios. Equilibrio macro donde se cruzan.',m:'CIGXM: "Como Inversores, Gastamos eXportando Menos". Consumo + Inversión + Gobierno + eXpo netas.'},
+/* U2 */
+{u:2,f:'Utilidad total y marginal',b:'UT: satisfacción total de consumir cierta cantidad. UM: satisfacción extra de la última unidad. UM = cambio en la utilidad total / cambio en la cantidad consumida.',m:'"Marginal" en economía SIEMPRE = adicional, extra, la última unidad. Grabátelo: marginal = del borde.'},
+{u:2,f:'Ley de utilidad marginal decreciente',b:'A medida que consumís más de un bien, cada unidad adicional reporta menos satisfacción que la anterior. La UT crece, pero a ritmo decreciente.',m:'La primera porción de pizza es un golazo, la sexta es de compromiso.'},
+{u:2,f:'Curva de indiferencia',b:'Conjunto de combinaciones de dos bienes que reportan el mismo nivel de utilidad. Convexas al origen, no se cruzan, y cuanto más lejos del origen, mayor utilidad. El conjunto forma el mapa de indiferencia.',m:'"Me da igual" hecho curva: 2 jugos + 3 helados o 4 jugos + 1 helado, misma felicidad.'},
+{u:2,f:'TMS (Tasa Marginal de Sustitución)',b:'Cantidad de un bien a la que renunciás por una unidad más del otro, manteniendo la utilidad. TMSxy = UMx/UMy = |ΔY/ΔX|. Es la pendiente de la curva de indiferencia y es decreciente.',m:'Es el "tipo de cambio" interno de tus gustos: cuántos helados vale un jugo para vos. Y baja: cuanto más jugo tenés, menos pagás por más jugo.'},
+{u:2,f:'Recta de presupuesto (balance)',b:'Combinaciones máximas de bienes comprables con tu ingreso y los precios dados: Y = Pj.Qj + Ph.Qh. Pendiente = cociente de precios. Cambio de ingreso: desplazamiento paralelo. Cambio de un precio: gira.',m:'Tu sueldo dibujado: la línea que separa "me alcanza" de "ni en pedo".'},
+{u:2,f:'Equilibrio del consumidor',b:'Donde la curva de indiferencia es tangente a la recta de presupuesto: TMS = relación de precios, y UMg x/Px = UMg y/Py (utilidades marginales ponderadas iguales).',m:'El último peso tiene que rendirte igual en birra que en fernet. Si no, reasignás hasta que empate.'},
+{u:2,f:'Efecto sustitución y efecto ingreso',b:'Sustitución: si un bien se encarece, lo reemplazás por otros más baratos. Ingreso: al subir el precio, tu ingreso real rinde menos y comprás menos de casi todo. Juntos explican la pendiente negativa de la demanda.',m:'Sube el avión: te vas en micro (sustitución) y encima viajás menos veces (ingreso).'},
+{u:2,f:'Elasticidad-precio de la demanda',b:'Ep = variación % de la cantidad demandada / variación % del precio. Elástica >1, unitaria =1, inelástica <1, rígida =0 (insulina, sal), perfectamente elástica =∞ (horizontal). Se toma en valor absoluto.',m:'¿El precio te mueve mucho o poco? Lujo = elástico (te aguantás). Insulina = rígido (la comprás igual).'},
+{u:2,f:'Elasticidad e ingreso total (IT = P . Q)',b:'Demanda elástica: P e IT van en sentido contrario (bajás precio, sube IT). Inelástica: mismo sentido. Unitaria: IT constante y máximo.',m:'Si tus clientes son sensibles al precio, bajalo y facturás más. Si no lo son, subilo tranquilo. El IT se maximiza en Ep = 1.'},
+{u:2,f:'Elasticidad cruzada',b:'Sensibilidad de la cantidad de un bien ante el precio de OTRO. Positiva = sustitutos, negativa = complementarios, nula = independientes.',m:'Nafta sube y caen los autos: complementarios (signo negativo, "van juntos"). Nafta sube y suben las motos: sustitutos (signo positivo, "se pelean").'},
+{u:2,f:'Elasticidad ingreso y curva de Engel',b:'Mide respuesta de la demanda al ingreso. Positiva = bien normal, negativa = inferior, >1 = lujo, <1 = necesario. La curva de Engel grafica demanda vs ingreso: pendiente positiva (normal) o negativa (inferior).',m:'Cuando te aumentan el sueldo, dejás el pan duro (inferior) y comprás factura (normal). Engel lo dibujó.'},
+{u:2,f:'Excedente del consumidor',b:'Diferencia entre la utilidad total de un bien (lo máximo que pagarías) y su valor de mercado (lo que pagás). Surge del decrecimiento de la utilidad marginal.',m:'Pagaste $1 lo que valorabas en $7: te llevaste $6 de "ganancia invisible". Eso es excedente.'},
+/* U3 */
+{u:3,f:'Función de producción',b:'Especifica la cantidad MÁXIMA de un bien que puede producirse con una cantidad dada de factores, para un estado dado de la tecnología.',m:'La "receta" de la empresa: cuánto helado sale como máximo con tantos empleados y tantas máquinas.'},
+{u:3,f:'PML y PMeL',b:'Producto marginal: PML = ΔPT/ΔL (lo que agrega el último trabajador). Producto medio: PMeL = PT/L (producción por trabajador = productividad). El PM corta al PMe en su máximo.',m:'Marginal = el último que entró. Medio = el promedio del equipo. Si el nuevo rinde más que el promedio, sube el promedio (como las notas).'},
+{u:3,f:'Ley de rendimientos decrecientes',b:'Pasado cierto nivel, el producto marginal del factor variable disminuye al agregar más unidades, con los demás factores constantes. Explica la forma de U de los costos.',m:'Una parrilla, cinco asadores: el quinto ya no suma, estorba.'},
+{u:3,f:'Óptimo técnico',b:'El máximo de la curva de producto medio (PMe): la combinación más eficiente en producción media por unidad de insumo. No confundir con el máximo técnico (máximo del producto TOTAL).',m:'ÓPTIMO va con MEDIO (las dos con O de prOmedio). MÁXIMO va con TOTAL.'},
+{u:3,f:'Costos explícitos, implícitos y económicos',b:'Explícitos: gastos de bolsillo (sueldos, alquiler). Implícitos: costos de oportunidad (lo que resignás por usar tus propios recursos). Costo económico = explícitos + implícitos.',m:'Explícito = sale de la billetera. Implícito = no entra a la billetera. El ejemplo del apunte: 10.000 + 7.000 = 17.000.'},
+{u:3,f:'Familia de costos',b:'CT = CF + CV · CFMe = CF/q · CVMe = CV/q · CTMe = CT/q · CM = variación del CT por unidad extra. CM y CMe en forma de U; CM corta a CMe en su mínimo (escala eficiente).',m:'El CM es el "delantero" que arrastra al promedio: si está abajo del CMe lo baja, si está arriba lo sube. Por eso lo cruza justo en el mínimo.'},
+{u:3,f:'Beneficio económico vs contable',b:'Contable = IT - costos explícitos. Económico = IT - todos los costos (explícitos + implícitos). Beneficio normal o nulo: ganás igual que en tu mejor alternativa (P = CTMe).',m:'Podés tener beneficio contable positivo y económico cero: ganás, pero lo mismo que ganarías de electricista. No festejes de más.'},
+{u:3,f:'Decisión con pérdidas: ¿producir o cerrar?',b:'Pérdidas > CF (CVMe > P): cerrar. Pérdidas = CF (CVMe = P): indiferente. Pérdidas < CF (CVMe < P): seguir produciendo, porque cubrís parte de los fijos que igual pagás.',m:'La pregunta clave: ¿cubro los variables? Si sí, produzco aunque pierda. Los fijos los pago igual, son agua bajo el puente.'},
+{u:3,f:'Punto de equilibrio de producción',b:'Qe = CF / (P - CVu). Cantidad que la empresa debe producir para cubrir sus costos. Ejemplo del apunte: 1.000/(20-10) = 100 unidades.',m:'Fijos arriba, "lo que te deja cada unidad" abajo. Cada unidad aporta (P - CVu) para tapar el agujero fijo.'},
+{u:3,f:'Isocuanta e isocosto',b:'Isocuanta: combinaciones de L y K que producen la misma cantidad (pendiente = PML/PMK, la TMST). Isocosto: combinaciones que cuestan lo mismo, CT0 = wL + rK, pendiente -w/r. Mínimo costo: tangencia entre ambas.',m:'ISO = igual. IsoCUANTA = igual CANTIDAD. IsoCOSTO = igual COSTO. La tangencia es el equilibrio del consumidor pero versión empresa.'},
+{u:3,f:'Ley de la oferta',b:'Relación directa entre precio y cantidad ofrecida: a mayor precio, más beneficio potencial y más ganas de vender. La curva se desplaza por precios de factores, bienes relacionados, tecnología y número de empresas.',m:'Espejo de la demanda: al consumidor el precio alto lo espanta, al productor lo seduce.'},
+{u:3,f:'Excedente del productor',b:'Excedente del Productor = Precio de Mercado - Costo Mínimo Aceptable. Área entre el precio y la curva de oferta. Si es negativo, no entra al mercado.',m:'Pensabas vender a $50, te pagaron $80: $30 de pura alegría. El gemelo del excedente del consumidor, pero del otro lado del mostrador.'},
+/* U4 */
+{u:4,f:'Precio y cantidad de equilibrio',b:'En el punto de corte de oferta y demanda: el único precio donde los planes de compradores y vendedores coinciden. Sin escasez ni excedente.',m:'El precio "que cierra para todos". Arriba sobra mercadería, abajo sobran compradores: el mercado solo empuja hacia el cruce.'},
+{u:4,f:'Exceso de demanda y exceso de oferta',b:'P por debajo del equilibrio: exceso de demanda (escasez), el precio sube. P por encima: exceso de oferta (excedente), el precio baja por presión de existencias no vendidas.',m:'Barato = se agota (escasez). Caro = junta polvo en la góndola (excedente).'},
+{u:4,f:'Equilibrio algebraico',b:'Qd = a - bP y Qo = c + dP. Para hallar P* y Q*, igualar Qd = Qo y despejar. La demanda lleva signo menos (pendiente negativa) y la oferta signo más.',m:'La demanda RESTA (a - bP, baja con el precio), la oferta SUMA (c + dP, sube con el precio). Igualás y despejás, ejercicio regalado.'},
+{u:4,f:'Precio máximo',b:'Precio legal MÁS ALTO al que puede venderse un bien. Relevante solo si es inferior al equilibrio. Genera escasez, colas, racionamiento e ineficiencias.',m:'Techo abajo del equilibrio = góndola vacía. Si el techo está arriba del equilibrio, no molesta a nadie.'},
+{u:4,f:'Precio mínimo',b:'Precio legal MÁS BAJO al que puede venderse. Relevante solo si está por encima del equilibrio. Genera exceso de oferta que se acumula (clásico en mercados agrícolas).',m:'Piso arriba del equilibrio = silos llenos de trigo sin vender. Máximo relevante ABAJO, mínimo relevante ARRIBA: siempre del lado molesto.'},
+{u:4,f:'Competencia perfecta: 5 características',b:'1) Libre concurrencia (sin barreras), 2) muchos compradores y vendedores (atomizado), 3) producto homogéneo, 4) empresas precio-aceptantes, 5) información perfecta.',m:'LAHPI: Libre entrada, Atomizado, Homogéneo, Precio-aceptante, Información perfecta. El productor de trigo no negocia el precio del trigo.'},
+{u:4,f:'Demanda de la empresa competitiva',b:'Horizontal o perfectamente elástica: puede vender todo lo que quiera al precio de mercado, pero a un precio mayor pierde todos los clientes. Consecuencia: IMe = IM = P.',m:'El mercado le dice el precio y la empresa asiente. Un peso más caro y chau clientes: por eso la "curva" es una raya horizontal.'},
+{u:4,f:'Regla de maximización: P = CM',b:'La empresa competitiva maximiza beneficios donde el precio (= IM) iguala al costo marginal. Si IM > CM, producir más; si IM < CM, producir menos.',m:'Producí hasta que la última unidad te salga exactamente lo que te pagan por ella. Ni una más, ni una menos.'},
+{u:4,f:'Punto de nivelación y punto de cierre',b:'Nivelación: CM corta al CTMe en su mínimo (beneficio cero). Cierre: CM corta al CVMe en su mínimo (si P cae por debajo, cerrar). Entre ambos: pérdidas pero conviene producir.',m:'Nivelación = empatás todo. Cierre = ni los variables cubrís. La oferta de la empresa es su CM desde el punto de cierre para arriba.'},
+{u:4,f:'Costo hundido',b:'Los costos fijos se pagan produzca o no la empresa, por eso NO son relevantes para decidir si producir en el corto plazo. Lo relevante es cubrir los costos variables.',m:'Plata que ya se hundió: no la mires para decidir. Como la entrada de cine ya pagada: si la peli es mala, irte igual no te la devuelve.'},
+{u:4,f:'Clasificación de mercados',b:'Según: número de empresas, diferenciación del producto, capacidad de fijar precios y barreras de entrada. Espectro: competencia perfecta → monopolística → oligopolio → monopolio.',m:'De muchos a uno: perfecta (todos), monopolística (muchos con marca), oligopolio (pocos), monopolio (uno). Cuanta menos gente, más poder de precio.'},
+/* U5 */
+{u:5,f:'Competencia imperfecta',b:'Las empresas pueden influir en el precio actuando individualmente. Su demanda tiene pendiente negativa: para vender más deben bajar el precio. Causas: costos (economías de escala) y barreras de entrada.',m:'La perfecta acepta el precio; la imperfecta lo elige (dentro de lo que la demanda aguante).'},
+{u:5,f:'Barreras de entrada',b:'Factores que limitan la entrada de nuevas empresas: economías de escala, restricciones legales (patentes), publicidad y diferenciación del producto, y elevados costos de entrada.',m:'PLEC: Patentes, eLevados costos, Escala, Campañas publicitarias. Los cuatro candados del mercado.'},
+{u:5,f:'Monopolio y monopolio natural',b:'Único vendedor de un producto sin sustitutos cercanos; su demanda es la del mercado. Natural: una sola empresa abastece todo el mercado con menos costos que dos o más (gas, agua), por economías de escala.',m:'MONO = uno. Natural: duplicar cañerías de agua sería tirar plata, conviene que haya una sola... regulada.'},
+{u:5,f:'IM < P en el monopolio',b:'Al vender una unidad más: efecto producción (Q sube) y efecto precio (P baja para TODAS las unidades). Esa pérdida sobre lo ya vendido hace que el ingreso marginal sea menor que el precio.',m:'Para vender uno más, abarata todos. En competencia perfecta no pasa (no hay efecto precio) y por eso ahí IM = P.'},
+{u:5,f:'Costo social del monopolio',b:'El monopolio produce menos y cobra más que la competencia perfecta. La pérdida irrecuperable de eficiencia es el triángulo entre la curva de demanda y la de CM: intercambios beneficiosos que no se realizan.',m:'Gente dispuesta a pagar más de lo que cuesta producir... y se queda sin el producto. Ese triángulo de "ventas fantasma" es la pérdida social.'},
+{u:5,f:'Regulación del monopolio: P=CM vs P=CTMe',b:'P = CM: asignación eficiente, pero el monopolio natural pierde plata (CM < CTMe decreciente) y habría que subsidiar. P = CTMe: beneficio nulo, pero queda pérdida de eficiencia. En ambos, sin incentivo a bajar costos.',m:'Elegís el mal menor: o subsidiás la eficiencia, o aceptás ineficiencia sin pérdidas. Nunca las dos.'},
+{u:5,f:'Discriminación de precios',b:'Cobrar precios distintos a distintos compradores según sus elasticidades. Condiciones: 1) fraccionar el mercado e identificar segmentos, 2) que no exista reventa. Puede aumentar el bienestar.',m:'El cine los miércoles, los pasajes anticipados: mismo producto, bolsillos distintos. La aerolínea del apunte pasó de 15.000 a 52.500 de beneficio discriminando.'},
+{u:5,f:'Oligopolio, duopolio y oligopolio bilateral',b:'Oligopolio: pocas empresas, producto homogéneo o diferenciado, interdependencia estratégica. Duopolio: solo dos. Bilateral: pocos oferentes Y pocos demandantes.',m:'OLIGO = pocos. La clave es que se miran entre sí: lo que hace uno cambia el juego de los demás, como un truco de a cuatro.'},
+{u:5,f:'Colusión y cartel',b:'Colusión: acuerdo sobre cantidades o precios (puede ser tácita). Cartel: organización de empresas con acuerdos de precios y producción; funciona como monopolio multiplanta, pero cada miembro tiene incentivos a traicionar.',m:'Pacto de caballeros... entre gente que gana traicionando. Por eso los carteles duran poco y terminan en guerra de precios.'},
+{u:5,f:'Dilema del prisionero',b:'Juego entre dos prisioneros (Al Capone y Corleone) donde confesar es la estrategia dominante para ambos, y terminan peor (7 años) que cooperando (2 años). Explica por qué la cooperación en los carteles se rompe.',m:'A cada uno le conviene traicionar haga lo que haga el otro... y traicionando los dos, pierden los dos. Igualito que los carteles.'},
+{u:5,f:'Publicidad en los oligopolios',b:'Sirve para: diferenciar productos (branding), competir sin guerra de precios, crear barreras de entrada y generar demanda inducida. La lealtad de marca vuelve la demanda más inelástica.',m:'Coca vs Pepsi: casi la misma bebida, mundos distintos en tu cabeza. No compiten por precio, compiten por tu corazón.'},
+{u:5,f:'Competencia monopolística: 4 características',b:'1) Mercado atomizado, 2) productos diferenciados (cada empresa es monopolio de su marca), 3) poder limitado para fijar precio, 4) sin barreras de entrada (libre concurrencia).',m:'Tu café de especialidad: hay mil cafés (atomizado), pero vos vas a ESE (marca), te cobra un toque más (poder limitado) y mañana abre otro enfrente (sin barreras).'},
+{u:5,f:'Comp. monopolística: corto y largo plazo',b:'Corto: como monopolio, IM = CM y precio según la demanda; puede haber beneficios extraordinarios. Largo: entran competidores hasta que la demanda queda TANGENTE al costo medio: beneficio extraordinario cero.',m:'La ganancia jugosa atrae buitres: entran rivales, te comen clientela, y el beneficio extra se evapora. Más lento que en perfecta porque los clientes son fieles a la marca.'},
+{u:5,f:'Teorema del exceso de capacidad',b:'En el largo plazo, la empresa monopolísticamente competitiva produce MENOS que la escala eficiente (mínimo del CTMe). Podría producir más y bajar costos, pero su demanda decreciente no se lo permite. Además P > CM.',m:'El local medio vacío del café de especialidad: capacidad ociosa, el "precio" de tener productos diferenciados. Y como P > CM, siempre quiere un cliente más.'},
+{u:5,f:'Monopsonio',b:'UN solo comprador, muchos vendedores (la única minera del pueblo, la procesadora de leche única compradora). Fija el precio de compra por debajo del competitivo; en lo laboral: salario más bajo y menos empleo.',m:'Monopolio dado vuelta: el poder lo tiene quien COMPRA. PSONIO = lado de la demanda.'},
+{u:5,f:'Oligopsonio',b:'POCOS compradores con gran poder de negociación frente a muchos vendedores (supermercados vs productores agrícolas). Precios y cantidades intermedios entre competencia y monopsonio; posible coordinación tácita.',m:'Tres supermercados, mil chacareros: adiviná quién pone el precio. OLIGO (pocos) + PSONIO (compradores).'}
+];
+
+/* ====== QUIZ RENDER ====== */
+var score = 0, answered = 0;
+function renderQuiz(){
+  var box = document.getElementById('quizBox'); box.innerHTML = '';
+  var lastU = null;
+  QUIZ.forEach(function(item, i){
+    if(item.u !== lastU){
+      lastU = item.u;
+      var h = document.createElement('div'); h.className = 'unidad-head';
+      h.textContent = 'Unidad ' + item.u; box.appendChild(h);
+    }
+    var d = document.createElement('div'); d.className = 'q';
+    var en = document.createElement('div'); en.className = 'enun';
+    en.textContent = (i+1) + '. ' + (item.t==='vf' ? '[V/F] ' : '') + item.q;
+    d.appendChild(en);
+    var opts = item.t==='vf' ? ['Verdadero','Falso'] : item.o;
+    opts.forEach(function(op, j){
+      var b = document.createElement('button'); b.className = 'opt'; b.textContent = op;
+      b.onclick = function(){ answer(d, item, j); };
+      d.appendChild(b);
+    });
+    var ex = document.createElement('div'); ex.className = 'exp'; d.appendChild(ex);
+    box.appendChild(d);
+  });
+  document.getElementById('totalq').textContent = QUIZ.length;
+}
+function answer(card, item, chosen){
+  if(card.dataset.done) return;
+  card.dataset.done = '1';
+  var btns = card.querySelectorAll('.opt');
+  btns.forEach(function(b, j){
+    b.disabled = true;
+    if(j === item.a) b.classList.add('correcta');
+    if(j === chosen && j !== item.a) b.classList.add('mal');
+  });
+  answered++;
+  var ok = (chosen === item.a);
+  if(ok) score++;
+  var ex = card.querySelector('.exp');
+  ex.textContent = (ok ? 'Bien ahí. ' : 'No va. ') + item.e;
+  ex.classList.add('show');
+  document.getElementById('score').textContent = score;
+  document.getElementById('answered').textContent = answered;
+}
+function resetQuiz(){ score = 0; answered = 0;
+  document.getElementById('score').textContent = 0;
+  document.getElementById('answered').textContent = 0;
+  renderQuiz();
+}
+
+/* ====== FLASHCARDS RENDER ====== */
+function renderCards(){
+  var box = document.getElementById('flashBox'); box.innerHTML = '';
+  var lastU = null, grid = null;
+  CARDS.forEach(function(c){
+    if(c.u !== lastU){
+      lastU = c.u;
+      var h = document.createElement('div'); h.className = 'unidad-head';
+      h.textContent = 'Unidad ' + c.u; box.appendChild(h);
+      grid = document.createElement('div'); grid.className = 'fgrid'; box.appendChild(grid);
+    }
+    var fc = document.createElement('div'); fc.className = 'fc';
+    fc.innerHTML = '<div class="fc-inner">'
+      + '<div class="fc-face fc-front"><div class="t">' + c.f + '</div><div class="hint">tocá para dar vuelta</div></div>'
+      + '<div class="fc-face fc-back"><div>' + c.b + '</div><div class="mnemo">' + c.m + '</div></div>'
+      + '</div>';
+    fc.onclick = function(){ fc.classList.toggle('flip'); };
+    grid.appendChild(fc);
+  });
+}
+
+renderQuiz();
+renderCards();
+</script>
+</body>
+</html>

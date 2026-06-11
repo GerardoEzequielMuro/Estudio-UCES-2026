@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instrumentos Cuantitativos · UCES 2026 · Sistema de Estudio</title>
+<style>
+:root{
+  --bg:#f7f7fb; --card:#ffffff; --text:#1a1a2e; --muted:#5a5a72;
+  --accent:#4f46e5; --accent-soft:#eef2ff; --border:#e4e4ef;
+  --green:#16a34a; --green-soft:#dcfce7; --amber:#d97706; --amber-soft:#fef3c7;
+  --red:#dc2626; --red-soft:#fee2e2; --formula-bg:#f0f0fa;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0f0f1a; --card:#1a1a2c; --text:#eaeaf5; --muted:#9a9ab5;
+    --accent:#818cf8; --accent-soft:#23234a; --border:#2c2c44;
+    --green:#4ade80; --green-soft:#14321f; --amber:#fbbf24; --amber-soft:#3a2e10;
+    --red:#f87171; --red-soft:#3b1414; --formula-bg:#20203a;
+  }
+}
+[data-theme="dark"]{
+  --bg:#0f0f1a; --card:#1a1a2c; --text:#eaeaf5; --muted:#9a9ab5;
+  --accent:#818cf8; --accent-soft:#23234a; --border:#2c2c44;
+  --green:#4ade80; --green-soft:#14321f; --amber:#fbbf24; --amber-soft:#3a2e10;
+  --red:#f87171; --red-soft:#3b1414; --formula-bg:#20203a;
+}
+[data-theme="light"]{
+  --bg:#f7f7fb; --card:#ffffff; --text:#1a1a2e; --muted:#5a5a72;
+  --accent:#4f46e5; --accent-soft:#eef2ff; --border:#e4e4ef;
+  --green:#16a34a; --green-soft:#dcfce7; --amber:#d97706; --amber-soft:#fef3c7;
+  --red:#dc2626; --red-soft:#fee2e2; --formula-bg:#f0f0fa;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.wrap{max-width:920px;margin:0 auto;padding:16px 14px 70px}
+header{text-align:center;padding:22px 8px 10px}
+header h1{font-size:1.55rem;margin-bottom:4px}
+header p{color:var(--muted);font-size:.92rem}
+.back{display:inline-block;margin-bottom:8px;color:var(--accent);text-decoration:none;font-size:.9rem;font-weight:600}
+.back:hover{text-decoration:underline}
+.theme-btn{position:fixed;top:12px;right:12px;background:var(--card);border:1px solid var(--border);border-radius:50%;width:42px;height:42px;font-size:1.2rem;cursor:pointer;z-index:60}
+nav.tabs{position:sticky;top:0;z-index:50;background:var(--bg);display:flex;gap:6px;overflow-x:auto;padding:10px 2px;border-bottom:1px solid var(--border);-webkit-overflow-scrolling:touch}
+nav.tabs button{flex:1 0 auto;background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:99px;padding:8px 14px;font-size:.88rem;font-weight:600;cursor:pointer;white-space:nowrap}
+nav.tabs button.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.panel{display:none;animation:fade .25s}
+.panel.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+h2{font-size:1.25rem;margin:30px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+h3{font-size:1.05rem;margin:22px 0 8px}
+h4{font-size:.97rem;margin:16px 0 6px}
+p{margin-bottom:10px;font-size:.95rem}
+ul,ol{padding-left:22px;margin-bottom:10px;font-size:.95rem}
+li{margin-bottom:5px}
+.badge{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 9px;border-radius:99px;vertical-align:middle;margin-left:6px;white-space:nowrap}
+.badge .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:currentColor;margin-right:5px;vertical-align:middle;position:relative;top:-1px}
+.badge.ml0{margin:0 0 4px}
+.b-red{background:var(--red-soft);color:var(--red)}
+.b-amber{background:var(--amber-soft);color:var(--amber)}
+.b-green{background:var(--green-soft);color:var(--green)}
+.fig{margin:16px 0 6px;text-align:center}
+.fig svg{width:100%;max-width:560px;height:auto;display:block;margin:0 auto}
+.fig svg text{font-family:system-ui,sans-serif}
+.fig img{max-width:min(100%,420px);height:auto;background:#fff;border:1px solid var(--border);border-radius:10px;padding:6px}
+.fig .par{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.fig .par img{max-width:min(46%,260px)}
+.fig figcaption{font-size:.78rem;color:var(--muted);margin-top:6px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 18px;margin-bottom:14px}
+.formula{background:var(--formula-bg);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin:10px 0;font-size:1.05rem;text-align:center;font-family:Georgia,"Times New Roman",serif}
+.formula small{display:block;font-family:system-ui,sans-serif;font-size:.78rem;color:var(--muted);margin-top:4px}
+.step{background:var(--accent-soft);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;padding:10px 14px;margin:10px 0;font-size:.93rem}
+.step b{color:var(--accent)}
+.ej{border:1px dashed var(--accent);border-radius:12px;padding:12px 16px;margin:12px 0;font-size:.93rem}
+.ej .tit{font-weight:700;color:var(--accent);font-size:.85rem;text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px}
+.warn{background:var(--amber-soft);border-left:4px solid var(--amber);border-radius:0 10px 10px 0;padding:10px 14px;margin:10px 0;font-size:.9rem}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.88rem}
+th,td{border:1px solid var(--border);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:var(--accent-soft);color:var(--accent)}
+.scorebar{position:sticky;top:54px;z-index:40;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px 16px;margin:12px 0;font-weight:700;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-size:.92rem}
+.scorebar span b{color:var(--accent)}
+.q{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:14px}
+.q .qt{font-weight:600;margin-bottom:10px;font-size:.95rem}
+.q .qtag{font-size:.7rem;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:99px;padding:2px 8px;margin-right:6px;vertical-align:middle}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opts button{text-align:left;background:var(--bg);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:9px 12px;font-size:.92rem;cursor:pointer}
+.opts button:hover:not(:disabled){border-color:var(--accent)}
+.opts button:disabled{cursor:default;opacity:.85}
+.opts button.ok{background:var(--green-soft);border-color:var(--green);color:var(--green);font-weight:700;opacity:1}
+.opts button.bad{background:var(--red-soft);border-color:var(--red);color:var(--red);font-weight:700;opacity:1}
+.numrow{display:flex;gap:8px;flex-wrap:wrap}
+.numrow input{flex:1;min-width:130px;background:var(--bg);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:9px 12px;font-size:.95rem}
+.numrow button{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:9px 16px;font-weight:700;cursor:pointer}
+.numrow button:disabled{opacity:.5;cursor:default}
+.exp{display:none;margin-top:10px;border-radius:10px;padding:10px 13px;font-size:.88rem}
+.exp.show{display:block}
+.exp.ok{background:var(--green-soft);border-left:4px solid var(--green)}
+.exp.bad{background:var(--red-soft);border-left:4px solid var(--red)}
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-bottom:20px}
+.fc{perspective:900px;cursor:pointer;height:185px}
+.fc-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.fc.flipped .fc-inner{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;border:1px solid var(--border);padding:14px;display:flex;flex-direction:column;justify-content:center;text-align:center;font-size:.9rem;overflow-y:auto}
+.fc-front{background:var(--card)}
+.fc-front .hint{position:absolute;bottom:8px;left:0;right:0;font-size:.68rem;color:var(--muted)}
+.fc-back{background:var(--accent-soft);transform:rotateY(180deg)}
+.fc-back .mn{margin-top:8px;font-size:.78rem;color:var(--muted);border-top:1px dashed var(--border);padding-top:6px}
+.fc-back .fr{font-family:Georgia,serif;font-size:1rem}
+.map{margin-bottom:24px}
+.node{border:2px solid var(--accent);border-radius:12px;padding:10px 14px;margin:10px 0;background:var(--card)}
+.node>.nt{font-weight:700;color:var(--accent);margin-bottom:6px}
+.node .node{border-width:1px;border-color:var(--border);margin:8px 0 8px 14px;background:var(--bg)}
+.node .node>.nt{color:var(--text)}
+.node .leaf{margin:4px 0 4px 14px;padding:5px 10px;border-left:3px solid var(--accent);background:var(--formula-bg);border-radius:0 8px 8px 0;font-size:.86rem}
+.leaf b{color:var(--accent)}
+.prio{display:flex;gap:10px;align-items:flex-start;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+.prio .ic{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:.88rem;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.prio b{display:block;font-size:.93rem}
+.prio small{color:var(--muted);font-size:.85rem}
+.foot{text-align:center;color:var(--muted);font-size:.82rem;margin-top:46px}
+sup,sub{font-size:.72em}
+.frac{display:inline-block;vertical-align:middle;text-align:center;margin:0 2px}
+.frac .top{display:block;border-bottom:1px solid currentColor;padding:0 4px}
+.frac .bot{display:block;padding:0 4px}
+@media(max-width:560px){
+  header h1{font-size:1.3rem}
+  .fc-grid{grid-template-columns:1fr 1fr}
+  .fc{height:205px}
+}
+@media(max-width:400px){.fc-grid{grid-template-columns:1fr}.fc{height:170px}}
+</style>
+</head>
+<body>
+<button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+<div class="wrap">
+
+<header>
+  <a class="back" href="index.html">← Plan de estudio</a>
+  <h1>Instrumentos Cuantitativos</h1>
+  <p>UCES 2026 · 1er cuatrimestre · Prof. Salaj / Romero · Tiempo total estimado de estudio: <b>≈ 15 horas</b></p>
+  <p style="font-size:.82rem">1er parcial: Unidades 1 y 2 · 2do parcial: Unidades 3, 4 y 5. Todo lo que ves acá sale de los apuntes y TPs de la cátedra.</p>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button data-t="resumen" class="active">Resumen</button>
+  <button data-t="quiz">Quiz</button>
+  <button data-t="flash">Flashcards</button>
+  <button data-t="mapa">Mapa</button>
+  <button data-t="guia">Guía 80/20</button>
+</nav>
+
+<!-- ============================================================ -->
+<!-- 1. RESUMEN EJECUTIVO -->
+<!-- ============================================================ -->
+<section class="panel active" id="p-resumen">
+
+<h2>Resumen ejecutivo</h2>
+<p>Esto está explicado como si fuéramos amigos tomando mate, sin vueltas. La matemática de esta materia es mucho más amigable de lo que parece: son pocas herramientas y siempre las mismas. Si entendés <b>cuándo usar cada una</b>, ya ganaste. Prestá atención a los badges: <span class="badge b-red" style="margin-left:0"><span class="dot"></span>Imprescindible</span> cae seguro, <span class="badge b-amber" style="margin-left:0"><span class="dot"></span>Importante</span> probable, <span class="badge b-green" style="margin-left:0"><span class="dot"></span>Complementario</span> te suma pero no te mata si lo salteás.</p>
+
+<!-- ===== UNIDAD 1 ===== -->
+<h2>Unidad 1 · Ecuaciones e inecuaciones <span class="badge b-red"><span class="dot"></span>Imprescindible</span></h2>
+
+<div class="card">
+<h3>Ecuación lineal <span class="badge b-red"><span class="dot"></span>Imprescindible</span></h3>
+<p>Una ecuación es una igualdad con una incógnita (la famosa x). Resolverla es encontrar el valor de x que la hace verdadera. Las lineales son las más mansas: la x está elevada a la 1, nada de cuadrados ni raíces.</p>
+<div class="formula">ax + b = c &nbsp;⇒&nbsp; x = <span class="frac"><span class="top">c − b</span><span class="bot">a</span></span> &nbsp;(con a ≠ 0)<small>Lo que suma pasa restando, lo que multiplica pasa dividiendo. Eso es todo.</small></div>
+<p>Según lo que te quede al final, la ecuación se clasifica:</p>
+<ul>
+<li><b>Compatible determinada:</b> una única solución (lo normal, ej: x = 3).</li>
+<li><b>Compatible indeterminada:</b> llegás a algo tipo 0 = 0. Cualquier x sirve, infinitas soluciones. Es una identidad.</li>
+<li><b>Incompatible:</b> llegás a un absurdo tipo 4 = −8. No hay solución, S = ∅.</li>
+</ul>
+<div class="ej"><div class="tit">Ejemplo resuelto (del apunte)</div>
+<p>Resolver 7x − 4 = 3x + 8</p>
+<div class="step"><b>Paso 1:</b> juntá las x de un lado y los números del otro: 7x − 3x = 8 + 4</div>
+<div class="step"><b>Paso 2:</b> operá: 4x = 12</div>
+<div class="step"><b>Paso 3:</b> despejá: x = 12 : 4 = <b>3</b></div>
+<div class="step"><b>Paso 4 (verificación):</b> 7·3 − 4 = 17 y 3·3 + 8 = 17. ✔ Da lo mismo de los dos lados, así que x = 3 es la raíz.</div>
+</div>
+<div class="warn">Ojo: si la ecuación tiene x en el denominador (fraccionaria), primero anotá qué valores anulan el denominador (esos están prohibidos) y al final <b>verificá la solución en la ecuación original</b>. En el apunte hay un ejemplo donde da x = 2/3 pero ese valor anula un denominador: la ecuación en realidad no tiene solución.</div>
+</div>
+
+<div class="card">
+<h3>Intervalos <span class="badge b-amber"><span class="dot"></span>Importante</span></h3>
+<p>Son la forma prolija de escribir conjuntos de números. La regla de memoria: <b>corchete = el extremo entra, paréntesis = no entra</b>. El infinito siempre va con paréntesis porque no es un número.</p>
+<ul>
+<li>[a; b] cerrado: a ≤ x ≤ b (entran los dos extremos)</li>
+<li>(a; b) abierto: a &lt; x &lt; b (no entra ninguno)</li>
+<li>[a; b) y (a; b] semiabiertos: entra solo el del corchete</li>
+<li>(a; +∞) son los x &gt; a · [a; +∞) son los x ≥ a · (−∞; b) son los x &lt; b</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Inecuaciones <span class="badge b-red"><span class="dot"></span>Imprescindible</span></h3>
+<p>Igual que una ecuación pero con &lt;, &gt;, ≤ o ≥. Se resuelven con los mismos pasajes de términos, con UNA sola trampa que es donde todos pinchan:</p>
+<div class="formula">Si pasás un número <b>negativo</b> multiplicando o dividiendo, <b>se invierte el sentido</b> de la desigualdad<small>Con números positivos no pasa nada. Solo los negativos dan vuelta la flecha.</small></div>
+<div class="ej"><div class="tit">Ejemplo resuelto (del apunte)</div>
+<p>Resolver 4 − 3x ≤ 7 + 2x</p>
+<div class="step"><b>Paso 1:</b> pasajes: −3x − 2x ≤ 7 − 4</div>
+<div class="step"><b>Paso 2:</b> operá: −5x ≤ 3</div>
+<div class="step"><b>Paso 3:</b> el −5 pasa dividiendo y como es negativo, la flecha se da vuelta: x ≥ −3/5</div>
+<div class="step"><b>Paso 4:</b> solución como intervalo: <b>[−3/5; +∞)</b>. Infinitas soluciones, y en el parcial te piden escribirlo así y graficarlo en la recta.</div>
+</div>
+<p>Igual que las ecuaciones, una inecuación puede no tener solución: si llegás a un absurdo como −29 ≥ 7, el conjunto solución es vacío (S = ∅).</p>
+</div>
+
+<div class="card">
+<h3>Problemas con plata: costo, ingreso, utilidad <span class="badge b-red"><span class="dot"></span>Imprescindible</span></h3>
+<p>Acá está el corazón de la materia, porque estos enunciados vuelven en TODAS las unidades. Tres fórmulas que tenés que tener tatuadas:</p>
+<div class="formula">Costo total = costo fijo + costo variable · x<br>Ingreso = precio · x<br>Utilidad = Ingreso − Costo<small>x = cantidad de unidades. La utilidad es lo que te queda en el bolsillo.</small></div>
+<div class="ej"><div class="tit">Ejemplo resuelto (TP1, actividad 2a)</div>
+<p>Costo variable $6 por unidad, costo fijo $80000, precio de venta $10. ¿Cuántas unidades hay que vender para ganar $60000?</p>
+<div class="step"><b>Paso 1:</b> armá la utilidad: U = 10x − (6x + 80000)</div>
+<div class="step"><b>Paso 2:</b> igualá a lo que querés ganar: 10x − 6x − 80000 = 60000</div>
+<div class="step"><b>Paso 3:</b> 4x = 140000 ⇒ x = <b>35000 unidades</b></div>
+<div class="step"><b>Chequeo:</b> 10·35000 − 6·35000 − 80000 = 350000 − 210000 − 80000 = 60000 ✔</div>
+</div>
+<p>Bonus de los preliminares (TP0) que se usa todo el tiempo: <b>el p% de N es N · p/100</b>. Ejemplo: 4% de 725 = 725 · 0,04 = 29.</p>
+</div>
+
+<!-- ===== UNIDAD 2 ===== -->
+<h2>Unidad 2 · Funciones y sistemas lineales <span class="badge b-red"><span class="dot"></span>Imprescindible</span></h2>
+
+<div class="card">
+<h3>Qué es una función <span class="badge b-amber"><span class="dot"></span>Importante</span></h3>
+<p>Una función f es una regla que a cada x de un conjunto A le asigna <b>un único</b> y = f(x). La palabra clave es ÚNICO: si un mismo x tiene dos imágenes distintas, no es función. f(x) se lee "f de x" y significa "f evaluada en x", no "f por x".</p>
+<ul>
+<li><b>Dominio:</b> los x permitidos (conjunto A).</li>
+<li><b>Imagen:</b> todos los valores que toma f(x).</li>
+<li><b>Ceros o raíces:</b> los x del dominio donde f(x) = 0. Gráficamente, donde la curva corta al eje x.</li>
+<li><b>Creciente</b> en un intervalo: a mayor x, mayor f(x). <b>Decreciente:</b> a mayor x, menor f(x).</li>
+<li><b>Positiva:</b> f(x) &gt; 0 (gráfica arriba del eje x). <b>Negativa:</b> f(x) &lt; 0 (abajo).</li>
+</ul>
+<p>En los TPs y el repaso te dan un gráfico y te piden el "análisis completo": ceros, crecimiento, decrecimiento, positividad, negatividad, máximos y mínimos. Es lectura de gráfico, no cuentas. Practicalo porque es nota regalada.</p>
+<figure class="fig"><img alt="Gráfico de función con un máximo en (b, f(b)) y un mínimo en (c, f(c)) para análisis completo" loading="lazy" src="data:image/jpeg;base64,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">
+<figcaption>El tipo de gráfico que te dan para el análisis completo: máximo en (b; f(b)), mínimo en (c; f(c)), crece, decrece y vuelve a crecer. Del material teórico de la Unidad 2.</figcaption>
+</figure>
+</div>
+
+<div class="card">
+<h3>Función lineal <span class="badge b-red"><span class="dot"></span>Imprescindible</span></h3>
+<div class="formula">f(x) = mx + b<small>m = pendiente · b = ordenada al origen</small></div>
+<ul>
+<li><b>m (pendiente):</b> cuánto cambia y cuando x aumenta 1 unidad. Si m &gt; 0 la función crece, si m &lt; 0 decrece, si m = 0 es constante (recta horizontal).</li>
+<li><b>b (ordenada al origen):</b> donde la recta corta al eje y, o sea el punto (0; b).</li>
+</ul>
+<figure class="fig">
+<svg viewBox="0 0 440 300" role="img" aria-label="Recta f(x) = 2x + 3 con pendiente y ordenada al origen señaladas">
+  <!-- ejes -->
+  <line x1="30" y1="222" x2="412" y2="222" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
+  <polygon points="412,222 404,218 404,226" fill="currentColor" opacity=".6"/>
+  <line x1="220" y1="292" x2="220" y2="14" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
+  <polygon points="220,14 216,22 224,22" fill="currentColor" opacity=".6"/>
+  <text x="420" y="238" font-size="13" fill="currentColor">x</text>
+  <text x="228" y="20" font-size="13" fill="currentColor">y</text>
+  <!-- ticks x -->
+  <line x1="100" y1="218" x2="100" y2="226" stroke="currentColor" opacity=".6"/><text x="100" y="240" font-size="11" fill="currentColor" text-anchor="middle">−2</text>
+  <line x1="160" y1="218" x2="160" y2="226" stroke="currentColor" opacity=".6"/><text x="160" y="240" font-size="11" fill="currentColor" text-anchor="middle">−1</text>
+  <line x1="280" y1="218" x2="280" y2="226" stroke="currentColor" opacity=".6"/><text x="280" y="240" font-size="11" fill="currentColor" text-anchor="middle">1</text>
+  <line x1="340" y1="218" x2="340" y2="226" stroke="currentColor" opacity=".6"/><text x="340" y="240" font-size="11" fill="currentColor" text-anchor="middle">2</text>
+  <!-- ticks y -->
+  <line x1="216" y1="136" x2="224" y2="136" stroke="currentColor" opacity=".6"/><text x="210" y="140" font-size="11" fill="currentColor" text-anchor="end">3</text>
+  <line x1="216" y1="78" x2="224" y2="78" stroke="currentColor" opacity=".6"/><text x="210" y="82" font-size="11" fill="currentColor" text-anchor="end">5</text>
+  <!-- recta f(x)=2x+3 -->
+  <line x1="70" y1="280" x2="340" y2="20" stroke="var(--accent)" stroke-width="2.5"/>
+  <text x="330" y="36" font-size="13" fill="var(--accent)" text-anchor="end" font-weight="600">f(x) = 2x + 3</text>
+  <!-- triangulo de pendiente: de (0,5;4) a (1,5;4) a (1,5;6) -->
+  <line x1="250" y1="107" x2="310" y2="107" stroke="var(--green)" stroke-width="2"/>
+  <line x1="310" y1="107" x2="310" y2="49" stroke="var(--green)" stroke-width="2"/>
+  <text x="280" y="123" font-size="11" fill="var(--green)" text-anchor="middle">+1</text>
+  <text x="318" y="82" font-size="11" fill="var(--green)" font-weight="600">m = +2</text>
+  <!-- ordenada al origen -->
+  <circle cx="220" cy="136" r="4.5" fill="var(--red)"/>
+  <text x="212" y="124" font-size="12" fill="var(--red)" text-anchor="end" font-weight="600">b = 3</text>
+</svg>
+<figcaption>La recta f(x) = 2x + 3: corta al eje y en b = 3 y por cada unidad que avanza x, sube m = 2.</figcaption>
+</figure>
+<p>Si conocés dos puntos P<sub>1</sub>(x<sub>1</sub>; y<sub>1</sub>) y P<sub>2</sub>(x<sub>2</sub>; y<sub>2</sub>) de la recta:</p>
+<div class="formula">m = <span class="frac"><span class="top">y<sub>2</sub> − y<sub>1</sub></span><span class="bot">x<sub>2</sub> − x<sub>1</sub></span></span><small>"Lo que sube dividido lo que avanza"</small></div>
+<div class="formula">Haz de rectas por un punto: y − y<sub>1</sub> = m(x − x<sub>1</sub>)<small>Con esta más la pendiente armás la recta que pasa por cualquier punto</small></div>
+<figure class="fig"><img alt="Haz de infinitas rectas que pasan por un punto P de coordenadas (x1, y1)" loading="lazy" src="data:image/png;base64,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">
+<figcaption>El haz de rectas: por el punto P(x₁; y₁) pasan infinitas rectas, una por cada pendiente. La que te piden queda definida cuando fijás m. Del material teórico de la Unidad 2.</figcaption>
+</figure>
+<p>Y las dos condiciones estrella:</p>
+<div class="formula">Paralelas: m<sub>1</sub> = m<sub>2</sub> &nbsp;·&nbsp; Perpendiculares: m<sub>1</sub> = −<span class="frac"><span class="top">1</span><span class="bot">m<sub>2</sub></span></span><small>Perpendicular = pendiente opuesta e inversa: la das vuelta y le cambiás el signo</small></div>
+<div class="ej"><div class="tit">Ejemplo resuelto (TP2, actividad 6c)</div>
+<p>Producir 10 unidades cuesta $75 y producir 25 cuesta $120. Suponiendo costo lineal, hallar la ecuación.</p>
+<div class="step"><b>Paso 1:</b> son dos puntos: (10; 75) y (25; 120)</div>
+<div class="step"><b>Paso 2:</b> pendiente: m = (120 − 75)/(25 − 10) = 45/15 = <b>3</b>. Ese es el costo variable por unidad: cada unidad extra cuesta $3.</div>
+<div class="step"><b>Paso 3:</b> haz de rectas: y − 75 = 3(x − 10) ⇒ y = 3x − 30 + 75 ⇒ <b>C(x) = 3x + 45</b>. El 45 es el costo fijo.</div>
+<div class="step"><b>Paso 4:</b> costo de 20 unidades: C(20) = 3·20 + 45 = <b>$105</b></div>
+</div>
+</div>
+
+<div class="card">
+<h3>Sistemas de ecuaciones lineales 2x2 <span class="badge b-red"><span class="dot"></span>Imprescindible</span></h3>
+<p>Dos ecuaciones, dos incógnitas. Buscás el par (x<sub>0</sub>; y<sub>0</sub>) que cumple las dos a la vez. Como cada ecuación es una recta, resolver el sistema es ver dónde se cruzan:</p>
+<ul>
+<li><b>Compatible determinado:</b> las rectas se cortan en un punto. Solución única.</li>
+<li><b>Compatible indeterminado:</b> son la misma recta (coincidentes). Infinitas soluciones.</li>
+<li><b>Incompatible:</b> rectas paralelas (misma pendiente, distinta ordenada). Sin solución, S = ∅. Si lo resolvés analíticamente llegás a un absurdo.</li>
+</ul>
+<figure class="fig">
+<svg viewBox="0 0 440 300" role="img" aria-label="Sistema de dos ecuaciones lineales graficado como dos rectas que se cortan en el punto (−1; 3)">
+  <!-- ejes -->
+  <line x1="30" y1="206" x2="418" y2="206" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
+  <polygon points="418,206 410,202 410,210" fill="currentColor" opacity=".6"/>
+  <line x1="256" y1="292" x2="256" y2="14" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
+  <polygon points="256,14 252,22 260,22" fill="currentColor" opacity=".6"/>
+  <text x="426" y="222" font-size="13" fill="currentColor">x</text>
+  <text x="264" y="20" font-size="13" fill="currentColor">y</text>
+  <!-- ticks -->
+  <line x1="184" y1="202" x2="184" y2="210" stroke="currentColor" opacity=".6"/><text x="184" y="224" font-size="11" fill="currentColor" text-anchor="middle">−1</text>
+  <line x1="328" y1="202" x2="328" y2="210" stroke="currentColor" opacity=".6"/><text x="328" y="224" font-size="11" fill="currentColor" text-anchor="middle">1</text>
+  <line x1="252" y1="169" x2="260" y2="169" stroke="currentColor" opacity=".6"/><text x="266" y="173" font-size="11" fill="currentColor">1</text>
+  <line x1="252" y1="94" x2="260" y2="94" stroke="currentColor" opacity=".6"/><text x="266" y="98" font-size="11" fill="currentColor">3</text>
+  <!-- rectas -->
+  <line x1="112" y1="20" x2="364" y2="280" stroke="var(--accent)" stroke-width="2.5"/>
+  <line x1="88" y1="20" x2="400" y2="261" stroke="var(--red)" stroke-width="2.5"/>
+  <!-- leyenda -->
+  <line x1="300" y1="28" x2="324" y2="28" stroke="var(--accent)" stroke-width="2.5"/>
+  <text x="330" y="32" font-size="12" fill="var(--accent)" font-weight="600">2x + y = 1</text>
+  <line x1="300" y1="48" x2="324" y2="48" stroke="var(--red)" stroke-width="2.5"/>
+  <text x="330" y="52" font-size="12" fill="var(--red)" font-weight="600">3x + 2y = 3</text>
+  <!-- guias y punto de interseccion -->
+  <line x1="184" y1="94" x2="184" y2="206" stroke="currentColor" stroke-width="1" stroke-dasharray="4 3" opacity=".55"/>
+  <line x1="184" y1="94" x2="256" y2="94" stroke="currentColor" stroke-width="1" stroke-dasharray="4 3" opacity=".55"/>
+  <circle cx="184" cy="94" r="4.5" fill="var(--green)"/>
+  <text x="176" y="84" font-size="12" fill="var(--green)" text-anchor="end" font-weight="600">S = (−1; 3)</text>
+</svg>
+<figcaption>Sistema compatible determinado: cada ecuación es una recta y la solución es el punto donde se cortan. Es el sistema del ejemplo: 2x + y = 1 y 3x + 2y = 3.</figcaption>
+</figure>
+<figure class="fig"><img alt="Dos rectas paralelas, y = menos 2x + 1 e y = menos 2x + 2: sistema incompatible" loading="lazy" src="data:image/png;base64,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">
+<figcaption>El caso incompatible del material: y = −2x + 1 e y = −2x + 2 tienen la misma pendiente y distinta ordenada. Paralelas, nunca se cortan, S = ∅. Del material teórico de la Unidad 2.</figcaption>
+</figure>
+<p>Tres métodos analíticos (mnemotecnia <b>SIR</b>: Sustitución, Igualación, Reducción):</p>
+<ul>
+<li><b>Sustitución:</b> despejás una incógnita en una ecuación y la metés en la otra. Conviene cuando alguna incógnita tiene coeficiente 1.</li>
+<li><b>Igualación:</b> despejás LA MISMA incógnita en las dos y las igualás.</li>
+<li><b>Reducción:</b> multiplicás una ecuación para que una incógnita tenga coeficientes opuestos y sumás: esa incógnita desaparece.</li>
+</ul>
+<div class="ej"><div class="tit">Ejemplo resuelto por sustitución (del apunte)</div>
+<p>Sistema: 2x + y = 1 (1) y 3x + 2y = 3 (2)</p>
+<div class="step"><b>Paso 1:</b> de (1) despejo y: y = 1 − 2x</div>
+<div class="step"><b>Paso 2:</b> sustituyo en (2): 3x + 2(1 − 2x) = 3 ⇒ 3x + 2 − 4x = 3 ⇒ −x = 1 ⇒ x = −1</div>
+<div class="step"><b>Paso 3:</b> vuelvo: y = 1 − 2·(−1) = 3. Solución: <b>S = {(−1; 3)}</b></div>
+<div class="step"><b>Verificación:</b> 2·(−1) + 3 = 1 ✔ y 3·(−1) + 2·3 = 3 ✔</div>
+</div>
+</div>
+
+<div class="card">
+<h3>Oferta, demanda y punto de equilibrio <span class="badge b-red"><span class="dot"></span>Imprescindible</span></h3>
+<p>La aplicación favorita de la cátedra. Dos curvas (acá rectas):</p>
+<ul>
+<li><b>Demanda:</b> relaciona precio p y cantidad q que compra la gente. A mayor precio, menor cantidad: pendiente negativa, baja de izquierda a derecha.</li>
+<li><b>Oferta:</b> cantidad que los productores ponen en el mercado. A mayor precio, más ofrecen: pendiente positiva, sube.</li>
+</ul>
+<figure class="fig"><img alt="Curva de demanda con pendiente negativa: precio 4 corresponde a cantidad 6, precio 2 a cantidad 10" loading="lazy" src="data:image/jpeg;base64,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">
+<figcaption>La curva de demanda del material: a $4 se compran 6 unidades, a $2 se compran 10. Precio sube, cantidad baja. Del material teórico de la Unidad 2.</figcaption>
+</figure>
+<div class="formula">Equilibrio de mercado: oferta = demanda<br>Equilibrio de la empresa: Ingreso total = Costo total (utilidad cero)<small>"Equilibrio" siempre significa igualar dos cosas y resolver el sistema</small></div>
+<div class="ej"><div class="tit">Ejemplo resuelto (TP2, actividad 10c)</div>
+<p>Demanda: p + 2x = 36. Oferta: p − 3x = 6. Hallar el punto de equilibrio.</p>
+<div class="step"><b>Paso 1:</b> método de reducción: resto las ecuaciones miembro a miembro: (p + 2x) − (p − 3x) = 36 − 6</div>
+<div class="step"><b>Paso 2:</b> 5x = 30 ⇒ x = <b>6</b></div>
+<div class="step"><b>Paso 3:</b> reemplazo en la oferta: p − 3·6 = 6 ⇒ p = <b>24</b>. Equilibrio: 6 unidades a $24.</div>
+</div>
+</div>
+
+<!-- ===== UNIDAD 3 ===== -->
+<h2>Unidad 3 · Ecuaciones de segundo grado <span class="badge b-red"><span class="dot"></span>Imprescindible</span></h2>
+
+<div class="card">
+<h3>La forma general y sus casos <span class="badge b-red"><span class="dot"></span>Imprescindible</span></h3>
+<p>Una ecuación es cuadrática cuando, ya ordenada, el mayor exponente de la incógnita es 2:</p>
+<div class="formula">ax² + bx + c = 0 &nbsp;&nbsp;con a ≠ 0<small>Completa si a ≠ 0, b ≠ 0 y c ≠ 0. Incompleta si falta b o c (o los dos).</small></div>
+<p>Tiene <b>como máximo dos raíces</b> (x<sub>1</sub> y x<sub>2</sub>). Antes de tirarte de cabeza a la resolvente, mirá qué falta, porque los casos incompletos se resuelven más rápido:</p>
+<h4>Caso 1: falta c (ax² + bx = 0) <span class="badge b-red"><span class="dot"></span>Imprescindible</span></h4>
+<p>Sacás factor común x: x(ax + b) = 0. Producto cero significa que algún factor es cero, entonces:</p>
+<div class="formula">x<sub>1</sub> = 0 &nbsp;&nbsp;y&nbsp;&nbsp; x<sub>2</sub> = −<span class="frac"><span class="top">b</span><span class="bot">a</span></span><small>Sin c, una raíz SIEMPRE es 0</small></div>
+<div class="ej"><div class="tit">Ejemplo (del apunte)</div><p>6x² + 3x = 0 ⇒ x(6x + 3) = 0 ⇒ x<sub>1</sub> = 0 o 6x + 3 = 0 ⇒ x<sub>2</sub> = −3/6 = <b>−1/2</b></p></div>
+<h4>Caso 2: falta b (ax² + c = 0) <span class="badge b-red"><span class="dot"></span>Imprescindible</span></h4>
+<div class="formula">x = ±<span style="border-top:1px solid currentColor">√(−c/a)</span><small>Despejás x² y sacás raíz CON los dos signos. Si −c/a da negativo, no hay solución real.</small></div>
+<div class="ej"><div class="tit">Ejemplo (del apunte)</div><p>25x² − 100 = 0 ⇒ x² = 100/25 ⇒ x = ±√(100/25) ⇒ x<sub>1</sub> = <b>2</b>, x<sub>2</sub> = <b>−2</b></p></div>
+<h4>Caso 3: faltan b y c (ax² = 0) <span class="badge b-green"><span class="dot"></span>Complementario</span></h4>
+<p>Las dos raíces son cero: x<sub>1</sub> = x<sub>2</sub> = 0. Listo.</p>
+</div>
+
+<div class="card">
+<h3>La resolvente (fórmula cuadrática) <span class="badge b-red"><span class="dot"></span>Imprescindible</span></h3>
+<p>Para la ecuación completa (y también sirve para las incompletas, dice el apunte). Esta fórmula ES el parcial, aprendela cantando:</p>
+<div class="formula">x = <span class="frac"><span class="top">−b ± √(b² − 4ac)</span><span class="bot">2a</span></span><small>"Menos be, más menos raíz de be cuadrado menos cuatro a ce, todo sobre dos a"</small></div>
+<p>Lo de adentro de la raíz tiene nombre propio: el <b>discriminante</b> Δ = b² − 4ac. Te dice cuántas raíces hay sin resolver nada:</p>
+<ul>
+<li>Δ &gt; 0: dos raíces reales y distintas.</li>
+<li>Δ = 0: ambas raíces reales e iguales (raíz doble).</li>
+<li>Δ &lt; 0: no tiene raíces reales.</li>
+</ul>
+<figure class="fig">
+<svg viewBox="0 0 480 190" role="img" aria-label="Tres parábolas que muestran los casos del discriminante: dos raíces, raíz doble y sin raíces reales">
+  <!-- caso 1: dos raices -->
+  <line x1="20" y1="110" x2="140" y2="110" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
+  <path d="M30,66 Q80,204 130,66" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+  <circle cx="50" cy="110" r="3.8" fill="var(--red)"/>
+  <circle cx="110" cy="110" r="3.8" fill="var(--red)"/>
+  <text x="80" y="160" font-size="14" fill="currentColor" text-anchor="middle" font-weight="700">Δ &gt; 0</text>
+  <text x="80" y="178" font-size="11" fill="currentColor" text-anchor="middle" opacity=".75">dos raíces distintas</text>
+  <!-- caso 2: raiz doble -->
+  <line x1="180" y1="110" x2="300" y2="110" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
+  <path d="M190,60 Q240,160 290,60" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+  <circle cx="240" cy="110" r="3.8" fill="var(--red)"/>
+  <text x="240" y="160" font-size="14" fill="currentColor" text-anchor="middle" font-weight="700">Δ = 0</text>
+  <text x="240" y="178" font-size="11" fill="currentColor" text-anchor="middle" opacity=".75">raíz doble (toca y rebota)</text>
+  <!-- caso 3: sin raices -->
+  <line x1="340" y1="110" x2="460" y2="110" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
+  <path d="M350,40 Q400,130 450,40" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+  <text x="400" y="160" font-size="14" fill="currentColor" text-anchor="middle" font-weight="700">Δ &lt; 0</text>
+  <text x="400" y="178" font-size="11" fill="currentColor" text-anchor="middle" opacity=".75">no corta: sin raíces reales</text>
+</svg>
+<figcaption>El discriminante te dice cuántas veces la parábola corta al eje x (acá con a &gt; 0; con a &lt; 0 es lo mismo pero dada vuelta).</figcaption>
+</figure>
+<div class="ej"><div class="tit">Ejemplo resuelto (del apunte)</div>
+<p>Resolver 3x² + 5x − 8 = 0. Identificá: a = 3, b = 5, c = −8.</p>
+<div class="step"><b>Paso 1:</b> discriminante: Δ = 5² − 4·3·(−8) = 25 + 96 = 121. Como Δ &gt; 0, hay dos raíces.</div>
+<div class="step"><b>Paso 2:</b> resolvente: x = (−5 ± √121)/(2·3) = (−5 ± 11)/6</div>
+<div class="step"><b>Paso 3:</b> con el +: x<sub>1</sub> = 6/6 = <b>1</b>. Con el −: x<sub>2</sub> = −16/6 = <b>−8/3</b></div>
+</div>
+<div class="warn">Errores clásicos: olvidarte el signo de c al calcular −4ac (acá c = −8 y por eso queda +96), y dividir solo el −b por 2a en vez de TODO. La raya de fracción cubre toda la expresión de arriba.</div>
+</div>
+
+<div class="card">
+<h3>Aplicaciones económicas <span class="badge b-amber"><span class="dot"></span>Importante</span></h3>
+<p>Los problemas del TP3 son siempre la misma película: te dan ingreso I(x) y costo C(x), y la pregunta esconde una cuadrática.</p>
+<ul>
+<li>"Utilidad cero" o "punto de equilibrio": planteás I(x) = C(x), pasás todo de un lado y resolvés con la resolvente.</li>
+<li>"Utilidad de $N": planteás I(x) − C(x) = N, mismo camino.</li>
+<li>Si te dan p en función de x (demanda), el ingreso es I = p · x, que al distribuir queda cuadrático.</li>
+</ul>
+<div class="ej"><div class="tit">Mini ejemplo (TP3, actividad 2b)</div>
+<p>Utilidad P = (1/10)x(300 − x) con 0 ≤ x ≤ 200. ¿Cuántos hornos para ganar 1250?</p>
+<div class="step"><b>Paso 1:</b> (1/10)x(300 − x) = 1250 ⇒ 30x − 0,1x² = 1250</div>
+<div class="step"><b>Paso 2:</b> ordeno: −0,1x² + 30x − 1250 = 0. Multiplico por −10 para sacarme los decimales: x² − 300x + 12500 = 0</div>
+<div class="step"><b>Paso 3:</b> resolvente: Δ = 300² − 4·1·12500 = 90000 − 50000 = 40000, √Δ = 200. x = (300 ± 200)/2 ⇒ x = 250 o x = 50. Como x ≤ 200, la respuesta es <b>50 hornos</b>.</div>
+</div>
+</div>
+
+<!-- ===== UNIDAD 4 ===== -->
+<h2>Unidad 4 · Función cuadrática <span class="badge b-red"><span class="dot"></span>Imprescindible</span></h2>
+
+<div class="card">
+<h3>La parábola y sus elementos <span class="badge b-red"><span class="dot"></span>Imprescindible</span></h3>
+<p>Ahora la cuadrática deja de ser una ecuación y pasa a ser una función: f(x) = ax² + bx + c, con a ≠ 0. Su gráfica es una <b>parábola</b>. Todo lo de la unidad 3 se recicla acá.</p>
+<ul>
+<li><b>Concavidad:</b> si a &gt; 0 las ramas se abren hacia arriba (sonríe ∪, tiene mínimo). Si a &lt; 0 se abren hacia abajo (∩, tiene máximo).</li>
+<li><b>Corte con el eje y:</b> el punto (0; c). Directo, sin cuentas.</li>
+<li><b>Raíces (cortes con el eje x):</b> resolvés ax² + bx + c = 0 con la resolvente. El discriminante te dice si corta en 2 puntos (Δ &gt; 0), en 1 (Δ = 0) o en ninguno (Δ &lt; 0).</li>
+</ul>
+<div class="formula">Vértice: x<sub>v</sub> = <span class="frac"><span class="top">−b</span><span class="bot">2a</span></span> &nbsp;&nbsp;·&nbsp;&nbsp; y<sub>v</sub> = f(x<sub>v</sub>)<small>x<sub>v</sub> es "media resolvente" (la resolvente sin la raíz). y<sub>v</sub> sale de enchufar x<sub>v</sub> en la función.</small></div>
+<div class="formula">Eje de simetría: x = <span class="frac"><span class="top">−b</span><span class="bot">2a</span></span> &nbsp;&nbsp;o también&nbsp;&nbsp; x = <span class="frac"><span class="top">x<sub>1</sub> + x<sub>2</sub></span><span class="bot">2</span></span><small>El promedio de las raíces, si existen: el vértice queda justo en el medio</small></div>
+<figure class="fig"><img alt="Parábola con ordenada al origen c, su punto simétrico, eje de simetría y vértice V" loading="lazy" src="data:image/png;base64,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">
+<figcaption>Yapa del apunte para graficar: la ordenada al origen (0; c) tiene un punto simétrico del otro lado del eje de simetría. Dos puntos gratis además del vértice. Apunte de la Unidad 4.</figcaption>
+</figure>
+<p>Dominio e imagen: el dominio de toda cuadrática es ℝ. La imagen depende del vértice:</p>
+<div class="formula">a &gt; 0 ⇒ Img f = [y<sub>v</sub>; +∞) &nbsp;&nbsp;·&nbsp;&nbsp; a &lt; 0 ⇒ Img f = (−∞; y<sub>v</sub>]<small>La imagen arranca (o termina) en la altura del vértice</small></div>
+<p>Otras dos formas de escribir la misma función (las piden nombrar y armar):</p>
+<div class="formula">Factorizada: f(x) = a·(x − x<sub>1</sub>)·(x − x<sub>2</sub>)<br>Canónica: f(x) = a·(x − x<sub>v</sub>)² + y<sub>v</sub><small>Factorizada usa las raíces, canónica usa el vértice. La a es la misma en todas.</small></div>
+<div class="ej"><div class="tit">Ejemplo resuelto (del apunte)</div>
+<p>Analizar f(x) = x² − 3x (acá a = 1, b = −3, c = 0)</p>
+<div class="step"><b>Corte eje y:</b> c = 0, pasa por (0; 0)</div>
+<div class="step"><b>Raíces:</b> x² − 3x = 0 ⇒ x(x − 3) = 0 ⇒ x<sub>1</sub> = 0 y x<sub>2</sub> = 3</div>
+<div class="step"><b>Eje de simetría:</b> x = −(−3)/(2·1) = 3/2 (o el promedio: (0+3)/2 = 3/2)</div>
+<div class="step"><b>Vértice:</b> x<sub>v</sub> = 3/2; y<sub>v</sub> = f(3/2) = (3/2)² − 3·(3/2) = 9/4 − 9/2 = <b>−9/4</b>. V(3/2; −9/4)</div>
+<div class="step"><b>Imagen:</b> a = 1 &gt; 0 ⇒ Img f = [−9/4; +∞). Con esos 4 datos ya graficás la parábola.</div>
+</div>
+<figure class="fig">
+<svg viewBox="0 0 440 300" role="img" aria-label="Parábola f(x) = x al cuadrado menos 3x con vértice, raíces y eje de simetría rotulados">
+  <!-- ejes -->
+  <line x1="30" y1="169" x2="418" y2="169" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
+  <polygon points="418,169 410,165 410,173" fill="currentColor" opacity=".6"/>
+  <line x1="130" y1="292" x2="130" y2="14" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
+  <polygon points="130,14 126,22 134,22" fill="currentColor" opacity=".6"/>
+  <text x="426" y="185" font-size="13" fill="currentColor">x</text>
+  <text x="138" y="20" font-size="13" fill="currentColor">y</text>
+  <!-- ticks x -->
+  <line x1="190" y1="165" x2="190" y2="173" stroke="currentColor" opacity=".6"/><text x="190" y="187" font-size="11" fill="currentColor" text-anchor="middle">1</text>
+  <line x1="250" y1="165" x2="250" y2="173" stroke="currentColor" opacity=".6"/><text x="250" y="187" font-size="11" fill="currentColor" text-anchor="middle">2</text>
+  <line x1="370" y1="165" x2="370" y2="173" stroke="currentColor" opacity=".6"/><text x="370" y="187" font-size="11" fill="currentColor" text-anchor="middle">4</text>
+  <!-- ticks y -->
+  <line x1="126" y1="94" x2="134" y2="94" stroke="currentColor" opacity=".6"/><text x="120" y="98" font-size="11" fill="currentColor" text-anchor="end">2</text>
+  <line x1="126" y1="243" x2="134" y2="243" stroke="currentColor" opacity=".6"/><text x="120" y="247" font-size="11" fill="currentColor" text-anchor="end">−2</text>
+  <!-- eje de simetria -->
+  <line x1="220" y1="16" x2="220" y2="286" stroke="var(--amber)" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="228" y="32" font-size="12" fill="var(--amber)" font-weight="600">eje: x = 3/2</text>
+  <!-- parabola f(x)=x²−3x -->
+  <path d="M70,20 Q220,484 370,20" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+  <text x="160" y="62" font-size="13" fill="var(--accent)" text-anchor="middle" font-weight="600">f(x) = x² − 3x</text>
+  <!-- raices -->
+  <circle cx="130" cy="169" r="4.5" fill="var(--red)"/>
+  <text x="118" y="156" font-size="12" fill="var(--red)" text-anchor="end" font-weight="600">x₁ = 0</text>
+  <circle cx="310" cy="169" r="4.5" fill="var(--red)"/>
+  <text x="322" y="156" font-size="12" fill="var(--red)" font-weight="600">x₂ = 3</text>
+  <!-- vertice -->
+  <circle cx="220" cy="252" r="4.5" fill="var(--green)"/>
+  <text x="232" y="266" font-size="12" fill="var(--green)" font-weight="600">V(3/2; −9/4)</text>
+</svg>
+<figcaption>La parábola del ejemplo: raíces en 0 y 3, vértice en el medio (mínimo porque a &gt; 0) y eje de simetría x = 3/2.</figcaption>
+</figure>
+</div>
+
+<div class="card">
+<h3>Máximos y mínimos: la aplicación que cae SIEMPRE <span class="badge b-red"><span class="dot"></span>Imprescindible</span></h3>
+<p>El 80% del TP4 (y el ejercicio 2 del repaso del segundo parcial) es esto: maximizar ingreso o utilidad. La receta nunca cambia:</p>
+<div class="step"><b>Receta:</b> 1) Armá la función (si te dan demanda p en función de q, el ingreso es I = p·q, y la utilidad es U = I − C). 2) Verificá que sea cuadrática con a &lt; 0 (parábola con máximo). 3) El valor que maximiza es x<sub>v</sub> = −b/(2a). 4) El valor máximo es f(x<sub>v</sub>).</div>
+<div class="ej"><div class="tit">Ejemplo resuelto (TP4, actividad 3)</div>
+<p>Demanda: p = 1000 − 2q. ¿Qué nivel de producción maximiza el ingreso y cuánto es ese ingreso?</p>
+<div class="step"><b>Paso 1:</b> I(q) = p·q = (1000 − 2q)·q = 1000q − 2q². Es cuadrática con a = −2, b = 1000.</div>
+<div class="step"><b>Paso 2:</b> a &lt; 0 ⇒ tiene máximo en el vértice.</div>
+<div class="step"><b>Paso 3:</b> q<sub>v</sub> = −1000/(2·(−2)) = <b>250 unidades</b></div>
+<div class="step"><b>Paso 4:</b> I(250) = 1000·250 − 2·250² = 250000 − 125000 = <b>$125000</b></div>
+</div>
+<div class="ej"><div class="tit">Otro del TP4 (actividad 2), más cortito</div>
+<p>I(x) = 1500x − 50x². ¿Qué x da el ingreso máximo? x<sub>v</sub> = −1500/(2·(−50)) = <b>15</b>. Fin.</p>
+</div>
+</div>
+
+<!-- ===== UNIDAD 5 ===== -->
+<h2>Unidad 5 · Función exponencial y logarítmica <span class="badge b-red"><span class="dot"></span>Imprescindible</span></h2>
+
+<div class="card">
+<h3>Función exponencial <span class="badge b-red"><span class="dot"></span>Imprescindible</span></h3>
+<div class="formula">f(x) = a<sup>x</sup> &nbsp;&nbsp;con a &gt; 0 y a ≠ 1<small>La x está en el EXPONENTE. Eso la diferencia de las potencias comunes.</small></div>
+<ul>
+<li><b>Creciente</b> si a &gt; 1 (ej: 2<sup>x</sup>). <b>Decreciente</b> si 0 &lt; a &lt; 1 (ej: (1/2)<sup>x</sup>).</li>
+<li><b>Dominio:</b> ℝ. <b>Imagen:</b> ℝ⁺, o sea (0; +∞). Nunca toca el cero ni se hace negativa.</li>
+<li>Siempre pasa por <b>(0; 1)</b> porque a⁰ = 1.</li>
+<li>El eje x (la recta y = 0) es su <b>asíntota horizontal</b>: se acerca pero nunca llega.</li>
+<li>Si la base es el número e = 2,7182..., se llama <b>exponencial natural</b>.</li>
+</ul>
+<figure class="fig"><div class="par"><img alt="Función exponencial creciente y = 2 a la x, pasa por el punto (0, 1)" loading="lazy" src="data:image/png;base64,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"><img alt="Función exponencial decreciente y = un medio a la x, pasa por el punto (0, 1)" loading="lazy" src="data:image/png;base64,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"></div>
+<figcaption>Las dos del apunte: y = 2ˣ creciente (a &gt; 1) e y = (1/2)ˣ decreciente (0 &lt; a &lt; 1). Las dos pasan por (0; 1) y nunca tocan el eje x. Apunte teórico de la Unidad 5.</figcaption>
+</figure>
+</div>
+
+<div class="card">
+<h3>Interés compuesto y crecimiento <span class="badge b-red"><span class="dot"></span>Imprescindible</span></h3>
+<p>La aplicación que cae fija en el parcial. En el interés compuesto los intereses se suman al capital y generan nuevos intereses:</p>
+<div class="formula">C<sub>f</sub> = C<sub>0</sub> · <span style="font-size:1.15em">(</span>1 + <span class="frac"><span class="top">r</span><span class="bot">100</span></span><span style="font-size:1.15em">)</span><sup>t</sup><small>C₀ = capital inicial · r = rédito anual en % · t = años · capitalización anual</small></div>
+<div class="formula">C<sub>f</sub> = C<sub>0</sub> · <span style="font-size:1.15em">(</span>1 + <span class="frac"><span class="top">r</span><span class="bot">n·100</span></span><span style="font-size:1.15em">)</span><sup>n·t</sup><small>Con n períodos por año: n = 12 si es mensual, n = 4 trimestral, n = 365 diario. El r se divide por n y el t se multiplica por n.</small></div>
+<div class="ej"><div class="tit">Ejemplo resuelto (del apunte)</div>
+<p>Se colocan U$S 5000 al 6% anual durante 5 años.</p>
+<div class="step"><b>Capitalización anual:</b> C<sub>f</sub> = 5000 · (1 + 6/100)⁵ = 5000 · 1,06⁵ = <b>U$S 6691,13</b></div>
+<div class="step"><b>Capitalización mensual:</b> C<sub>f</sub> = 5000 · (1 + 6/1200)<sup>12·5</sup> = 5000 · 1,005⁶⁰ = <b>U$S 6744,25</b>. Capitalizar más seguido rinde más.</div>
+<div class="step"><b>El interés compuesto</b> (la ganancia) es C<sub>f</sub> − C<sub>0</sub>: en el caso anual, 6691,13 − 5000 = 1691,13.</div>
+</div>
+<figure class="fig">
+<svg viewBox="0 0 440 315" role="img" aria-label="Comparación entre interés compuesto, que crece como curva exponencial, e interés simple, que crece como recta">
+  <!-- ejes -->
+  <line x1="40" y1="280" x2="420" y2="280" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
+  <polygon points="420,280 412,276 412,284" fill="currentColor" opacity=".6"/>
+  <line x1="50" y1="292" x2="50" y2="14" stroke="currentColor" stroke-width="1.2" opacity=".6"/>
+  <polygon points="50,14 46,22 54,22" fill="currentColor" opacity=".6"/>
+  <text x="404" y="268" font-size="12" fill="currentColor">t (años)</text>
+  <text x="58" y="20" font-size="12" fill="currentColor">$</text>
+  <!-- ticks x -->
+  <line x1="167" y1="276" x2="167" y2="284" stroke="currentColor" opacity=".6"/><text x="167" y="298" font-size="11" fill="currentColor" text-anchor="middle">10</text>
+  <line x1="283" y1="276" x2="283" y2="284" stroke="currentColor" opacity=".6"/><text x="283" y="298" font-size="11" fill="currentColor" text-anchor="middle">20</text>
+  <line x1="400" y1="276" x2="400" y2="284" stroke="currentColor" opacity=".6"/><text x="400" y="298" font-size="11" fill="currentColor" text-anchor="middle">30</text>
+  <text x="50" y="298" font-size="11" fill="currentColor" text-anchor="middle">0</text>
+  <!-- ticks y -->
+  <line x1="46" y1="237" x2="54" y2="237" stroke="currentColor" opacity=".6"/><text x="42" y="241" font-size="11" fill="currentColor" text-anchor="end">5000</text>
+  <line x1="46" y1="150" x2="54" y2="150" stroke="currentColor" opacity=".6"/><text x="42" y="154" font-size="11" fill="currentColor" text-anchor="end">15000</text>
+  <line x1="46" y1="20" x2="54" y2="20" stroke="currentColor" opacity=".6"/><text x="42" y="24" font-size="11" fill="currentColor" text-anchor="end">30000</text>
+  <!-- interes simple: 5000(1 + 0,06t) -->
+  <line x1="50" y1="237" x2="400" y2="159" stroke="var(--green)" stroke-width="2.5"/>
+  <text x="392" y="150" font-size="12" fill="var(--green)" text-anchor="end" font-weight="600">Simple: 5000·(1 + 0,06·t)</text>
+  <!-- interes compuesto: 5000·1,06^t -->
+  <path d="M50,237 L85,228 L120,219 L155,207 L190,193 L225,176 L260,156 L295,133 L330,105 L365,71 L400,31" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+  <text x="392" y="22" font-size="12" fill="var(--accent)" text-anchor="end" font-weight="600">Compuesto: 5000·1,06ᵗ</text>
+  <!-- brecha a t=30 -->
+  <line x1="400" y1="31" x2="400" y2="159" stroke="var(--red)" stroke-width="1.3" stroke-dasharray="4 3"/>
+  <!-- capital inicial -->
+  <circle cx="50" cy="237" r="3.5" fill="currentColor"/>
+  <text x="60" y="250" font-size="11" fill="currentColor">C₀ = 5000</text>
+</svg>
+<figcaption>Mismo capital ($5000) al 6% anual: el simple suma siempre el mismo interés (recta), el compuesto genera interés sobre interés (curva exponencial). Con los años la brecha (línea punteada) se agranda.</figcaption>
+</figure>
+<p>Mismo molde para población: P = P<sub>0</sub>(1 + i)<sup>t</sup>, con i el índice de crecimiento en tanto por 1. Y para depreciación continua aparece V = C·e<sup>−kt</sup> (TP5 y repaso: una máquina que pierde valor con el tiempo).</p>
+</div>
+
+<div class="card">
+<h3>Logaritmo: definición y propiedades <span class="badge b-red"><span class="dot"></span>Imprescindible</span></h3>
+<p>El logaritmo no es un bicho raro: es <b>una pregunta sobre exponentes</b>. "log en base a de b" pregunta: ¿a qué exponente tengo que elevar a para que me dé b?</p>
+<div class="formula">log<sub>a</sub>(b) = c ⇔ a<sup>c</sup> = b<small>Ej: log₂ 64 = 6 porque 2⁶ = 64. Si la base es 10 se escribe log a secas; si es e, se escribe ln.</small></div>
+<p>Propiedades (las 7 del apunte, tal cual):</p>
+<ul>
+<li>1) log<sub>a</sub> 1 = 0 (porque a⁰ = 1)</li>
+<li>2) log<sub>a</sub> a = 1 (porque a¹ = a)</li>
+<li>3) a<sup>log<sub>a</sub> b</sup> = b</li>
+<li>4) log<sub>a</sub>(x·y) = log<sub>a</sub> x + log<sub>a</sub> y (producto se vuelve suma)</li>
+<li>5) log<sub>a</sub>(x/y) = log<sub>a</sub> x − log<sub>a</sub> y (cociente se vuelve resta)</li>
+<li>6) log<sub>a</sub> b<sup>n</sup> = n·log<sub>a</sub> b (el exponente baja multiplicando: LA clave para despejar el tiempo t)</li>
+<li>7) Cambio de base: log<sub>a</sub> b = log<sub>c</sub> b / log<sub>c</sub> a = log b / log a = ln b / ln a (para usar la calculadora)</li>
+</ul>
+<div class="ej"><div class="tit">Ejemplo resuelto: despejar el tiempo (Repaso 2do parcial, ej. 4c)</div>
+<p>Invertís $50000 al 6% anual. ¿Cuántos años hasta llegar a $80000?</p>
+<div class="step"><b>Paso 1:</b> planteo: 80000 = 50000 · 1,06<sup>t</sup></div>
+<div class="step"><b>Paso 2:</b> despejo la potencia: 1,06<sup>t</sup> = 80000/50000 = 1,6</div>
+<div class="step"><b>Paso 3:</b> aplico log a los dos lados y bajo el exponente (propiedad 6): t · log 1,06 = log 1,6</div>
+<div class="step"><b>Paso 4:</b> t = log 1,6 / log 1,06 ≈ 0,2041 / 0,0253 ≈ <b>8,07 años</b> (unos 8 años)</div>
+</div>
+</div>
+
+<div class="card">
+<h3>Función logarítmica <span class="badge b-amber"><span class="dot"></span>Importante</span></h3>
+<div class="formula">f(x) = log<sub>a</sub>(x) &nbsp;&nbsp;con a &gt; 0, a ≠ 1<small>Es la inversa de la exponencial: sus gráficas son simétricas respecto de la recta y = x</small></div>
+<ul>
+<li><b>Dominio:</b> ℝ⁺, o sea (0; +∞). El log solo come números positivos. <b>Imagen:</b> ℝ.</li>
+<li>Siempre pasa por <b>(1; 0)</b> porque log<sub>a</sub> 1 = 0.</li>
+<li>El eje y (la recta x = 0) es su <b>asíntota vertical</b>.</li>
+<li>Creciente si a &gt; 1, decreciente si 0 &lt; a &lt; 1. Igual que la exponencial.</li>
+</ul>
+<figure class="fig"><img alt="Función logarítmica y = logaritmo en base 2 de x, pasa por (1, 0) con asíntota vertical en x = 0" loading="lazy" src="data:image/png;base64,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">
+<figcaption>y = log₂(x): pasa por (1; 0), tiene asíntota vertical en x = 0 y crece despacio pero sin techo. Apunte teórico de la Unidad 5.</figcaption>
+</figure>
+<p>Truco para acordarte de dominio e imagen: <b>la log intercambia los de la exponencial</b> (porque son inversas). Exponencial: Dom ℝ, Img ℝ⁺. Logarítmica: Dom ℝ⁺, Img ℝ. El punto fijo también se intercambia: (0; 1) pasa a ser (1; 0).</p>
+<figure class="fig"><img alt="Funciones inversas: exponencial de base un medio y logaritmo de base un medio, simétricas respecto de la recta y = x" loading="lazy" src="data:image/png;base64,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">
+<figcaption>Exponencial y logarítmica de la misma base (acá 1/2) son inversas: sus gráficas son simétricas respecto de la recta y = x (punteada). Apunte teórico de la Unidad 5.</figcaption>
+</figure>
+<p>En el TP5 te piden hallar dominio de cosas como f(x) = ln(2x − 4): planteás el argumento mayor que cero: 2x − 4 &gt; 0 ⇒ x &gt; 2 ⇒ Dom = (2; +∞). Es una inecuación de la unidad 1, todo se conecta.</p>
+</div>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- 2. QUIZ -->
+<!-- ============================================================ -->
+<section class="panel" id="p-quiz">
+<h2>Quiz interactivo</h2>
+<p>45 preguntas (9 por unidad): multiple choice, verdadero/falso y respuesta numérica. Respondé y al toque te muestra si está bien y el procedimiento. En las numéricas podés usar coma o punto decimal. Consejo: leé la explicación aunque hayas acertado.</p>
+<div class="scorebar"><span>Aciertos: <b id="scoreOk">0</b></span><span>Errores: <b id="scoreBad">0</b></span><span>Respondidas: <b id="scoreTot">0</b> / 45</span><span><button onclick="resetQuiz()" style="background:none;border:1px solid var(--border);border-radius:8px;color:var(--muted);padding:2px 10px;cursor:pointer;font-size:.8rem">Reiniciar</button></span></div>
+<div id="quizArea"></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 3. FLASHCARDS -->
+<!-- ============================================================ -->
+<section class="panel" id="p-flash">
+<h2>Flashcards</h2>
+<p>50 tarjetas (10 por unidad). Tocá la tarjeta para darla vuelta. Frente: fórmula incompleta o pregunta. Dorso: la fórmula completa más una mnemotecnia. Las que falles, repetilas al final de la sesión.</p>
+<div id="flashArea"></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 4. MAPA CONCEPTUAL -->
+<!-- ============================================================ -->
+<section class="panel" id="p-mapa">
+<h2>Mapa conceptual</h2>
+<p>Cada mapa te muestra la jerarquía de la unidad y, lo más importante, <b>qué tipo de problema te lleva a qué herramienta</b>. Cuando estés trabado en un ejercicio, vení acá y preguntate: ¿qué me están pidiendo?</p>
+
+<div class="map">
+<div class="node"><div class="nt">UNIDAD 1 · Ecuaciones e inecuaciones</div>
+  <div class="node"><div class="nt">¿Hay un signo = con una incógnita? → Ecuación lineal</div>
+    <div class="leaf"><b>Resolver:</b> pasaje de términos → x = (c − b)/a</div>
+    <div class="leaf"><b>Queda 0 = 0:</b> compatible indeterminada (infinitas soluciones)</div>
+    <div class="leaf"><b>Queda un absurdo (4 = −8):</b> incompatible, S = ∅</div>
+    <div class="leaf"><b>¿x en el denominador?</b> excluí los valores prohibidos y verificá en la original</div>
+  </div>
+  <div class="node"><div class="nt">¿Hay &lt;, &gt;, ≤, ≥? → Inecuación lineal</div>
+    <div class="leaf"><b>Mismos pasajes</b>, pero negativo multiplicando o dividiendo ⇒ se invierte el sentido</div>
+    <div class="leaf"><b>Resultado:</b> un intervalo. Corchete incluye, paréntesis no, infinito siempre con paréntesis</div>
+  </div>
+  <div class="node"><div class="nt">¿Enunciado con plata? → Modelo de utilidad</div>
+    <div class="leaf"><b>C = fijo + variable·x</b> · <b>I = precio·x</b> · <b>U = I − C</b></div>
+    <div class="leaf"><b>"utilidad de $N"</b> → ecuación · <b>"para que haya utilidades"</b> → inecuación U &gt; 0</div>
+  </div>
+</div>
+
+<div class="node"><div class="nt">UNIDAD 2 · Funciones y sistemas lineales</div>
+  <div class="node"><div class="nt">¿Te dan un gráfico? → Análisis de funciones</div>
+    <div class="leaf"><b>Ceros</b> (corta eje x) · <b>crecimiento/decrecimiento</b> · <b>positividad/negatividad</b> · <b>máximos y mínimos</b></div>
+    <div class="leaf"><b>¿Es función?</b> cada x debe tener UNA sola imagen</div>
+  </div>
+  <div class="node"><div class="nt">¿Relación lineal entre dos variables? → f(x) = mx + b</div>
+    <div class="leaf"><b>Tengo pendiente y un punto</b> → haz de rectas: y − y₁ = m(x − x₁)</div>
+    <div class="leaf"><b>Tengo dos puntos</b> → primero m = (y₂ − y₁)/(x₂ − x₁), después haz de rectas</div>
+    <div class="leaf"><b>"paralela a"</b> → misma m · <b>"perpendicular a"</b> → m₁ = −1/m₂</div>
+    <div class="leaf"><b>Costo lineal:</b> m = costo variable, b = costo fijo</div>
+  </div>
+  <div class="node"><div class="nt">¿Dos ecuaciones, dos incógnitas? → Sistema 2x2</div>
+    <div class="leaf"><b>Métodos:</b> sustitución (coef. 1), igualación, reducción · o gráfico</div>
+    <div class="leaf"><b>Se cortan</b> → compatible determinado · <b>misma recta</b> → indeterminado · <b>paralelas</b> → incompatible</div>
+    <div class="leaf"><b>"punto de equilibrio"</b> → igualar oferta = demanda, o ingreso = costo</div>
+  </div>
+</div>
+
+<div class="node"><div class="nt">UNIDAD 3 · Ecuación de segundo grado: ax² + bx + c = 0</div>
+  <div class="node"><div class="nt">Mirá qué coeficiente falta ANTES de elegir el método</div>
+    <div class="leaf"><b>Falta c</b> (ax² + bx = 0) → factor común x ⇒ x₁ = 0, x₂ = −b/a</div>
+    <div class="leaf"><b>Falta b</b> (ax² + c = 0) → despejo ⇒ x = ±√(−c/a)</div>
+    <div class="leaf"><b>Faltan b y c</b> (ax² = 0) → x₁ = x₂ = 0</div>
+    <div class="leaf"><b>Está completa</b> → resolvente: x = (−b ± √(b² − 4ac)) / 2a</div>
+  </div>
+  <div class="node"><div class="nt">¿Cuántas soluciones? → Discriminante Δ = b² − 4ac</div>
+    <div class="leaf">Δ &gt; 0 → dos raíces · Δ = 0 → raíz doble · Δ &lt; 0 → sin raíces reales</div>
+  </div>
+  <div class="node"><div class="nt">¿Problema económico? → Armar la cuadrática</div>
+    <div class="leaf"><b>"utilidad cero"</b> → I(x) = C(x) · <b>"utilidad de $N"</b> → I(x) − C(x) = N → resolvente</div>
+  </div>
+</div>
+
+<div class="node"><div class="nt">UNIDAD 4 · Función cuadrática: f(x) = ax² + bx + c (parábola)</div>
+  <div class="node"><div class="nt">¿Te piden graficar o "hallar los elementos"?</div>
+    <div class="leaf"><b>Concavidad:</b> a &gt; 0 ramas arriba (mínimo) · a &lt; 0 ramas abajo (máximo)</div>
+    <div class="leaf"><b>Corte eje y:</b> (0; c) · <b>Raíces:</b> resolvente (unidad 3 al rescate)</div>
+    <div class="leaf"><b>Vértice:</b> xᵥ = −b/2a, yᵥ = f(xᵥ) · <b>Eje de simetría:</b> x = xᵥ o promedio de raíces</div>
+    <div class="leaf"><b>Dominio:</b> ℝ · <b>Imagen:</b> [yᵥ; +∞) si a &gt; 0, (−∞; yᵥ] si a &lt; 0</div>
+    <div class="leaf"><b>Formas:</b> factorizada a(x − x₁)(x − x₂) · canónica a(x − xᵥ)² + yᵥ</div>
+  </div>
+  <div class="node"><div class="nt">¿"Máximo ingreso" / "utilidad máxima"? → Vértice</div>
+    <div class="leaf"><b>Demanda p(q)</b> → ingreso I = p·q (queda cuadrática con a &lt; 0)</div>
+    <div class="leaf"><b>Cantidad óptima</b> = xᵥ = −b/2a · <b>valor máximo</b> = f(xᵥ)</div>
+    <div class="leaf"><b>Utilidad:</b> U(x) = I(x) − C(x), después el mismo vértice</div>
+  </div>
+</div>
+
+<div class="node"><div class="nt">UNIDAD 5 · Exponencial y logarítmica (son inversas)</div>
+  <div class="node"><div class="nt">¿La x está en el exponente? → f(x) = aˣ</div>
+    <div class="leaf"><b>a &gt; 1</b> crece · <b>0 &lt; a &lt; 1</b> decrece · pasa por (0; 1) · Dom ℝ, Img ℝ⁺ · asíntota y = 0</div>
+    <div class="leaf"><b>"interés compuesto"</b> → C_f = C₀(1 + r/100)ᵗ · con n períodos: C_f = C₀(1 + r/(n·100))ⁿᵗ</div>
+    <div class="leaf"><b>"población crece i%"</b> → P = P₀(1 + i)ᵗ · <b>"se deprecia continuamente"</b> → V = C·e⁻ᵏᵗ</div>
+  </div>
+  <div class="node"><div class="nt">¿Te preguntan "cuánto tiempo / qué exponente"? → Logaritmo</div>
+    <div class="leaf"><b>Definición:</b> log_a(b) = c ⇔ aᶜ = b</div>
+    <div class="leaf"><b>Despejar t:</b> aislá la potencia, aplicá log, bajá el exponente (log bⁿ = n·log b), dividí</div>
+    <div class="leaf"><b>Base rara en la calculadora</b> → cambio de base: log_a b = log b / log a</div>
+  </div>
+  <div class="node"><div class="nt">¿Función con log? → f(x) = log_a(x)</div>
+    <div class="leaf">Dom ℝ⁺, Img ℝ · pasa por (1; 0) · asíntota x = 0 · creciente si a &gt; 1</div>
+    <div class="leaf"><b>Dominio de log(algo):</b> plantear algo &gt; 0 y resolver la inecuación (unidad 1)</div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 5. GUIA 80/20 -->
+<!-- ============================================================ -->
+<section class="panel" id="p-guia">
+<h2>Guía estratégica 80/20</h2>
+<p>Acá está el análisis frío de qué estudiar primero, basado en los TPs y en los dos modelos de examen que subió la cátedra (Repaso 1er Parcial y Repaso 2do Parcial). Los repasos son ORO: el ejercicio 2 del repaso del segundo parcial es literalmente la actividad 7 del TP4, palabra por palabra. La cátedra recicla sus propios ejercicios.</p>
+
+<h3>Qué cae casi seguro (evidencia de los repasos)</h3>
+<table>
+<tr><th>Tipo de ejercicio</th><th>Evidencia</th><th>Unidad</th></tr>
+<tr><td><span class="badge b-red ml0"><span class="dot"></span>Imprescindible</span><br>Resolver ecuaciones e inecuaciones lineales (con fracciones), dar el conjunto solución como intervalo y graficarlo</td><td>Repaso 1, ej. 1 · TP1 act. 3 y 6</td><td>U1</td></tr>
+<tr><td><span class="badge b-red ml0"><span class="dot"></span>Imprescindible</span><br>Problema de costo fijo + variable, precio, y hallar cantidad de equilibrio o cantidad para una utilidad dada</td><td>Repaso 1, ej. 2 y 3 · TP1 act. 2 y 7</td><td>U1/U2</td></tr>
+<tr><td><span class="badge b-red ml0"><span class="dot"></span>Imprescindible</span><br>Análisis completo de un gráfico: ceros, crecimiento, positividad, máximos</td><td>Repaso 1, ej. 4 · TP2 act. 1</td><td>U2</td></tr>
+<tr><td><span class="badge b-red ml0"><span class="dot"></span>Imprescindible</span><br>Ecuación de oferta o demanda lineal a partir de dos puntos</td><td>Repaso 1, ej. 5 y 7 · TP2 act. 6</td><td>U2</td></tr>
+<tr><td><span class="badge b-red ml0"><span class="dot"></span>Imprescindible</span><br>Recta: pendiente, ordenada, raíz, graficar; u obtener la ecuación desde el gráfico</td><td>Repaso 1, ej. 6 y 8 · TP2 act. 4, 5, 7</td><td>U2</td></tr>
+<tr><td><span class="badge b-red ml0"><span class="dot"></span>Imprescindible</span><br>Resolver las 3 cuadráticas: una sin c, una sin b y una completa con resolvente (y justificar si no hay solución)</td><td>Repaso 2, ej. 1 · TP3 act. 1</td><td>U3</td></tr>
+<tr><td><span class="badge b-red ml0"><span class="dot"></span>Imprescindible</span><br>Utilidad máxima: demanda lineal → armar I = p·x, U = I − C, vértice</td><td>Repaso 2, ej. 2 (= TP4 act. 7) · TP4 act. 2, 3, 6, 8</td><td>U4</td></tr>
+<tr><td><span class="badge b-red ml0"><span class="dot"></span>Imprescindible</span><br>Análisis de función exponencial: creciente o no, dominio, imagen, evaluar, elegir el gráfico correcto y justificar</td><td>Repaso 2, ej. 3 · TP5 act. 1 y 2</td><td>U5</td></tr>
+<tr><td><span class="badge b-red ml0"><span class="dot"></span>Imprescindible</span><br>Interés compuesto: monto con capitalización anual y mensual, y despejar el tiempo con logaritmo</td><td>Repaso 2, ej. 4 · TP5 act. 3 y 6</td><td>U5</td></tr>
+<tr><td><span class="badge b-amber ml0"><span class="dot"></span>Importante</span><br>Función logarítmica: dominio, imagen, evaluar, graficar</td><td>Repaso 2, ej. 5 · TP5 act. 5</td><td>U5</td></tr>
+<tr><td><span class="badge b-amber ml0"><span class="dot"></span>Importante</span><br>Depreciación continua V = C·e⁻ᵏᵗ: evaluar y hallar el tiempo para llegar a la mitad del valor</td><td>Repaso 2, ej. 6 · TP5 act. 3.3</td><td>U5</td></tr>
+<tr><td><span class="badge b-amber ml0"><span class="dot"></span>Importante</span><br>Sistemas 2x2: resolver, clasificar y punto de equilibrio de mercado</td><td>TP2 act. 9 y 10 · programa lo destaca</td><td>U2</td></tr>
+<tr><td><span class="badge b-green ml0"><span class="dot"></span>Complementario</span><br>Elementos completos de la parábola (vértice, eje, formas canónica y factorizada)</td><td>TP4 act. 1 y 9</td><td>U4</td></tr>
+<tr><td><span class="badge b-green ml0"><span class="dot"></span>Complementario</span><br>Porcentajes y conjuntos numéricos (son la base, se dan por sabidos)</td><td>TP0</td><td>Prelim.</td></tr>
+</table>
+
+<h3>Orden de estudio sugerido (qué domina a qué)</h3>
+<div class="prio"><div class="ic">1</div><div><b>Preliminares + Unidad 1 (2,5 h)</b><small>Pasaje de términos, porcentajes e inecuaciones son la base de TODO lo demás. Si esto cojea, todo cojea. Hacé el TP1 entero.</small></div></div>
+<div class="prio"><div class="ic">2</div><div><b>Unidad 2 (3,5 h)</b><small>La más larga y la columna del primer parcial. Pendiente y recta por dos puntos se reusan en oferta/demanda y en costos. Sistemas: dominá UN método analítico bien (reducción rinde) y el gráfico.</small></div></div>
+<div class="prio"><div class="ic">3</div><div><b>Unidad 3 (1,5 h)</b><small>Corta y rendidora: 3 casos + resolvente + discriminante. La resolvente es prerrequisito directo de la unidad 4, por eso va antes.</small></div></div>
+<div class="prio"><div class="ic">4</div><div><b>Unidad 4 (3 h)</b><small>Recicla la unidad 3 (raíces) y la 2 (demanda lineal). Practicá el combo demanda → ingreso → vértice hasta hacerlo dormido: es EL ejercicio del segundo parcial.</small></div></div>
+<div class="prio"><div class="ic">5</div><div><b>Unidad 5 (3 h)</b><small>Interés compuesto + despejar t con log es la pareja que cae fija. Las propiedades de log se aprenden usándolas: hacé TP5 actividades 3, 4 y 6.</small></div></div>
+<div class="prio"><div class="ic">6</div><div><b>Repasos modelo (1,5 h)</b><small>Hacé el Repaso 1 y el Repaso 2 como simulacro, con tiempo y sin apuntes. Son el formato real del examen.</small></div></div>
+
+<h3>Estrategia para el día del parcial</h3>
+<ul>
+<li><b>Arrancá por lo mecánico:</b> las ecuaciones sueltas (ej. 1 de cada repaso) son puntos rápidos. Asegurálos primero.</li>
+<li><b>En los problemas, escribí el planteo aunque no llegues al final:</b> identificar I, C y U ya demuestra que entendés el modelo.</li>
+<li><b>Verificá las cuadráticas:</b> reemplazar la raíz en la ecuación te lleva 20 segundos y te salva de entregar un error de signo.</li>
+<li><b>En interés compuesto, escribí la fórmula general primero</b> y recién después reemplazá. Si pifiás la cuenta, la fórmula bien escrita suma.</li>
+<li><b>Justificá todo lo conceptual:</b> "es creciente porque a = 2 &gt; 1" vale más que solo "creciente". La cátedra pide justificación explícita en los repasos.</li>
+</ul>
+
+<h3>Presupuesto de tiempo total</h3>
+<table>
+<tr><th>Bloque</th><th>Tiempo</th><th>Para cuándo</th></tr>
+<tr><td>Preliminares + U1</td><td>2,5 h</td><td rowspan="2">1er parcial (U1 y U2)</td></tr>
+<tr><td>U2</td><td>3,5 h</td></tr>
+<tr><td>U3</td><td>1,5 h</td><td rowspan="3">2do parcial (U3, U4 y U5)</td></tr>
+<tr><td>U4</td><td>3 h</td></tr>
+<tr><td>U5</td><td>3 h</td></tr>
+<tr><td>Simulacros (repasos modelo)</td><td>1,5 h</td><td>Últimos 2 días antes de cada parcial</td></tr>
+<tr><td><b>Total</b></td><td><b>≈ 15 h</b></td><td></td></tr>
+</table>
+<p>Si te queda MUY poco tiempo: resolvente + vértice/ingreso máximo + interés compuesto con despeje de t. Esos tres bloques son más de la mitad del segundo parcial. Para el primero: inecuaciones con intervalo + recta por dos puntos + problema de utilidad. Vas a llegar.</p>
+</section>
+
+<p class="foot">Hecho desde los apuntes y TPs de la cátedra (Salaj / Romero, UCES 2026)<br>Resumen · Quiz · Flashcards · Mapa · Guía 80/20 · Todo en este archivo, funciona sin internet</p>
+</div>
+
+<script>
+/* ---------- THEME ---------- */
+function toggleTheme(){
+  const cur = document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  localStorage.setItem('theme', next);
+  document.getElementById('themeBtn').textContent = next === 'dark' ? '☀️' : '🌙';
+}
+const savedTheme = localStorage.getItem('theme');
+if(savedTheme){ document.documentElement.dataset.theme = savedTheme; document.getElementById('themeBtn').textContent = savedTheme === 'dark' ? '☀️' : '🌙'; }
+
+/* ---------- TABS ---------- */
+document.querySelectorAll('#tabs button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    document.getElementById('p-'+b.dataset.t).classList.add('active');
+    window.scrollTo({top:0});
+  });
+});
+
+/* ---------- QUIZ DATA ---------- */
+const UNIDADES = ['Unidad 1 · Ecuaciones e inecuaciones','Unidad 2 · Funciones y sistemas','Unidad 3 · Ecuación de segundo grado','Unidad 4 · Función cuadrática','Unidad 5 · Exponencial y logarítmica'];
+const Q = [
+/* U1 */
+{u:0,t:'mc',q:'Resolvé: 7x − 4 = 3x + 8. ¿Cuánto vale x?',o:['x = 3','x = −3','x = 1','x = 12'],a:0,e:'Pasajes: 7x − 3x = 8 + 4 ⇒ 4x = 12 ⇒ x = 3. Verificación: 7·3 − 4 = 17 = 3·3 + 8. ✔ (Ejemplo del apunte de la unidad 1.)'},
+{u:0,t:'tf',q:'Al pasar un número negativo multiplicando o dividiendo al otro miembro de una inecuación, se invierte el sentido de la desigualdad.',a:true,e:'Verdadero. Es LA regla de las inecuaciones. Con positivos el sentido se conserva; con negativos la flecha se da vuelta. Ej: −5x ≤ 3 ⇒ x ≥ −3/5.'},
+{u:0,t:'mc',q:'Resolvés una ecuación lineal y llegás a 0 = 0. ¿Qué tipo de ecuación es?',o:['Compatible indeterminada: infinitas soluciones (identidad)','Incompatible: sin solución','Compatible determinada: x = 0','No se puede saber'],a:0,e:'Si queda 0 = 0, cualquier número real x satisface la ecuación: es una identidad, compatible indeterminada. Si en cambio queda un absurdo (ej: 4 = −8), es incompatible y S = ∅.'},
+{u:0,t:'num',q:'Resolvé la inecuación 3x + 5 > 11. La solución es x > ... (escribí el número)',a:2,tol:0.001,e:'3x > 11 − 5 ⇒ 3x > 6 ⇒ x > 2. El 3 pasa dividiendo y como es positivo NO cambia el sentido. Solución: (2; +∞). (Ejemplo del apunte.)'},
+{u:0,t:'mc',q:'¿Qué conjunto representa el intervalo [−1; 4]?',o:['Los números entre −1 y 4, ambos incluidos','Los números entre −1 y 4, sin incluirlos','Los mayores que −1','Los números entre −1 y 4, solo el 4 incluido'],a:0,e:'Corchete en los dos extremos = intervalo cerrado: −1 ≤ x ≤ 4, ambos entran. Es el caso a) de la actividad 4 del TP1.'},
+{u:0,t:'num',q:'Costo variable $6 por unidad, costo fijo $80000, precio de venta $10. ¿Cuántas unidades hay que vender para una utilidad de $60000?',a:35000,tol:1,e:'U = I − C: 10x − (6x + 80000) = 60000 ⇒ 4x = 140000 ⇒ x = 35000 unidades. (TP1, actividad 2a.)'},
+{u:0,t:'tf',q:'En una ecuación fraccionaria, la solución de la ecuación lineal resultante siempre es solución de la ecuación original.',a:false,e:'Falso. Puede dar un valor que anula un denominador de la original (valor prohibido). En el apunte, una ecuación da x = 2/3 pero ese valor anula 3x − 2: la ecuación original no tiene solución. SIEMPRE hay que verificar.'},
+{u:0,t:'mc',q:'Resolvé: −2 < 5 + 3m < 20',o:['−7/3 < m < 5','−7 < m < 15','7/3 < m < 5','−7/3 ≤ m ≤ 5'],a:0,e:'Resto 5 en los tres miembros: −7 < 3m < 15. Divido por 3 (positivo, no cambia nada): −7/3 < m < 5. Intervalo abierto (−7/3; 5). (Ejemplo 3 del apunte.)'},
+{u:0,t:'mc',q:'Al resolver una inecuación llegás a −29 ≥ 7. ¿Qué concluís?',o:['No tiene solución: S = ∅','Tiene infinitas soluciones','La solución es x = −29','Hay que cambiar el sentido y queda −29 ≤ 7'],a:0,e:'−29 ≥ 7 es una afirmación falsa que no depende de la incógnita: ningún valor la salva. El conjunto solución es vacío, S = ∅. (Ejemplo 4 del apunte.)'},
+/* U2 */
+{u:1,t:'mc',q:'¿Cuál es la pendiente de la recta que pasa por (1; 5) y (−2; −1)?',o:['m = 2','m = 1/2','m = −2','m = 6'],a:0,e:'m = (y₂ − y₁)/(x₂ − x₁) = (−1 − 5)/(−2 − 1) = −6/−3 = 2. (Ejemplo del apunte: ambos puntos pertenecen a f(x) = 2x + 3.)'},
+{u:1,t:'num',q:'Si f(x) = 2x + 3, ¿cuánto vale f(−1)?',a:1,tol:0.001,e:'f(−1) = 2·(−1) + 3 = −2 + 3 = 1. La pendiente 2 indica que por cada unidad que aumenta x, y aumenta 2; el 3 es donde corta al eje y.'},
+{u:1,t:'tf',q:'Dos rectas son paralelas cuando sus pendientes son iguales (m₁ = m₂).',a:true,e:'Verdadero. Paralelas: m₁ = m₂ (misma inclinación, nunca se cortan). Perpendiculares: m₁ = −1/m₂ (pendiente opuesta e inversa).'},
+{u:1,t:'mc',q:'¿Qué pendiente tiene una recta perpendicular a otra de pendiente m = 2?',o:['−1/2','1/2','−2','2'],a:0,e:'Perpendicular: m₁ = −1/m₂ = −1/2. La regla: invertís la pendiente y le cambiás el signo ("opuesta e inversa").'},
+{u:1,t:'mc',q:'Un sistema 2x2 cuyas rectas tienen la misma pendiente pero distinta ordenada al origen es...',o:['Incompatible: rectas paralelas, S = ∅','Compatible determinado','Compatible indeterminado','Imposible de clasificar sin resolverlo'],a:0,e:'Misma pendiente + distinta ordenada = rectas paralelas que nunca se cortan: sistema incompatible, conjunto solución vacío. Si lo resolvés analíticamente llegás a un absurdo (ej: 1 = 2).'},
+{u:1,t:'num',q:'Demanda: p + 2x = 36. Oferta: p − 3x = 6. ¿Cuál es la cantidad x en el punto de equilibrio del mercado?',a:6,tol:0.01,e:'Equilibrio: las dos se cumplen a la vez. Resto las ecuaciones: 5x = 30 ⇒ x = 6. Después p = 6 + 3·6 = 24. Equilibrio: 6 unidades a $24. (TP2, actividad 10c.)'},
+{u:1,t:'mc',q:'Para la función de costo C(x) = 1500 + 3x + 0,02x² + 0,0001x³, el valor C(0) = 1500 representa...',o:['El costo fijo: lo que se gasta sin producir nada','El costo de producir una unidad','El costo variable','El precio de venta'],a:0,e:'C(0) es el costo sin producir ni un metro: el costo fijo, $1500. (Ejemplo del apunte de la unidad 2.)'},
+{u:1,t:'tf',q:'Una tabla donde x = 15 aparece dos veces con imágenes distintas (y = 6 e y = 8) puede representar una función.',a:false,e:'Falso. Una función asigna a cada x UN ÚNICO y. Si x = 15 tiene dos imágenes, no es función. (Ejemplo 2 del apunte.)'},
+{u:1,t:'num',q:'Producir 10 unidades cuesta $75 y producir 25 cuesta $120 (costo lineal). ¿Cuál es el costo variable por unidad (la pendiente)?',a:3,tol:0.01,e:'m = (120 − 75)/(25 − 10) = 45/15 = 3. Cada unidad extra cuesta $3. El costo fijo sale del haz de rectas: C(x) = 3x + 45. (TP2, actividad 6c.)'},
+/* U3 */
+{u:2,t:'mc',q:'¿Cuál es la fórmula resolvente de ax² + bx + c = 0?',o:['x = (−b ± √(b² − 4ac)) / (2a)','x = (b ± √(b² − 4ac)) / (2a)','x = (−b ± √(b² + 4ac)) / (2a)','x = −b ± √(b² − 4ac) / 2'],a:0,e:'Letra por letra: menos b, más menos la raíz de b al cuadrado menos cuatro a c, TODO dividido 2a. Ojo con las otras: signo de b, signo dentro de la raíz, y la división que cubre toda la expresión.'},
+{u:2,t:'num',q:'Calculá el discriminante Δ de 3x² + 5x − 8 = 0',a:121,tol:0.01,e:'Δ = b² − 4ac = 5² − 4·3·(−8) = 25 + 96 = 121. Como c es negativo, −4ac se vuelve positivo: el error de signo acá es clásico. Δ > 0 ⇒ dos raíces (dan 1 y −8/3).'},
+{u:2,t:'mc',q:'Si Δ < 0, la ecuación cuadrática...',o:['No tiene raíces reales','Tiene dos raíces reales distintas','Tiene una raíz doble','Tiene una raíz positiva y una negativa'],a:0,e:'Δ < 0 significa raíz cuadrada de un número negativo: no existe en los reales. Δ > 0: dos raíces distintas. Δ = 0: ambas raíces reales e iguales.'},
+{u:2,t:'num',q:'Resolvé 6x² + 3x = 0. Una raíz es 0. ¿Cuál es la otra? (decimal, ej: −0.5)',a:-0.5,tol:0.001,e:'Falta c ⇒ factor común: x(6x + 3) = 0 ⇒ x₁ = 0 o 6x + 3 = 0 ⇒ x₂ = −3/6 = −1/2 = −0,5. (Ejemplo del apunte.)'},
+{u:2,t:'mc',q:'Las soluciones de 25x² − 100 = 0 son...',o:['x = 2 y x = −2','Solo x = 2','x = 4 y x = −4','No tiene solución real'],a:0,e:'Falta b ⇒ despejo: x² = 100/25 ⇒ x = ±√(100/25) = ±10/5 = ±2. ¡No te olvides del ±! Sacar raíz da DOS soluciones. (Ejemplo del apunte.)'},
+{u:2,t:'tf',q:'La fórmula resolvente solo puede usarse con ecuaciones cuadráticas completas.',a:false,e:'Falso. El apunte lo dice explícito: "La fórmula presentada puede aplicarse a la ecuación tanto completa como incompleta". Ej: 30x² − 15x = 0 con la resolvente da x = 1/2 y x = 0. Para incompletas los métodos cortos son más rápidos, pero la resolvente siempre funciona.'},
+{u:2,t:'mc',q:'¿Cuáles son las raíces de ax² = 0 (con a ≠ 0)?',o:['x₁ = x₂ = 0','x = ±√a','x₁ = 0 y x₂ = a','No tiene raíces'],a:0,e:'x² = 0/a = 0 ⇒ x = ±√0 = 0. Las dos raíces son siempre nulas en este caso. (Forma 3 del apunte.)'},
+{u:2,t:'num',q:'Resolvé x² + x − 12 = 0. ¿Cuál es la raíz positiva?',a:3,tol:0.001,e:'Resolvente con a = 1, b = 1, c = −12: Δ = 1 + 48 = 49, √Δ = 7. x = (−1 ± 7)/2 ⇒ x₁ = 3 y x₂ = −4. La positiva es 3. (TP3, actividad 1c.)'},
+{u:2,t:'mc',q:'Un problema dice "determine para qué cantidad x se obtiene utilidad cero" con I(x) y C(x) dados. ¿Qué planteás?',o:['I(x) = C(x), o sea I(x) − C(x) = 0','I(x) = 0','C(x) = 0','I(x) · C(x) = 0'],a:0,e:'Utilidad = Ingreso − Costo. Utilidad cero ⇒ I(x) − C(x) = 0 ⇒ I(x) = C(x). Al igualar queda una ecuación cuadrática que resolvés con la resolvente. (TP3, actividad 2a.)'},
+/* U4 */
+{u:3,t:'num',q:'I(x) = 1500x − 50x² representa el ingreso. ¿Qué valor de x produce el ingreso máximo?',a:15,tol:0.01,e:'Es una parábola con a = −50 < 0: tiene máximo en el vértice. xᵥ = −b/(2a) = −1500/(2·(−50)) = −1500/−100 = 15. (TP4, actividad 2.)'},
+{u:3,t:'mc',q:'Si a < 0 en f(x) = ax² + bx + c, la parábola...',o:['Abre sus ramas hacia abajo y el vértice es un máximo','Abre sus ramas hacia arriba y el vértice es un mínimo','No corta nunca al eje x','Tiene pendiente negativa'],a:0,e:'a negativo ⇒ ramas hacia abajo (∩) ⇒ el vértice es el punto más alto: máximo. a positivo ⇒ ramas hacia arriba (∪) ⇒ mínimo. Mnemotecnia: a positiva sonríe.'},
+{u:3,t:'mc',q:'¿En qué punto corta la parábola f(x) = ax² + bx + c al eje de ordenadas (eje y)?',o:['(0; c)','(c; 0)','(0; b)','(0; a)'],a:0,e:'En el eje y siempre x = 0, y f(0) = a·0 + b·0 + c = c. El punto de corte es (0; c), directo y sin cuentas.'},
+{u:3,t:'num',q:'La demanda es p = 1000 − 2q. El ingreso es I = p·q. ¿Qué cantidad q maximiza el ingreso?',a:250,tol:0.5,e:'I(q) = (1000 − 2q)·q = 1000q − 2q². Vértice: qᵥ = −1000/(2·(−2)) = 250. El ingreso máximo es I(250) = $125000. (TP4, actividad 3.)'},
+{u:3,t:'mc',q:'Si a > 0, el conjunto imagen de la función cuadrática es...',o:['[yᵥ; +∞)','(−∞; yᵥ]','ℝ','[xᵥ; +∞)'],a:0,e:'Con ramas hacia arriba, el punto más bajo es el vértice: la función toma todos los valores desde yᵥ hacia arriba: Img = [yᵥ; +∞). Con a < 0 es al revés: (−∞; yᵥ]. ¡Ojo: va con la ordenada del vértice (yᵥ), no con xᵥ!'},
+{u:3,t:'tf',q:'El eje de simetría de la parábola puede calcularse como el promedio de las raíces, si éstas existen.',a:true,e:'Verdadero. x = (x₁ + x₂)/2 da lo mismo que x = −b/(2a), porque el vértice está justo en el medio de las raíces. Ej del apunte: raíces 0 y 3 ⇒ eje x = 3/2.'},
+{u:3,t:'mc',q:'¿Cuál es la forma factorizada de la función cuadrática?',o:['f(x) = a·(x − x₁)·(x − x₂)','f(x) = (x − x₁)·(x − x₂)','f(x) = a·(x + x₁)·(x + x₂)','f(x) = a·(x − xᵥ)² + yᵥ'],a:0,e:'Factorizada: f(x) = a·(x − x₁)·(x − x₂), con x₁ y x₂ las raíces. ¡No te comas la a! La última opción es la forma canónica (usa el vértice, no las raíces).'},
+{u:3,t:'num',q:'Para f(x) = x² − 4, ¿cuánto vale la ordenada del vértice (yᵥ)?',a:-4,tol:0.01,e:'a = 1, b = 0, c = −4. xᵥ = −0/(2·1) = 0, y yᵥ = f(0) = −4. Vértice (0; −4). Sus raíces son ±2 y el eje de simetría es x = 0. (TP4, actividad 1ii.)'},
+{u:3,t:'mc',q:'El vértice de f(x) = x² − 3x es...',o:['V(3/2; −9/4)','V(−3/2; 9/4)','V(3; 0)','V(3/2; 9/4)'],a:0,e:'xᵥ = −(−3)/(2·1) = 3/2. yᵥ = f(3/2) = (3/2)² − 3·(3/2) = 9/4 − 9/2 = −9/4. V(3/2; −9/4). (Ejemplo del apunte de la unidad 4.)'},
+/* U5 */
+{u:4,t:'mc',q:'¿Cuáles son el dominio y la imagen de f(x) = aˣ?',o:['Dom = ℝ, Img = ℝ⁺ = (0; +∞)','Dom = ℝ⁺, Img = ℝ','Dom = ℝ, Img = ℝ','Dom = (0; +∞), Img = (0; +∞)'],a:0,e:'La exponencial acepta cualquier x (Dom = ℝ) pero solo devuelve valores positivos (Img = ℝ⁺): nunca toca el 0 ni baja de él, por eso y = 0 es asíntota horizontal. La opción b es la función logarítmica (su inversa).'},
+{u:4,t:'num',q:'¿Cuánto vale log₂ 64?',a:6,tol:0.001,e:'La pregunta del log: ¿a qué exponente elevo 2 para que dé 64? 2⁶ = 64 ⇒ log₂ 64 = 6. (Ejemplo del apunte de la unidad 5.)'},
+{u:4,t:'mc',q:'¿Cuál es la fórmula del interés compuesto con capitalización anual?',o:['C_f = C₀·(1 + r/100)ᵗ','C_f = C₀·(1 + r·t/100)','C_f = C₀·(r/100)ᵗ','C_f = C₀ + C₀·r·t/100'],a:0,e:'C_f = C₀·(1 + r/100)ᵗ: el capital se multiplica por (1 + rédito en tanto por uno) una vez por año. La opción b y d son interés SIMPLE (crecimiento lineal); acá el interés genera interés.'},
+{u:4,t:'num',q:'Se colocan $5000 al 6% anual, capitalización anual, 5 años. ¿Monto final? (redondeá al entero)',a:6691,tol:1.5,e:'C_f = 5000·(1 + 6/100)⁵ = 5000·1,06⁵ = 6691,13 ≈ 6691. Si se capitalizara mensualmente: 5000·(1 + 6/1200)⁶⁰ = 6744,25. (Ejemplo del apunte.)'},
+{u:4,t:'tf',q:'La función f(x) = (1/2)ˣ es decreciente.',a:true,e:'Verdadero. Con base 0 < a < 1 la exponencial decrece (cada paso multiplica por algo menor que 1). Con a > 1 crece. Lo mismo aplica a la logarítmica con su base.'},
+{u:4,t:'mc',q:'log_a(x·y) es igual a...',o:['log_a x + log_a y','log_a x · log_a y','log_a(x + y)','x · log_a y'],a:0,e:'El logaritmo del producto es la SUMA de los logaritmos (propiedad 4 del apunte). El del cociente es la resta. Mnemotecnia: el log "baja un nivel" cada operación: producto→suma, cociente→resta, potencia→producto.'},
+{u:4,t:'num',q:'¿Cuánto vale x si log(0,001) = x? (log decimal)',a:-3,tol:0.001,e:'0,001 = 10⁻³, entonces log₁₀(0,001) = −3: el exponente al que elevo 10 para obtener 0,001. (TP5, actividad 4.5.)'},
+{u:4,t:'mc',q:'La gráfica de y = log_a(x) siempre pasa por el punto...',o:['(1; 0)','(0; 1)','(0; 0)','(a; 0)'],a:0,e:'log_a 1 = 0 para cualquier base ⇒ pasa por (1; 0). La exponencial pasa por (0; 1): son inversas y se intercambian las coordenadas. Además la log tiene asíntota vertical en x = 0.'},
+{u:4,t:'num',q:'P = 1000000·(1,02)ᵗ. ¿Para qué t la población llega a 1500000? (a la décima, ej: 20.5)',a:20.5,tol:0.2,e:'1,02ᵗ = 1,5 ⇒ aplico log y bajo el exponente: t·log 1,02 = log 1,5 ⇒ t = log 1,5/log 1,02 ≈ 0,1761/0,0086 ≈ 20,5 años. (TP5, actividad 7d.)'}
+];
+
+/* ---------- QUIZ RENDER ---------- */
+let score = {ok:0,bad:0,tot:0};
+function renderQuiz(){
+  const area = document.getElementById('quizArea');
+  area.innerHTML = '';
+  let lastU = -1;
+  Q.forEach((it,i)=>{
+    if(it.u !== lastU){
+      lastU = it.u;
+      const h = document.createElement('h3');
+      h.textContent = UNIDADES[it.u];
+      area.appendChild(h);
+    }
+    const d = document.createElement('div');
+    d.className = 'q';
+    const tag = it.t==='mc' ? 'Multiple choice' : it.t==='tf' ? 'V o F' : 'Numérica';
+    let inner = '<div class="qt"><span class="qtag">'+tag+'</span>'+(i+1)+'. '+it.q+'</div>';
+    if(it.t==='mc'){
+      inner += '<div class="opts">'+it.o.map((o,j)=>'<button data-i="'+i+'" data-j="'+j+'">'+o+'</button>').join('')+'</div>';
+    } else if(it.t==='tf'){
+      inner += '<div class="opts"><button data-i="'+i+'" data-j="V">✔ Verdadero</button><button data-i="'+i+'" data-j="F">✘ Falso</button></div>';
+    } else {
+      inner += '<div class="numrow"><input type="text" inputmode="decimal" placeholder="Tu respuesta..." id="in'+i+'"><button data-i="'+i+'" data-num="1">Comprobar</button></div>';
+    }
+    inner += '<div class="exp" id="exp'+i+'"></div>';
+    d.innerHTML = inner;
+    area.appendChild(d);
+  });
+  area.querySelectorAll('button[data-j]').forEach(b=>b.addEventListener('click',()=>answerChoice(b)));
+  area.querySelectorAll('button[data-num]').forEach(b=>b.addEventListener('click',()=>answerNum(b)));
+  area.querySelectorAll('input').forEach(inp=>inp.addEventListener('keydown',e=>{
+    if(e.key==='Enter'){ const i=inp.id.slice(2); const btn=area.querySelector('button[data-num][data-i="'+i+'"]'); if(btn && !btn.disabled) answerNum(btn); }
+  }));
+}
+function showExp(i,good){
+  const it = Q[i];
+  const ex = document.getElementById('exp'+i);
+  ex.className = 'exp show '+(good?'ok':'bad');
+  ex.innerHTML = (good?'<b>¡Bien ahí! ✔</b> ':'<b>No era esa. ✘</b> ')+it.e;
+  score.tot++; good?score.ok++:score.bad++;
+  document.getElementById('scoreOk').textContent = score.ok;
+  document.getElementById('scoreBad').textContent = score.bad;
+  document.getElementById('scoreTot').textContent = score.tot;
+}
+function answerChoice(btn){
+  const i = +btn.dataset.i, it = Q[i];
+  const sibs = btn.parentElement.querySelectorAll('button');
+  sibs.forEach(s=>s.disabled = true);
+  let good;
+  if(it.t==='mc'){
+    good = (+btn.dataset.j === it.a);
+    sibs[it.a].classList.add('ok');
+    if(!good) btn.classList.add('bad');
+  } else {
+    const val = btn.dataset.j === 'V';
+    good = (val === it.a);
+    sibs.forEach(s=>{ if((s.dataset.j==='V') === it.a) s.classList.add('ok'); });
+    if(!good) btn.classList.add('bad');
+  }
+  showExp(i,good);
+}
+function answerNum(btn){
+  const i = +btn.dataset.i, it = Q[i];
+  const inp = document.getElementById('in'+i);
+  const raw = inp.value.trim().replace(',','.').replace('$','');
+  if(raw === '') { inp.focus(); return; }
+  const v = parseFloat(raw);
+  const good = !isNaN(v) && Math.abs(v - it.a) <= (it.tol||0.01);
+  btn.disabled = true; inp.disabled = true;
+  inp.style.borderColor = good ? 'var(--green)' : 'var(--red)';
+  showExp(i,good);
+}
+function resetQuiz(){
+  score = {ok:0,bad:0,tot:0};
+  document.getElementById('scoreOk').textContent = 0;
+  document.getElementById('scoreBad').textContent = 0;
+  document.getElementById('scoreTot').textContent = 0;
+  renderQuiz();
+  window.scrollTo({top:0});
+}
+renderQuiz();
+
+/* ---------- FLASHCARDS DATA ---------- */
+const F = [
+/* U1 */
+{u:0,f:'ax + b = c (a ≠ 0)<br>x = ¿...?',b:'x = (c − b) / a',m:'Lo que suma pasa restando, lo que multiplica pasa dividiendo.'},
+{u:0,f:'Resolvés y queda 0 = 0.<br>¿Qué tipo de ecuación es?',b:'Compatible indeterminada: infinitas soluciones (identidad)',m:'0 = 0: la fiesta es libre, entran todos los reales.'},
+{u:0,f:'Resolvés y queda 4 = −8.<br>¿Qué tipo de ecuación es?',b:'Incompatible: sin solución, S = ∅',m:'Absurdo = puerta cerrada: no entra nadie.'},
+{u:0,f:'Inecuación: paso el −5 dividiendo.<br>¿Qué pasa con el ≤?',b:'Se invierte: pasa a ser ≥. Solo con negativos multiplicando o dividiendo.',m:'El negativo da vuelta la flecha.'},
+{u:0,f:'¿Qué significa el intervalo (a; b]?',b:'a < x ≤ b: a NO está incluido, b SÍ',m:'Paréntesis = no entra. Corchete = entra. Infinito: siempre paréntesis.'},
+{u:0,f:'Utilidad = ¿...?',b:'U = Ingreso − Costo',m:'Lo que entra menos lo que sale: lo que te queda en el bolsillo.'},
+{u:0,f:'Ingreso = ¿...?',b:'I = precio · cantidad (I = p·x)',m:'Vendés x cosas a $p cada una.'},
+{u:0,f:'Costo total = ¿...?',b:'C = costo fijo + costo variable · x',m:'El fijo lo pagás aunque no produzcas nada; el variable acompaña a la x.'},
+{u:0,f:'Ecuación con x en el denominador:<br>¿qué hago antes y después de resolver?',b:'Antes: anotar los valores que anulan el denominador (prohibidos). Después: verificar la solución en la ecuación ORIGINAL.',m:'Si la solución pisa un valor prohibido, no hay solución.'},
+{u:0,f:'"Los x mayores que a"<br>en notación de intervalo = ¿...?',b:'(a; +∞)',m:'Mayor O IGUAL sería [a; +∞). El infinito nunca lleva corchete.'},
+/* U2 */
+{u:1,f:'y = mx + b<br>¿Quién es m y quién es b?',b:'m = pendiente (cuánto sube y por cada unidad de x) · b = ordenada al origen (corte con el eje y, punto (0; b))',m:'m de Movimiento, b de Base (donde arranca en el eje y).'},
+{u:1,f:'Pendiente con dos puntos:<br>m = ¿...?',b:'m = (y₂ − y₁) / (x₂ − x₁)',m:'Lo que sube dividido lo que avanza. ¡Restá en el mismo orden arriba y abajo!'},
+{u:1,f:'Ecuación del haz de rectas que pasa por P₁(x₁; y₁):<br>¿...?',b:'y − y₁ = m·(x − x₁)',m:'Con un punto y la pendiente armás cualquier recta.'},
+{u:1,f:'Rectas paralelas:<br>condición = ¿...?',b:'m₁ = m₂ (pendientes iguales)',m:'Paralelas = gemelas en la inclinación.'},
+{u:1,f:'Rectas perpendiculares:<br>condición = ¿...?',b:'m₁ = −1/m₂ (pendiente opuesta e inversa)',m:'La das vuelta (inversa) y le cambiás el signo (opuesta). Pendiente 2 → perpendicular −1/2.'},
+{u:1,f:'m > 0, m < 0, m = 0:<br>¿cómo es la función lineal en cada caso?',b:'m > 0: creciente · m < 0: decreciente · m = 0: constante (recta horizontal por (0; b))',m:'La pendiente ES el carácter de la recta.'},
+{u:1,f:'Sistema compatible determinado:<br>¿qué se ve en el gráfico?',b:'Las dos rectas se cortan en UN punto: solución única (x₀; y₀)',m:'Coincidentes = indeterminado (infinitas). Paralelas = incompatible (ninguna).'},
+{u:1,f:'¿Cuáles son los 3 métodos analíticos para resolver sistemas 2x2?',b:'Sustitución, Igualación, Reducción (o eliminación)',m:'SIR: Sustituyo, Igualo, Reduzco. Sustitución conviene si hay coeficiente 1.'},
+{u:1,f:'Punto de equilibrio del MERCADO:<br>¿qué igualo?',b:'Oferta = Demanda (resolver el sistema de las dos ecuaciones)',m:'Donde se cruzan las dos rectas: ahí el precio y la cantidad conforman a todos.'},
+{u:1,f:'Punto de equilibrio de la EMPRESA:<br>¿qué igualo?',b:'Ingreso total = Costo total (utilidad cero)',m:'Ni ganás ni perdés: I = C. De ahí para arriba, utilidades.'},
+/* U3 */
+{u:2,f:'Resolvente:<br>x = (−b ± √¿...?) / (2a)',b:'x = (−b ± √(b² − 4ac)) / (2a)',m:'Cantito: "menos be, más menos raíz de be cuadrado menos cuatro a ce, sobre dos a".'},
+{u:2,f:'Discriminante:<br>Δ = ¿...?',b:'Δ = b² − 4ac',m:'Lo de adentro de la raíz de la resolvente. "Discrimina" cuántas raíces hay.'},
+{u:2,f:'Δ > 0, Δ = 0, Δ < 0:<br>¿cuántas raíces en cada caso?',b:'Δ > 0: dos raíces reales distintas · Δ = 0: raíces reales e iguales (doble) · Δ < 0: sin raíces reales',m:'Positivo: 2 · cero: 1 (repetida) · negativo: 0. Como un semáforo de raíces.'},
+{u:2,f:'ax² + bx = 0 (falta c):<br>¿método y raíces?',b:'Factor común x: x(ax + b) = 0 ⇒ x₁ = 0 y x₂ = −b/a',m:'Sin c, sacá la x afuera. Una raíz SIEMPRE es 0.'},
+{u:2,f:'ax² + c = 0 (falta b):<br>¿método y raíces?',b:'Despejo: x² = −c/a ⇒ x = ±√(−c/a)',m:'Sin b, despejo y raíz CON ±: la raíz cuadrada trae dos soluciones.'},
+{u:2,f:'ax² = 0:<br>¿raíces?',b:'x₁ = x₂ = 0 (siempre)',m:'Solo el cuadrado: las dos raíces son nulas, sin excepción.'},
+{u:2,f:'¿Cuándo la ecuación general de 2do grado está COMPLETA?',b:'Cuando a ≠ 0, b ≠ 0 y c ≠ 0',m:'Si falta b o c (o ambos) es incompleta, y hay método corto.'},
+{u:2,f:'"Producto de dos factores = 0"<br>¿qué concluyo?',b:'Al menos uno de los factores es 0: x·(ax + b) = 0 ⇒ x = 0 o ax + b = 0',m:'Teorema del factor cero: la base de resolver por factoreo.'},
+{u:2,f:'Problema: "¿para qué x la utilidad es cero?"<br>¿Qué planteo?',b:'I(x) = C(x), o sea I(x) − C(x) = 0, y resuelvo la cuadrática con la resolvente',m:'"Utilidad cero" o "punto de equilibrio" = igualar ingreso y costo.'},
+{u:2,f:'¿Cuántas raíces tiene COMO MÁXIMO una ecuación cuadrática?',b:'Dos raíces o soluciones (x₁ y x₂)',m:'Grado 2 = a lo sumo 2 raíces. Pueden ser 2, 1 (doble) o ninguna real.'},
+/* U4 */
+{u:3,f:'Vértice de la parábola:<br>xᵥ = ¿...?',b:'xᵥ = −b / (2a)',m:'"Media resolvente": la resolvente sin la raíz. Y después yᵥ = f(xᵥ).'},
+{u:3,f:'yᵥ = ¿cómo se calcula?',b:'yᵥ = f(xᵥ): reemplazás xᵥ en la función',m:'Primero la x del vértice, después la enchufás. Sin fórmula nueva.'},
+{u:3,f:'Eje de simetría:<br>¿2 formas de calcularlo?',b:'x = −b/(2a), o el promedio de las raíces: x = (x₁ + x₂)/2',m:'El vértice está justo en el medio de las raíces, como el fiel de una balanza.'},
+{u:3,f:'a > 0 vs a < 0:<br>¿concavidad y extremo?',b:'a > 0: ramas hacia arriba, vértice = mínimo · a < 0: ramas hacia abajo, vértice = máximo',m:'a positiva sonríe (∪), a negativa se enoja (∩). Si piden "máximo", esperá a < 0.'},
+{u:3,f:'Corte de la parábola con el eje y = ¿qué punto?',b:'(0; c): el término independiente',m:'x = 0 mata a los términos con x: queda c solita.'},
+{u:3,f:'Forma factorizada:<br>f(x) = ¿...?',b:'f(x) = a·(x − x₁)·(x − x₂), con x₁, x₂ las raíces',m:'Las raíces entran con el signo cambiado, y la a SIEMPRE adelante.'},
+{u:3,f:'Forma canónica:<br>f(x) = ¿...?',b:'f(x) = a·(x − xᵥ)² + yᵥ, con (xᵥ; yᵥ) el vértice',m:'Canónica = "del vértice". El xᵥ entra con signo cambiado, el yᵥ tal cual.'},
+{u:3,f:'Imagen de la cuadrática:<br>¿a > 0? ¿a < 0?',b:'a > 0: Img = [yᵥ; +∞) · a < 0: Img = (−∞; yᵥ]',m:'El dominio es siempre ℝ; la imagen arranca o termina en la ALTURA del vértice (yᵥ).'},
+{u:3,f:'"¿Qué cantidad maximiza el ingreso?" con demanda p(q) lineal:<br>¿receta?',b:'1) I(q) = p·q (queda cuadrática con a < 0) · 2) qᵥ = −b/(2a) · 3) Ingreso máximo = I(qᵥ)',m:'Demanda → multiplicar por q → vértice. El combo estrella del 2do parcial.'},
+{u:3,f:'Raíces de la función cuadrática:<br>¿qué son y cómo se hallan?',b:'Los cortes con el eje x: se resuelve ax² + bx + c = 0 (resolvente o métodos cortos de la U3)',m:'La unidad 3 vive adentro de la unidad 4.'},
+/* U5 */
+{u:4,f:'f(x) = aˣ:<br>¿qué condiciones cumple la base a?',b:'a > 0 y a ≠ 1',m:'Base positiva y distinta de 1 (con a = 1 sería la constante 1, aburridísima).'},
+{u:4,f:'f(x) = aˣ:<br>¿cuándo crece y cuándo decrece?',b:'Creciente si a > 1 · Decreciente si 0 < a < 1',m:'Base grande empuja para arriba; base chiquita (fracción) desinfla.'},
+{u:4,f:'f(x) = aˣ:<br>dominio, imagen, punto fijo y asíntota',b:'Dom = ℝ · Img = ℝ⁺ = (0; +∞) · pasa por (0; 1) · asíntota horizontal y = 0',m:'a⁰ = 1: todas las exponenciales pasan por (0; 1). Nunca tocan el eje x.'},
+{u:4,f:'Interés compuesto anual:<br>C_f = ¿...?',b:'C_f = C₀ · (1 + r/100)ᵗ',m:'Capital por (1 + el rédito en tanto por uno), elevado a los años.'},
+{u:4,f:'Interés compuesto con n períodos por año:<br>C_f = ¿...?',b:'C_f = C₀ · (1 + r/(n·100))^(n·t)',m:'El r se divide por n y el t se multiplica por n. Mensual: n = 12; trimestral: n = 4; diario: n = 365.'},
+{u:4,f:'Definición de logaritmo:<br>log_a(b) = c ⇔ ¿...?',b:'aᶜ = b',m:'El log te pregunta: "¿a qué exponente elevo la base para llegar a b?". log₂ 64 = 6 porque 2⁶ = 64.'},
+{u:4,f:'log_a(x·y) = ¿...?<br>log_a(x/y) = ¿...?',b:'log_a(x·y) = log_a x + log_a y · log_a(x/y) = log_a x − log_a y',m:'El log baja un nivel: producto → suma, cociente → resta.'},
+{u:4,f:'log_a(bⁿ) = ¿...?',b:'n · log_a b',m:'El exponente baja multiplicando. ESTA es la propiedad que despeja el tiempo t en interés compuesto.'},
+{u:4,f:'Cambio de base:<br>log_a b = ¿...?',b:'log_a b = log_c b / log_c a = log b / log a = ln b / ln a',m:'Arriba el número que querés, abajo la base vieja. Así la calculadora hace cualquier base.'},
+{u:4,f:'f(x) = log_a(x):<br>dominio, imagen, punto fijo y asíntota',b:'Dom = ℝ⁺ = (0; +∞) · Img = ℝ · pasa por (1; 0) · asíntota vertical x = 0. Es la inversa de aˣ.',m:'La log intercambia todo con la exponencial: dominios, imágenes y el punto fijo (0;1)→(1;0).'}
+];
+
+/* ---------- FLASHCARDS RENDER ---------- */
+(function(){
+  const area = document.getElementById('flashArea');
+  let lastU = -1, grid = null;
+  F.forEach(c=>{
+    if(c.u !== lastU){
+      lastU = c.u;
+      const h = document.createElement('h3');
+      h.textContent = UNIDADES[c.u];
+      area.appendChild(h);
+      grid = document.createElement('div');
+      grid.className = 'fc-grid';
+      area.appendChild(grid);
+    }
+    const d = document.createElement('div');
+    d.className = 'fc';
+    d.innerHTML = '<div class="fc-inner"><div class="fc-face fc-front"><div>'+c.f+'</div><div class="hint">tocá para dar vuelta</div></div><div class="fc-face fc-back"><div class="fr">'+c.b+'</div><div class="mn">'+c.m+'</div></div></div>';
+    d.addEventListener('click',()=>d.classList.toggle('flipped'));
+    grid.appendChild(d);
+  });
+})();
+</script>
+</body>
+</html>

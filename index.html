@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema de Estudio UCES 2026 · Plan de Acción</title>
+<style>
+:root{
+  --bg:#f7f7fb; --card:#ffffff; --text:#1a1a2e; --muted:#5a5a72;
+  --accent:#4f46e5; --accent-soft:#eef2ff; --border:#e4e4ef;
+  --green:#16a34a; --amber:#d97706; --red:#dc2626;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0f0f1a; --card:#1a1a2c; --text:#eaeaf5; --muted:#9a9ab5;
+    --accent:#818cf8; --accent-soft:#23234a; --border:#2c2c44;
+  }
+}
+[data-theme="dark"]{
+  --bg:#0f0f1a; --card:#1a1a2c; --text:#eaeaf5; --muted:#9a9ab5;
+  --accent:#818cf8; --accent-soft:#23234a; --border:#2c2c44;
+}
+[data-theme="light"]{
+  --bg:#f7f7fb; --card:#ffffff; --text:#1a1a2e; --muted:#5a5a72;
+  --accent:#4f46e5; --accent-soft:#eef2ff; --border:#e4e4ef;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.wrap{max-width:880px;margin:0 auto;padding:24px 16px 64px}
+header{text-align:center;padding:32px 0 16px}
+header h1{font-size:1.7rem;margin-bottom:6px}
+header p{color:var(--muted);font-size:.95rem}
+.theme-btn{position:fixed;top:14px;right:14px;background:var(--card);border:1px solid var(--border);border-radius:50%;width:42px;height:42px;font-size:1.2rem;cursor:pointer;z-index:10}
+h2{font-size:1.2rem;margin:36px 0 14px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;text-decoration:none;color:var(--text);display:block;transition:transform .15s, box-shadow .15s}
+a.card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.12)}
+.card .emoji{font-size:1.6rem}
+.card h3{font-size:1.05rem;margin:6px 0 4px}
+.card p{font-size:.85rem;color:var(--muted)}
+.rec{display:flex;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px;align-items:flex-start}
+.rec .n{background:var(--accent);color:#fff;border-radius:8px;min-width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem}
+.rec b{display:block;margin-bottom:2px}
+.rec small{color:var(--muted)}
+.day{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.day summary{padding:14px 16px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;list-style:none}
+.day summary::-webkit-details-marker{display:none}
+.day summary .t{color:var(--muted);font-weight:400;font-size:.85rem}
+.day ul{padding:0 18px 14px 34px;font-size:.93rem}
+.day li{margin-bottom:6px}
+.tag{display:inline-block;font-size:.72rem;padding:2px 8px;border-radius:99px;font-weight:600;margin-left:6px;vertical-align:middle}
+.tag.q{background:var(--accent-soft);color:var(--accent)}
+.tip{background:var(--accent-soft);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;padding:12px 16px;margin:10px 0;font-size:.93rem}
+.foot{text-align:center;color:var(--muted);font-size:.85rem;margin-top:48px}
+.check{accent-color:var(--accent);width:16px;height:16px;margin-right:8px;vertical-align:-2px}
+</style>
+</head>
+<body>
+<button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+<div class="wrap">
+
+<header>
+  <h1>Sistema de Estudio UCES 2026</h1>
+  <p>5 materias · 5 recursos por materia · Hecho desde los apuntes de cátedra</p>
+</header>
+
+<h2>Tus 5 materias</h2>
+<div class="grid">
+  <a class="card" href="economia.html"><h3>Fundamentos de Economía I</h3><p>Oferta y demanda, elasticidad, costos, mercados (competencia perfecta, monopolio, competencia monopolística, oligopolio).</p></a>
+  <a class="card" href="cuanti.html"><h3>Instrumentos Cuantitativos</h3><p>Álgebra, funciones, sistemas, cuadrática y matemática financiera. Paso a paso con ejemplos resueltos.</p></a>
+  <a class="card" href="marketing.html"><h3>Marketing</h3><p>8 unidades: del concepto de marketing a segmentación y marketing mix. FODA, Ansoff, ciclo de vida.</p></a>
+  <a class="card" href="administracion.html"><h3>Administración</h3><p>Organizaciones, estructuras, departamentalización, punto de equilibrio, producción y personal.</p></a>
+  <a class="card" href="analisis-conceptual.html"><h3>Análisis Conceptual</h3><p>Funciones del lenguaje, géneros discursivos, texto, coherencia, secuencias y enunciación.</p></a>
+</div>
+
+<h2>Cómo usar los 5 recursos (en este orden)</h2>
+<div class="rec"><div class="n">1</div><div><b>Resumen ejecutivo</b><small>Primera pasada. Leelo entero de corrido para entender el mapa general. No tomes notas todavía, solo entendé. ~30-45 min por materia.</small></div></div>
+<div class="rec"><div class="n">2</div><div><b>Mapa conceptual</b><small>Después del resumen, miralo 5 minutos por unidad. Te ordena en la cabeza cómo se conecta todo. Volvé a él cada vez que te pierdas.</small></div></div>
+<div class="rec"><div class="n">3</div><div><b>Flashcards</b><small>El músculo de la memoria. 10-15 min por día, todos los días. Las que fallás, repetilas al final. Ideal para el colectivo o la cola del super.</small></div></div>
+<div class="rec"><div class="n">4</div><div><b>Quiz interactivo</b><small>Simulacro de examen. Hacelo recién cuando ya pasaste por resumen y flashcards. Leé TODAS las explicaciones, incluso de las que acertaste.</small></div></div>
+<div class="rec"><div class="n">5</div><div><b>Guía estratégica 80/20</b><small>Tu brújula los últimos 2-3 días antes del parcial. Si te queda poco tiempo, estudiá SOLO lo marcado imprescindible de esta guía.</small></div></div>
+
+<h2>Plan de acción (7 días por vuelta)</h2>
+<p style="color:var(--muted);font-size:.9rem;margin-bottom:12px">Pensado en bloques de 2 a 3 horas por día. Si tenés más días, repetí el ciclo: la segunda vuelta siempre rinde el doble. Tildá lo que completás (se guarda solo).</p>
+
+<details class="day" open><summary><span><input type="checkbox" class="check" data-k="d1">Día 1 · Entender el terreno</span><span class="t">~2.5 h</span></summary>
+<ul>
+  <li>Resumen ejecutivo de <b>Economía</b> completo <span class="tag q">45 min</span></li>
+  <li>Resumen ejecutivo de <b>Cuanti</b> completo <span class="tag q">45 min</span></li>
+  <li>Mapas conceptuales de las dos materias <span class="tag q">20 min</span></li>
+  <li>Primera sesión de flashcards de Economía <span class="tag q">15 min</span></li>
+</ul></details>
+
+<details class="day"><summary><span><input type="checkbox" class="check" data-k="d2">Día 2 · Las otras tres</span><span class="t">~2.5 h</span></summary>
+<ul>
+  <li>Resumen ejecutivo de <b>Marketing</b> <span class="tag q">45 min</span></li>
+  <li>Resumen ejecutivo de <b>Administración</b> <span class="tag q">40 min</span></li>
+  <li>Resumen ejecutivo de <b>Análisis Conceptual</b> <span class="tag q">35 min</span></li>
+  <li>Flashcards de Cuanti (fórmulas) <span class="tag q">15 min</span></li>
+</ul></details>
+
+<details class="day"><summary><span><input type="checkbox" class="check" data-k="d3">Día 3 · Práctica dura: números</span><span class="t">~2.5 h</span></summary>
+<ul>
+  <li>Quiz completo de <b>Cuanti</b>, leyendo cada explicación <span class="tag q">60 min</span></li>
+  <li>Quiz de <b>Economía</b> <span class="tag q">45 min</span></li>
+  <li>Flashcards de Administración (fórmulas de punto de equilibrio) <span class="tag q">15 min</span></li>
+  <li>Repaso de lo que fallaste en los quizzes <span class="tag q">20 min</span></li>
+</ul></details>
+
+<details class="day"><summary><span><input type="checkbox" class="check" data-k="d4">Día 4 · Práctica dura: teoría</span><span class="t">~2.5 h</span></summary>
+<ul>
+  <li>Quiz de <b>Marketing</b> <span class="tag q">45 min</span></li>
+  <li>Quiz de <b>Administración</b> <span class="tag q">45 min</span></li>
+  <li>Quiz de <b>Análisis Conceptual</b> <span class="tag q">40 min</span></li>
+  <li>Flashcards de las 3 materias, solo las falladas <span class="tag q">20 min</span></li>
+</ul></details>
+
+<details class="day"><summary><span><input type="checkbox" class="check" data-k="d5">Día 5 · Modo 80/20</span><span class="t">~2 h</span></summary>
+<ul>
+  <li>Guía estratégica de las 5 materias: leé los temas imprescindibles <span class="tag q">60 min</span></li>
+  <li>Volvé al resumen SOLO de los temas imprescindibles que no te cierran <span class="tag q">45 min</span></li>
+  <li>Flashcards mezcladas, 2 materias a elección <span class="tag q">15 min</span></li>
+</ul></details>
+
+<details class="day"><summary><span><input type="checkbox" class="check" data-k="d6">Día 6 · Segundo simulacro</span><span class="t">~2.5 h</span></summary>
+<ul>
+  <li>Repetí los 5 quizzes. Meta: 80% o más en cada uno <span class="tag q">2 h</span></li>
+  <li>Anotá en papel los 3 temas que peor te salieron <span class="tag q">10 min</span></li>
+  <li>Releé esos 3 temas en el resumen <span class="tag q">20 min</span></li>
+</ul></details>
+
+<details class="day"><summary><span><input type="checkbox" class="check" data-k="d7">Día 7 · Cierre liviano</span><span class="t">~1.5 h</span></summary>
+<ul>
+  <li>Mapas conceptuales de las 5 materias, de corrido <span class="tag q">30 min</span></li>
+  <li>Flashcards de todo, una pasada rápida <span class="tag q">30 min</span></li>
+  <li>Guía 80/20: última lectura de lo imprescindible <span class="tag q">30 min</span></li>
+  <li>Cortá temprano. Dormir bien suma más que una hora extra de estudio.</li>
+</ul></details>
+
+<h2>Tips que funcionan de verdad</h2>
+<div class="tip"><b>Regla de oro:</b> recordar gana a releer. 20 minutos de flashcards y quiz valen más que una hora de releer el resumen. Forzá a tu cabeza a sacar la respuesta antes de mirarla.</div>
+<div class="tip"><b>Si te agarra el pánico de "no llego":</b> abrí la guía 80/20 de cada materia y estudiá SOLO lo imprescindible. Con eso bien sabido, el aprobado está al alcance. Lo importante y complementario es para subir nota.</div>
+<div class="tip"><b>Estudiá en tandas cortas:</b> 25 minutos a fondo, 5 de descanso. El celular en otra habitación durante los 25.</div>
+<div class="tip"><b>Explicáselo a alguien:</b> si podés explicar un tema en voz alta sin mirar (a tu vieja, al perro, al espejo), lo sabés. Si te trabás, ahí está el agujero.</div>
+<div class="tip"><b>Ya hiciste lo más difícil:</b> tener TODO el material ordenado y masticado. Ahora es solo ejecutar el plan, un día a la vez. Vas a llegar.</div>
+
+<p class="foot">Hecho desde los apuntes de cátedra de UCES Resistencia · 1er cuatrimestre 2026<br>Sitios completos por materia: <a href="https://gerardoezequielmuro.github.io/Economia-2026/" style="color:var(--accent)">Economía</a> · <a href="https://gerardoezequielmuro.github.io/Cuanti-2026/" style="color:var(--accent)">Cuanti</a> · <a href="https://gerardoezequielmuro.github.io/Marketing-2026/" style="color:var(--accent)">Marketing</a> · <a href="https://gerardoezequielmuro.github.io/Administracion-2026/" style="color:var(--accent)">Administración</a> · <a href="https://gerardoezequielmuro.github.io/Analisis-Conceptual-2026/" style="color:var(--accent)">Análisis Conceptual</a></p>
+</div>
+
+<script>
+function toggleTheme(){
+  const cur = document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  localStorage.setItem('theme', next);
+  document.getElementById('themeBtn').textContent = next === 'dark' ? '☀️' : '🌙';
+}
+const saved = localStorage.getItem('theme');
+if(saved){ document.documentElement.dataset.theme = saved; document.getElementById('themeBtn').textContent = saved === 'dark' ? '☀️' : '🌙'; }
+document.querySelectorAll('.check').forEach(c=>{
+  c.checked = localStorage.getItem('plan-'+c.dataset.k) === '1';
+  c.addEventListener('change',()=>localStorage.setItem('plan-'+c.dataset.k, c.checked ? '1' : '0'));
+  c.addEventListener('click',e=>e.stopPropagation());
+});
+</script>
+</body>
+</html>

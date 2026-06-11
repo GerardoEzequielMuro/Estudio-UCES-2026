@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administración · Sistema de Estudio UCES 2026</title>
+<style>
+:root{
+  --bg:#f6f7fb; --card:#ffffff; --text:#1c2333; --muted:#5b647a; --line:#e3e7f0;
+  --accent:#4f46e5; --accent2:#7c3aed; --accentSoft:#eef0ff;
+  --ok:#16a34a; --okSoft:#e8f8ee; --bad:#dc2626; --badSoft:#fdeaea;
+  --warn:#d97706; --warnSoft:#fdf3e3; --green:#15803d; --greenSoft:#e9f7ec;
+  --shadow:0 2px 10px rgba(20,25,60,.07);
+}
+[data-theme="dark"]{
+  --bg:#0f1220; --card:#181c2e; --text:#e8eaf4; --muted:#9aa3bd; --line:#2a3050;
+  --accent:#8b85ff; --accent2:#b08bff; --accentSoft:#23284a;
+  --ok:#4ade80; --okSoft:#11301d; --bad:#f87171; --badSoft:#3a1515;
+  --warn:#fbbf24; --warnSoft:#33270e; --green:#4ade80; --greenSoft:#102a18;
+  --shadow:0 2px 12px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; font-size:16px;}
+header.top{padding:26px 16px 14px; text-align:center; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff;}
+header.top h1{font-size:1.5rem; margin-bottom:4px;}
+header.top p{opacity:.92; font-size:.95rem;}
+header.top .meta{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:10px; font-size:.85rem;}
+header.top .meta span{background:rgba(255,255,255,.18); padding:4px 12px; border-radius:999px;}
+.backlink{display:inline-block; margin-bottom:8px; color:#fff; opacity:.9; text-decoration:none; font-size:.9rem;}
+.backlink:hover{opacity:1; text-decoration:underline;}
+.themeBtn{position:absolute; right:14px; top:14px; background:rgba(255,255,255,.2); border:none; color:#fff; padding:8px 12px; border-radius:999px; cursor:pointer; font-size:.82rem; font-weight:600;}
+nav.tabs{position:sticky; top:0; z-index:50; display:flex; overflow-x:auto; background:var(--card); border-bottom:1px solid var(--line); box-shadow:var(--shadow);}
+nav.tabs button{flex:1 0 auto; border:none; background:none; padding:13px 14px; font-size:.9rem; font-weight:600; color:var(--muted); cursor:pointer; border-bottom:3px solid transparent; white-space:nowrap;}
+nav.tabs button.active{color:var(--accent); border-bottom-color:var(--accent);}
+main{max-width:980px; margin:0 auto; padding:20px 14px 80px;}
+section.panel{display:none;}
+section.panel.active{display:block; animation:fadeIn .25s ease;}
+@keyframes fadeIn{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;}}
+h2.sec{font-size:1.35rem; margin:18px 0 6px;}
+p.secDesc{color:var(--muted); margin-bottom:18px; font-size:.95rem;}
+.card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 18px; margin-bottom:18px; box-shadow:var(--shadow);}
+.card h3{font-size:1.12rem; margin-bottom:8px;}
+.card h4{font-size:1rem; margin:14px 0 4px;}
+.card p{margin-bottom:10px;}
+.card ul{margin:0 0 10px 20px;}
+.card li{margin-bottom:4px;}
+.badge{display:inline-block; font-size:.72rem; font-weight:700; padding:2px 10px; border-radius:999px; margin-left:6px; vertical-align:middle;}
+.badge::before{content:""; display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px;}
+.b-red{background:var(--badSoft); color:var(--bad);}
+.b-red::before{background:var(--bad);}
+.b-yellow{background:var(--warnSoft); color:var(--warn);}
+.b-yellow::before{background:var(--warn);}
+.b-green{background:var(--greenSoft); color:var(--green);}
+.b-green::before{background:var(--green);}
+.utag{display:inline-block; background:var(--accentSoft); color:var(--accent); font-weight:700; font-size:.78rem; padding:3px 10px; border-radius:8px; margin-bottom:8px;}
+.formula{background:var(--accentSoft); border-left:4px solid var(--accent); padding:10px 14px; border-radius:8px; margin:10px 0; font-family:Consolas,Menlo,monospace; font-size:.95rem; overflow-x:auto;}
+.tip{background:var(--warnSoft); border-left:4px solid var(--warn); padding:10px 14px; border-radius:8px; margin:10px 0; font-size:.92rem;}
+/* DIAGRAMAS SVG */
+.diag{display:block; width:100%; max-width:680px; height:auto; margin:14px auto;}
+.diag text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; fill:var(--text);}
+.diag .dmuted{fill:var(--muted);}
+.diag .dline{stroke:var(--muted); stroke-width:1.5; fill:none;}
+.diag .daxis{stroke:var(--text); stroke-width:1.6; fill:none;}
+.diag .dbox{fill:var(--accentSoft); stroke:var(--accent); stroke-width:1.4;}
+.diag .ddash{stroke:var(--muted); stroke-width:1.2; stroke-dasharray:5 4; fill:none;}
+.diagCap{text-align:center; font-size:.8rem; color:var(--muted); margin:-6px 0 12px;}
+/* FIGURAS DEL MATERIAL */
+figure.srcimg{margin:14px auto; text-align:center; max-width:720px;}
+figure.srcimg img{max-width:100%; height:auto; border:1px solid var(--line); border-radius:10px; background:#fff; padding:6px;}
+figure.srcimg figcaption{font-size:.8rem; color:var(--muted); margin-top:6px; line-height:1.4;}
+/* QUIZ */
+.scorebar{position:sticky; top:52px; z-index:40; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:10px 16px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; box-shadow:var(--shadow); font-weight:600; font-size:.95rem;}
+.scorebar .num{color:var(--accent); font-size:1.1rem;}
+.qcard{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; margin-bottom:14px; box-shadow:var(--shadow);}
+.qcard .qhead{font-weight:600; margin-bottom:10px;}
+.qcard .qtag{font-size:.72rem; font-weight:700; color:var(--accent); background:var(--accentSoft); padding:2px 8px; border-radius:6px; margin-right:6px;}
+.opts{display:flex; flex-direction:column; gap:8px;}
+.opt{border:1px solid var(--line); border-radius:10px; padding:10px 12px; cursor:pointer; background:none; text-align:left; font-size:.93rem; color:var(--text); transition:border .15s, background .15s;}
+.opt:hover{border-color:var(--accent);}
+.opt.correct{background:var(--okSoft); border-color:var(--ok); font-weight:600;}
+.opt.wrong{background:var(--badSoft); border-color:var(--bad);}
+.opt:disabled{cursor:default; opacity:.9;}
+.expl{display:none; margin-top:10px; padding:10px 12px; border-radius:8px; font-size:.88rem; background:var(--accentSoft);}
+.expl.show{display:block;}
+.numrow{display:flex; gap:8px; flex-wrap:wrap; align-items:center;}
+.numrow input{flex:1 1 140px; padding:10px; border:1px solid var(--line); border-radius:10px; background:var(--bg); color:var(--text); font-size:1rem;}
+.numrow button{padding:10px 18px; border:none; border-radius:10px; background:var(--accent); color:#fff; font-weight:700; cursor:pointer;}
+.numfb{margin-top:8px; font-weight:600; font-size:.9rem;}
+.numfb.ok{color:var(--ok);} .numfb.bad{color:var(--bad);}
+.unitTitleQ{margin:26px 0 12px; font-size:1.1rem; color:var(--accent); border-bottom:2px solid var(--accentSoft); padding-bottom:4px;}
+/* FLASHCARDS */
+.fgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:14px;}
+.fc{perspective:1000px; min-height:190px; cursor:pointer;}
+.fc-inner{position:relative; width:100%; height:100%; min-height:190px; transition:transform .5s; transform-style:preserve-3d;}
+.fc.flipped .fc-inner{transform:rotateY(180deg);}
+.fc-face{position:absolute; inset:0; backface-visibility:hidden; border-radius:14px; padding:16px; display:flex; flex-direction:column; justify-content:center; border:1px solid var(--line); box-shadow:var(--shadow);}
+.fc-front{background:var(--card);}
+.fc-front .fl{font-size:.7rem; font-weight:700; color:var(--accent); text-transform:uppercase; margin-bottom:8px;}
+.fc-front .ft{font-weight:700; font-size:1.02rem;}
+.fc-front .hint{margin-top:auto; font-size:.75rem; color:var(--muted); padding-top:12px;}
+.fc-back{background:var(--accentSoft); transform:rotateY(180deg); font-size:.86rem; overflow-y:auto; justify-content:flex-start;}
+.fc-back .mn{margin-top:8px; font-size:.8rem; background:var(--card); border-radius:8px; padding:6px 9px; border:1px dashed var(--accent);}
+/* MAPAS */
+.tree{margin:6px 0 6px 0;}
+.node{border-radius:10px; padding:8px 12px; margin:6px 0; border:1px solid var(--line); background:var(--card); font-size:.9rem;}
+.node.root{background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; border:none; font-size:1rem;}
+.node.lvl1{border-left:4px solid var(--accent); font-weight:600;}
+.node.lvl2{border-left:4px solid var(--accent2);}
+.kids{margin-left:22px; border-left:2px dashed var(--line); padding-left:14px;}
+/* GUIA */
+table.gt{width:100%; border-collapse:collapse; font-size:.88rem; margin:10px 0;}
+table.gt th, table.gt td{border:1px solid var(--line); padding:8px 9px; text-align:left;}
+table.gt th{background:var(--accentSoft); color:var(--accent);}
+.prob{font-weight:700;}
+.p-high{color:var(--bad);} .p-mid{color:var(--warn);} .p-low{color:var(--green);}
+.stepList{counter-reset:paso; list-style:none; margin-left:0 !important;}
+.stepList li{counter-increment:paso; position:relative; padding-left:42px; margin-bottom:12px;}
+.stepList li::before{content:counter(paso); position:absolute; left:0; top:0; width:28px; height:28px; border-radius:50%; background:var(--accent); color:#fff; font-weight:700; display:flex; align-items:center; justify-content:center; font-size:.85rem;}
+@media (max-width:560px){
+  body{font-size:15px;}
+  nav.tabs button{padding:11px 10px; font-size:.8rem;}
+  .scorebar{top:46px;}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <button class="themeBtn" id="themeBtn" title="Cambiar tema">Tema</button>
+  <a class="backlink" href="index.html">← Plan de estudio</a>
+  <h1>Administración · UCES 2026</h1>
+  <p>Sistema de estudio completo basado en el material de cátedra (1er cuatrimestre)</p>
+  <div class="meta">
+    <span>Tiempo total estimado: 26 h</span>
+    <span>6 unidades</span>
+    <span>Basado en parcial 2025 + prácticos</span>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button data-tab="resumen" class="active">Resumen</button>
+  <button data-tab="quiz">Quiz</button>
+  <button data-tab="flash">Flashcards</button>
+  <button data-tab="mapas">Mapas</button>
+  <button data-tab="guia">80/20</button>
+</nav>
+
+<main>
+<!-- ============ RESUMEN ============ -->
+<section class="panel active" id="panel-resumen">
+  <h2 class="sec">Resumen ejecutivo por unidad</h2>
+  <p class="secDesc">Explicado como te lo contaría un amigo que ya rindió. Badges: <span class="badge b-red">Imprescindible</span> (cae seguro), <span class="badge b-yellow">Importante</span>, <span class="badge b-green">Complementario</span>.</p>
+
+  <div class="card">
+    <span class="utag">UNIDAD 1</span>
+    <h3>Introducción a la Administración</h3>
+    <h4>¿Qué es administrar? <span class="badge b-red">Imprescindible</span></h4>
+    <p>Administrar es interpretar los objetivos de la organización y transformarlos en acción a través de cuatro funciones: <strong>planear, organizar, dirigir y controlar</strong> (el famoso proceso o ciclo administrativo). Pensalo con una pizzería: planeás abrir una sucursal nueva (objetivos, presupuesto), organizás (quién cocina, quién reparte, qué horno comprás), dirigís (motivás al equipo, das órdenes) y controlás (¿vendimos lo que planeamos? ¿la pizza sale en 20 minutos?). Si hay desvíos, corregís y el ciclo vuelve a empezar.</p>
+    <h4>¿Ciencia, técnica o arte? <span class="badge b-yellow">Importante</span></h4>
+    <p>Según el apunte: la administración es <strong>ciencia fáctica</strong> (estudia hechos reales: las organizaciones, las explica y predice) y también <strong>técnica</strong> (opera sobre la realidad con herramientas, normas y procedimientos). Ciencia y técnica se complementan. Pero ojo: el apunte concluye que la administración <strong>NO es un arte</strong>, porque el arte es subjetivo y vivencial. Lo que puede parecer "arte" es el estilo personal del administrador.</p>
+    <h4>El ciclo administrativo en detalle <span class="badge b-red">Imprescindible</span></h4>
+    <ul>
+      <li><strong>Planeación:</strong> decidir hoy qué hacer en el futuro. Define objetivos y los planes para alcanzarlos. Tiene 3 niveles: <strong>estratégica</strong> (largo plazo, toda la empresa, la define la cúpula), <strong>táctica</strong> (mediano plazo, por departamento) y <strong>operacional</strong> (corto plazo, cada tarea). Hay 4 clases de planes: <strong>procedimientos</strong> (métodos, se representan con flujogramas), <strong>presupuestos</strong> (dinero), <strong>programas</strong> (tiempo, cronogramas) y <strong>normas o reglamentos</strong> (comportamientos).</li>
+      <li><strong>Organización:</strong> dividir el trabajo, agrupar actividades (departamentalización), designar personas y asignar recursos. Puede ser <strong>formal</strong> (la del organigrama, planeada) o <strong>informal</strong> (la que surge sola: los que toman mate juntos).</li>
+      <li><strong>Dirección:</strong> poner en marcha la empresa a través de las personas: comunicar, liderar, motivar. Acá entran autoridad y poder (5 tipos de poder: de recompensa, coercitivo, legitimado, de referencia y del experto).</li>
+      <li><strong>Control:</strong> 4 fases: establecer estándares, observar el desempeño, comparar contra el estándar y aplicar acción correctiva. Sin control no sabés si el plan funcionó.</li>
+    </ul>
+    <svg class="diag" viewBox="0 0 660 175" role="img" aria-label="Ciclo del proceso administrativo: planeación, organización, dirección y control, con retroalimentación">
+      <defs>
+        <marker id="arrC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+      </defs>
+      <g style="color:var(--muted)">
+        <rect class="dbox" x="14" y="45" width="130" height="44" rx="10"/>
+        <rect class="dbox" x="180" y="45" width="130" height="44" rx="10"/>
+        <rect class="dbox" x="346" y="45" width="130" height="44" rx="10"/>
+        <rect class="dbox" x="512" y="45" width="130" height="44" rx="10"/>
+        <text x="79" y="72" font-size="15" font-weight="700" text-anchor="middle">Planeación</text>
+        <text x="245" y="72" font-size="15" font-weight="700" text-anchor="middle">Organización</text>
+        <text x="411" y="72" font-size="15" font-weight="700" text-anchor="middle">Dirección</text>
+        <text x="577" y="72" font-size="15" font-weight="700" text-anchor="middle">Control</text>
+        <line class="dline" x1="144" y1="67" x2="176" y2="67" marker-end="url(#arrC)"/>
+        <line class="dline" x1="310" y1="67" x2="342" y2="67" marker-end="url(#arrC)"/>
+        <line class="dline" x1="476" y1="67" x2="508" y2="67" marker-end="url(#arrC)"/>
+        <path class="dline" d="M577,89 L577,130 L79,130 L79,93" marker-end="url(#arrC)"/>
+        <text class="dmuted" x="328" y="148" font-size="12.5" text-anchor="middle">Retroalimentación: el control detecta desvíos y el ciclo vuelve a empezar</text>
+        <text class="dmuted" x="328" y="28" font-size="12.5" text-anchor="middle">El proceso (o ciclo) administrativo</text>
+      </g>
+    </svg>
+    <svg class="diag" viewBox="0 0 680 250" role="img" aria-label="Pirámide de niveles organizacionales: institucional, intermedio y operacional, con su nivel de planeación">
+      <g style="color:var(--muted)">
+        <polygon class="dbox" points="200,18 252.8,84 147.2,84"/>
+        <polygon class="dbox" points="147.2,84 252.8,84 306.4,151 93.6,151"/>
+        <polygon class="dbox" points="93.6,151 306.4,151 360,218 40,218"/>
+        <text x="200" y="72" font-size="12.5" font-weight="700" text-anchor="middle">Institucional</text>
+        <text x="200" y="122" font-size="13" font-weight="700" text-anchor="middle">Intermedio</text>
+        <text x="200" y="189" font-size="13" font-weight="700" text-anchor="middle">Operacional</text>
+        <line class="dline" x1="262" y1="55" x2="390" y2="55"/>
+        <line class="dline" x1="316" y1="120" x2="390" y2="120"/>
+        <line class="dline" x1="368" y1="187" x2="390" y2="187"/>
+        <text x="398" y="46" font-size="13" font-weight="700">Planeación estratégica</text>
+        <text class="dmuted" x="398" y="63" font-size="12">Largo plazo · toda la empresa · la cúpula</text>
+        <text x="398" y="111" font-size="13" font-weight="700">Planeación táctica</text>
+        <text class="dmuted" x="398" y="128" font-size="12">Mediano plazo · por departamento</text>
+        <text x="398" y="178" font-size="13" font-weight="700">Planeación operacional</text>
+        <text class="dmuted" x="398" y="195" font-size="12">Corto plazo · cada tarea o actividad</text>
+        <text class="dmuted" x="200" y="240" font-size="12.5" text-anchor="middle">Niveles organizacionales y de planeación</text>
+      </g>
+    </svg>
+    <h4>Las escuelas de la administración <span class="badge b-red">Imprescindible (cayó en el parcial 2025)</span></h4>
+    <ul>
+      <li><strong>Escuela clásica (1890-1925).</strong> Dos ramas: <strong>Administración Científica (Taylor)</strong>, enfocada en la fábrica: elevar la eficiencia del trabajador, seleccionar y entrenar operarios según sus cualidades, remuneración por rendimiento individual, estudio de tiempos y movimientos. Cree que el obrero es "holgazán por naturaleza" y solo lo motiva la plata (visión mecanicista, su gran límite). Y <strong>Administración Industrial y General (Fayol)</strong>: el primero en sistematizar la administración, divide la organización en áreas, crea el modelo de manual de funciones y formula <strong>14 principios</strong> (división del trabajo, autoridad y responsabilidad, disciplina, unidad de mando, unidad de dirección, subordinación del interés particular al general, remuneración, centralización, jerarquía, orden, equidad, estabilidad del personal, iniciativa y unión del personal). Para Fayol gobernar exige 5 funciones: prever, organizar, dirigir, coordinar y controlar.</li>
+      <li><strong>Relaciones Humanas (Mayo, 1925-1935).</strong> Reacción humanista a los clásicos. Su evidencia estrella: los <strong>experimentos de Hawthorne</strong> (Western Electric, 1927-1932): cambiaron la iluminación y la productividad subía igual aunque empeorara la luz. Conclusión: las condiciones sociopsicológicas (grupo, reconocimiento, atención de los supervisores) pesan más que las físicas, y los <strong>grupos informales</strong> con sus normas definen la productividad. Aparece la figura del líder. El dinero no es el único motivador.</li>
+      <li><strong>Neoclásica (1925-1945).</strong> Continúa a Taylor y Fayol adaptados a la posguerra (Gulick, Koontz, O'Donnell). Amplían las funciones a siete, desarrollan el organigrama y el manual de funciones, y el esquema ACME de departamentalización.</li>
+      <li><strong>Estructuralista (1910-1950).</strong> <strong>Weber</strong> y el <strong>modelo burocrático</strong>: normas estrictas, jerarquías claras, cargos despersonalizados, autoridad legal. Ideal para organismos públicos; rígido para empresas privadas. Merton agrega funciones manifiestas y latentes.</li>
+      <li><strong>Psicología y Sociología Industrial (1935-1950).</strong> Lewin, Maslow, McGregor (Teoría X: la gente no quiere trabajar, hay que controlarla; Teoría Y: la gente puede autoorganizarse, hay que delegar), liderazgo autoritario, democrático y permisivo, modelos de participación.</li>
+      <li><strong>Teoría de los sistemas (1950-1970).</strong> Von Bertalanffy. No es una escuela exclusiva de administración: es un enfoque que cruza todas las ciencias. La organización es un sistema de partes interconectadas con un objetivo. Aporta el vocabulario: input, output, feedback, entropía, caja negra.</li>
+    </ul>
+    <p><strong>Eficacia vs eficiencia</strong> <span class="badge b-yellow">Importante</span>: eficacia (o efectividad) es lograr los objetivos; eficiencia es lograrlos con el mínimo de recursos. Productividad = salidas / insumos (en un período, considerando la calidad).</p>
+  </div>
+
+  <div class="card">
+    <span class="utag">UNIDAD 2</span>
+    <h3>Las Organizaciones</h3>
+    <h4>Qué son y cómo se caracterizan <span class="badge b-red">Imprescindible (pregunta textual del parcial 2025)</span></h4>
+    <p>Las organizaciones son <strong>unidades sociales deliberadamente construidas o reconstruidas para alcanzar fines específicos</strong>. Un club, un hospital, Mercado Libre o la UCES: todas son organizaciones. Según el apunte se caracterizan por tres cosas (apréndetelas, valieron 10 puntos):</p>
+    <ul>
+      <li><strong>1) División del trabajo, del poder, de las responsabilidades y de la comunicación:</strong> no es casual, está planeada para favorecer los fines. En un supermercado no hace todo la misma persona: hay cajeros, repositores, gerentes.</li>
+      <li><strong>2) Presencia de uno o más centros de poder</strong> que controlan los esfuerzos, los dirigen hacia los fines y revisan continuamente la actuación, remodelando la estructura para ser más eficientes.</li>
+      <li><strong>3) Sustitución de personal:</strong> las personas que no satisfacen pueden ser reemplazadas y sus tareas asignadas a otras. La organización trasciende a sus miembros.</li>
+    </ul>
+    <h4>La organización como sistema abierto <span class="badge b-red">Imprescindible (pregunta textual del parcial 2025)</span></h4>
+    <p>La organización funciona como un sistema <strong>entrada - proceso - salida con retroalimentación</strong>. Recibe entradas del entorno (materias primas, plata, información, gente), las transforma (proceso) y devuelve salidas (productos, servicios). Es <strong>abierto</strong> porque está en intercambio permanente con el entorno: lo influye y es influido. Pensá en una hamburguesería: entra carne y pan (proveedores), se cocina (proceso) y sale la hamburguesa al cliente; con lo que opina el cliente (feedback) ajustás la receta. Además es un sistema <strong>sociotécnico</strong>: tiene un subsistema técnico (máquinas, tecnología, procesos), uno administrativo (estructura, dirección, decisiones) y uno social (personas, motivaciones, cultura). El todo es superior a la suma de las partes.</p>
+    <h4>El entorno y sus variables <span class="badge b-red">Imprescindible (50 puntos del parcial 2025)</span></h4>
+    <p>El entorno es el conjunto de elementos externos pertinentes y relevantes para la organización. Hay dos grandes grupos:</p>
+    <ul>
+      <li><strong>Componentes de acción directa (inmediatos):</strong> influyen directo y son reconocibles: <strong>los clientes, los proveedores, los competidores, el sistema financiero (bancos), los sindicatos, el sector económico</strong> al que pertenece y los grupos de referencia con presión inmediata.</li>
+      <li><strong>Componentes de acción indirecta (mediatos):</strong> fuerzas más generales: <strong>factores económicos</strong> (inflación, tipo de cambio, PIB, salarios), <strong>factores políticos / legales</strong> (regulaciones, gobiernos, leyes), <strong>la sociedad</strong> (demografía, tendencias sociales), <strong>factores culturales</strong> (valores, costumbres, estilo de vida) y <strong>la tecnología</strong> (nuevos procesos, automatización).</li>
+    </ul>
+    <p>El ejercicio típico de parcial: te dan un texto periodístico (en 2025 fue el turismo en Madrid; en los prácticos, Toyota Argentina) con frases en negrita y tenés que decir qué variable es cada una. Ejemplos: "el turismo representa el 11% del PIB" → económica; "el Ayuntamiento designa viviendas turísticas ilegales" → político-legal; "turismofobia, pintadas Tourist go home" → social/cultural; "faltan redes de carga para autos eléctricos" → tecnológica; "trabajamos con el sindicato Smata" → sindicatos (acción directa).</p>
+    <p><strong>Incertidumbre del entorno</strong> <span class="badge b-green">Complementario</span>: Duncan la analiza cruzando grado de cambio (estático/dinámico) con complejidad (simple/complejo). Entorno dinámico y complejo = máxima incertidumbre (industria bancaria); estático y simple = mínima (industria de contenedores).</p>
+  </div>
+
+  <div class="card">
+    <span class="utag">UNIDAD 3</span>
+    <h3>Las Estructuras Orgánicas</h3>
+    <h4>Principios de la estructura <span class="badge b-red">Imprescindible</span></h4>
+    <ul>
+      <li><strong>División del trabajo y especialización:</strong> vertical (más niveles jerárquicos, más supervisión) y horizontal (más órganos especializados en el mismo nivel = departamentalización).</li>
+      <li><strong>Unidad de mando:</strong> cada subordinado responde ante <strong>un solo jefe</strong>. Evita órdenes contradictorias. Inspirado en Fayol.</li>
+      <li><strong>Delegación:</strong> asignar tareas, delegar autoridad y exigir responsabilidad. Clave: la <strong>responsabilidad no se delega</strong>; el que delega sigue respondiendo ante su superior. La autoridad sí se delega y puede recuperarse.</li>
+      <li><strong>Amplitud (o tramo) de control:</strong> cuántas personas puede supervisar bien un jefe. Tramo amplio = pocos niveles, estructura "achatada"; tramo estrecho = muchos niveles, estructura "alargada". No hay número mágico: depende del tipo de tarea, la capacitación de los subordinados y el nivel jerárquico.</li>
+      <li><strong>Cadena de mando / principio escalar:</strong> línea clara de autoridad desde la cima hasta la base.</li>
+      <li><strong>Coordinación:</strong> armonizar todos los esfuerzos individuales hacia el objetivo común. Se logra con comunicación.</li>
+    </ul>
+    <h4>Tipos de organización y relaciones formales <span class="badge b-red">Imprescindible (20 puntos del parcial 2025)</span></h4>
+    <ul>
+      <li><strong>Organización lineal:</strong> autoridad única y absoluta del jefe sobre sus subordinados (forma piramidal, como el ejército o una pyme chica). Ventajas: estructura sencilla, responsabilidades bien delimitadas, estable. Desventajas: rígida, el jefe se vuelve "generalista" cuello de botella, mala para empresas grandes. <strong>Relación lineal:</strong> el jefe manda sobre SU área (el gerente de Producción arma el cronograma de su planta).</li>
+      <li><strong>Organización funcional (Taylor):</strong> autoridad basada en la especialización y el conocimiento: cada órgano manda en lo suyo sobre toda la organización. Ventaja: máxima especialización y supervisión técnica. Desventajas: se pierde la unidad de mando, subordinación múltiple, conflictos entre especialistas. <strong>Relación funcional:</strong> un área especialista fija estándares que TODA la empresa debe seguir (RRHH dicta el régimen de sanciones para todo el personal; Marketing fija los estándares de marca para todos).</li>
+      <li><strong>Organización línea-staff:</strong> combina las dos. Los órganos de <strong>línea</strong> deciden y ejecutan (autoridad lineal); los de <strong>staff</strong> asesoran, recomiendan y prestan servicios especializados (asesoría legal, consultores, auditoría). <strong>Relación de staff/asesoramiento:</strong> sugiere pero no decide (el asesor financiero sugiere un crédito al director, que decide si lo toma o no).</li>
+      <li><strong>Comités</strong> <span class="badge b-green">Complementario</span>: grupos que estudian problemas o recomiendan; naturaleza variada.</li>
+    </ul>
+    <h4>Departamentalización <span class="badge b-red">Imprescindible</span></h4>
+    <p>Es agrupar actividades homogéneas en unidades (especialización horizontal). Tipos:</p>
+    <ul>
+      <li><strong>Por funciones:</strong> Producción, Ventas/Comercialización, Finanzas, Personal. La más común. Ventaja: agrupa especialistas, economía de escala. Desventaja: cada área se encierra en lo suyo y se pierde la visión del conjunto.</li>
+      <li><strong>Por productos o servicios:</strong> divisiones por línea de producto (división farmacéutica, veterinaria y química; o Buick, Pontiac y Chevrolet). Ideal con muchos productos; facilita la innovación pero duplica especialistas.</li>
+      <li><strong>Geográfica (por territorio):</strong> región norte, centro, sur (sucursales, bancos, supermercados). Ideal cuando el éxito depende del lugar.</li>
+      <li><strong>Por clientela:</strong> según tipo de cliente: departamento femenino, masculino e infantil de una tienda; banca comunitaria, empresarial e institucional de un banco. El cliente manda.</li>
+      <li><strong>Por proceso:</strong> según fases del proceso productivo: sección de hilado, lavado, cardado (común en fábricas).</li>
+      <li><strong>Por proyectos:</strong> estructura temporal alrededor de cada proyecto (astilleros, constructoras, obras grandes). Cuando termina el proyecto, el equipo se disuelve (genera ansiedad por inestabilidad).</li>
+      <li><strong>Matricial</strong> <span class="badge b-yellow">Importante</span>: combina funcional + proyectos: cada persona responde a un gerente funcional Y a un gerente de proyecto. Flexible pero rompe la unidad de mando (doble jefe).</li>
+    </ul>
+    <svg class="diag" viewBox="0 0 700 235" role="img" aria-label="Dos organigramas de ejemplo: departamentalización funcional y departamentalización por producto">
+      <g style="color:var(--muted)">
+        <rect class="dbox" x="85" y="22" width="150" height="36" rx="8"/>
+        <text x="160" y="45" font-size="13" font-weight="700" text-anchor="middle">Gerencia General</text>
+        <line class="dline" x1="160" y1="58" x2="160" y2="80"/>
+        <line class="dline" x1="55" y1="80" x2="265" y2="80"/>
+        <line class="dline" x1="55" y1="80" x2="55" y2="100"/>
+        <line class="dline" x1="160" y1="80" x2="160" y2="100"/>
+        <line class="dline" x1="265" y1="80" x2="265" y2="100"/>
+        <rect class="dbox" x="8" y="100" width="94" height="34" rx="8"/>
+        <rect class="dbox" x="113" y="100" width="94" height="34" rx="8"/>
+        <rect class="dbox" x="218" y="100" width="94" height="34" rx="8"/>
+        <text x="55" y="122" font-size="12" text-anchor="middle">Producción</text>
+        <text x="160" y="122" font-size="12" text-anchor="middle">Ventas</text>
+        <text x="265" y="122" font-size="12" text-anchor="middle">Finanzas</text>
+        <text x="160" y="165" font-size="13" font-weight="700" text-anchor="middle">Por funciones</text>
+        <text class="dmuted" x="160" y="184" font-size="11.5" text-anchor="middle">Agrupa especialistas de la misma</text>
+        <text class="dmuted" x="160" y="199" font-size="11.5" text-anchor="middle">actividad. La más común.</text>
+        <rect class="dbox" x="455" y="22" width="150" height="36" rx="8"/>
+        <text x="530" y="45" font-size="13" font-weight="700" text-anchor="middle">Dirección General</text>
+        <line class="dline" x1="530" y1="58" x2="530" y2="80"/>
+        <line class="dline" x1="425" y1="80" x2="635" y2="80"/>
+        <line class="dline" x1="425" y1="80" x2="425" y2="100"/>
+        <line class="dline" x1="530" y1="80" x2="530" y2="100"/>
+        <line class="dline" x1="635" y1="80" x2="635" y2="100"/>
+        <rect class="dbox" x="378" y="100" width="94" height="46" rx="8"/>
+        <rect class="dbox" x="483" y="100" width="94" height="46" rx="8"/>
+        <rect class="dbox" x="588" y="100" width="94" height="46" rx="8"/>
+        <text x="425" y="119" font-size="12" text-anchor="middle">División</text>
+        <text x="425" y="135" font-size="12" text-anchor="middle">Farmacéutica</text>
+        <text x="530" y="119" font-size="12" text-anchor="middle">División</text>
+        <text x="530" y="135" font-size="12" text-anchor="middle">Veterinaria</text>
+        <text x="635" y="119" font-size="12" text-anchor="middle">División</text>
+        <text x="635" y="135" font-size="12" text-anchor="middle">Química</text>
+        <text x="530" y="172" font-size="13" font-weight="700" text-anchor="middle">Por productos</text>
+        <text class="dmuted" x="530" y="191" font-size="11.5" text-anchor="middle">Una división por línea de producto.</text>
+        <text class="dmuted" x="530" y="206" font-size="11.5" text-anchor="middle">Ideal con muchos productos.</text>
+      </g>
+    </svg>
+    <p>Principios para elegir el criterio: mayor uso, mayor interés, separación del control y supresión de la competencia.</p>
+    <h4>Centralización vs descentralización <span class="badge b-yellow">Importante</span></h4>
+    <p>Centralizar = concentrar las decisiones arriba. Descentralizar = delegar autoridad de decisión hacia abajo. Ninguna es "mejor": depende de factores: <strong>costo de la decisión</strong> (las decisiones caras se centralizan), <strong>deseo de uniformidad de políticas</strong> (uniformidad → centralizar), <strong>tamaño de la organización</strong> (más grande → conviene descentralizar), <strong>historia y cultura de la empresa</strong>, <strong>filosofía de la dirección</strong> (Ford padre centralizaba todo), <strong>disponibilidad de gerentes capacitados</strong> (sin gerentes buenos no podés descentralizar), <strong>técnicas de control disponibles</strong>, <strong>desempeño descentralizado</strong> (dispersión geográfica), <strong>ritmo de cambio</strong> (cambio rápido → descentralizar) y las <strong>influencias ambientales</strong> (impuestos, sindicatos, regulaciones → centralizan). También existe la recentralización: recuperar autoridad antes delegada.</p>
+  </div>
+
+  <div class="card">
+    <span class="utag">UNIDAD 4</span>
+    <h3>Punto de Equilibrio</h3>
+    <h4>El concepto <span class="badge b-red">Imprescindible (ejercicio seguro de parcial)</span></h4>
+    <p>El punto de equilibrio (PE) es el nivel de actividad donde <strong>los ingresos totales igualan a los costos totales</strong>: no ganás ni perdés. Por encima, ganancia; por debajo, pérdida. Sirve para responder: ¿cuántas unidades tengo que vender para no perder plata? ¿Y para ganar lo que quiero?</p>
+    <h4>Las variables <span class="badge b-red">Imprescindible</span></h4>
+    <ul>
+      <li><strong>Costos fijos (CF):</strong> no varían con el volumen: alquiler, sueldos generales, luz y agua de oficinas, algunos impuestos.</li>
+      <li><strong>Costos variables (CV):</strong> dependen del volumen: insumos y materia prima, comisiones de vendedores, sueldos del personal de producción, envoltorios.</li>
+      <li><strong>Costo variable unitario (CVu):</strong> CV totales dividido las unidades.</li>
+      <li><strong>Ingresos (I):</strong> cantidades vendidas por precio de venta (Q × Pv).</li>
+      <li><strong>Contribución marginal:</strong> Pv menos CVu. Lo que aporta cada unidad para cubrir los fijos y generar utilidad.</li>
+    </ul>
+    <h4>Las fórmulas (verificadas letra por letra contra el apunte) <span class="badge b-red">Imprescindible</span></h4>
+    <div class="formula">I = CT&nbsp;&nbsp;→&nbsp;&nbsp;Pv × Q = CF + CVu × Q</div>
+    <div class="formula">Qe = CF / (Pv − CVu)&nbsp;&nbsp;&nbsp;[PE en cantidades]</div>
+    <div class="formula">PE ($) = Qe × Pv&nbsp;&nbsp;&nbsp;[PE en valores]</div>
+    <div class="formula">PE ($) = CF / ( 1 − CV($) / Ventas Totales($) )&nbsp;&nbsp;&nbsp;[PE en valores, vía alternativa]</div>
+    <p>Truco para los prácticos: primero separá los costos en fijos y variables (la "comisión de vendedores" y los "insumos" son variables; el "alquiler" y "otros honorarios" son fijos), después sacá Pv = Ingresos / Q y CVu = CV totales / Q, y recién ahí aplicá la fórmula.</p>
+    <h4>Los 3 tipos de punto de equilibrio <span class="badge b-red">Imprescindible</span></h4>
+    <p>Según el apunte existen SOLO estos tres, en este orden (no existe ningún "PE operativo"):</p>
+    <ul>
+      <li><strong>1) PE Contable (PEC):</strong> el más usado. Lucro = cero. <strong>PEC = Gastos fijos / Margen de contribución</strong>. Cuánto vender para que el beneficio sea exactamente cero.</li>
+      <li><strong>2) PE Financiero o de caja (PEF):</strong> no considera la depreciación ni las amortizaciones (gastos que no salen de la caja). Lucro = cero menos depreciación. <strong>PEF = (Gastos fijos − Gastos no desembolsables) / Margen de contribución</strong>. Su límite: no te prepara para cuando haya que reponer máquinas.</li>
+      <li><strong>3) PE Económico (PEE):</strong> incorpora una ganancia mínima deseada (remuneración al capital invertido). Lucro = cero más remuneración del capital propio. <strong>PEE = (Gastos fijos + Beneficio deseado) / Margen de contribución</strong>. Se usa junto con el contable: uno te dice cuánto vender para no perder, el otro cuánto para ganar lo deseado.</li>
+    </ul>
+    <div class="tip">Ejemplo cotidiano: tenés un puesto de panchos. Alquiler del carrito $120.000 por mes (CF). Cada pancho te cuesta $200 entre salchicha, pan y aderezos (CVu) y lo vendés a $500 (Pv). Contribución marginal = $300. Qe = 120.000 / 300 = <strong>400 panchos</strong>. Del pancho 401 en adelante, todo es ganancia. ¿Querés ganar $30.000? (120.000 + 30.000) / 300 = 500 panchos.</div>
+  </div>
+
+  <div class="card">
+    <span class="utag">UNIDAD 5</span>
+    <h3>Función Producción y Abastecimiento</h3>
+    <h4>El sistema de producción <span class="badge b-yellow">Importante</span></h4>
+    <p>Producción es la <strong>transformación de insumos en productos</strong> (bienes o servicios). Funciona como sistema: <strong>entradas</strong> (materias primas, mano de obra, energía, capital, información) → <strong>proceso de conversión</strong> → <strong>salidas</strong> (productos y servicios), con un subsistema de <strong>control por retroalimentación</strong>. Una panadería: entra harina, sale pan; el control de calidad y los reclamos del cliente retroalimentan el proceso. Sus objetivos típicos se miden en: costo, calidad, flexibilidad y entrega.</p>
+    <h4>Tres niveles de decisiones <span class="badge b-yellow">Importante</span></h4>
+    <ul>
+      <li><strong>Estratégicas:</strong> producto, proceso y métodos, equipo, tecnología, disposición de planta, capacidad y dimensión, <strong>localización</strong>, estructura de dirección.</li>
+      <li><strong>Tácticas:</strong> planeamiento de la producción e inventarios, programación, lanzamiento y monitorización, conducción de la fuerza de trabajo.</li>
+      <li><strong>Logísticas:</strong> mantenimiento, <strong>abastecimiento</strong>, expedición, manejo de materiales, administración de personal de producción.</li>
+    </ul>
+    <h4>Tipos de producción <span class="badge b-red">Imprescindible</span></h4>
+    <ul>
+      <li><strong>Continua:</strong> flujo ininterrumpido, productos estandarizados, alta dependencia del mercado, control por procesos. Ejemplos: refinerías de petróleo, fabricación de botellas, papel, celulosa.</li>
+      <li><strong>Intermitente:</strong> se trabaja a pedido, por lotes u órdenes; maquinaria versátil agrupada por proceso (layout por proceso), personal capacitado, productos muy diversificados. Ejemplos: talleres, muebles a medida, reparación de autos, restaurantes, hospitales.</li>
+      <li><strong>Por montaje:</strong> piezas que confluyen en una línea de montaje final: automóviles, motores, electrodomésticos.</li>
+      <li><strong>Por proyectos:</strong> producto único de gran porte con fecha de inicio y fin: construcción (casas, puentes, diques), astilleros. Usa PERT y Gantt.</li>
+    </ul>
+    <h4>Calidad <span class="badge b-yellow">Importante</span></h4>
+    <p>Dos conceptos: <strong>calidad de diseño</strong> (coincidencia entre lo que pide el cliente y lo que se diseñó) y <strong>calidad de concordancia</strong> (coincidencia entre lo elaborado y lo diseñado). El control de calidad puede ser por <strong>variable</strong> (se mide: peso, largo, tolerancias) o por <strong>atributo</strong> (pasa / no pasa), sobre entradas, procesos o salidas. La filosofía de <strong>calidad total</strong> (Juran) extiende la responsabilidad por la calidad a TODA la organización, con clientes y proveedores internos. Regla de oro: es mejor prevenir que curar.</p>
+    <h4>Logística: abastecimiento, expedición y mantenimiento <span class="badge b-yellow">Importante</span></h4>
+    <ul>
+      <li><strong>Abastecimiento:</strong> tres subfunciones que forman un ciclo: <strong>almacenes</strong> (detectan necesidad al llegar al punto de pedido), <strong>compras</strong> (requisición, estudio de proveedores, ejecución y seguimiento) y <strong>recepción</strong> (control e ingreso de los bienes). El <strong>lote óptimo</strong> busca minimizar la suma de dos costos contrapuestos: el de ordenamiento (hacer pedidos) y el de mantener existencias.</li>
+      <li><strong>Expedición y distribución física:</strong> despachar los productos a quienes los recibirán; depósitos, transporte, inventarios.</li>
+      <li><strong>Mantenimiento:</strong> 4 tipos: <strong>preventivo</strong> (anticipado, programado para evitar fallas), <strong>predictivo</strong> (monitorea variables técnicas: vibraciones, temperatura, para prever la falla), <strong>correctivo programable</strong> (la falla se detectó pero la reparación puede esperar a la fecha más oportuna) y <strong>correctivo de emergencia</strong> (la avería exige acción inmediata).</li>
+      <li><strong>Servicios de planta:</strong> energía, gas, vapor, agua tratada, aire comprimido.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <span class="utag">UNIDAD 6</span>
+    <h3>Función Personal</h3>
+    <h4>Alcance <span class="badge b-yellow">Importante</span></h4>
+    <p>La administración de personal (Dessler) abarca: análisis de puestos, planeación de necesidades de mano de obra y reclutamiento, selección, inducción y capacitación, administración de sueldos, incentivos y beneficios, evaluación del desempeño, comunicación, desarrollo de gerentes, seguridad y salud, y relaciones laborales.</p>
+    <h4>Análisis de puestos <span class="badge b-yellow">Importante</span></h4>
+    <p>Procedimiento para definir qué exige cada puesto y qué personas hacen falta. Genera dos productos: la <strong>descripción del puesto</strong> (identificación, nivel jerárquico, funciones, relaciones, misión, estándares, condiciones de trabajo, horario: el QUÉ) y la <strong>especificación del puesto</strong> (educación, experiencia, conocimientos, condiciones personales: el QUIÉN). Sirve de base para remunerar, seleccionar y evaluar.</p>
+    <h4>Dotación: reclutamiento, selección, inducción <span class="badge b-red">Imprescindible</span></h4>
+    <ul>
+      <li><strong>Reclutamiento:</strong> atraer candidatos potencialmente calificados. Fuentes: interno (gente de la casa), contactos, archivos, anuncios, consultoras, head hunting, universidades.</li>
+      <li><strong>Selección:</strong> filtrar con una secuencia: solicitud y CV → entrevistas → pruebas de empleo → investigación de historia anterior → selección preliminar → examen médico → colocación. Pruebas: evaluación psicológica, conocimientos técnicos, salud.</li>
+      <li><strong>Inducción:</strong> incorporar y orientar al nuevo: que conozca la organización, su cultura y su puesto (folletos, recorridas, presentaciones). Minimiza la ansiedad natural del arranque.</li>
+    </ul>
+    <h4>Capacitación y desarrollo <span class="badge b-yellow">Importante</span></h4>
+    <p><strong>Capacitación:</strong> mejorar las aptitudes para el puesto u oficio actual (entrenamiento). <strong>Desarrollo:</strong> preparar para la actividad futura (carrera). El ciclo de entrenamiento: inventario de necesidades → elección de métodos → programa → ejecución → evaluación y control de resultados. Aporta en informaciones, habilidades, actitudes y nivel conceptual.</p>
+    <h4>Remuneraciones y beneficios <span class="badge b-yellow">Importante</span></h4>
+    <p>Se dividen en: <strong>pagos en función del tiempo</strong> (por mes: sueldos; por día/quincena: salarios), <strong>en función del nivel de actividad</strong> (a destajo, por producción), <strong>por volumen de ventas</strong> (comisiones, típico de vendedores) y <strong>en función de utilidades</strong> (participaciones y bonificaciones a directores). Más beneficios financieros indirectos (cobertura de salud, vacaciones pagas, seguro, préstamos) y compensaciones no financieras (trato justo, comunicación abierta, horario flexible). Para fijarlas: factores internos (jerarquía, mérito) y externos (mercado de trabajo, poder adquisitivo). La valuación de puestos da objetividad.</p>
+    <h4>Evaluación del desempeño <span class="badge b-yellow">Importante</span></h4>
+    <p>Calificar al empleado en función de eficiencia y eficacia, comunicándole los resultados para que se desarrolle. Puede ser <strong>informal</strong> (el feedback cotidiano) o <strong>formal</strong> (periódica y metodológica). La formal mide objetivos (metas cumplidas), factores objetivos (conocimientos, tareas clave) y factores subjetivos (iniciativa, dedicación). Cuatro etapas: planeamiento → revisión intermedia → evaluación propiamente dicha → comunicación de los resultados (diálogo, sin sorpresas).</p>
+    <h4>Seguridad, salubridad y relaciones laborales <span class="badge b-yellow">Importante</span></h4>
+    <p><strong>Seguridad industrial:</strong> prevenir accidentes. Distinguí <strong>actos inseguros</strong> (conductas: levantar cargas de forma incorrecta, no usar protección, sacar resguardos, bromas pesadas) de <strong>condiciones inseguras</strong> (del ambiente: falta de resguardos, máquinas sin protección, mala ventilación o iluminación, instalaciones deficientes). Métodos: eliminar el riesgo, tolerarlo (calculado), transferirlo (seguros) o prevenirlo. <strong>Salubridad e higiene:</strong> prevenir enfermedades profesionales (físicas, mecánico-químicas como la silicosis, químicas como el saturnismo). <strong>Relaciones laborales:</strong> el sindicato es una asociación profesional voluntaria que defiende los intereses del personal. Las <strong>negociaciones colectivas</strong> concluyen en convenios (salarios, condiciones, vacaciones). Medidas de fuerza: de los trabajadores: huelga, piquetes, trabajo a desgano, boicot, sabotaje; de los empresarios: <strong>lock-out</strong> (cierre de la fábrica) y listas negras; de ambas partes: mediación o conciliación e impasse.</p>
+  </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section class="panel" id="panel-quiz">
+  <h2 class="sec">Quiz interactivo</h2>
+  <p class="secDesc">Preguntas al estilo del primer parcial 2025 y de los prácticos. Elegí una opción o escribí el número y validá: tenés explicación al instante.</p>
+  <div class="scorebar"><span>Tu puntaje</span><span><span class="num" id="scoreOk">0</span> correctas / <span id="scoreTot">0</span> respondidas</span></div>
+  <div id="quizArea"></div>
+</section>
+
+<!-- ============ FLASHCARDS ============ -->
+<section class="panel" id="panel-flash">
+  <h2 class="sec">Flashcards</h2>
+  <p class="secDesc">Tocá una tarjeta para darla vuelta. Frente: concepto. Dorso: respuesta + mnemotecnia. Repasalas hasta que salgan solas.</p>
+  <div id="flashArea"></div>
+</section>
+
+<!-- ============ MAPAS ============ -->
+<section class="panel" id="panel-mapas">
+  <h2 class="sec">Mapas conceptuales</h2>
+  <p class="secDesc">La jerarquía de cada unidad de un vistazo. Ideal para repasar la noche anterior.</p>
+
+  <div class="card">
+    <div class="node root">UNIDAD 1 · La Administración</div>
+    <div class="kids">
+      <div class="node lvl1">Concepto: interpretar objetivos y transformarlos en acción</div>
+      <div class="kids"><div class="node lvl2">Ciencia fáctica (explica y predice) + Técnica (opera) · NO es arte</div></div>
+      <div class="node lvl1">Proceso administrativo (ciclo)</div>
+      <div class="kids">
+        <div class="node lvl2">Planeación → niveles: estratégica / táctica / operacional · planes: procedimientos, presupuestos, programas, normas</div>
+        <div class="node lvl2">Organización → formal e informal · tareas, personas, órganos, relaciones</div>
+        <div class="node lvl2">Dirección → comunicar, liderar, motivar · autoridad y 5 tipos de poder</div>
+        <div class="node lvl2">Control → estándares, observación, comparación, acción correctiva</div>
+      </div>
+      <div class="node lvl1">Escuelas</div>
+      <div class="kids">
+        <div class="node lvl2">Clásica: Científica (Taylor: eficiencia, incentivos) + Industrial y General (Fayol: 14 principios, áreas)</div>
+        <div class="node lvl2">Relaciones Humanas (Mayo, Hawthorne: grupos informales, factor social)</div>
+        <div class="node lvl2">Neoclásica (Gulick, Koontz: organigrama, manual de funciones, ACME)</div>
+        <div class="node lvl2">Estructuralista (Weber: burocracia, autoridad legal · Merton)</div>
+        <div class="node lvl2">Psicología y Sociología Industrial (Maslow, McGregor: Teorías X e Y, liderazgo)</div>
+        <div class="node lvl2">Teoría de los Sistemas (Von Bertalanffy: input, output, feedback)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="node root">UNIDAD 2 · Las Organizaciones</div>
+    <div class="kids">
+      <div class="node lvl1">Unidades sociales construidas para fines específicos</div>
+      <div class="node lvl1">Características</div>
+      <div class="kids">
+        <div class="node lvl2">División del trabajo, poder y comunicación (planeada)</div>
+        <div class="node lvl2">Centros de poder que dirigen y revisan</div>
+        <div class="node lvl2">Sustitución del personal</div>
+      </div>
+      <div class="node lvl1">Sistema abierto: entrada → proceso → salida + retroalimentación</div>
+      <div class="kids"><div class="node lvl2">Sociotécnico: subsistema técnico + administrativo + social</div></div>
+      <div class="node lvl1">Entorno</div>
+      <div class="kids">
+        <div class="node lvl2">Acción directa: clientes, proveedores, competidores, sistema financiero, sindicatos, sector económico</div>
+        <div class="node lvl2">Acción indirecta: económicas, políticas/legales, sociedad, culturales, tecnología</div>
+        <div class="node lvl2">Incertidumbre (Duncan): cambio × complejidad · Administrar el entorno: amortiguar, suavizar, predecir</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="node root">UNIDAD 3 · Estructuras Orgánicas</div>
+    <div class="kids">
+      <div class="node lvl1">Principios</div>
+      <div class="kids">
+        <div class="node lvl2">División del trabajo y especialización (vertical / horizontal)</div>
+        <div class="node lvl2">Unidad de mando · Cadena de mando (escalar)</div>
+        <div class="node lvl2">Delegación (la responsabilidad NO se delega)</div>
+        <div class="node lvl2">Amplitud de control (tramo amplio = pocos niveles)</div>
+        <div class="node lvl2">Coordinación</div>
+      </div>
+      <div class="node lvl1">Tipos de organización / relaciones formales</div>
+      <div class="kids">
+        <div class="node lvl2">Lineal: autoridad única sobre el área propia</div>
+        <div class="node lvl2">Funcional: autoridad del especialista sobre toda la empresa</div>
+        <div class="node lvl2">Línea-staff: línea decide, staff asesora · Comités</div>
+      </div>
+      <div class="node lvl1">Departamentalización</div>
+      <div class="kids">
+        <div class="node lvl2">Funcional · Productos · Geográfica · Clientela · Proceso · Proyectos · Matricial</div>
+        <div class="node lvl2">Principios: mayor uso, mayor interés, separación del control, supresión de la competencia</div>
+      </div>
+      <div class="node lvl1">Centralización ↔ Descentralización</div>
+      <div class="kids"><div class="node lvl2">Factores: costo de la decisión, uniformidad, tamaño, historia, filosofía, gerentes disponibles, controles, geografía, ritmo de cambio, ambiente</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="node root">UNIDAD 4 · Punto de Equilibrio</div>
+    <div class="kids">
+      <div class="node lvl1">Concepto: Ingresos totales = Costos totales (ni gano ni pierdo)</div>
+      <div class="node lvl1">Variables: CF · CV · CVu · Ingresos (Q × Pv) · Contribución marginal (Pv − CVu)</div>
+      <div class="node lvl1">Fórmulas</div>
+      <div class="kids">
+        <div class="node lvl2">Qe = CF / (Pv − CVu)</div>
+        <div class="node lvl2">PE($) = Qe × Pv&nbsp; o &nbsp;PE($) = CF / (1 − CV/Ventas)</div>
+      </div>
+      <div class="node lvl1">Tipos (solo 3, en este orden)</div>
+      <div class="kids">
+        <div class="node lvl2">Contable: lucro = 0 · PEC = Gastos fijos / Margen de contribución</div>
+        <div class="node lvl2">Financiero (de caja): resta gastos no desembolsables · PEF = (GF − no desembolsables) / MC</div>
+        <div class="node lvl2">Económico: suma la ganancia deseada · PEE = (GF + beneficio deseado) / MC</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="node root">UNIDAD 5 · Función Producción</div>
+    <div class="kids">
+      <div class="node lvl1">Sistema: entradas → conversión → salidas + control por retroalimentación</div>
+      <div class="node lvl1">Decisiones: estratégicas (producto, tecnología, capacidad, localización) · tácticas (planeamiento, programación) · logísticas (mantenimiento, abastecimiento)</div>
+      <div class="node lvl1">Tipos de producción</div>
+      <div class="kids">
+        <div class="node lvl2">Continua (refinerías, botellas) · Intermitente (talleres, a pedido) · Por montaje (autos) · Por proyectos (construcción, astilleros)</div>
+      </div>
+      <div class="node lvl1">Calidad: de diseño vs de concordancia · control por variable o atributo · calidad total (Juran)</div>
+      <div class="node lvl1">Logística</div>
+      <div class="kids">
+        <div class="node lvl2">Abastecimiento: almacenes → compras → recepción · lote óptimo</div>
+        <div class="node lvl2">Expedición y distribución física</div>
+        <div class="node lvl2">Mantenimiento: preventivo, predictivo, correctivo programable, correctivo de emergencia</div>
+        <div class="node lvl2">Servicios de planta (energía, gas, vapor)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="node root">UNIDAD 6 · Función Personal</div>
+    <div class="kids">
+      <div class="node lvl1">Análisis de puestos: descripción (qué) + especificación (quién)</div>
+      <div class="node lvl1">Dotación: reclutamiento (fuentes) → selección (entrevistas, pruebas) → inducción</div>
+      <div class="node lvl1">Capacitación (puesto actual) vs Desarrollo (futuro) · ciclo de entrenamiento</div>
+      <div class="node lvl1">Remuneraciones: por tiempo, por actividad (destajo), por ventas (comisiones), por utilidades + beneficios</div>
+      <div class="node lvl1">Evaluación del desempeño: informal / formal (4 etapas)</div>
+      <div class="node lvl1">Seguridad: actos inseguros vs condiciones inseguras · salubridad e higiene</div>
+      <div class="node lvl1">Relaciones laborales: sindicatos, negociación colectiva, huelga / lock-out, mediación</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GUIA 80/20 ============ -->
+<section class="panel" id="panel-guia">
+  <h2 class="sec">Guía estratégica 80/20</h2>
+  <p class="secDesc">Qué cae seguro y dónde invertir cada hora. Evidencia: la prueba del primer parcial 2025 y los trabajos prácticos de la cátedra.</p>
+
+  <div class="card">
+    <h3>Qué tomaron en el parcial 2025 (la mejor pista que tenés)</h3>
+    <ul>
+      <li><strong>Parte teórica (30 pts):</strong> características de las organizaciones (10), organizaciones como sistemas abiertos (10) e identificar escuelas: Taylor y Fayol por sus rasgos (10).</li>
+      <li><strong>Parte práctica (70 pts):</strong> ¡el grueso! Identificar <strong>variables del entorno</strong> en un texto periodístico (50 pts) y clasificar <strong>relaciones formales</strong> (lineal / funcional / staff) en 7 casos (20 pts).</li>
+      <li><strong>Conclusión:</strong> el primer parcial vive en las unidades 1, 2 y 3, con la práctica valiendo más del doble que la teoría. El punto de equilibrio (U4) tiene 3 prácticos enteros de ejercicios numéricos: es el caballito de batalla del segundo parcial y del final.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Probabilidad por tema y tiempo sugerido</h3>
+    <table class="gt">
+      <thead><tr><th>Tema</th><th>Unidad</th><th>Probabilidad</th><th>Tiempo</th><th>Evidencia</th></tr></thead>
+      <tbody>
+        <tr><td>Variables del entorno (ejercicio con texto)</td><td>U2</td><td class="prob p-high">95%</td><td>3 h</td><td>50 pts del parcial 2025 + 3 prácticos (Madrid, Toyota, extras)</td></tr>
+        <tr><td>Punto de equilibrio: ejercicios numéricos</td><td>U4</td><td class="prob p-high">95%</td><td>4 h</td><td>3 prácticos completos de ejercicios + teoría dedicada</td></tr>
+        <tr><td>Escuelas de la administración</td><td>U1</td><td class="prob p-high">90%</td><td>3 h</td><td>10 pts del parcial 2025 + TP N°2 con 7 casos</td></tr>
+        <tr><td>Relaciones formales (lineal / funcional / staff)</td><td>U3</td><td class="prob p-high">85%</td><td>2 h</td><td>20 pts del parcial 2025</td></tr>
+        <tr><td>Características de las organizaciones</td><td>U2</td><td class="prob p-high">85%</td><td>1 h</td><td>Pregunta textual del parcial 2025</td></tr>
+        <tr><td>Organizaciones como sistemas abiertos</td><td>U2</td><td class="prob p-high">80%</td><td>1 h</td><td>Pregunta textual del parcial 2025</td></tr>
+        <tr><td>Tipos de departamentalización (con organigramas)</td><td>U3</td><td class="prob p-mid">70%</td><td>2 h</td><td>Práctico con 5 organigramas para clasificar</td></tr>
+        <tr><td>Ciclo administrativo (ejemplo aplicado)</td><td>U1</td><td class="prob p-mid">65%</td><td>1,5 h</td><td>TP N°1 entero dedicado al tema</td></tr>
+        <tr><td>Tipos de PE (contable, financiero, económico)</td><td>U4</td><td class="prob p-mid">60%</td><td>1 h</td><td>PDF de teoría específico de la cátedra</td></tr>
+        <tr><td>Centralización vs descentralización</td><td>U3</td><td class="prob p-mid">55%</td><td>1,5 h</td><td>TP propio + PDF de teoría dedicado</td></tr>
+        <tr><td>Tipos de producción (continua, intermitente, etc.)</td><td>U5</td><td class="prob p-mid">50%</td><td>2 h</td><td>Teoría Solana cap. 13 + clase dedicada</td></tr>
+        <tr><td>Mantenimiento y abastecimiento</td><td>U5</td><td class="prob p-low">40%</td><td>1,5 h</td><td>Parte del apunte de producción</td></tr>
+        <tr><td>Función personal (dotación, evaluación, seguridad)</td><td>U6</td><td class="prob p-low">40%</td><td>2 h</td><td>Apunte propio pero sin prácticos asociados</td></tr>
+        <tr><td>Principios de estructura (unidad de mando, delegación, tramo)</td><td>U3</td><td class="prob p-mid">55%</td><td>1,5 h</td><td>PDF de principios + apunte grande de U3</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.85rem; color:var(--muted);">Suma ~26 h con repaso incluido. Si tenés menos tiempo, cortá de abajo hacia arriba: lo de arriba no se negocia.</p>
+  </div>
+
+  <div class="card">
+    <h3>Orden de estudio sugerido</h3>
+    <ul class="stepList">
+      <li><strong>Variables del entorno (U2).</strong> Es media nota del parcial. Practicá con los textos de Madrid y Toyota: agarrá cualquier noticia de Infobae y clasificá cada frase (económica, política, cultural, tecnológica, social, o actor directo como sindicato/proveedor/cliente).</li>
+      <li><strong>Relaciones formales + departamentalización (U3).</strong> Regla rápida: ¿manda sobre su propia área? lineal. ¿Fija estándares para toda la empresa desde su especialidad? funcional. ¿Solo sugiere y otro decide? staff.</li>
+      <li><strong>Escuelas (U1).</strong> Armate la línea de tiempo y el "quién es quién": Taylor = eficiencia del obrero e incentivos; Fayol = 14 principios y áreas; Mayo = Hawthorne y grupos; Weber = burocracia; McGregor = X e Y; Bertalanffy = sistemas.</li>
+      <li><strong>Características de las organizaciones + sistema abierto (U2).</strong> Dos preguntas que ya cayeron textuales. Memorizá las 3 características y el esquema entrada-proceso-salida con retroalimentación.</li>
+      <li><strong>Punto de equilibrio (U4).</strong> Hacé TODOS los ejercicios de los 3 prácticos a mano. Clave: clasificar bien fijos vs variables antes de tocar la fórmula. Y grabate los 3 tipos: Contable, Financiero, Económico.</li>
+      <li><strong>Ciclo administrativo (U1).</strong> Armá tu propio ejemplo tipo TP N°1 (una empresa inventada con las 4 etapas). Si lo escribiste una vez, en el examen sale solo.</li>
+      <li><strong>Producción (U5).</strong> Enfocate en los 4 tipos de producción con ejemplos y los 4 tipos de mantenimiento. El resto es lectura comprensiva.</li>
+      <li><strong>Personal (U6).</strong> Repasá la secuencia reclutamiento → selección → inducción → capacitación y la diferencia actos vs condiciones inseguras. Con las flashcards alcanza.</li>
+      <li><strong>Repaso final.</strong> Quiz completo de este sistema + releer los mapas conceptuales + rehacer 2 ejercicios de PE cronometrados.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Errores típicos que te cuestan puntos</h3>
+    <ul>
+      <li>Inventar un "PE operativo": <strong>no existe</strong>. Son tres: contable, financiero y económico.</li>
+      <li>Meter la comisión de vendedores como costo fijo: si depende de cuánto vendés, es <strong>variable</strong>.</li>
+      <li>Confundir relación funcional con staff: el funcional <strong>obliga</strong> (fija estándares), el staff solo <strong>recomienda</strong>.</li>
+      <li>Decir que la administración es un arte: el apunte dice explícitamente que NO lo es.</li>
+      <li>Atribuirle los 14 principios a Taylor: son de <strong>Fayol</strong>. Taylor es tiempos, movimientos e incentivos.</li>
+      <li>Olvidarte de la retroalimentación al explicar el sistema abierto: es lo que cierra el ciclo y suma puntos.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<script>
+/* ===== THEME ===== */
+const root=document.documentElement, tBtn=document.getElementById('themeBtn');
+function setTheme(t){root.setAttribute('data-theme',t); tBtn.textContent=t==='dark'?'Modo claro':'Modo oscuro'; try{localStorage.setItem('admTheme',t);}catch(e){}}
+(function(){let s=null; try{s=localStorage.getItem('admTheme');}catch(e){}
+ setTheme(s||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));})();
+tBtn.addEventListener('click',()=>setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark'));
+
+/* ===== TABS ===== */
+document.getElementById('tabs').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b)return;
+  document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('active',x===b));
+  document.querySelectorAll('section.panel').forEach(p=>p.classList.toggle('active',p.id==='panel-'+b.dataset.tab));
+  window.scrollTo({top:0});
+});
+
+/* ===== QUIZ DATA ===== */
+const QUIZ=[
+{u:'Unidad 1 · Introducción a la Administración',items:[
+ {t:'mc',q:'¿Cuál es el orden correcto del proceso administrativo?',o:['Organización, planeación, control, dirección','Planeación, organización, dirección, control','Dirección, planeación, organización, control','Control, dirección, organización, planeación'],a:1,e:'El ciclo es Planear → Organizar → Dirigir → Controlar (PODC). Es cíclico: el control retroalimenta a la planeación.'},
+ {t:'mc',q:'"La única manera de aumentar la productividad es elevando la eficiencia de los trabajadores; selecciona y entrena a los operarios según sus cualidades físicas; remunera según rendimientos individuales". ¿Qué escuela es? (pregunta del parcial 2025)',o:['Relaciones Humanas (Mayo)','Estructuralista (Weber)','Administración Científica (Taylor)','Teoría de los Sistemas'],a:2,e:'Es Taylor y la Escuela de Administración Científica: eficiencia del obrero, selección y entrenamiento, incentivos por rendimiento.'},
+ {t:'mc',q:'"Es el primero en sistematizar la administración, divide las organizaciones en áreas, elabora el modelo de manual de funciones y analiza 14 principios". ¿De quién hablamos? (pregunta del parcial 2025)',o:['Frederick Taylor','Henri Fayol','Elton Mayo','Max Weber'],a:1,e:'Henri Fayol, Escuela de Administración Industrial y General: 14 principios, áreas de la empresa, manual de funciones.'},
+ {t:'vf',q:'Según el apunte de cátedra, la administración es un arte.',a:false,e:'Falso. El apunte concluye que la administración NO es un arte (el arte es subjetivo y vivencial). Es ciencia fáctica y técnica, que se complementan.'},
+ {t:'mc',q:'¿Cuál fue la gran conclusión de los experimentos de Hawthorne?',o:['La iluminación es el principal factor de productividad','Los incentivos económicos explican los aumentos de productividad','Las condiciones sociopsicológicas y los grupos informales influyen más que las condiciones físicas','La productividad no puede medirse'],a:2,e:'Mayo encontró que la productividad subía aunque empeorara la luz: el orgullo de grupo, la atención de los supervisores y las normas del grupo informal pesaban más que lo físico y que el dinero.'},
+ {t:'mc',q:'¿Cuál de estos NO es uno de los 14 principios de Fayol?',o:['Unidad de mando','Equidad','Reingeniería de procesos','Estabilidad del personal'],a:2,e:'La reingeniería es un concepto moderno. Los 14 incluyen: división del trabajo, autoridad, disciplina, unidad de mando, unidad de dirección, subordinación del interés particular, remuneración, centralización, jerarquía, orden, equidad, estabilidad, iniciativa y unión del personal.'},
+ {t:'mc',q:'¿Qué clase de plan se relaciona con el dinero?',o:['Procedimientos','Presupuestos','Programas','Normas o reglamentos'],a:1,e:'Procedimientos = métodos (flujogramas); Presupuestos = dinero; Programas = tiempo (cronogramas); Normas = comportamientos.'},
+ {t:'vf',q:'La planeación estratégica se proyecta a largo plazo, abarca a la empresa como totalidad y está definida por la cúpula de la organización.',a:true,e:'Verdadero. La táctica es de mediano plazo por departamento, y la operacional de corto plazo para cada tarea o actividad.'},
+ {t:'mc',q:'El modelo burocrático, con normas estrictas, jerarquías claras y cargos despersonalizados, pertenece a la escuela...',o:['Clásica','Estructuralista (Weber)','Neoclásica','De psicología industrial'],a:1,e:'Weber creó el modelo burocrático dentro de la escuela estructuralista (1910-1950): control y orden con autoridad legal. Muy aplicable al Estado, rígido para empresas privadas.'},
+]},
+{u:'Unidad 2 · Las Organizaciones',items:[
+ {t:'mc',q:'¿Cuál de las siguientes NO es una característica de las organizaciones según el apunte?',o:['División del trabajo, del poder y de la comunicación','Presencia de uno o más centros de poder','Sustitución del personal','Fin de lucro obligatorio'],a:3,e:'Las 3 características son: división del trabajo/poder/comunicación (planeada), centros de poder que dirigen y revisan, y sustitución de personal. Hay organizaciones sin fines de lucro (clubes, ONG, iglesias).'},
+ {t:'vf',q:'Las organizaciones son sistemas abiertos porque intercambian entradas y salidas con su entorno y se retroalimentan.',a:true,e:'Verdadero. Reciben entradas (insumos, información, energía), las procesan y devuelven salidas (productos, servicios), con retroalimentación permanente del entorno.'},
+ {t:'mc',q:'En el esquema entrada-proceso-salida, ¿cuáles son ejemplos de SALIDAS?',o:['Materias primas e información','Tareas, relaciones y cultura','Productos, servicios y cohesividad','Acciones y expectativas'],a:2,e:'Entradas: acciones, energía, información, materias primas. Procesos: tareas, relaciones, estructura, cultura. Salidas: productos, servicios, dirección, cohesividad.'},
+ {t:'mc',q:'¿Cuál es un componente de acción DIRECTA (inmediata) del entorno?',o:['Los factores culturales','La tecnología','Los proveedores','Los factores políticos'],a:2,e:'Directos: clientes, proveedores, competidores, sistema financiero, sindicatos, sector económico. Indirectos (mediatos): tecnología, sociedad, factores políticos, culturales y económicos generales.'},
+ {t:'mc',q:'"El Ayuntamiento de Madrid designa como ilegales el 95% de los pisos turísticos" (texto del parcial 2025). ¿Qué variable del entorno es?',o:['Económica','Político-legal','Cultural','Tecnológica'],a:1,e:'Una decisión regulatoria de un gobierno es una variable político-legal: el Estado crea amenazas u oportunidades vía normas.'},
+ {t:'mc',q:'"El turismo representa más del 11% del PIB de España" (texto del parcial 2025). ¿Qué variable es?',o:['Económica','Social','Política','Tecnológica'],a:0,e:'PIB, empleo, inflación, tipo de cambio: variables económicas. En el parcial valió puntos identificar exactamente esto.'},
+ {t:'mc',q:'"La creciente turismofobia: pintadas de Tourist go home y activismo contra el turismo". ¿Qué variable es?',o:['Económica','Político-legal','Social / cultural','Del sistema financiero'],a:2,e:'Actitudes, valores y reacciones de la sociedad: variable social/cultural. La cultura condiciona qué productos puede ofrecer una organización.'},
+ {t:'mc',q:'La organización como sistema sociotécnico incluye tres subsistemas:',o:['Primario, secundario y terciario','Técnico, administrativo y social','Interno, externo y mixto','Operativo, táctico y estratégico'],a:1,e:'Técnico (instrumentos, tecnología, procesos), administrativo (estructura, dirección, decisiones) y social (personas, comportamientos, cultura).'},
+ {t:'vf',q:'El entorno solo afecta a las organizaciones grandes; las pymes funcionan aisladas de él.',a:false,e:'Falso. Toda organización, sea cual sea su actividad y tamaño, está unida indisolublemente a su entorno y necesita un equilibrio dinámico con él.'},
+]},
+{u:'Unidad 3 · Las Estructuras Orgánicas',items:[
+ {t:'mc',q:'"Un subordinado solo debe recibir órdenes de un superior". ¿Qué principio es?',o:['Delegación','Unidad de mando','Amplitud de control','Coordinación'],a:1,e:'Unidad de mando (de Fayol): evita conflictos por órdenes contradictorias y aclara ante quién se rinde cuentas.'},
+ {t:'mc',q:'"El asesor financiero de la compañía sugiere al Director de Finanzas tomar un crédito" (caso del parcial 2025). ¿Qué relación formal es?',o:['Lineal','Funcional','De staff (asesoramiento)','Matricial'],a:2,e:'El asesor sugiere y recomienda, pero la decisión la toma el director: relación de staff o asesoramiento.'},
+ {t:'mc',q:'"El Gerente de Producción establece el cronograma de elaboración del producto X para su planta" (caso del parcial 2025). ¿Qué relación formal es?',o:['Lineal','Funcional','De staff','Informal'],a:0,e:'Manda sobre su propia área y sus subordinados directos: relación lineal (autoridad jerárquica clásica).'},
+ {t:'mc',q:'"El área de Marketing informa a toda la empresa cuáles son los estándares a seguir" (caso del parcial 2025). ¿Qué relación formal es?',o:['Lineal','Funcional','De staff','De comité'],a:1,e:'Un área especialista fija pautas obligatorias para TODA la organización: autoridad funcional, basada en el conocimiento.'},
+ {t:'mc',q:'Una empresa se estructura en departamentos de Producción, Ventas y Finanzas. ¿Qué tipo de departamentalización es?',o:['Por productos','Funcional','Geográfica','Por clientela'],a:1,e:'Agrupar por funciones principales de la empresa (producir, vender, financiar) es la departamentalización funcional, la más común.'},
+ {t:'mc',q:'Un banco se organiza en banca comunitaria, banca empresarial y banca institucional. ¿Qué criterio usa?',o:['Por proceso','Por proyectos','Por clientela','Funcional'],a:2,e:'Agrupa según el tipo de cliente que atiende: departamentalización por clientela (también la tienda con departamento femenino, masculino e infantil).'},
+ {t:'mc',q:'En un organigrama, los gerentes de proyecto se cruzan con los jefes funcionales (diseño, mecánica, electrónica) y cada persona reporta a ambos. ¿Qué estructura es? (apareció en el práctico)',o:['Lineal','Matricial','Por proceso','Geográfica'],a:1,e:'Es la organización matricial: combina departamentalización funcional y por proyecto en la misma estructura. Su gran desventaja: rompe la unidad de mando.'},
+ {t:'mc',q:'¿Cuál es una ventaja típica de la organización LINEAL?',o:['Máxima especialización técnica','Estructura sencilla y clara delimitación de responsabilidades','Comunicación directa entre especialistas','Asesoría experta permanente'],a:1,e:'La lineal es simple, estable y con responsabilidades bien definidas. La especialización es la ventaja de la funcional; la asesoría experta, de la línea-staff.'},
+ {t:'vf',q:'La descentralización es siempre preferible a la centralización.',a:false,e:'Falso. Depende de factores: costo de la decisión (decisiones caras se centralizan), deseo de uniformidad, tamaño, filosofía de la dirección, disponibilidad de gerentes, técnicas de control, dispersión geográfica y ritmo de cambio.'},
+ {t:'mc',q:'Cuanto más AMPLIO es el tramo (amplitud) de control...',o:['Más niveles jerárquicos tiene la organización','Menos niveles jerárquicos: estructura más achatada','Menos subordinados por jefe','Más burocracia se genera'],a:1,e:'Tramo amplio = cada jefe supervisa a muchos = menos niveles (organización "plana"). Tramo estrecho = pocos subordinados por jefe = muchos niveles (organización "alargada").'},
+]},
+{u:'Unidad 4 · Punto de Equilibrio',items:[
+ {t:'mc',q:'En el punto de equilibrio...',o:['La empresa maximiza su ganancia','Los ingresos totales igualan a los costos totales','Los costos fijos son cero','La empresa pierde lo mínimo posible'],a:1,e:'PE: ingresos totales = costos totales. No hay utilidad ni pérdida. Por encima ganás, por debajo perdés.'},
+ {t:'num',q:'Tu carrito de panchos tiene costos fijos de $120.000 al mes. Cada pancho cuesta $200 (CVu) y lo vendés a $500. ¿Cuál es la cantidad de equilibrio (Qe) en unidades?',a:400,tol:0,e:'Qe = CF / (Pv − CVu) = 120.000 / (500 − 200) = 120.000 / 300 = 400 panchos.'},
+ {t:'num',q:'Con los mismos datos (Qe = 400, Pv = $500), ¿cuál es el punto de equilibrio en valores (PE en $)?',a:200000,tol:0,e:'PE($) = Qe × Pv = 400 × 500 = $200.000. Es la facturación mínima para no perder.'},
+ {t:'num',q:'Seguimos con el carrito: CF $120.000, contribución marginal $300. Si querés una utilidad deseada de $30.000, ¿cuántos panchos tenés que vender? (PE económico)',a:500,tol:0,e:'PEE = (CF + beneficio deseado) / (Pv − CVu) = (120.000 + 30.000) / 300 = 500 panchos.'},
+ {t:'mc',q:'¿Cuáles son los tipos de punto de equilibrio según el apunte de cátedra?',o:['Contable, operativo y financiero','Contable, financiero y económico','Técnico, económico y de caja','Bruto, neto y marginal'],a:1,e:'Son exactamente tres y en este orden: PE Contable, PE Financiero (o de caja) y PE Económico. No existe un "PE operativo".'},
+ {t:'mc',q:'¿Qué caracteriza al punto de equilibrio FINANCIERO (de caja)?',o:['Suma la ganancia deseada a los costos fijos','Resta de los gastos fijos los gastos no desembolsables (depreciación y amortización)','Iguala ingresos a costos sin ningún ajuste','Solo considera los costos variables'],a:1,e:'PEF = (Gastos fijos − Gastos no desembolsables) / Margen de contribución. La depreciación baja el beneficio contable pero no sale de la caja.'},
+ {t:'mc',q:'¿Qué hace el punto de equilibrio ECONÓMICO?',o:['Iguala el lucro a cero','Descuenta la depreciación','Incorpora una ganancia mínima deseada como remuneración al capital','Calcula el equilibrio en unidades físicas solamente'],a:2,e:'PEE = (Gastos fijos + Beneficio deseado) / Margen de contribución. Te dice cuánto vender para ganar lo que te propusiste.'},
+ {t:'num',q:'Ejercicio estilo práctico: una panadería vende pasteles a $4.000 (Pv). Costos fijos $400.000 y CVu $2.500. ¿Cuántos pasteles necesita vender para estar en equilibrio? (redondeá para arriba)',a:267,tol:1,e:'Qe = 400.000 / (4.000 − 2.500) = 400.000 / 1.500 = 266,67 → 267 pasteles. Como vende 500, está por ARRIBA del equilibrio (gana plata).'},
+ {t:'vf',q:'Si una empresa vende por debajo de su cantidad de equilibrio, tiene pérdidas.',a:true,e:'Verdadero. Por debajo del Qe la contribución marginal acumulada no llega a cubrir los costos fijos: resultado negativo.'},
+]},
+{u:'Unidad 5 · Función Producción',items:[
+ {t:'mc',q:'El sistema de producción se compone de:',o:['Solo máquinas y operarios','Entradas, proceso de conversión y salidas, con control por retroalimentación','Compras, ventas y marketing','Planificación y presupuesto'],a:1,e:'Entradas (materias primas, mano de obra, energía, capital, información) → proceso de conversión → salidas (productos y servicios), con un subsistema de control por retroalimentación.'},
+ {t:'mc',q:'¿Cuál de estas es una decisión ESTRATÉGICA de producción?',o:['Programar la producción del mes','Definir la localización de la planta','Lanzar una orden de fabricación','Reponer el stock de materias primas'],a:1,e:'Estratégicas: producto, proceso, equipo, tecnología, capacidad, disposición de planta y localización. La programación es táctica; la reposición, logística.'},
+ {t:'mc',q:'Una refinería de petróleo o una fábrica de botellas son ejemplos de producción...',o:['Intermitente','Por proyectos','Continua','Por montaje'],a:2,e:'Producción continua: flujo ininterrumpido, productos estandarizados, control por procesos.'},
+ {t:'mc',q:'Un taller que fabrica muebles a pedido, con máquinas versátiles y productos diversificados, es producción...',o:['Continua','Intermitente','Por montaje','En serie'],a:1,e:'Intermitente: se trabaja a pedido o por lotes, con layout por proceso, personal capacitado y costeo por órdenes.'},
+ {t:'mc',q:'La construcción de un puente o un buque en un astillero corresponde a producción...',o:['Continua','Intermitente','Por montaje','Por proyectos'],a:3,e:'Por proyectos: producto único, gran concentración de recursos, fechas y plazos definidos; se controla con PERT y Gantt.'},
+ {t:'mc',q:'La calidad de CONCORDANCIA es...',o:['El grado de coincidencia entre el producto y los requerimientos del cliente','El grado de coincidencia entre el producto elaborado y el diseñado','La cantidad de normas ISO que cumple la empresa','El precio que el cliente acepta pagar'],a:1,e:'Diseño: lo que pide el cliente vs lo diseñado. Concordancia: lo elaborado vs lo diseñado. El control de calidad cuida sobre todo la concordancia.'},
+ {t:'mc',q:'El mantenimiento que monitorea variables técnicas (vibraciones, temperatura, presiones) para anticipar la falla se llama...',o:['Preventivo','Predictivo','Correctivo programable','Correctivo de emergencia'],a:1,e:'Predictivo: monitoreo de condición para prever la reparación. El preventivo se hace por programa anticipado; el correctivo programable espera la fecha oportuna; el de emergencia no admite dilaciones.'},
+ {t:'mc',q:'¿Qué busca la fórmula del lote óptimo en la gestión de inventarios?',o:['Maximizar el stock disponible','Minimizar la suma de los costos de ordenamiento y de mantener existencias','Eliminar los inventarios por completo','Aumentar el tamaño de cada compra'],a:1,e:'Son costos contrapuestos: pedir muchas veces encarece el ordenamiento, pedir mucho de una encarece el mantenimiento del stock. El lote óptimo está donde la suma es mínima.'},
+ {t:'vf',q:'Eficacia es lograr los objetivos y eficiencia es alcanzarlos con el mínimo de recursos.',a:true,e:'Verdadero. Y productividad = salidas / insumos en un período, considerando la calidad. Podés ser eficaz sin ser eficiente (lograste el objetivo gastando de más).'},
+]},
+{u:'Unidad 6 · Función Personal',items:[
+ {t:'mc',q:'¿Cuál es la secuencia correcta del proceso de dotación de personal?',o:['Selección → reclutamiento → inducción','Reclutamiento → selección → inducción → capacitación','Inducción → selección → reclutamiento','Capacitación → reclutamiento → selección'],a:1,e:'Primero atraés candidatos (reclutamiento), después filtrás (selección), incorporás y orientás (inducción) y desarrollás (capacitación).'},
+ {t:'mc',q:'El análisis de puestos produce dos elementos:',o:['Organigrama y flujograma','Descripción del puesto y especificación del puesto','Contrato y legajo','Presupuesto y cronograma'],a:1,e:'La descripción detalla objetivos, funciones y atribuciones del cargo (el qué); la especificación define aptitudes y condiciones que debe reunir la persona (el quién).'},
+ {t:'mc',q:'¿Cuál de estas es una fuente de reclutamiento?',o:['La evaluación de desempeño','Anuncios en medios, consultoras y head hunting','El examen médico','El convenio colectivo'],a:1,e:'Fuentes: reclutamiento interno, contactos, archivos de candidatos, anuncios, firmas especializadas (head hunting), bolsas de universidades.'},
+ {t:'mc',q:'Un vendedor que cobra un porcentaje por cada venta recibe una remuneración...',o:['Por tiempo','Por nivel de actividad (destajo)','Por volumen de ventas (comisión)','Por utilidades'],a:2,e:'Comisiones = pagos en función del volumen de ventas. Por tiempo: sueldos y salarios. Destajo: por pieza producida. Utilidades: participaciones de directores y gerentes.'},
+ {t:'mc',q:'La evaluación FORMAL del desempeño se desarrolla en cuatro etapas. ¿Cuál es el orden?',o:['Evaluación → planeamiento → revisión → comunicación','Planeamiento → revisión intermedia → evaluación propiamente dicha → comunicación de resultados','Comunicación → evaluación → revisión → planeamiento','Revisión → comunicación → planeamiento → evaluación'],a:1,e:'Se planifica al inicio del período (quién evalúa, método, metas), hay una revisión intermedia, luego la calificación y por último el diálogo de devolución. Nada de sorpresas al final.'},
+ {t:'mc',q:'"Un operario no usa la protección personal y hace bromas pesadas con los equipos". Eso es...',o:['Una condición insegura','Un acto inseguro','Un riesgo ambiental','Una enfermedad profesional'],a:1,e:'Actos inseguros: conductas de las personas. Condiciones inseguras: del ambiente (falta de resguardos, mala ventilación, instalaciones deficientes).'},
+ {t:'mc',q:'El lock-out (cierre de la fábrica) es una medida de fuerza de...',o:['Los trabajadores','Los sindicatos','Los empresarios','El Estado'],a:2,e:'Trabajadores: huelga, piquetes, trabajo a desgano, boicot, sabotaje. Empresarios: lock-out y listas negras. De ambas partes: mediación, conciliación, impasse.'},
+ {t:'vf',q:'La capacitación apunta al desempeño en el puesto actual, mientras que el desarrollo prepara a la persona para su actividad futura.',a:true,e:'Verdadero. Capacitación = entrenamiento para hoy (TWI, rotación, laboratorio). Desarrollo = formación para la carrera futura (planeamiento de carreras).'},
+]}];
+
+/* ===== QUIZ RENDER ===== */
+let ansOk=0, ansTot=0;
+const quizArea=document.getElementById('quizArea');
+QUIZ.forEach((blk,bi)=>{
+  const h=document.createElement('h3'); h.className='unitTitleQ'; h.textContent=blk.u; quizArea.appendChild(h);
+  blk.items.forEach((it,qi)=>{
+    const card=document.createElement('div'); card.className='qcard';
+    const tag=it.t==='num'?'NÚMERO':(it.t==='vf'?'V / F':'MULTIPLE CHOICE');
+    let inner='<div class="qhead"><span class="qtag">'+tag+'</span>'+(qi+1)+'. '+it.q+'</div>';
+    if(it.t==='mc'){
+      inner+='<div class="opts">'+it.o.map((o,i)=>'<button class="opt" data-i="'+i+'">'+String.fromCharCode(97+i)+') '+o+'</button>').join('')+'</div>';
+    }else if(it.t==='vf'){
+      inner+='<div class="opts"><button class="opt" data-i="1">Verdadero</button><button class="opt" data-i="0">Falso</button></div>';
+    }else{
+      inner+='<div class="numrow"><input type="number" step="any" placeholder="Tu respuesta..." inputmode="decimal"><button>Validar</button></div><div class="numfb"></div>';
+    }
+    inner+='<div class="expl">'+it.e+'</div>';
+    card.innerHTML=inner;
+    if(it.t==='mc'||it.t==='vf'){
+      card.querySelectorAll('.opt').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          if(card.dataset.done)return; card.dataset.done='1';
+          const pick=+btn.dataset.i;
+          const correct=it.t==='mc'?it.a:(it.a?1:0);
+          card.querySelectorAll('.opt').forEach(b=>{
+            b.disabled=true;
+            const v=+b.dataset.i;
+            if(v===correct)b.classList.add('correct');
+            else if(v===pick)b.classList.add('wrong');
+          });
+          ansTot++; if(pick===correct)ansOk++;
+          updScore(); card.querySelector('.expl').classList.add('show');
+        });
+      });
+    }else{
+      const input=card.querySelector('input'), btn=card.querySelector('.numrow button'), fb=card.querySelector('.numfb');
+      const check=()=>{
+        if(card.dataset.done)return;
+        const v=parseFloat(input.value); if(isNaN(v)){fb.textContent='Escribí un número primero.'; fb.className='numfb bad'; return;}
+        card.dataset.done='1'; input.disabled=true; btn.disabled=true;
+        const ok=Math.abs(v-it.a)<=(it.tol||0);
+        fb.textContent=ok?'Correcto. La respuesta es '+it.a+'.':'Incorrecto. La respuesta correcta es '+it.a+'.';
+        fb.className='numfb '+(ok?'ok':'bad');
+        ansTot++; if(ok)ansOk++; updScore();
+        card.querySelector('.expl').classList.add('show');
+      };
+      btn.addEventListener('click',check);
+      input.addEventListener('keydown',e=>{if(e.key==='Enter')check();});
+    }
+    quizArea.appendChild(card);
+  });
+});
+function updScore(){document.getElementById('scoreOk').textContent=ansOk; document.getElementById('scoreTot').textContent=ansTot;}
+
+/* ===== FLASHCARDS DATA ===== */
+const FLASH=[
+{u:'Unidad 1 · Introducción a la Administración',items:[
+ {f:'¿Qué es la administración?',b:'Proceso de planear, organizar, dirigir y controlar el uso de los recursos para lograr los objetivos de la organización.',m:'PODC: "Pensá, Ordená, Dale, Chequeá".'},
+ {f:'¿La administración es ciencia, técnica o arte?',b:'Es ciencia fáctica (explica y predice hechos reales) Y técnica (opera y transforma la realidad). NO es arte: el arte es subjetivo y vivencial.',m:'"Ciencia y técnica van de la mano; el arte queda afuera del aula".'},
+ {f:'Las 4 funciones del proceso administrativo',b:'Planeación (objetivos y planes), Organización (dividir trabajo y asignar recursos), Dirección (comunicar, liderar, motivar), Control (estándares, comparar, corregir).',m:'PODC otra vez: es EL esqueleto de toda la materia.'},
+ {f:'Niveles de planeación',b:'Estratégica: largo plazo, toda la empresa, la cúpula. Táctica: mediano plazo, por departamento. Operacional: corto plazo, cada tarea.',m:'ETO: "El Tiempo Ordena" (de más largo a más corto).'},
+ {f:'Las 4 clases de planes',b:'Procedimientos (métodos → flujogramas), Presupuestos (dinero), Programas (tiempo → cronogramas), Normas o reglamentos (comportamientos).',m:'"Mé-Di-Ti-Co": Métodos, Dinero, Tiempo, Comportamiento.'},
+ {f:'Escuela de Administración Científica (Taylor)',b:'Eficiencia del trabajador, estudio de tiempos y movimientos, selección y entrenamiento de operarios, pago por rendimiento individual. Límite: visión mecanicista, el hombre como pieza.',m:'Taylor = "cronómetro y billetera": mide tiempos y paga por pieza.'},
+ {f:'Escuela Industrial y General (Fayol)',b:'Primero en sistematizar la administración. Divide la organización en áreas, crea el manual de funciones y los 14 principios. Funciones: prever, organizar, dirigir, coordinar, controlar.',m:'Fayol = "el arquitecto": 14 principios y áreas. Si dicen "14", es Fayol siempre.'},
+ {f:'Experimentos de Hawthorne (Mayo)',b:'Western Electric, 1927-1932. La productividad subía aunque empeorara la iluminación: pesan más las condiciones sociopsicológicas, la atención recibida y las normas del grupo informal que lo físico y el dinero.',m:'"La luz no importaba: importaba que los miraran". Efecto Hawthorne.'},
+ {f:'Escuela Estructuralista (Weber)',b:'Modelo burocrático: normas y reglamentos estrictos, jerarquía con autoridad legal, cargos despersonalizados. Ideal para el Estado; rígido para empresas privadas.',m:'Weber = "el escribano": todo por norma, sellado y por escrito.'},
+ {f:'Teoría X y Teoría Y (McGregor)',b:'Teoría X: la gente evita el trabajo, hay que controlarla y presionarla. Teoría Y: la gente puede automotivarse y asumir responsabilidades, conviene delegar.',m:'X = jefe con lupa. Y = jefe que confía.'},
+ {f:'Teoría de los Sistemas (Von Bertalanffy)',b:'La organización es un sistema: conjunto de partes (subsistemas) interconectadas que persiguen un objetivo. Enfoque transversal a todas las ciencias. Vocabulario: input, output, feedback, entropía, caja negra.',m:'"Todo está conectado": si tocás una pieza, se mueve el resto.'},
+]},
+{u:'Unidad 2 · Las Organizaciones',items:[
+ {f:'Definición de organización',b:'Unidades sociales (agrupaciones humanas) deliberadamente construidas o reconstruidas para alcanzar fines específicos.',m:'"Gente organizada a propósito, con un fin".'},
+ {f:'Las 3 características de las organizaciones',b:'1) División del trabajo, del poder, de las responsabilidades y de la comunicación (planeada). 2) Centros de poder que controlan y revisan. 3) Sustitución del personal.',m:'"Di-Po-Su": DIvisión, POder, SUstitución. Pregunta de parcial, 10 puntos.'},
+ {f:'La organización como sistema abierto',b:'Esquema entrada → proceso → salida con retroalimentación. Intercambia recursos e información con el entorno en forma permanente y se adapta a él.',m:'"Come del entorno, digiere y devuelve, y aprende del feedback".'},
+ {f:'Sistema sociotécnico: los 3 subsistemas',b:'Técnico (instrumentos, tecnología, procesos), Administrativo (estructura, dirección, toma de decisiones) y Social (personas, comportamientos, cultura).',m:'TAS: Técnico, Administrativo, Social.'},
+ {f:'Componentes de acción DIRECTA del entorno',b:'Clientes, proveedores, competidores, sistema financiero (bancos), sindicatos, sector económico y grupos de referencia con presión inmediata.',m:'"CliProComSinBanSec": los que te tocan el timbre todos los días.'},
+ {f:'Componentes de acción INDIRECTA del entorno',b:'Factores económicos (inflación, PIB), políticos/legales (regulaciones), la sociedad (demografía), factores culturales (valores) y la tecnología.',m:'"EPoSoCuTe": Economía, Política, Sociedad, Cultura, Tecnología.'},
+ {f:'¿Variable económica o política? Truco rápido',b:'Si habla de plata a nivel país (PIB, inflación, empleo, tipo de cambio) → económica. Si hay gobierno, ley o regulación de por medio → político-legal.',m:'"¿Quién lo causa? Si firma un funcionario, es política".'},
+ {f:'Entradas, procesos y salidas (ejemplos)',b:'Entradas: materias primas, energía, información, expectativas. Procesos: tareas, relaciones, estructura, cultura. Salidas: productos, servicios, cohesividad.',m:'Pizzería: harina (entra) → horno (proceso) → pizza (sale) → reseñas (feedback).'},
+ {f:'Fin vs objetivo de la organización',b:'El fin denota intencionalidad, viene exigido por el medio social (extraorganizacional). El objetivo orienta el acontecer interno y surge de la organización misma.',m:'Fin = para qué existe ante la sociedad. Objetivo = qué persigue puertas adentro.'},
+ {f:'Incertidumbre del entorno (Duncan)',b:'Se cruza el grado de cambio (estático/dinámico) con la complejidad (simple/complejo). Estático+simple = baja incertidumbre (contenedores); dinámico+complejo = alta (banca).',m:'"Cuanto más se mueve y más piezas tiene, menos sabés qué viene".'},
+]},
+{u:'Unidad 3 · Las Estructuras Orgánicas',items:[
+ {f:'Organización formal vs informal',b:'Formal: estructura intencional de roles, planeada, la del organigrama. Informal: red de relaciones interpersonales que surge espontáneamente (no aparece en el organigrama).',m:'Formal = organigrama. Informal = el grupo del mate y el fútbol 5.'},
+ {f:'Principio de unidad de mando',b:'Cada subordinado debe rendir cuentas a UN solo superior. Evita órdenes contradictorias y conflictos de lealtad.',m:'"Un solo jefe por cabeza". Herencia directa de Fayol.'},
+ {f:'Principio de delegación',b:'Asignar tareas, delegar autoridad y exigir responsabilidad. La autoridad se delega (y puede recuperarse); la responsabilidad NO se delega: el que delega sigue respondiendo.',m:'"Prestás la lapicera (autoridad), pero la firma (responsabilidad) sigue siendo tuya".'},
+ {f:'Amplitud o tramo de control',b:'Cantidad de personas que un jefe puede supervisar con eficiencia. Tramo amplio → estructura plana (pocos niveles). Tramo estrecho → estructura alargada (muchos niveles). Depende de la tarea, la capacitación y el nivel.',m:'"Más gente por jefe = pirámide más chata".'},
+ {f:'Organización LINEAL',b:'Autoridad única y absoluta del superior sobre sus subordinados (forma piramidal, militar). Ventajas: simple, estable, responsabilidades claras. Desventajas: rígida, jefe generalista, mala para crecer.',m:'Lineal = "cada uno manda en su quintita, hacia abajo".'},
+ {f:'Organización FUNCIONAL (Taylor)',b:'Autoridad basada en la especialización: cada especialista manda en su tema sobre toda la organización. Ventaja: máxima especialización. Desventajas: se pierde la unidad de mando, subordinación múltiple, conflictos.',m:'Funcional = "el que sabe, manda en lo suyo, a todos".'},
+ {f:'Organización LÍNEA-STAFF',b:'Combina lineal + funcional: los órganos de línea deciden y ejecutan; los de staff asesoran, recomiendan y prestan servicios especializados (legales, auditoría, consultoría).',m:'"La línea decide, el staff aconseja". Si solo sugiere, es staff.'},
+ {f:'Tipos de departamentalización',b:'Por funciones, por productos o servicios, geográfica (territorio), por clientela, por proceso, por proyectos y matricial (funcional + proyectos, doble jefe).',m:'"FuProGeCliProPro + Matriz": Funciones, Productos, Geografía, Clientes, Proceso, Proyectos.'},
+ {f:'¿Cómo reconocer cada departamentalización en un organigrama?',b:'Producción/Ventas/Finanzas → funcional. Buick/Pontiac/Chevrolet → productos. Región norte/centro/sur → geográfica. Banca empresas/individuos → clientela. Hilado/teñido/acabado → proceso. Gerente proyecto A/B/C → proyectos. Cruce de ambos → matricial.',m:'Mirá los nombres de las cajas del segundo nivel: ahí está la respuesta.'},
+ {f:'Factores que determinan el grado de descentralización',b:'Costo de la decisión, deseo de uniformidad de políticas, tamaño y carácter de la organización, historia y cultura, filosofía de la dirección, disponibilidad de gerentes, técnicas de control, desempeño descentralizado (geografía), ritmo de cambio e influencias ambientales.',m:'"Plata, uniformidad, tamaño, historia, filosofía, gerentes": si la decisión es cara, se decide arriba.'},
+ {f:'Organigrama',b:'Diagrama que representa la estructura formal: la jerarquía, los órganos, los canales de comunicación y quiénes ocupan los cargos. Es estático: una foto del esqueleto organizacional.',m:'"La radiografía de la empresa": muestra huesos, no músculos (lo informal no sale).'},
+]},
+{u:'Unidad 4 · Punto de Equilibrio',items:[
+ {f:'Definición de punto de equilibrio',b:'Punto de actividad donde los ingresos totales son exactamente iguales a los costos totales: no hay utilidad ni pérdida.',m:'"Ni gano ni pierdo: empate técnico entre ingresos y costos".'},
+ {f:'Costos fijos (CF)',b:'No varían con el volumen de producción/venta: alquiler, sueldos generales, algunos impuestos, luz y agua de administración.',m:'"Los pagás aunque no vendas NADA".'},
+ {f:'Costos variables (CV) y CVu',b:'Dependen directamente del volumen: insumos, materia prima, comisiones, sueldos de producción. CVu = costos variables totales / unidades producidas.',m:'"Crecen con cada unidad que hacés o vendés".'},
+ {f:'Contribución marginal',b:'Pv − CVu. Es lo que cada unidad vendida aporta para cubrir los costos fijos y, superado el equilibrio, generar utilidad.',m:'"Lo que te deja cada venta antes de pensar en el alquiler".'},
+ {f:'Fórmula del PE en cantidades',b:'Qe = CF / (Pv − CVu). Sale de igualar I = CT: Pv×Q = CF + CVu×Q.',m:'"Fijos divididos por lo que deja cada unidad".'},
+ {f:'Fórmula del PE en valores',b:'PE($) = Qe × Pv. Vía alternativa: PE($) = CF / (1 − CV($)/Ventas totales($)).',m:'"Cantidad de equilibrio por precio, y listo".'},
+ {f:'PE Contable (PEC)',b:'El método más utilizado. Lucro = cero. PEC = Gastos fijos / Margen de contribución. Cualquier venta por debajo de ese valor da pérdida.',m:'Tipo 1 de 3. "Contable = el clásico: beneficio cero".'},
+ {f:'PE Financiero o de caja (PEF)',b:'No considera depreciación ni amortizaciones (no salen de la caja). Lucro = cero − depreciación. PEF = (Gastos fijos − Gastos no desembolsables) / Margen de contribución.',m:'Tipo 2 de 3. "Financiero = solo lo que sale de la caja". Resta lo no desembolsable.'},
+ {f:'PE Económico (PEE)',b:'Incorpora una ganancia mínima deseada (remuneración al capital propio). Lucro = cero + remuneración del capital. PEE = (Gastos fijos + Beneficio deseado) / Margen de contribución.',m:'Tipo 3 de 3. "Económico = equilibrio + lo que quiero ganar". Suma el beneficio.'},
+ {f:'Los 3 tipos de PE, en orden (¡sin inventos!)',b:'1) Contable, 2) Financiero (de caja), 3) Económico. Según el apunte existen SOLO estos tres. No existe ningún "PE operativo".',m:'"CoFiEco": COntable, FInanciero, ECOnómico. Si aparece "operativo", es trampa.'},
+ {f:'Pasos para resolver un ejercicio de PE',b:'1) Separá costos fijos y variables. 2) Calculá Pv = Ingresos/Q y CVu = CV totales/Q. 3) Aplicá Qe = CF/(Pv−CVu). 4) PE($) = Qe×Pv. 5) Compará con las ventas actuales (¿arriba o abajo del equilibrio?).',m:'"Clasificar → unitarios → fórmula → plata → comparar".'},
+]},
+{u:'Unidad 5 · Función Producción',items:[
+ {f:'¿Qué es la función producción?',b:'La transformación o conversión de insumos en productos (bienes físicos o servicios). Se concibe como un sistema con entradas, proceso y salidas.',m:'"Entra harina, sale pan". Aplica a fábricas Y a servicios.'},
+ {f:'El sistema de producción',b:'Entradas (materias primas, mano de obra, energía, capital, información) → proceso de conversión → salidas (productos, servicios), con subsistema de control por retroalimentación.',m:'"EPS + feedback": entra, procesa, sale, y el control avisa si algo anda mal.'},
+ {f:'Decisiones estratégicas, tácticas y logísticas',b:'Estratégicas: producto, proceso, equipo, tecnología, capacidad, disposición de planta, localización. Tácticas: planeamiento, programación, lanzamiento, fuerza de trabajo. Logísticas: mantenimiento, abastecimiento, expedición, manejo de materiales.',m:'"Qué y dónde (E), cuánto y cuándo (T), que no falte ni se rompa (L)".'},
+ {f:'Producción continua',b:'Flujo ininterrumpido, productos estandarizados, maquinaria para lapsos largos, control estadístico de calidad. Ejemplos: refinerías, papel, celulosa, botellas.',m:'"La canilla abierta: nunca para".'},
+ {f:'Producción intermitente',b:'Se trabaja a pedido o por lotes, máquinas versátiles agrupadas por proceso (layout por proceso), personal dúctil, productos diversificados, costeo por órdenes.',m:'"El taller: cada trabajo es distinto".'},
+ {f:'Producción por montaje y por proyectos',b:'Por montaje: piezas que confluyen en una línea de ensamble (autos, motores, electrodomésticos). Por proyectos: producto único de gran porte con inicio y fin (construcción, astilleros); usa PERT y Gantt.',m:'"Montaje = línea de autos. Proyecto = el puente que se hace una sola vez".'},
+ {f:'Calidad de diseño vs de concordancia',b:'Diseño: grado de coincidencia entre los atributos del producto diseñado y los requerimientos del cliente. Concordancia: coincidencia entre el producto elaborado y el diseñado.',m:'"Diseño: ¿entendí lo que querías? Concordancia: ¿lo fabriqué como lo dibujé?".'},
+ {f:'Los 4 tipos de mantenimiento',b:'Preventivo (anticipado, programado), Predictivo (monitorea variables: vibraciones, temperatura), Correctivo programable (la reparación puede esperar la fecha oportuna) y Correctivo de emergencia (avería que no admite dilaciones).',m:'"PPCC: Prevengo, Predigo, Programo, Corro" (el último es la emergencia).'},
+ {f:'Abastecimiento: el ciclo',b:'Almacenes detectan el punto de pedido → requisición a Compras → estudio de proveedores, ejecución y seguimiento → Recepción controla e ingresa los bienes → vuelve a almacenes.',m:'"Almacén pide, Compras compra, Recepción revisa".'},
+ {f:'Lote óptimo',b:'Cantidad de compra/producción que minimiza la suma de dos costos contrapuestos: costos de ordenamiento (hacer pedidos, preparar máquinas) y costos de mantener existencias (capital inmovilizado, almacenamiento, seguros).',m:'"Ni mil pedidos chiquitos ni un pedido gigante: el punto justo del medio".'},
+]},
+{u:'Unidad 6 · Función Personal',items:[
+ {f:'Alcance de la función personal (Dessler)',b:'Análisis de puestos, planeación de mano de obra y reclutamiento, selección, inducción y capacitación, sueldos y salarios, incentivos y beneficios, evaluación del desempeño, comunicación, desarrollo de gerentes.',m:'"De la búsqueda a la jubilación: todo lo que pasa con la gente".'},
+ {f:'Análisis de puestos',b:'Procedimiento para definir las características de los puestos y los atributos que deben reunir sus ocupantes. Produce la descripción del puesto y la especificación del puesto.',m:'"Primero el puesto, después la persona".'},
+ {f:'Descripción vs especificación del puesto',b:'Descripción: identificación, nivel, funciones, relaciones, misión, estándares, condiciones, horario (el contenido del cargo). Especificación: educación, experiencia, conocimientos, personalidad (lo que debe tener la persona).',m:'"Descripción = el QUÉ del puesto. Especificación = el QUIÉN ideal".'},
+ {f:'Reclutamiento',b:'Conjunto de acciones para atraer candidatos potencialmente calificados. Fuentes: interno, contactos, archivos propios, anuncios, firmas especializadas (head hunting), universidades.',m:'"Llenar la pecera antes de pescar".'},
+ {f:'Secuencia del proceso de selección',b:'Recepción de solicitantes → formularios y CV → entrevistas → pruebas de empleo (psicológicas, técnicas) → investigación de historia anterior → selección preliminar → examen médico → colocación.',m:'"Embudo: de muchos CVs a una persona sentada en el puesto".'},
+ {f:'Inducción',b:'Incorporación y orientación del nuevo empleado: conocer la organización, su cultura, su sector y su puesto. Minimiza la ansiedad natural del comienzo y transmite valores y patrones de conducta.',m:'"El tour de bienvenida que evita el pánico del primer día".'},
+ {f:'Capacitación vs desarrollo',b:'Capacitación: mejorar aptitudes para el puesto u oficio actual (entrenamiento, TWI, rotación de puestos). Desarrollo: proporcionar formación para la actividad futura (carrera).',m:'"Capacitar = hoy. Desarrollar = tu próximo puesto".'},
+ {f:'Clasificación de las remuneraciones',b:'En función del tiempo (sueldos por mes, salarios por día), del nivel de actividad (destajo, por producción), del volumen de ventas (comisiones) y de las utilidades (participaciones, bonificaciones). Más beneficios financieros indirectos y compensaciones no financieras.',m:'"TiAcVeU: Tiempo, Actividad, Ventas, Utilidades".'},
+ {f:'Evaluación del desempeño: elementos y etapas',b:'Mide objetivos (metas), factores objetivos (tareas clave del cargo) y factores subjetivos (iniciativa, dedicación). Etapas de la formal: planeamiento → revisión intermedia → evaluación propiamente dicha → comunicación de resultados.',m:'"PREC: Planeo, Reviso, Evalúo, Comunico". Sin sorpresas al final.'},
+ {f:'Actos inseguros vs condiciones inseguras',b:'Actos (de las personas): levantar cargas mal, no usar protección, sacar resguardos, bromas pesadas, conducir sin autorización. Condiciones (del ambiente): falta de resguardos, herramientas defectuosas, mala ventilación o iluminación, instalaciones deficientes.',m:'"Acto = lo que HACE la persona. Condición = lo que ESTÁ mal en el lugar".'},
+ {f:'Sindicatos y negociación colectiva',b:'Sindicato: asociación profesional voluntaria que defiende los intereses del personal. Negociaciones colectivas → convenios (salarios, condiciones, vacaciones). Medidas de fuerza: trabajadores: huelga, piquetes, boicot; empresarios: lock-out, listas negras; ambas partes: mediación, impasse.',m:'"Huelga es del trabajador; lock-out, del patrón".'},
+]}];
+
+/* ===== FLASH RENDER ===== */
+const flashArea=document.getElementById('flashArea');
+FLASH.forEach(blk=>{
+  const h=document.createElement('h3'); h.className='unitTitleQ'; h.textContent=blk.u; flashArea.appendChild(h);
+  const grid=document.createElement('div'); grid.className='fgrid';
+  blk.items.forEach(it=>{
+    const c=document.createElement('div'); c.className='fc';
+    c.innerHTML='<div class="fc-inner"><div class="fc-face fc-front"><div class="fl">Concepto</div><div class="ft">'+it.f+'</div><div class="hint">Tocá para dar vuelta</div></div><div class="fc-face fc-back"><div>'+it.b+'</div><div class="mn">'+it.m+'</div></div></div>';
+    c.addEventListener('click',()=>c.classList.toggle('flipped'));
+    grid.appendChild(c);
+  });
+  flashArea.appendChild(grid);
+});
+</script>
+</body>
+</html>
