@@ -36,6 +36,7 @@
 
 <nav class="tabs">
   <button class="tab active" data-tab="resumen">Resumen</button>
+  <button class="tab" data-tab="parcial">2º Parcial</button>
   <button class="tab" data-tab="quiz">Quiz</button>
   <button class="tab" data-tab="flash">Flashcards</button>
   <button class="tab" data-tab="mapa">Mapa</button>
@@ -69,7 +70,7 @@
 </div>
 </div>
 
-<div class="tema">
+<div class="tema" data-tema="Funciones del lenguaje (Jakobson)">
 <div class="parcial-tag">Entra en el 2º parcial</div>
 <p>Las <strong>funciones del lenguaje</strong> (Jakobson) son las <strong>finalidades del uso de la lengua</strong> <span class="badge p1">Imprescindible</span>. Todo acto de comunicación verbal (oral o escrita) tiene propósitos o finalidades, <strong>no necesariamente conscientes</strong>. Jakobson las limita a <strong>seis</strong> porque relaciona cada una con un <strong>elemento de su esquema de comunicación</strong>: la función pone el "acento" en uno de esos elementos.</p>
 <div class="callout">
@@ -135,7 +136,7 @@
 </div>
 </div>
 
-<div class="tema">
+<div class="tema" data-tema="Variedades lingüísticas: lectos y registros">
 <div class="parcial-tag">Entra en el 2º parcial</div>
 <p>Cuando hablamos de la <strong>lengua en cuanto código</strong>, Marín marca que no es uniforme: en el uso concreto muestra <strong>variaciones</strong> <span class="badge p1">Imprescindible</span>. Quien estudió esto es la <strong>sociolingüística</strong>, y dentro de ella <strong>Halliday</strong> estableció categorías de variedades que se dan en general en todas las lenguas (por eso se habla genéricamente de <strong>variedades del código</strong>). Halliday distingue dos grandes grupos:</p>
 <ul>
@@ -240,7 +241,7 @@
 
 <h2>Unidad 2 · El universo de los textos I</h2>
 
-<div class="tema">
+<div class="tema" data-tema="Texto: conceptos, características y condiciones">
 <div class="parcial-tag">Entra en el 2º parcial</div>
 <p>La cátedra dio varias definiciones de autores y pidió elaborar un concepto propio de <strong>texto</strong> <span class="badge p1">Imprescindible</span>. Arranca con su <strong>propia definición</strong>: "<mark>texto significa cualquier manifestación verbal y completa que se produzca en una comunicación</mark>". Después cita a los autores (textual de la filmina):</p>
 <ul>
@@ -267,7 +268,7 @@
 </div>
 </div>
 
-<div class="tema">
+<div class="tema" data-tema="Paratexto, soporte, portador y formato">
 <div class="parcial-tag">Entra en el 2º parcial</div>
 <p>Cuatro nociones que siempre se mezclan en el parcial <span class="badge p1">Imprescindible</span>:</p>
 <ul>
@@ -449,6 +450,15 @@
 </div>
 </div>
 
+</section>
+
+<!-- ============ 2º PARCIAL ============ -->
+<section class="tab-panel hidden" id="tab-parcial">
+  <div class="card">
+    <strong>Temario del 2º parcial · jueves 18/06.</strong> Estos son los cuatro temas que entran, juntos y separados del resto del programa. Es el mismo contenido del Resumen, filtrado para que estudies enfocado.
+    <p style="margin:10px 0 0"><strong>1.</strong> Variedades lingüísticas: lectos y registros · <strong>2.</strong> Jakobson: funciones del lenguaje · <strong>3.</strong> Texto: conceptos, características y condiciones · <strong>4.</strong> Paratexto, soporte, portador y formato.</p>
+  </div>
+  <div id="parcialBox"></div>
 </section>
 
 <!-- ============ QUIZ ============ -->
@@ -803,6 +813,20 @@ document.getElementById('flashBox').addEventListener('click', function(e){
 
 renderQuiz();
 renderCards();
+
+/* ====== 2º PARCIAL: clona los temas marcados desde el Resumen ====== */
+(function(){
+  var box = document.getElementById('parcialBox');
+  if(!box) return;
+  document.querySelectorAll('#tab-resumen .tema').forEach(function(t){
+    if(!t.querySelector('.parcial-tag')) return;
+    var title = t.getAttribute('data-tema');
+    if(title){ var h = document.createElement('h2'); h.textContent = title; box.appendChild(h); }
+    var clone = t.cloneNode(true);
+    var tag = clone.querySelector('.parcial-tag'); if(tag) tag.remove();
+    box.appendChild(clone);
+  });
+})();
 </script>
 </body>
 </html>
