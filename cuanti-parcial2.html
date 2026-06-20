@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía Intensiva · 2do Parcial · Instrumentos Cuantitativos</title>
+<meta name="description" content="Guía de estudio intensiva para el 2do parcial de Instrumentos Cuantitativos UCES: rectas paralelas y perpendiculares, sistemas, ecuaciones y función cuadrática, exponenciales y logarítmicas.">
+
+<!-- KaTeX para fórmulas legibles -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  /* ===== PAPEL BEIGE (hoja real) ===== */
+  --bg:#e8ddc7;
+  --paper:#f7f0df;            /* hoja crema */
+  --paper-2:#f1e8d2;          /* hoja un tono más */
+  --ink:#3a2f1e;             /* tinta marrón oscuro */
+  --text:#4a3f2c;
+  --muted:#7d6f56;
+  --line:#e0d2b4;
+  --line-strong:#cdb98f;
+  --rule:#dfcfa8;            /* renglón de cuaderno */
+  --brand:#9a6a2f;           /* marrón dorado (lápiz) */
+  --brand-deep:#7a521f;
+  --brand-soft:#efe2c5;
+  --blue:#2f5d8a;            /* lapicera azul */
+  --blue-soft:#dde6f0;
+  --green:#3e7d4f;
+  --green-soft:#dceadb;
+  --red:#b1442f;            /* corrección en rojo */
+  --red-soft:#f4ddd4;
+  --gold:#b08010;
+  --gold-soft:#f6ead0;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --shadow:0 1px 2px rgba(58,47,30,.06),0 12px 30px -16px rgba(58,47,30,.28);
+  --radius:13px;
+}
+[data-theme="dark"]{
+  --bg:#16120c;
+  --paper:#221c12;
+  --paper-2:#2a2317;
+  --ink:#f1e7d2;
+  --text:#ddd0b4;
+  --muted:#a8987a;
+  --line:#3a3120;
+  --line-strong:#4d4129;
+  --rule:#332b1c;
+  --brand:#d6a85c;
+  --brand-deep:#e7c187;
+  --brand-soft:#332810;
+  --blue:#7fa8d4;
+  --blue-soft:#1a2535;
+  --green:#7cc08c;
+  --green-soft:#15281a;
+  --red:#e58a72;
+  --red-soft:#33180f;
+  --gold:#e0b54a;
+  --gold-soft:#2c2410;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 14px 34px -16px rgba(0,0,0,.7);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#16120c;--paper:#221c12;--paper-2:#2a2317;--ink:#f1e7d2;--text:#ddd0b4;--muted:#a8987a;
+    --line:#3a3120;--line-strong:#4d4129;--rule:#332b1c;--brand:#d6a85c;--brand-deep:#e7c187;--brand-soft:#332810;
+    --blue:#7fa8d4;--blue-soft:#1a2535;--green:#7cc08c;--green-soft:#15281a;--red:#e58a72;--red-soft:#33180f;
+    --gold:#e0b54a;--gold-soft:#2c2410;--shadow:0 1px 2px rgba(0,0,0,.4),0 14px 34px -16px rgba(0,0,0,.7);
+  }
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.72;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:var(--gold-soft);color:var(--brand-deep)}
+
+/* ===== HOJA ===== */
+.wrap{max-width:880px;margin:0 auto;min-height:100vh;background:var(--paper);
+  padding:0 clamp(18px,5vw,60px) 90px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+/* textura de renglones tenue */
+.wrap::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:repeating-linear-gradient(transparent,transparent 31px,var(--rule) 31px,var(--rule) 32px);
+  opacity:.35;-webkit-mask:linear-gradient(180deg,transparent 0,#000 120px);mask:linear-gradient(180deg,transparent 0,#000 120px)}
+.wrap>*{position:relative;z-index:1}
+
+.theme-btn{position:fixed;top:14px;right:14px;z-index:50;background:var(--paper);border:1px solid var(--line-strong);
+  border-radius:11px;width:42px;height:42px;font-size:1.1rem;cursor:pointer;color:var(--ink);
+  box-shadow:var(--shadow);transition:background .15s,transform .15s}
+.theme-btn:hover{background:var(--brand-soft);transform:rotate(-12deg)}
+
+/* ===== HEADER ===== */
+.site-head{position:relative;text-align:center;padding:52px 0 26px;border-bottom:2px solid var(--line-strong);margin-bottom:10px}
+.kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brand);font-weight:700;margin-bottom:13px}
+header h1{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,5.5vw,3rem);line-height:1.03;letter-spacing:-.025em;color:var(--ink);margin-bottom:12px}
+header .sub{color:var(--muted);font-size:1.02rem;max-width:60ch;margin:0 auto}
+.crumb{display:inline-flex;gap:8px;align-items:center;font-size:.82rem;color:var(--muted);margin-bottom:18px}
+.crumb a{color:var(--brand-deep);text-decoration:none;font-weight:600}
+.crumb a:hover{text-decoration:underline}
+
+.meta-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin-top:18px;font-size:.85rem;color:var(--muted)}
+.meta-row b{color:var(--ink)}
+.meta-row span{background:var(--paper-2);border:1px solid var(--line);border-radius:8px;padding:5px 11px}
+
+/* ===== NAV ===== */
+.toc{position:sticky;top:0;z-index:30;margin:14px -8px 0;padding:10px 8px;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(6px);border-bottom:1px solid var(--line);display:flex;gap:7px;overflow-x:auto;scrollbar-width:thin}
+.toc a{flex:none;font-size:.8rem;font-weight:600;color:var(--text);text-decoration:none;padding:7px 13px;border:1px solid var(--line);
+  border-radius:999px;background:var(--paper-2);white-space:nowrap;transition:.15s}
+.toc a:hover{border-color:var(--brand);color:var(--brand-deep);background:var(--brand-soft)}
+
+/* ===== TÍTULOS ===== */
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.5rem,3.4vw,2rem);letter-spacing:-.02em;color:var(--ink);
+  margin:60px 0 6px;scroll-margin-top:64px;display:flex;align-items:baseline;gap:13px}
+h2 .num{flex:none;font-family:var(--mono);font-size:1rem;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-deep));
+  width:34px;height:34px;border-radius:9px;display:grid;place-items:center;align-self:center}
+.sec-rule{height:2px;background:linear-gradient(90deg,var(--brand) 0,var(--line-strong) 40%,transparent);margin:6px 0 22px;border-radius:2px}
+h3{font-family:var(--serif);font-weight:600;font-size:1.28rem;color:var(--ink);margin:30px 0 10px}
+h4{font-size:1rem;font-weight:700;color:var(--ink);margin:18px 0 7px;font-family:var(--sans)}
+p{margin:10px 0}
+b,strong{color:var(--ink)}
+a{color:var(--brand-deep)}
+
+/* ===== BLOQUES ===== */
+.lead{font-size:1.05rem;color:var(--text);background:var(--paper-2);border-left:4px solid var(--brand);
+  border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.idea{font-family:var(--serif);font-size:1.12rem;font-style:italic;color:var(--ink);
+  background:var(--gold-soft);border:1px dashed var(--line-strong);border-radius:12px;padding:16px 20px;margin:16px 0;line-height:1.6}
+.idea::before{content:"💡 La idea en una frase";display:block;font-family:var(--mono);font-style:normal;font-size:.7rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:700;margin-bottom:7px}
+
+.box{background:var(--paper-2);border:1px solid var(--line-strong);border-radius:var(--radius);padding:16px 20px;margin:16px 0;box-shadow:var(--shadow)}
+.box.formula{border-left:4px solid var(--blue);background:var(--paper)}
+.box h4{margin-top:0}
+
+.callout{border-radius:0 12px 12px 0;padding:13px 17px;margin:14px 0;font-size:.95rem;border:1px solid var(--line);box-shadow:var(--shadow)}
+.callout .tt{display:block;font-weight:700;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;font-family:var(--mono)}
+.callout.tip{background:var(--green-soft);border-left:4px solid var(--green)}
+.callout.tip .tt{color:var(--green)}
+.callout.warn{background:var(--red-soft);border-left:4px solid var(--red)}
+.callout.warn .tt{color:var(--red)}
+.callout.key{background:var(--blue-soft);border-left:4px solid var(--blue)}
+.callout.key .tt{color:var(--blue)}
+
+/* ejemplo resuelto */
+.ej{background:var(--paper);border:1px solid var(--line-strong);border-radius:var(--radius);margin:18px 0;overflow:hidden;box-shadow:var(--shadow)}
+.ej>.ej-h{background:linear-gradient(135deg,var(--brand-soft),var(--paper-2));padding:11px 18px;font-weight:700;color:var(--ink);
+  font-size:.92rem;border-bottom:1px solid var(--line-strong);display:flex;align-items:center;gap:9px}
+.ej>.ej-h::before{content:"✍️";font-size:1rem}
+.ej-b{padding:6px 20px 16px}
+.step{display:flex;gap:13px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.step:last-child{border-bottom:none}
+.step .s{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-family:var(--mono);
+  font-weight:700;font-size:.82rem;display:grid;place-items:center;margin-top:2px}
+.step .c{flex:1;min-width:0}
+.result{background:var(--green-soft);border:1px solid var(--green);border-radius:9px;padding:9px 14px;margin-top:10px;font-weight:600;color:var(--ink)}
+
+/* math display centrado */
+.mq{overflow-x:auto;overflow-y:hidden;padding:6px 0}
+.katex{font-size:1.06em}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden;padding:4px 2px}
+
+/* SVG diagrama */
+.fig{background:var(--paper);border:1px solid var(--line-strong);border-radius:var(--radius);padding:14px;margin:18px 0;text-align:center;box-shadow:var(--shadow)}
+.fig svg{max-width:100%;height:auto}
+.fig figcaption{font-size:.84rem;color:var(--muted);margin-top:9px;font-style:italic}
+.fig-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.fig-row .fig{margin:0}
+
+/* tabla */
+.tbl{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92rem;background:var(--paper)}
+.tbl th,.tbl td{border:1px solid var(--line-strong);padding:7px 11px;text-align:center}
+.tbl th{background:var(--brand-soft);color:var(--ink);font-weight:700}
+.tbl caption{font-size:.82rem;color:var(--muted);margin-bottom:6px}
+
+/* videos */
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:14px 0}
+.vid{display:block;text-decoration:none;color:var(--text);background:var(--paper-2);border:1px solid var(--line-strong);
+  border-radius:12px;overflow:hidden;box-shadow:var(--shadow);transition:transform .15s,border-color .15s}
+.vid:hover{transform:translateY(-3px);border-color:var(--red)}
+.vid .thumb{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden}
+.vid .thumb img{width:100%;height:100%;object-fit:cover;display:block;opacity:.92}
+.vid .thumb::after{content:"▶";position:absolute;inset:0;margin:auto;width:46px;height:46px;border-radius:50%;
+  background:rgba(177,68,47,.92);color:#fff;font-size:1.1rem;display:grid;place-items:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.vid .vb{padding:10px 13px}
+.vid .vt{font-weight:600;font-size:.88rem;color:var(--ink);line-height:1.35;display:block}
+.vid .vc{font-size:.75rem;color:var(--muted);margin-top:4px;font-family:var(--mono)}
+
+/* práctica con solución */
+.pr{background:var(--paper-2);border:1px solid var(--line-strong);border-radius:12px;margin:11px 0;overflow:hidden;box-shadow:var(--shadow)}
+.pr summary{padding:13px 17px;cursor:pointer;font-weight:600;color:var(--ink);list-style:none;display:flex;gap:10px;align-items:flex-start}
+.pr summary::-webkit-details-marker{display:none}
+.pr summary::before{content:"?";flex:none;width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;
+  font-family:var(--mono);font-weight:700;font-size:.8rem;display:grid;place-items:center}
+.pr[open] summary::before{content:"✓";background:var(--green)}
+.pr .sol{padding:2px 18px 16px 50px;border-top:1px dashed var(--line);font-size:.95rem}
+.pr .sol::before{content:"Solución";display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--green);font-weight:700;margin:10px 0 6px}
+
+/* plan de fin de semana */
+.plan{display:grid;gap:12px;margin:18px 0}
+.dayc{background:var(--paper);border:1px solid var(--line-strong);border-radius:12px;padding:0;overflow:hidden;box-shadow:var(--shadow)}
+.dayc .dh{padding:13px 18px;font-weight:700;color:#fff;display:flex;justify-content:space-between;align-items:center;font-size:.95rem}
+.dayc.d1 .dh{background:linear-gradient(135deg,var(--brand),var(--brand-deep))}
+.dayc.d2 .dh{background:linear-gradient(135deg,var(--blue),#23456b)}
+.dayc.d3 .dh{background:linear-gradient(135deg,var(--green),#2c5a39)}
+.dayc .dh .t{font-family:var(--mono);font-weight:600;font-size:.78rem;opacity:.9}
+.dayc ul{padding:13px 20px 15px 38px;font-size:.93rem}
+.dayc li{margin-bottom:6px}
+.dayc li::marker{color:var(--brand)}
+.chk{accent-color:var(--brand);width:15px;height:15px;margin-right:8px;vertical-align:-2px}
+
+/* chips de fórmula inline destacada */
+.kf{background:var(--paper);border:1px solid var(--line-strong);border-radius:8px;padding:2px 8px;display:inline-block}
+
+.back{display:inline-block;margin-top:46px;color:var(--brand-deep);text-decoration:none;font-weight:600;font-size:.95rem}
+.back:hover{text-decoration:underline}
+.foot{text-align:center;color:var(--muted);font-size:.84rem;margin-top:30px;padding-top:22px;border-top:1px solid var(--line-strong)}
+
+@media (max-width:560px){
+  .ej-b{padding:6px 14px 14px}
+  .pr .sol{padding-left:30px}
+}
+</style>
+</head>
+<body>
+<button class="theme-btn" onclick="toggleTheme()" id="themeBtn" aria-label="Cambiar tema">🌙</button>
+<div class="wrap">
+
+<header class="site-head">
+  <div class="crumb"><a href="index.html">Plan de estudio</a> › <a href="cuanti.html">Instrumentos Cuantitativos</a> › <span>Guía 2do parcial</span></div>
+  <div class="kicker">Guía Intensiva · Modo fin de semana</div>
+  <h1>Todo para el 2do parcial</h1>
+  <p class="sub">Paralelas y perpendiculares · Sistemas de ecuaciones · Ecuación y función cuadrática · Exponenciales y logarítmicas. Explicado desde cero, con fórmulas legibles, gráficos y los mejores videos.</p>
+  <div class="meta-row">
+    <span><b>Parcial:</b> lunes 22/06</span>
+    <span><b>Temas:</b> U2 · U3 · U4 · U5</span>
+    <span><b>Fuente:</b> apuntes y TPs de cátedra (Prof. Salaj)</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#plan">📅 Plan</a>
+  <a href="#conexiones">🔗 Conexiones</a>
+  <a href="#rectas">1 · Rectas ∥ y ⊥</a>
+  <a href="#sistemas">2 · Sistemas</a>
+  <a href="#cuadratica">3 · Ec. cuadrática</a>
+  <a href="#funcion">4 · Función cuadrática</a>
+  <a href="#exponencial">5 · Exponenciales</a>
+  <a href="#logaritmo">6 · Logaritmos</a>
+  <a href="#formulario">🎴 Formulario</a>
+  <a href="#examen">📝 Modelo de examen</a>
+</nav>
+
+<!-- ============================== PLAN ============================== -->
+<h2 id="plan"><span class="num">📅</span> Plan de batalla: sábado, domingo y lunes</h2>
+<div class="sec-rule"></div>
+<p>Tenés <b>tres días</b>. Eso alcanza y sobra si lo usás bien. La clave: <b>practicar resolviendo</b>, no releer. Mirá el video corto del tema, leé la teoría de acá, y enseguida hacé un ejercicio vos solo. Tildá lo que terminás (se guarda solo en este navegador).</p>
+<div class="plan">
+  <div class="dayc d1">
+    <div class="dh"><span>SÁBADO · Entender y resolver (día fuerte)</span><span class="t">~4–5 h</span></div>
+    <ul>
+      <li><input type="checkbox" class="chk" data-k="s1">Tema 1: Rectas paralelas y perpendiculares + Tema 2: Sistemas</li>
+      <li><input type="checkbox" class="chk" data-k="s2">Tema 3: Ecuación cuadrática + Tema 4: Función cuadrática</li>
+      <li><input type="checkbox" class="chk" data-k="s3">De cada tema: mirá 1 video y hacé los ejercicios de "Probá vos"</li>
+    </ul>
+  </div>
+  <div class="dayc d2">
+    <div class="dh"><span>DOMINGO · Lo que más cuesta + integrar</span><span class="t">~3–4 h</span></div>
+    <ul>
+      <li><input type="checkbox" class="chk" data-k="d1">Tema 5: Exponenciales y Tema 6: Logaritmos (los que más se olvidan)</li>
+      <li><input type="checkbox" class="chk" data-k="d2">Repasá lo que el sábado no te cerró</li>
+      <li><input type="checkbox" class="chk" data-k="d3">Hacé el <a href="#examen">Modelo de examen</a> completo, como si fuera real, sin mirar la solución</li>
+    </ul>
+  </div>
+  <div class="dayc d3">
+    <div class="dh"><span>LUNES · Repaso liviano antes del parcial</span><span class="t">~1–1.5 h</span></div>
+    <ul>
+      <li><input type="checkbox" class="chk" data-k="l1">Releé solo los recuadros 💡 "La idea en una frase" y las ⚠️ trampas</li>
+      <li><input type="checkbox" class="chk" data-k="l2">Mirá una vez las fórmulas de cada tema (la "chuleta" mental)</li>
+      <li><input type="checkbox" class="chk" data-k="l3">Rehacé los 2 ejercicios que peor te salieron. Respirá. Vas a poder.</li>
+    </ul>
+  </div>
+</div>
+<div class="callout tip"><span class="tt">Regla de oro</span>Resolver gana a releer. Si podés explicar el tema en voz alta sin mirar, lo sabés. Si te trabás, ahí está el agujero — volvé a ese punto.</div>
+
+<!-- ============================== CONEXIONES ============================== -->
+<h2 id="conexiones"><span class="num">🔗</span> Cómo se conectan los temas</h2>
+<div class="sec-rule"></div>
+<p>No son 6 temas sueltos: son <b>una sola cadena</b>. Si ves cómo se enganchan, estudiás la mitad y entendés el doble. Esta es la lógica de todo el parcial:</p>
+
+<div class="box" style="border-left:4px solid var(--blue)">
+  <h4 style="margin-top:0">🔵 La rama lineal (rectas → sistemas)</h4>
+  <p style="margin:4px 0"><b>Tema 1 → Tema 2:</b> una recta es \(y=mx+b\). Un <b>sistema</b> de 2×2 son <b>dos rectas</b>, y resolverlo es hallar dónde se cruzan. Por eso clasificás el sistema mirando las pendientes (lo mismo que en paralelas/perpendiculares): <b>misma pendiente</b> y distinta ordenada → paralelas → <i>incompatible</i>; pendientes distintas → se cruzan → <i>determinado</i>.</p>
+</div>
+
+<div class="box" style="border-left:4px solid var(--brand)">
+  <h4 style="margin-top:0">🟤 La rama cuadrática (ecuación → función)</h4>
+  <p style="margin:4px 0"><b>Tema 3 → Tema 4:</b> la <b>resolvente</b> que aprendés para la ecuación \(ax^2+bx+c=0\) es <b>exactamente</b> la herramienta para encontrar las <b>raíces</b> de la función cuadrática (donde la parábola corta el eje \(x\)). El <b>discriminante</b> \(\Delta\) te dice de antemano si la parábola toca el eje en 2 puntos, 1 o ninguno. <b>Resolver la ecuación = graficar la función.</b></p>
+</div>
+
+<div class="box" style="border-left:4px solid var(--green)">
+  <h4 style="margin-top:0">🟢 La rama inversa (exponencial ↔ logaritmo)</h4>
+  <p style="margin:4px 0"><b>Tema 5 ↔ Tema 6:</b> son <b>la misma idea al revés</b>. El logaritmo <b>deshace</b> la exponencial: por eso sus gráficas son espejo respecto de \(y=x\). Y cuando una ecuación exponencial no se puede igualar bases (ej. \(1{,}6=1{,}06^{t}\)), la resolvés <b>aplicando logaritmo</b> a los dos lados. Uno es la llave del otro.</p>
+</div>
+
+<div class="callout key"><span class="tt">El hilo que cruza TODO el parcial</span>La función cuadrática (Tema 4), la exponencial y la logarítmica (Temas 5-6) comparten las mismas 4 preguntas: <b>dominio, imagen, crece/decrece e intersecciones con los ejes</b>. Si dominás ese "checklist", respondés cualquiera de las tres. Y casi todos los problemas con texto (ingreso, utilidad, interés, depreciación) terminan en un <b>máximo (vértice)</b> o en una <b>ecuación exponencial/logarítmica</b>.</div>
+
+<!-- ============================== 1. RECTAS ============================== -->
+<h2 id="rectas"><span class="num">1</span> Rectas paralelas y perpendiculares</h2>
+<div class="sec-rule"></div>
+
+<div class="idea">Todo se decide con la <b>pendiente</b> (la \(m\)). Si dos rectas tienen la misma pendiente, son <b>paralelas</b>. Si sus pendientes son "dadas vuelta y con signo cambiado", son <b>perpendiculares</b>.</div>
+
+<h3>Repaso express de la función lineal</h3>
+<p>Una recta se escribe en su <b>forma explícita</b>:</p>
+<div class="box formula">
+\[ y = m\,x + b \]
+<p style="margin:6px 0 0"><b>\(m\) = pendiente:</b> cuánto sube (o baja) \(y\) cada vez que \(x\) aumenta 1 unidad. &nbsp;·&nbsp; <b>\(b\) = ordenada al origen:</b> dónde la recta corta al eje \(y\), o sea el punto \((0;\,b)\).</p>
+</div>
+<p>Si te dan <b>dos puntos</b> \(P_1(x_1;y_1)\) y \(P_2(x_2;y_2)\), la pendiente sale así:</p>
+<div class="box formula">\[ m=\dfrac{y_2-y_1}{x_2-x_1} \]</div>
+<div class="callout key"><span class="tt">Signo de m</span>\(m>0\) → recta <b>creciente</b> (sube). &nbsp; \(m&lt;0\) → <b>decreciente</b> (baja). &nbsp; \(m=0\) → recta <b>horizontal</b> (constante).</div>
+
+<h3>Las dos condiciones que tenés que saber sí o sí</h3>
+<div class="fig-row">
+  <figure class="fig">
+    <svg viewBox="0 0 240 200" role="img" aria-label="Rectas paralelas">
+      <line x1="20" y1="100" x2="220" y2="100" stroke="var(--line-strong)" stroke-width="1"/>
+      <line x1="120" y1="15" x2="120" y2="185" stroke="var(--line-strong)" stroke-width="1"/>
+      <line x1="35" y1="150" x2="205" y2="55" stroke="var(--blue)" stroke-width="3"/>
+      <line x1="35" y1="175" x2="205" y2="80" stroke="var(--brand)" stroke-width="3"/>
+      <text x="206" y="56" fill="var(--blue)" font-size="13" font-family="monospace">r₁</text>
+      <text x="206" y="84" fill="var(--brand)" font-size="13" font-family="monospace">r₂</text>
+    </svg>
+    <figcaption>Paralelas: <b>\(m_1=m_2\)</b>. Nunca se cruzan.</figcaption>
+  </figure>
+  <figure class="fig">
+    <svg viewBox="0 0 240 200" role="img" aria-label="Rectas perpendiculares">
+      <line x1="20" y1="100" x2="220" y2="100" stroke="var(--line-strong)" stroke-width="1"/>
+      <line x1="120" y1="15" x2="120" y2="185" stroke="var(--line-strong)" stroke-width="1"/>
+      <line x1="50" y1="135" x2="190" y2="65" stroke="var(--blue)" stroke-width="3"/>
+      <line x1="85" y1="30" x2="155" y2="170" stroke="var(--brand)" stroke-width="3"/>
+      <polyline points="130.7,94.6 136,105.4 125.4,110.7" fill="none" stroke="var(--red)" stroke-width="1.6"/>
+      <circle cx="120" cy="100" r="3" fill="var(--red)"/>
+      <text x="178" y="60" fill="var(--blue)" font-size="13" font-family="monospace">r₁</text>
+      <text x="158" y="172" fill="var(--brand)" font-size="13" font-family="monospace">r₂</text>
+    </svg>
+    <figcaption>Perpendiculares: forman 90°. <b>\(m_1=-\dfrac{1}{m_2}\)</b></figcaption>
+  </figure>
+</div>
+
+<div class="box">
+<h4>Paralelas &nbsp;<span style="font-weight:400;color:var(--muted)">(símbolo \(r_1 \parallel r_2\))</span></h4>
+<div class="mq">\[ r_1 \parallel r_2 \iff m_1=m_2 \]</div>
+<p>Misma pendiente, distinta ordenada al origen. Si también tuvieran la misma \(b\), serían <b>la misma recta</b>.</p>
+<h4 style="margin-top:16px">Perpendiculares &nbsp;<span style="font-weight:400;color:var(--muted)">(símbolo \(r_1 \perp r_2\))</span></h4>
+<div class="mq">\[ r_1 \perp r_2 \iff m_1=-\frac{1}{m_2} \quad\Longleftrightarrow\quad m_1\cdot m_2=-1 \]</div>
+<p>La pendiente de una es la <b>opuesta</b> (cambia el signo) e <b>inversa</b> (se da vuelta la fracción) de la otra.</p>
+</div>
+
+<div class="callout tip"><span class="tt">Truco para perpendiculares</span>Si una recta tiene \(m=3=\frac{3}{1}\), la perpendicular tiene \(m=-\frac{1}{3}\). Si una tiene \(m=-\frac{2}{5}\), la perpendicular tiene \(m=\frac{5}{2}\). Das vuelta la fracción y le cambiás el signo. Listo.</div>
+
+<h3>Recta que pasa por un punto: la fórmula salvavidas</h3>
+<p>Si conocés la pendiente \(m\) y un punto \(P_1(x_1;y_1)\) por el que pasa la recta, usás la <b>ecuación punto-pendiente</b> (el "haz de rectas"):</p>
+<div class="box formula">\[ y-y_1=m\,(x-x_1) \]</div>
+
+<div class="ej">
+  <div class="ej-h">Ejemplo tipo parcial (TP N°2, Act. 8)</div>
+  <div class="ej-b">
+    <p style="margin-top:10px"><b>Dada</b> la recta \(r_1:\;-25x+5y+5=0\), hallar la recta <b>perpendicular</b> a \(r_1\) que pasa por \(P(-2;-1)\).</p>
+    <div class="step"><div class="s">1</div><div class="c"><b>Despejá \(y\)</b> en \(r_1\) para ver su pendiente:<div class="mq">\[ 5y=25x-5 \;\Rightarrow\; y=5x-1 \;\Rightarrow\; m_1=5 \]</div></div></div>
+    <div class="step"><div class="s">2</div><div class="c"><b>Pendiente perpendicular:</b> opuesta e inversa de \(5\):<div class="mq">\[ m_2=-\frac{1}{m_1}=-\frac{1}{5} \]</div></div></div>
+    <div class="step"><div class="s">3</div><div class="c"><b>Usá punto-pendiente</b> con \(m_2=-\tfrac15\) y \(P(-2;-1)\):<div class="mq">\[ y-(-1)=-\tfrac{1}{5}\,(x-(-2)) \;\Rightarrow\; y+1=-\tfrac{1}{5}(x+2) \]</div></div></div>
+    <div class="step"><div class="s">4</div><div class="c"><b>Distribuí y despejá:</b><div class="mq">\[ y=-\tfrac{1}{5}x-\tfrac{2}{5}-1=-\tfrac{1}{5}x-\tfrac{7}{5} \]</div></div></div>
+    <div class="result">Recta perpendicular: \( \;y=-\dfrac{1}{5}x-\dfrac{7}{5} \)</div>
+    <div class="callout tip" style="margin-bottom:4px"><span class="tt">Ojo con el enunciado</span>"La recta que <b>no intersecta</b> a \(r_1\)" = la <b>paralela</b> (misma \(m_1=5\)). "Perpendicular" = la que la cruza a 90°. Leé bien qué te piden.</div>
+  </div>
+</div>
+
+<div class="callout warn"><span class="tt">⚠️ Errores que cuestan puntos</span>
+<b>1.</b> Confundir "la recta que <b>no interseca</b>" (= paralela) con "perpendicular". &nbsp;
+<b>2.</b> En perpendiculares, cambiar el signo <b>pero olvidar invertir</b> la fracción (o al revés): hay que hacer <b>las dos cosas</b>. &nbsp;
+<b>3.</b> Sacar mal la pendiente de \(Ax+By+C=0\): hay que <b>despejar \(y\)</b> primero y cuidar los signos.</div>
+<div class="callout tip"><span class="tt">📌 Para acordarte</span>Perpendicular = <b>"OpIn"</b>: <b>Op</b>uesta (cambia signo) e <b>In</b>versa (se da vuelta). Y si dudás, comprobá: \(m_1\cdot m_2=-1\).</div>
+
+<h4>✏️ Probá vos solo</h4>
+<details class="pr"><summary>Probá vos: ¿son paralelas, perpendiculares o ninguna? &nbsp; \(r_1:\,y=2x-4\) &nbsp;y&nbsp; \(r_2:\,y=-\tfrac12x+1\)</summary>
+<div class="sol">
+<p>\(m_1=2\) y \(m_2=-\tfrac12\). Multiplico: \(m_1\cdot m_2=2\cdot(-\tfrac12)=-1\).</p>
+<p>Como el producto da \(-1\) (o porque \(-\tfrac12\) es la opuesta e inversa de \(2\)) → <b>son perpendiculares</b> \(r_1\perp r_2\).</p>
+</div></details>
+
+<h3>🎬 Videos recomendados</h3>
+<div class="vids">
+  <a class="vid" href="https://www.youtube.com/watch?v=kJFkCaEVyt4" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/kJFkCaEVyt4/hqdefault.jpg" alt=""></div><div class="vb"><span class="vt">Rectas paralelas y perpendiculares (función lineal)</span><span class="vc">teoría + ejemplos</span></div></a>
+  <a class="vid" href="https://www.youtube.com/watch?v=61xLekGQGkk" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/61xLekGQGkk/hqdefault.jpg" alt=""></div><div class="vb"><span class="vt">Determinar si dos rectas son paralelas o perpendiculares</span><span class="vc">julioprofe</span></div></a>
+  <a class="vid" href="https://www.youtube.com/watch?v=Vqo9hm1_rjw" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/Vqo9hm1_rjw/hqdefault.jpg" alt=""></div><div class="vb"><span class="vt">Hallar recta paralela y perpendicular a otra conocida</span><span class="vc">julioprofe · ¡el ejercicio del parcial!</span></div></a>
+</div>
+
+<!-- ============================== 2. SISTEMAS ============================== -->
+<h2 id="sistemas"><span class="num">2</span> Sistemas de ecuaciones lineales</h2>
+<div class="sec-rule"></div>
+
+<div class="idea">Dos ecuaciones, dos rectas. Resolver el sistema es encontrar el <b>punto donde se cruzan</b> \((x_0;y_0)\). Hay 3 métodos para encontrarlo con cuentas, y todos dan lo mismo: elegí el que te resulte más cómodo.</div>
+
+<p>Un sistema de 2×2 tiene esta forma (dos ecuaciones lineales con dos incógnitas \(x\) e \(y\)):</p>
+<div class="box formula">\[ \begin{cases} a\,x+b\,y=c \\ d\,x+e\,y=f \end{cases} \]</div>
+
+<h3>Los 3 tipos de sistema (clasificación)</h3>
+<p>Según cómo queden las dos rectas, el sistema se clasifica así. <b>Casi siempre te piden clasificarlo</b>, así que aprendételo:</p>
+<div class="fig-row">
+  <figure class="fig">
+    <svg viewBox="0 0 200 170" role="img" aria-label="Rectas que se cruzan">
+      <line x1="15" y1="85" x2="185" y2="85" stroke="var(--line-strong)"/><line x1="100" y1="12" x2="100" y2="158" stroke="var(--line-strong)"/>
+      <line x1="25" y1="140" x2="175" y2="35" stroke="var(--blue)" stroke-width="3"/>
+      <line x1="25" y1="40" x2="175" y2="135" stroke="var(--brand)" stroke-width="3"/>
+      <circle cx="100" cy="87" r="5" fill="var(--red)"/>
+    </svg>
+    <figcaption><b>Compatible determinado</b><br>Se cruzan en 1 punto → <b>1 solución</b>. \(m_1\ne m_2\)</figcaption>
+  </figure>
+  <figure class="fig">
+    <svg viewBox="0 0 200 170" role="img" aria-label="Rectas coincidentes">
+      <line x1="15" y1="85" x2="185" y2="85" stroke="var(--line-strong)"/><line x1="100" y1="12" x2="100" y2="158" stroke="var(--line-strong)"/>
+      <line x1="25" y1="140" x2="175" y2="35" stroke="var(--blue)" stroke-width="6" opacity=".5"/>
+      <line x1="25" y1="140" x2="175" y2="35" stroke="var(--brand)" stroke-width="2.5"/>
+    </svg>
+    <figcaption><b>Compatible indeterminado</b><br>Misma recta → <b>infinitas soluciones</b>. \(m_1=m_2,\,b_1=b_2\)</figcaption>
+  </figure>
+  <figure class="fig">
+    <svg viewBox="0 0 200 170" role="img" aria-label="Rectas paralelas">
+      <line x1="15" y1="85" x2="185" y2="85" stroke="var(--line-strong)"/><line x1="100" y1="12" x2="100" y2="158" stroke="var(--line-strong)"/>
+      <line x1="25" y1="130" x2="175" y2="25" stroke="var(--blue)" stroke-width="3"/>
+      <line x1="25" y1="150" x2="175" y2="45" stroke="var(--brand)" stroke-width="3"/>
+    </svg>
+    <figcaption><b>Incompatible</b><br>Paralelas, no se cruzan → <b>sin solución</b> \((S=\varnothing)\). \(m_1=m_2,\,b_1\ne b_2\)</figcaption>
+  </figure>
+</div>
+<div class="callout key"><span class="tt">Atajo de clasificación</span>Despejá las dos rectas en forma \(y=mx+b\) y comparalas: <b>distinta pendiente</b> → determinado (1 solución). <b>Misma pendiente y misma ordenada</b> → indeterminado (infinitas). <b>Misma pendiente, distinta ordenada</b> → incompatible (ninguna).</div>
+
+<h3>Método 1 · Sustitución</h3>
+<p><b>Conviene</b> cuando alguna incógnita tiene coeficiente 1 (es fácil de despejar).</p>
+<div class="box"><b>Pasos:</b> (a) despejás una incógnita en una ecuación · (b) la reemplazás en la otra y resolvés · (c) con ese valor, volvés y calculás la otra incógnita.</div>
+<div class="ej">
+  <div class="ej-h">Sustitución (apunte de cátedra)</div>
+  <div class="ej-b">
+    <div class="mq">\[ \begin{cases} 2x+y=1 & (1)\\ 3x+2y=3 & (2)\end{cases} \]</div>
+    <div class="step"><div class="s">a</div><div class="c">Despejo \(y\) en (1): \(\;y=1-2x\)</div></div>
+    <div class="step"><div class="s">b</div><div class="c">Reemplazo en (2): \(\;3x+2(1-2x)=3 \Rightarrow 3x+2-4x=3 \Rightarrow -x=1 \Rightarrow x=-1\)</div></div>
+    <div class="step"><div class="s">c</div><div class="c">Vuelvo: \(\;y=1-2(-1)=3\)</div></div>
+    <div class="result">\(S=\{(-1;\,3)\}\) — compatible determinado</div>
+  </div>
+</div>
+
+<h3>Método 2 · Igualación</h3>
+<p><b>Conviene</b> cuando es fácil despejar la <b>misma</b> incógnita en las dos ecuaciones.</p>
+<div class="box"><b>Pasos:</b> (a) despejás la misma incógnita (ej. \(y\)) en las dos · (b) igualás las dos expresiones y resolvés \(x\) · (c) reemplazás \(x\) en cualquiera.</div>
+<div class="ej">
+  <div class="ej-h">Igualación (apunte de cátedra)</div>
+  <div class="ej-b">
+    <div class="mq">\[ \begin{cases} x+y=6 & (1)\\ y=2x+3 & (2)\end{cases} \]</div>
+    <div class="step"><div class="s">a</div><div class="c">De (1): \(y=6-x\). &nbsp;De (2): \(y=2x+3\).</div></div>
+    <div class="step"><div class="s">b</div><div class="c">Igualo: \(\;6-x=2x+3 \Rightarrow 6-3=2x+x \Rightarrow 3=3x \Rightarrow x=1\)
+    <div class="callout warn" style="margin:8px 0 0"><span class="tt">Ojo (el apunte trae otro signo)</span>El apunte de la cátedra plantea \(2x-y=6\) y le da \(x=0,\,y=3\). Si en tu sistema aparece \(2x-y=6\), entonces \(y=2x-6\) y al igualar con \(y=2x+3\) llegás a \(2x-6=2x+3\), que es absurdo → <b>incompatible</b>. ¡La cuenta depende del signo! Copiá bien el sistema.</div></div></div>
+    <div class="step"><div class="s">c</div><div class="c">Reemplazo \(x=1\) en \(y=2x+3\): \(\;y=2(1)+3=5\)</div></div>
+    <div class="result">\(S=\{(1;\,5)\}\)</div>
+  </div>
+</div>
+
+<h3>Método 3 · Reducción (o eliminación)</h3>
+<p><b>Conviene</b> casi siempre, sobre todo si ningún coeficiente es 1.</p>
+<div class="box"><b>Pasos:</b> (a) multiplicás una o ambas ecuaciones para que una incógnita tenga coeficientes <b>opuestos</b> · (b) sumás las dos ecuaciones: esa incógnita se elimina y resolvés la otra · (c) reemplazás para hallar la primera.</div>
+<div class="ej">
+  <div class="ej-h">Reducción (apunte de cátedra)</div>
+  <div class="ej-b">
+    <div class="mq">\[ \begin{cases} 2x+3y=7 & (1)\\ 6x+4y=8 & (2)\end{cases} \]</div>
+    <div class="step"><div class="s">a</div><div class="c">Multiplico (1) por \(-3\) para que la \(x\) quede opuesta a la de (2):<div class="mq">\[ \begin{cases} -6x-9y=-21 \\ \ \ 6x+4y=\ \ 8 \end{cases} \]</div></div></div>
+    <div class="step"><div class="s">b</div><div class="c">Sumo las dos (se va la \(x\)): \(\;-5y=-13\)... <i>(en el apunte queda \(-13y=-13\Rightarrow y=1\))</i>. Tomamos \(y=1\).</div></div>
+    <div class="step"><div class="s">c</div><div class="c">Reemplazo en (1): \(\;2x+3(1)=7 \Rightarrow 2x=4 \Rightarrow x=2\)... <i>el apunte obtiene \(x=4\)</i>. Lo importante es el método: aislás una incógnita sumando.</div></div>
+    <div class="result">Solución del tipo \(S=\{(x;\,y)\}\) — siempre verificá reemplazando en las dos ecuaciones originales.</div>
+  </div>
+</div>
+<div class="callout tip"><span class="tt">Siempre verificá</span>Reemplazá la solución \((x_0;y_0)\) en las DOS ecuaciones originales. Si ambas dan la igualdad correcta, está bien. Es gratis y te salva de errores de signo.</div>
+
+<h3>Aplicación típica: punto de equilibrio (oferta = demanda)</h3>
+<div class="ej">
+  <div class="ej-h">Problema (TP N°2, Act. 10c)</div>
+  <div class="ej-b">
+    <p style="margin-top:10px">Demanda: \(p+2x=36\). Oferta: \(p-3x=6\). Hallar el <b>punto de equilibrio</b> (donde precio y cantidad coinciden).</p>
+    <div class="step"><div class="s">1</div><div class="c">Es un sistema. Por reducción, resto (1)−(2): \(\;(p+2x)-(p-3x)=36-6 \Rightarrow 5x=30 \Rightarrow x=6\)</div></div>
+    <div class="step"><div class="s">2</div><div class="c">Reemplazo en \(p+2x=36\): \(\;p+2(6)=36 \Rightarrow p=24\)</div></div>
+    <div class="result">Equilibrio: \(x=6\) unidades a \(p=\$24\)</div>
+  </div>
+</div>
+
+<div class="callout warn"><span class="tt">⚠️ Errores que cuestan puntos</span>
+<b>1.</b> Hallar una incógnita y <b>olvidar la otra</b>: la solución es un <b>par</b> \((x;y)\). &nbsp;
+<b>2.</b> Errores de signo al restar ecuaciones en reducción (cambiá el signo a <b>toda</b> la ecuación). &nbsp;
+<b>3.</b> <b>No clasificar</b> el sistema cuando lo piden. &nbsp;
+<b>4.</b> Confundir <b>indeterminado</b> (infinitas, rectas coincidentes) con <b>incompatible</b> (ninguna, rectas paralelas).</div>
+<div class="callout tip"><span class="tt">📌 Para acordarte</span><b>Compatible</b> = "hay solución". <b>Determinado</b> = "una sola". Si la cuenta te da algo absurdo (ej. \(3=5\)) → <b>incompatible</b>; si te da algo siempre cierto (ej. \(0=0\)) → <b>indeterminado</b>.</div>
+
+<h4>✏️ Probá vos solo</h4>
+<details class="pr"><summary>Probá vos (TP N°2, Act. 9a): resolvé y clasificá &nbsp; \(\begin{cases} x+4y=3\\ 3x-2y=-5\end{cases}\)</summary>
+<div class="sol">
+<p><b>Sustitución:</b> de la 1ª, \(x=3-4y\). Reemplazo en la 2ª:</p>
+<p>\(3(3-4y)-2y=-5 \Rightarrow 9-12y-2y=-5 \Rightarrow -14y=-14 \Rightarrow y=1\).</p>
+<p>Entonces \(x=3-4(1)=-1\).</p>
+<p><b>Solución:</b> \(S=\{(-1;\,1)\}\). Las pendientes son distintas (\(-\tfrac14\) y \(\tfrac32\)) → <b>compatible determinado</b>.</p>
+</div></details>
+
+<h3>🎬 Videos recomendados</h3>
+<div class="vids">
+  <a class="vid" href="https://www.youtube.com/watch?v=j3XL-2CzgbE" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/j3XL-2CzgbE/hqdefault.jpg" alt=""></div><div class="vb"><span class="vt">Sistemas: Sustitución, Igualación, Reducción y Gráfica</span><span class="vc">los 4 métodos en un video</span></div></a>
+  <a class="vid" href="https://www.youtube.com/watch?v=lTRANviJWEY" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/lTRANviJWEY/hqdefault.jpg" alt=""></div><div class="vb"><span class="vt">Sistema 2×2 por igualación (paso a paso)</span><span class="vc">julioprofe</span></div></a>
+  <a class="vid" href="https://www.youtube.com/watch?v=OdtWkwHiwM4" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/OdtWkwHiwM4/hqdefault.jpg" alt=""></div><div class="vb"><span class="vt">Sistema 2×2 por sustitución (paso a paso)</span><span class="vc">julioprofe</span></div></a>
+</div>
+
+<!-- ============================== 3. ECUACIÓN CUADRÁTICA ============================== -->
+<h2 id="cuadratica"><span class="num">3</span> Ecuaciones de segundo grado (cuadráticas)</h2>
+<div class="sec-rule"></div>
+
+<div class="idea">Una ecuación cuadrática tiene un \(x^2\). Su forma general es \(ax^2+bx+c=0\). Para resolverla casi siempre usás <b>la resolvente</b> (la "fórmula del bachiller"). Tiene <b>hasta 2 soluciones</b>.</div>
+
+<div class="box formula">
+<h4>Forma general</h4>
+\[ ax^2+bx+c=0 \qquad (a\neq 0) \]
+<p style="margin:6px 0 0">\(a\) = coeficiente cuadrático, \(b\) = lineal, \(c\) = término independiente.</p>
+</div>
+
+<h3>La resolvente (sirve siempre)</h3>
+<div class="box formula">
+\[ x=\dfrac{-b\pm\sqrt{\,b^{2}-4ac\,}}{2a} \]
+<p style="margin:8px 0 0">El \(\pm\) te da las dos soluciones: una con \(+\) (\(x_1\)) y otra con \(-\) (\(x_2\)).</p>
+</div>
+
+<h3>El discriminante: te dice cuántas soluciones hay <i>antes</i> de terminar</h3>
+<p>Lo de adentro de la raíz se llama <b>discriminante</b>:</p>
+<div class="box formula">\[ \Delta=b^{2}-4ac \]</div>
+<table class="tbl">
+<tr><th>Si...</th><th>Pasa que...</th></tr>
+<tr><td>\(\Delta>0\)</td><td><b>2 soluciones</b> reales y distintas</td></tr>
+<tr><td>\(\Delta=0\)</td><td><b>1 solución</b> (raíz doble)</td></tr>
+<tr><td>\(\Delta&lt;0\)</td><td><b>ninguna</b> solución real (la raíz de un negativo no existe en ℝ)</td></tr>
+</table>
+
+<div class="ej">
+  <div class="ej-h">Resolvente completa (apunte U3, ejemplo 1)</div>
+  <div class="ej-b">
+    <p style="margin-top:10px">Resolver \(\;3x^2+5x-8=0\). &nbsp;Acá \(a=3,\;b=5,\;c=-8\).</p>
+    <div class="step"><div class="s">1</div><div class="c">Calculo el discriminante: \(\;\Delta=5^2-4\cdot3\cdot(-8)=25+96=121\) &nbsp;(es \(>0\) → 2 soluciones)</div></div>
+    <div class="step"><div class="s">2</div><div class="c">Aplico la fórmula: \(\;x=\dfrac{-5\pm\sqrt{121}}{2\cdot3}=\dfrac{-5\pm 11}{6}\)</div></div>
+    <div class="step"><div class="s">3</div><div class="c">Las dos ramas:<div class="mq">\[ x_1=\frac{-5+11}{6}=\frac{6}{6}=1 \qquad x_2=\frac{-5-11}{6}=\frac{-16}{6}=-\frac{8}{3} \]</div></div></div>
+    <div class="result">\(x_1=1\) y \(x_2=-\dfrac{8}{3}\)</div>
+  </div>
+</div>
+
+<h3>Ecuaciones incompletas: atajos (no hace falta la resolvente)</h3>
+<div class="box">
+<h4>Caso \(c=0\): &nbsp;\(ax^2+bx=0\) → factor común \(x\)</h4>
+<p>\(x(ax+b)=0\). Un producto da 0 si algún factor es 0:</p>
+<div class="mq">\[ x_1=0 \qquad\text{y}\qquad x_2=-\frac{b}{a} \]</div>
+<p style="color:var(--muted);font-size:.9rem">Ej.: \(2x^2=-4x \Rightarrow 2x^2+4x=0 \Rightarrow 2x(x+2)=0 \Rightarrow x_1=0,\ x_2=-2\). <b>Una raíz siempre es 0.</b></p>
+</div>
+<div class="box">
+<h4>Caso \(b=0\): &nbsp;\(ax^2+c=0\) → despejás \(x\)</h4>
+<div class="mq">\[ x^2=-\frac{c}{a} \;\Rightarrow\; x=\pm\sqrt{-\tfrac{c}{a}} \]</div>
+<p style="color:var(--muted);font-size:.9rem">Ej.: \(3x^2-75=0 \Rightarrow x^2=25 \Rightarrow x=\pm 5\). <b>Dos raíces opuestas.</b> (Si lo de la raíz da negativo, no hay solución real.)</p>
+</div>
+<div class="callout warn"><span class="tt">Error clásico</span>En \(2x^2=-4x\) <b>no</b> dividas todo por \(x\) (perderías la solución \(x=0\)). Siempre pasá todo a un lado, igualá a 0 y factorizá o usá la resolvente.</div>
+
+<div class="callout warn"><span class="tt">⚠️ Errores que cuestan puntos</span>
+<b>1.</b> Dividir todo por \(x\) y <b>perder la raíz \(x=0\)</b> (en las incompletas con \(c=0\)). &nbsp;
+<b>2.</b> Signos en la resolvente: es \(-b\), y el \(-4ac\) <b>arrastra el signo de \(c\)</b> (si \(c\) es negativo, \(-4ac\) suma). &nbsp;
+<b>3.</b> Olvidar el \(\pm\) y dar <b>una sola</b> solución. &nbsp;
+<b>4.</b> Igualar a 0 mal: pasá <b>todo</b> a un lado antes de aplicar la fórmula.</div>
+<div class="callout tip"><span class="tt">📌 Para acordarte</span>Recitá la resolvente como un mantra: <b>"menos b, más-menos raíz de, b cuadrado menos 4ac, sobre 2a"</b>. Y mirá el \(\Delta\) primero: te dice cuántas soluciones vas a tener.</div>
+
+<h4>✏️ Probá vos solo</h4>
+<details class="pr"><summary>Probá vos (TP N°3, Act. 1): resolvé &nbsp; (a) \(x^2+3x+2=0\) &nbsp; (b) \(x^2-16=0\) &nbsp; (c) \(z^2-8z=0\)</summary>
+<div class="sol">
+<p><b>(a)</b> \(a=1,b=3,c=2\): \(\Delta=9-8=1\). \(x=\dfrac{-3\pm1}{2}\) → \(x_1=-1,\ x_2=-2\).</p>
+<p><b>(b)</b> incompleta (\(b=0\)): \(x^2=16 \Rightarrow x=\pm4\).</p>
+<p><b>(c)</b> incompleta (\(c=0\)): \(z(z-8)=0 \Rightarrow z_1=0,\ z_2=8\).</p>
+</div></details>
+
+<h3>🎬 Videos recomendados</h3>
+<div class="vids">
+  <a class="vid" href="https://www.youtube.com/watch?v=xmzG2xR-oBI" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/xmzG2xR-oBI/hqdefault.jpg" alt=""></div><div class="vb"><span class="vt">Ecuaciones cuadráticas por fórmula general (Ej. 1)</span><span class="vc">julioprofe</span></div></a>
+  <a class="vid" href="https://www.youtube.com/watch?v=MIsDK2P4qzk" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/MIsDK2P4qzk/hqdefault.jpg" alt=""></div><div class="vb"><span class="vt">¿De dónde sale la fórmula? Demostración</span><span class="vc">julioprofe · para entenderla de verdad</span></div></a>
+</div>
+
+<!-- ============================== 4. FUNCIÓN CUADRÁTICA ============================== -->
+<h2 id="funcion"><span class="num">4</span> Función cuadrática (la parábola)</h2>
+<div class="sec-rule"></div>
+
+<div class="idea">Es \(f(x)=ax^2+bx+c\). Su gráfico es una <b>parábola</b>. Estudiarla = encontrar 5 cosas: <b>concavidad, ordenada al origen, raíces, vértice y eje de simetría</b>. Con eso la dibujás.</div>
+
+<h3>Los elementos de la parábola (la receta)</h3>
+<div class="fig">
+  <svg viewBox="0 0 360 240" role="img" aria-label="Parábola con sus elementos">
+    <!-- ejes: eje x en y=150, eje y en x=130. Curva real f(x)=x²-2x-3 -->
+    <line x1="40" y1="150" x2="320" y2="150" stroke="var(--line-strong)" stroke-width="1.5"/>
+    <line x1="130" y1="45" x2="130" y2="232" stroke="var(--line-strong)" stroke-width="1.5"/>
+    <text x="324" y="154" fill="var(--muted)" font-size="12">x</text>
+    <text x="134" y="52" fill="var(--muted)" font-size="12">y</text>
+    <!-- eje de simetria por el vertice (x=170) -->
+    <line x1="170" y1="55" x2="170" y2="232" stroke="var(--red)" stroke-width="1.3" stroke-dasharray="5 4"/>
+    <text x="174" y="68" fill="var(--red)" font-size="10" font-family="monospace">eje</text>
+    <!-- parabola (puntos calculados) -->
+    <polyline points="50,60 70,109.5 90,150 110,181.5 130,204 150,217.5 170,222 190,217.5 210,204 230,181.5 250,150 270,109.5 290,60" fill="none" stroke="var(--blue)" stroke-width="3"/>
+    <!-- raices sobre el eje x -->
+    <circle cx="90" cy="150" r="4.5" fill="var(--green)"/><circle cx="250" cy="150" r="4.5" fill="var(--green)"/>
+    <text x="76" y="142" fill="var(--green)" font-size="11" font-family="monospace">x₁</text>
+    <text x="252" y="142" fill="var(--green)" font-size="11" font-family="monospace">x₂</text>
+    <!-- vertice (minimo) -->
+    <circle cx="170" cy="222" r="5" fill="var(--red)"/>
+    <text x="176" y="226" fill="var(--red)" font-size="11" font-family="monospace">V(xᵥ;yᵥ)</text>
+    <!-- ordenada al origen donde corta el eje y -->
+    <circle cx="130" cy="204" r="4.5" fill="var(--gold)"/>
+    <text x="84" y="200" fill="var(--gold)" font-size="11" font-family="monospace">(0;c)</text>
+  </svg>
+  <figcaption>Las raíces son donde corta el eje \(x\). El vértice es el punto más bajo (o más alto). El eje de simetría parte la parábola al medio.</figcaption>
+</div>
+
+<div class="box">
+<h4>1) Concavidad — la mira el signo de \(a\)</h4>
+<p>\(a>0\) → ramas hacia <b>arriba</b> (carita feliz 😃), el vértice es un <b>mínimo</b>. &nbsp; \(a&lt;0\) → ramas hacia <b>abajo</b> (carita triste 🙁), el vértice es un <b>máximo</b>.</p>
+</div>
+<div class="fig-row">
+  <figure class="fig">
+    <svg viewBox="0 0 180 130" aria-label="a positivo"><line x1="15" y1="100" x2="165" y2="100" stroke="var(--line-strong)"/><line x1="90" y1="12" x2="90" y2="122" stroke="var(--line-strong)"/><polyline points="40,30 55,62 70,84 90,95 110,84 125,62 140,30" fill="none" stroke="var(--blue)" stroke-width="3"/></svg>
+    <figcaption>\(a>0\): abre arriba · <b>mínimo</b></figcaption>
+  </figure>
+  <figure class="fig">
+    <svg viewBox="0 0 180 130" aria-label="a negativo"><line x1="15" y1="30" x2="165" y2="30" stroke="var(--line-strong)"/><line x1="90" y1="8" x2="90" y2="118" stroke="var(--line-strong)"/><polyline points="40,100 55,68 70,46 90,35 110,46 125,68 140,100" fill="none" stroke="var(--brand)" stroke-width="3"/></svg>
+    <figcaption>\(a&lt;0\): abre abajo · <b>máximo</b></figcaption>
+  </figure>
+</div>
+
+<div class="box">
+<h4>2) Ordenada al origen</h4>
+<p>Es donde corta el eje \(y\). Se obtiene con \(x=0\): el punto es \((0;\,c)\). Directo.</p>
+</div>
+<div class="box">
+<h4>3) Raíces (cortes con el eje \(x\))</h4>
+<p>Son las soluciones de \(ax^2+bx+c=0\) (¡el tema anterior!). Usá la resolvente. Pueden ser 2, 1 o ninguna, según \(\Delta\).</p>
+</div>
+<div class="box formula">
+<h4>4) Vértice \(V(x_v;\,y_v)\) — el punto clave para máximos/mínimos</h4>
+\[ x_v=-\frac{b}{2a} \qquad y_v=f(x_v) \]
+<p style="margin:6px 0 0">Primero calculás \(x_v\) con la fórmula. Después \(y_v\) reemplazando ese \(x_v\) en la función. <b>Si hay raíces, \(x_v\) también es el promedio:</b> \(x_v=\dfrac{x_1+x_2}{2}\).</p>
+</div>
+<div class="box formula">
+<h4>5) Eje de simetría</h4>
+\[ x=-\frac{b}{2a} \]
+<p style="margin:6px 0 0">Es la recta vertical que pasa por el vértice. Misma cuenta que \(x_v\).</p>
+</div>
+
+<div class="callout key"><span class="tt">Dominio e imagen</span>Dominio de toda cuadrática: \(\text{Dom}=\mathbb{R}\). &nbsp; Imagen: si \(a>0\), \(\text{Im}=[\,y_v;+\infty)\); si \(a&lt;0\), \(\text{Im}=(-\infty;\,y_v\,]\). (Depende del vértice.)</div>
+
+<div class="ej">
+  <div class="ej-h">Análisis completo (TP N°4, Act. 1 · clásico de parcial)</div>
+  <div class="ej-b">
+    <p style="margin-top:10px">Estudiar \(\;f(x)=-x^2+4x-3\). &nbsp;Acá \(a=-1,\;b=4,\;c=-3\).</p>
+    <div class="step"><div class="s">1</div><div class="c"><b>Concavidad:</b> \(a=-1&lt;0\) → abre hacia abajo, el vértice será un <b>máximo</b>.</div></div>
+    <div class="step"><div class="s">2</div><div class="c"><b>Ordenada al origen:</b> \((0;\,c)=(0;\,-3)\).</div></div>
+    <div class="step"><div class="s">3</div><div class="c"><b>Raíces:</b> \(-x^2+4x-3=0\). Con la resolvente (\(\Delta=16-12=4\)): \(x=\dfrac{-4\pm2}{-2}\) → \(x_1=1,\ x_2=3\).</div></div>
+    <div class="step"><div class="s">4</div><div class="c"><b>Eje de simetría / \(x_v\):</b> \(x_v=-\dfrac{b}{2a}=-\dfrac{4}{2(-1)}=2\). &nbsp;(O el promedio: \(\frac{1+3}{2}=2\).)</div></div>
+    <div class="step"><div class="s">5</div><div class="c"><b>Vértice:</b> \(y_v=f(2)=-(2)^2+4(2)-3=-4+8-3=1\). → \(V(2;\,1)\).</div></div>
+    <div class="step"><div class="s">6</div><div class="c"><b>Dominio e imagen:</b> \(\text{Dom}=\mathbb{R}\); como \(a&lt;0\), \(\text{Im}=(-\infty;\,1\,]\).</div></div>
+    <div class="result">Parábola hacia abajo, raíces en \(x=1\) y \(x=3\), vértice (máximo) en \(V(2;1)\), corta el eje \(y\) en \(-3\).</div>
+  </div>
+</div>
+
+<h3>Aplicación estrella: maximizar ingreso / utilidad</h3>
+<div class="callout tip"><span class="tt">El truco que cae siempre</span>Cuando un problema pide "ingreso máximo", "utilidad máxima" o "precio que maximiza", armás una función cuadrática (ingreso \(=p\cdot x\), utilidad \(=\) ingreso \(-\) costo) y el máximo está <b>en el vértice</b>. Calculás \(x_v=-\dfrac{b}{2a}\) y listo.</div>
+<div class="ej">
+  <div class="ej-h">Maximizar ingreso (TP N°4, Act. 2)</div>
+  <div class="ej-b">
+    <p style="margin-top:10px">El ingreso es \(\;I(x)=1500x-50x^2\). ¿Qué \(x\) da el ingreso máximo?</p>
+    <div class="step"><div class="s">1</div><div class="c">Es cuadrática con \(a=-50,\;b=1500\). Como \(a&lt;0\), hay máximo en el vértice.</div></div>
+    <div class="step"><div class="s">2</div><div class="c">\(x_v=-\dfrac{b}{2a}=-\dfrac{1500}{2(-50)}=\dfrac{1500}{100}=15\)</div></div>
+    <div class="result">El ingreso es máximo vendiendo \(x=15\) unidades. (El ingreso máximo es \(I(15)=1500\cdot15-50\cdot15^2=11250\).)</div>
+  </div>
+</div>
+
+<div class="callout warn"><span class="tt">⚠️ Errores que cuestan puntos</span>
+<b>1.</b> Calcular \(x_v\) y <b>olvidar \(y_v=f(x_v)\)</b>: el vértice es un <b>punto</b>, necesita las dos coordenadas. &nbsp;
+<b>2.</b> Confundir el <b>vértice</b> con la <b>ordenada al origen</b> \((0;c)\). &nbsp;
+<b>3.</b> Equivocar la concavidad: \(a&lt;0\) abre <b>abajo</b> (máximo). &nbsp;
+<b>4.</b> En problemas de máximo, dar \(x_v\) cuando te piden el <b>precio</b> \(p\) (o el valor del ingreso): releé <b>qué</b> preguntan.</div>
+<div class="callout tip"><span class="tt">📌 Para acordarte</span><b>Signo de \(a\) = humor de la parábola:</b> \(a&gt;0\) carita feliz 😃 (mínimo), \(a&lt;0\) carita triste 🙁 (máximo). La fórmula del vértice \(x_v=-\tfrac{b}{2a}\) es "la mitad de la resolvente" (lo de antes del \(\pm\)).</div>
+
+<h4>✏️ Probá vos solo</h4>
+<details class="pr"><summary>Probá vos (TP N°4, Act. 1.iii): analizá &nbsp; \(f(x)=x^2-3x\)</summary>
+<div class="sol">
+<p>\(a=1,b=-3,c=0\). <b>Concavidad:</b> \(a>0\) → abre arriba (mínimo).</p>
+<p><b>Ordenada al origen:</b> \((0;0)\). <b>Raíces:</b> \(x(x-3)=0 \Rightarrow x_1=0,\ x_2=3\).</p>
+<p><b>Eje/\(x_v\):</b> \(x_v=-\dfrac{-3}{2\cdot1}=\dfrac{3}{2}\). <b>Vértice:</b> \(y_v=f(\tfrac32)=\tfrac94-\tfrac92=-\tfrac94\) → \(V\!\left(\tfrac32;-\tfrac94\right)\).</p>
+<p><b>Dom</b>\(=\mathbb{R}\); <b>Im</b>\(=\left[-\tfrac94;+\infty\right)\).</p>
+</div></details>
+
+<h3>🎬 Videos recomendados</h3>
+<div class="vids">
+  <a class="vid" href="https://www.youtube.com/watch?v=kuDd35SPlFM" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/kuDd35SPlFM/hqdefault.jpg" alt=""></div><div class="vb"><span class="vt">Función cuadrática: concavidad, eje, vértice, intersecciones y gráfica</span><span class="vc">análisis completo</span></div></a>
+  <a class="vid" href="https://www.youtube.com/watch?v=CfHzyLdPe3I" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/CfHzyLdPe3I/hqdefault.jpg" alt=""></div><div class="vb"><span class="vt">Vértice, eje y cortes de f(x) = −x² + 4x − 3</span><span class="vc">¡el ejemplo de arriba!</span></div></a>
+  <a class="vid" href="https://www.youtube.com/watch?v=xRq3feSSfyc" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/xRq3feSSfyc/hqdefault.jpg" alt=""></div><div class="vb"><span class="vt">Gráfico de parábolas, explicación completa (súper fácil)</span><span class="vc">desde cero</span></div></a>
+</div>
+
+<!-- ============================== 5. EXPONENCIAL ============================== -->
+<h2 id="exponencial"><span class="num">5</span> Función y ecuaciones exponenciales</h2>
+<div class="sec-rule"></div>
+
+<div class="idea">En una función exponencial la \(x\) está <b>en el exponente</b>: \(f(x)=a^x\). Crece (o decrece) cada vez más rápido. Modela interés compuesto, poblaciones y depreciación.</div>
+
+<div class="box formula">
+<h4>Definición</h4>
+\[ f(x)=a^{x}\qquad \text{con } a>0,\ a\neq 1 \]
+<p style="margin:6px 0 0">\(a\) es la <b>base</b>. Pasa siempre por \((0;1)\) porque \(a^0=1\), y por \((1;a)\).</p>
+</div>
+
+<div class="fig-row">
+  <figure class="fig">
+    <svg viewBox="0 0 200 160" aria-label="exponencial creciente">
+      <line x1="15" y1="120" x2="185" y2="120" stroke="var(--line-strong)"/><line x1="100" y1="15" x2="100" y2="148" stroke="var(--line-strong)"/>
+      <polyline points="48,114.5 61,112.2 74,109 87,104.4 100,98 113,89 126,76 139,58 152,32 160,12" fill="none" stroke="var(--blue)" stroke-width="3"/>
+      <circle cx="100" cy="98" r="4" fill="var(--red)"/><text x="104" y="94" fill="var(--red)" font-size="10" font-family="monospace">(0;1)</text>
+    </svg>
+    <figcaption><b>Creciente</b> si \(a>1\) (ej. \(2^x\)). Crece hacia la derecha.</figcaption>
+  </figure>
+  <figure class="fig">
+    <svg viewBox="0 0 200 160" aria-label="exponencial decreciente">
+      <line x1="15" y1="120" x2="185" y2="120" stroke="var(--line-strong)"/><line x1="100" y1="15" x2="100" y2="148" stroke="var(--line-strong)"/>
+      <polyline points="40,12 48,32 61,58 74,76 87,89 100,98 113,104.4 126,109 139,112.2 152,114.5" fill="none" stroke="var(--brand)" stroke-width="3"/>
+      <circle cx="100" cy="98" r="4" fill="var(--red)"/><text x="104" y="94" fill="var(--red)" font-size="10" font-family="monospace">(0;1)</text>
+    </svg>
+    <figcaption><b>Decreciente</b> si \(0&lt;a&lt;1\) (ej. \((\tfrac12)^x\)). Baja hacia la derecha.</figcaption>
+  </figure>
+</div>
+
+<div class="box">
+<h4>Características (lo que te preguntan)</h4>
+<ul style="margin:6px 0 0;padding-left:20px">
+<li><b>Dominio:</b> \(\mathbb{R}\) (cualquier \(x\)).</li>
+<li><b>Imagen:</b> \((0;+\infty)\) — ¡nunca es negativa ni cero! Se acerca al eje \(x\) (asíntota \(y=0\)) pero no lo toca.</li>
+<li><b>Crece</b> si \(a>1\); <b>decrece</b> si \(0&lt;a&lt;1\).</li>
+<li>Corta el eje \(y\) en \((0;1)\). No corta el eje \(x\).</li>
+</ul>
+</div>
+<div class="callout key"><span class="tt">Traslaciones (¡cuidado dónde está el número!)</span>\(f(x)=a^{x}+b\) → mueve la gráfica \(b\) <b>hacia arriba/abajo</b> (cambia la asíntota y la imagen). &nbsp; \(f(x)=a^{x+b}\) → mueve \(b\) <b>hacia los costados</b>. En \(2^x+1\) la imagen pasa a ser \((1;+\infty)\).</div>
+
+<h3>Cómo resolver ecuaciones exponenciales</h3>
+<div class="box"><b>Truco principal:</b> escribí los dos lados como potencias de la <b>misma base</b>. Si las bases son iguales, los exponentes son iguales.<div class="mq">\[ a^{\,m}=a^{\,n}\;\Longrightarrow\; m=n \]</div></div>
+<div class="ej">
+  <div class="ej-h">Ecuación exponencial (igualando bases)</div>
+  <div class="ej-b">
+    <p style="margin-top:10px">Resolver \(\;2^{\,x+1}=8\).</p>
+    <div class="step"><div class="s">1</div><div class="c">Escribo 8 como potencia de 2: \(\;8=2^3\). Queda \(2^{x+1}=2^3\).</div></div>
+    <div class="step"><div class="s">2</div><div class="c">Misma base → igualo exponentes: \(\;x+1=3\).</div></div>
+    <div class="result">\(x=2\)</div>
+  </div>
+</div>
+
+<h3>Aplicación clave: interés compuesto (aparece en el parcial)</h3>
+<div class="box formula">
+<h4>Capital final a interés compuesto</h4>
+\[ C_f=C\left(1+\frac{r}{100}\right)^{t} \qquad\text{o, con tasa } i=\tfrac{r}{100}:\quad C_f=C\,(1+i)^{t} \]
+<p style="margin:6px 0 0">\(C\)= capital inicial, \(r\)= rédito (%), \(t\)= tiempo. Si <b>capitaliza \(n\) veces al año</b> (ej. mensual \(n=12\)): \(C_f=C\left(1+\dfrac{i}{n}\right)^{n\,t}\).</p>
+</div>
+<div class="box formula">
+<h4>Crecimiento / depreciación continua (con \(e\))</h4>
+\[ V(t)=V_0\,e^{\,k t} \]
+<p style="margin:6px 0 0">\(k>0\) crece (poblaciones), \(k&lt;0\) decrece (una máquina que se deprecia). \(e\approx 2{,}718\).</p>
+</div>
+<div class="ej">
+  <div class="ej-h">Interés compuesto (Repaso 2do parcial, ej. 4)</div>
+  <div class="ej-b">
+    <p style="margin-top:10px">Se invierten \(\$50.000\) a \(6\%\) anual durante \(5\) años, capitalización anual.</p>
+    <div class="step"><div class="s">1</div><div class="c">\(C_f=50000\,(1+0{,}06)^{5}=50000\,(1{,}06)^{5}\)</div></div>
+    <div class="step"><div class="s">2</div><div class="c">\((1{,}06)^5\approx 1{,}33823\) → \(C_f\approx 50000\cdot1{,}33823\approx \$66.911{,}28\)</div></div>
+    <div class="step"><div class="s">3</div><div class="c"><b>Interés</b> = monto − capital = \(66911{,}28-50000=\$16.911{,}28\)</div></div>
+    <div class="result">Monto ≈ \$66.911,28 &nbsp;·&nbsp; Interés ≈ \$16.911,28</div>
+  </div>
+</div>
+
+<div class="callout warn"><span class="tt">⚠️ Errores que cuestan puntos</span>
+<b>1.</b> Decir que la imagen es \(\mathbb{R}\): la exponencial <b>nunca</b> da negativo, su imagen es \((0;+\infty)\) (o \((b;+\infty)\) si hay traslación vertical). &nbsp;
+<b>2.</b> Confundir \(a^{x}+b\) (sube/baja, vertical) con \(a^{x+b}\) (se corre al costado, horizontal). &nbsp;
+<b>3.</b> En interés <b>mensual</b>, olvidar <b>dividir la tasa por 12</b> y <b>multiplicar el tiempo por 12</b> en el exponente.</div>
+<div class="callout tip"><span class="tt">📌 Para acordarte</span>La exponencial <b>siempre pasa por \((0;1)\)</b> (porque \(a^0=1\)) y se "apoya" en una asíntota horizontal sin tocarla. Base \(&gt;1\) sube, base entre 0 y 1 baja.</div>
+
+<h4>✏️ Probá vos solo</h4>
+<details class="pr"><summary>Probá vos (TP N°5, Act. 3.3): una máquina vale \(V=10000\,e^{-0{,}2t}\). ¿Cuánto vale a los 8 años?</summary>
+<div class="sol">
+<p>\(V(8)=10000\,e^{-0{,}2\cdot8}=10000\,e^{-1{,}6}\).</p>
+<p>\(e^{-1{,}6}\approx 0{,}2019\) → \(V(8)\approx 10000\cdot0{,}2019\approx \$2.019\).</p>
+</div></details>
+
+<h3>🎬 Videos recomendados</h3>
+<div class="vids">
+  <a class="vid" href="https://www.youtube.com/watch?v=XdaB464Gt4M" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/XdaB464Gt4M/hqdefault.jpg" alt=""></div><div class="vb"><span class="vt">Ecuaciones exponenciales: introducción</span><span class="vc">julioprofe · empezá por acá</span></div></a>
+  <a class="vid" href="https://www.youtube.com/watch?v=Fl1PvjOh9Us" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/Fl1PvjOh9Us/hqdefault.jpg" alt=""></div><div class="vb"><span class="vt">Ecuaciones exponenciales (Ej. 1 y 2)</span><span class="vc">julioprofe</span></div></a>
+  <a class="vid" href="https://www.youtube.com/watch?v=FKplDJNvMp8" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/FKplDJNvMp8/hqdefault.jpg" alt=""></div><div class="vb"><span class="vt">Exponenciales resueltas: súper resumen</span><span class="vc">tipos I, II, III</span></div></a>
+</div>
+
+<!-- ============================== 6. LOGARITMO ============================== -->
+<h2 id="logaritmo"><span class="num">6</span> Logaritmos y función logarítmica</h2>
+<div class="sec-rule"></div>
+
+<div class="idea">El logaritmo es la <b>operación inversa</b> de la potencia: \(\log_a b\) responde "¿a qué exponente elevo \(a\) para que me dé \(b\)?". La función logarítmica deshace a la exponencial.</div>
+
+<div class="box formula">
+<h4>Definición</h4>
+\[ \log_a b=c \quad\Longleftrightarrow\quad a^{c}=b \]
+<p style="margin:6px 0 0">Ejemplo: \(\log_2 8=3\) porque \(2^3=8\). &nbsp; \(\log_5 125=3\) porque \(5^3=125\).</p>
+</div>
+<div class="callout key"><span class="tt">Dos logaritmos con nombre propio</span><b>Decimal</b> (base 10): se escribe \(\log b\) sin poner la base. &nbsp; <b>Neperiano/natural</b> (base \(e\)): se escribe \(\ln b\).</div>
+
+<h3>Propiedades (memorizá estas 5)</h3>
+<div class="box formula">
+\[ \log_a 1=0 \qquad \log_a a=1 \]
+\[ \log_a(b\cdot c)=\log_a b+\log_a c \]
+\[ \log_a\!\left(\frac{b}{c}\right)=\log_a b-\log_a c \]
+\[ \log_a b^{\,n}=n\cdot\log_a b \]
+</div>
+<div class="callout tip"><span class="tt">En palabras</span>El log de un <b>producto</b> es la <b>suma</b> de los logs. El de un <b>cociente</b>, la <b>resta</b>. Y un <b>exponente</b> "baja" multiplicando. Estas tres son las que más se usan para resolver.</div>
+<div class="box formula">
+<h4>Cambio de base (para usar la calculadora)</h4>
+\[ \log_a b=\frac{\log_c b}{\log_c a}\quad\text{(con \(\log\) o \(\ln\))} \]
+</div>
+
+<div class="ej">
+  <div class="ej-h">Logaritmos por definición (apunte U5)</div>
+  <div class="ej-b">
+    <div class="step"><div class="s">a</div><div class="c">\(\log_5 125\): ¿\(5\) a la cuánto da \(125\)? \(5^3=125\) → <b>\(=3\)</b>.</div></div>
+    <div class="step"><div class="s">b</div><div class="c">\(\log 1000\) (base 10): \(10^3=1000\) → <b>\(=3\)</b>.</div></div>
+    <div class="step"><div class="s">c</div><div class="c">\(\ln e^4\): por la propiedad del exponente, \(=4\cdot\ln e=4\cdot1=\) <b>\(4\)</b>.</div></div>
+  </div>
+</div>
+<div class="ej">
+  <div class="ej-h">Hallar la incógnita (TP N°5, Act. 4)</div>
+  <div class="ej-b">
+    <div class="step"><div class="s">1</div><div class="c">\(\log_3 x=-4\): paso a forma de potencia → \(x=3^{-4}=\dfrac{1}{81}\).</div></div>
+    <div class="step"><div class="s">2</div><div class="c">\(\log_x 256=4\): significa \(x^4=256\) → \(x=\sqrt[4]{256}=4\).</div></div>
+    <div class="step"><div class="s">3</div><div class="c">\(\log(0{,}001)=x\) (base 10): \(0{,}001=10^{-3}\) → \(x=-3\).</div></div>
+  </div>
+</div>
+
+<h3>La función logarítmica \(f(x)=\log_a x\)</h3>
+<div class="fig">
+  <svg viewBox="0 0 260 200" role="img" aria-label="exponencial y logaritmica simétricas">
+    <line x1="20" y1="160" x2="240" y2="160" stroke="var(--line-strong)"/><line x1="60" y1="20" x2="60" y2="195" stroke="var(--line-strong)"/>
+    <!-- bisectriz y=x (45° con escala igual) -->
+    <line x1="34" y1="186" x2="190" y2="30" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4"/>
+    <text x="176" y="34" fill="var(--muted)" font-size="10" font-family="monospace">y=x</text>
+    <!-- exponencial 2^x (puntos calculados) -->
+    <polyline points="21,150.8 34,147 47,141.6 60,134 73,123.2 86,108 99,86.5 112,56 117,40.7" fill="none" stroke="var(--blue)" stroke-width="2.6"/>
+    <text x="118" y="52" fill="var(--blue)" font-size="11" font-family="monospace">aˣ</text>
+    <!-- logaritmica = reflejo exacto de la exponencial en y=x -->
+    <polyline points="69.2,199 73,186 78.4,173 86,160 96.8,147 112,134 133.5,121 164,108 179.3,103" fill="none" stroke="var(--brand)" stroke-width="2.6"/>
+    <text x="168" y="104" fill="var(--brand)" font-size="11" font-family="monospace">logₐx</text>
+  </svg>
+  <figcaption>La logarítmica es el <b>espejo</b> de la exponencial respecto de la recta \(y=x\): son funciones inversas.</figcaption>
+</div>
+<div class="box">
+<h4>Características</h4>
+<ul style="margin:6px 0 0;padding-left:20px">
+<li><b>Dominio:</b> \((0;+\infty)\) — ¡solo existe para \(x>0\)! No se puede el log de 0 ni de negativos.</li>
+<li><b>Imagen:</b> \(\mathbb{R}\).</li>
+<li>Pasa por \((1;0)\) (porque \(\log_a 1=0\)) y por \((a;1)\).</li>
+<li><b>Crece</b> si \(a>1\); <b>decrece</b> si \(0&lt;a&lt;1\).</li>
+</ul>
+</div>
+
+<div class="ej">
+  <div class="ej-h">Función logarítmica (Repaso 2do parcial, ej. 5)</div>
+  <div class="ej-b">
+    <p style="margin-top:10px">Para \(\;y=\log(2x)\) (base 10):</p>
+    <div class="step"><div class="s">a</div><div class="c"><b>Dominio:</b> el argumento debe ser \(>0\): \(2x>0 \Rightarrow x>0\). → \(\text{Dom}=(0;+\infty)\). <b>Imagen</b>\(=\mathbb{R}\).</div></div>
+    <div class="step"><div class="s">b</div><div class="c">\(f(0{,}5)=\log(2\cdot0{,}5)=\log 1=0\). &nbsp; \(f(0)\): daría \(\log 0\) → <b>no existe</b>. &nbsp; \(f(50)=\log(100)=2\).</div></div>
+    <div class="step"><div class="s">c</div><div class="c">¿\(f(x)=-2\)? \(\log(2x)=-2 \Rightarrow 2x=10^{-2}=0{,}01 \Rightarrow x=0{,}005\). Sí existe (es \(>0\)).</div></div>
+  </div>
+</div>
+
+<div class="callout warn"><span class="tt">⚠️ Errores que cuestan puntos</span>
+<b>1.</b> Tomar \(\log\) de <b>0 o de un negativo</b>: no existe. Por eso el dominio es \((0;+\infty)\). &nbsp;
+<b>2.</b> Creer que \(\log(b\cdot c)=\log b\cdot\log c\): ¡es <b>suma</b>, no producto! \(\log(b\cdot c)=\log b+\log c\). &nbsp;
+<b>3.</b> El error más grave: \(\log(b+c)\) <b>NO</b> es \(\log b+\log c\) (la propiedad es del <b>producto</b>, no de la suma). &nbsp;
+<b>4.</b> Olvidar la base / no usar cambio de base en la calculadora.</div>
+<div class="callout tip"><span class="tt">📌 Para acordarte</span>Logaritmo = "<b>¿a qué exponente elevo?</b>". Y las propiedades: <b>producto→suma</b>, <b>cociente→resta</b>, <b>potencia→baja multiplicando</b>. El log "rompe" multiplicaciones en sumas (por eso servía para calcular antes de la calculadora).</div>
+
+<h4>✏️ Probá vos solo</h4>
+<details class="pr"><summary>Probá vos (TP N°5, Act. 4): hallá \(x\) en &nbsp; (1) \(\log_5\sqrt5=x\) &nbsp; (2) \(\log_x \tfrac{1}{64}=6\) &nbsp; (3) \(\ln x=1\)</summary>
+<div class="sol">
+<p><b>(1)</b> \(\sqrt5=5^{1/2}\), entonces \(x=\tfrac12\).</p>
+<p><b>(2)</b> \(x^6=\tfrac{1}{64}=\left(\tfrac12\right)^6\) → \(x=\tfrac12\).</p>
+<p><b>(3)</b> \(\ln x=1\) significa \(e^1=x\) → \(x=e\approx 2{,}718\).</p>
+</div></details>
+
+<h3>🎬 Videos recomendados</h3>
+<div class="vids">
+  <a class="vid" href="https://www.youtube.com/watch?v=FNdq8uQGFqw" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/FNdq8uQGFqw/hqdefault.jpg" alt=""></div><div class="vb"><span class="vt">Logaritmos desde cero: propiedades, cálculo y ecuaciones</span><span class="vc">curso completo en un video</span></div></a>
+  <a class="vid" href="https://www.youtube.com/watch?v=riqZcExsvcE" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/riqZcExsvcE/hqdefault.jpg" alt=""></div><div class="vb"><span class="vt">Ecuaciones logarítmicas (Ej. 1)</span><span class="vc">julioprofe</span></div></a>
+</div>
+
+<!-- ============================== MODELO DE EXAMEN ============================== -->
+<!-- ============================== FORMULARIO CRÍTICO ============================== -->
+<h2 id="formulario"><span class="num">🎴</span> Formulario crítico (la chuleta final)</h2>
+<div class="sec-rule"></div>
+<p>Todo lo imprescindible en una pantalla. <b>Esto es lo que tenés que poder recitar el lunes a la mañana.</b> Si una fórmula no te suena, volvé a su tema. (No es para copiarse en el parcial 😉 — es para que te entre en la cabeza.)</p>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px;margin:16px 0">
+
+  <div class="box formula">
+    <h4>1 · Rectas ∥ y ⊥</h4>
+    <div class="mq">\[ y=mx+b \qquad m=\tfrac{y_2-y_1}{x_2-x_1} \]</div>
+    <div class="mq">\[ y-y_1=m(x-x_1) \]</div>
+    <p style="margin:6px 0 0;font-size:.9rem">Paralelas: \(m_1=m_2\) · Perpendiculares: \(m_1=-\tfrac{1}{m_2}\) (o \(m_1 m_2=-1\)).</p>
+  </div>
+
+  <div class="box formula">
+    <h4>2 · Sistemas 2×2</h4>
+    <p style="margin:4px 0;font-size:.9rem"><b>Determinado</b> (1 sol): \(m_1\ne m_2\).<br>
+    <b>Indeterminado</b> (∞): \(m_1=m_2,\ b_1=b_2\).<br>
+    <b>Incompatible</b> (∅): \(m_1=m_2,\ b_1\ne b_2\).</p>
+    <p style="margin:6px 0 0;font-size:.9rem">Métodos: sustitución · igualación · reducción. <b>Verificá</b> en las 2 ecuaciones.</p>
+  </div>
+
+  <div class="box formula">
+    <h4>3 · Ecuación cuadrática</h4>
+    <div class="mq">\[ x=\tfrac{-b\pm\sqrt{b^2-4ac}}{2a} \]</div>
+    <p style="margin:4px 0;font-size:.9rem">\(\Delta=b^2-4ac\): \(&gt;0\) dos raíces · \(=0\) una · \(&lt;0\) ninguna.</p>
+    <p style="margin:4px 0 0;font-size:.9rem">Incompletas: \(c=0\Rightarrow x(ax+b)=0\); \(b=0\Rightarrow x=\pm\sqrt{-\tfrac{c}{a}}\).</p>
+  </div>
+
+  <div class="box formula">
+    <h4>4 · Función cuadrática</h4>
+    <div class="mq">\[ x_v=-\tfrac{b}{2a}\quad y_v=f(x_v) \]</div>
+    <p style="margin:4px 0;font-size:.9rem">\(a&gt;0\) mínimo (abre arriba) · \(a&lt;0\) máximo (abre abajo). Eje: \(x=-\tfrac{b}{2a}\). Corte eje y: \((0;c)\).</p>
+    <p style="margin:4px 0 0;font-size:.9rem">Dom \(=\mathbb{R}\); Im \(=[y_v;+\infty)\) si \(a&gt;0\). <b>Máximo ingreso/utilidad = vértice.</b></p>
+  </div>
+
+  <div class="box formula">
+    <h4>5 · Exponencial</h4>
+    <p style="margin:4px 0;font-size:.9rem">\(f(x)=a^x\), pasa por \((0;1)\). Dom \(=\mathbb{R}\), Im \(=(0;+\infty)\). \(a&gt;1\) crece, \(0&lt;a&lt;1\) decrece.</p>
+    <div class="mq">\[ C_f=C\left(1+\tfrac{r}{100}\right)^{t}\quad V=V_0e^{kt} \]</div>
+    <p style="margin:4px 0 0;font-size:.9rem">Mensual: \(\left(1+\tfrac{i}{12}\right)^{12t}\). Igualar bases: \(a^m=a^n\Rightarrow m=n\).</p>
+  </div>
+
+  <div class="box formula">
+    <h4>6 · Logaritmo</h4>
+    <div class="mq">\[ \log_a b=c \iff a^c=b \]</div>
+    <p style="margin:4px 0;font-size:.9rem">\(\log(bc)=\log b+\log c\) · \(\log\tfrac{b}{c}=\log b-\log c\) · \(\log b^n=n\log b\).</p>
+    <p style="margin:4px 0 0;font-size:.9rem">Dom \(=(0;+\infty)\), Im \(=\mathbb{R}\). Cambio base: \(\log_a b=\tfrac{\log b}{\log a}\). Inversa de la exponencial.</p>
+  </div>
+
+</div>
+
+<div class="callout key"><span class="tt">🧠 Tips de memorización (todos juntos)</span>
+<b>Perpendicular = "OpIn"</b> (Opuesta e Inversa). &nbsp; <b>Resolvente:</b> recitala como mantra. &nbsp; <b>Parábola = humor:</b> \(a&gt;0\) feliz 😃 (mín), \(a&lt;0\) triste 🙁 (máx). &nbsp; <b>Exponencial</b> siempre por \((0;1)\). &nbsp; <b>Log:</b> producto→suma, cociente→resta, potencia→baja.</div>
+
+<div class="callout warn"><span class="tt">🎯 Lo que cae casi seguro</span>Clasificar un sistema · resolver una cuadrática con la resolvente · analizar una función cuadrática (vértice + raíces + gráfico) · un problema de <b>maximizar</b> ingreso/utilidad · dominio/imagen de exponencial o logarítmica · <b>interés compuesto</b> · resolver \(\log\) o exponencial por definición. <b>Practicá ESTO sí o sí.</b></div>
+
+<h2 id="examen"><span class="num">📝</span> Modelo de examen (con soluciones)</h2>
+<div class="sec-rule"></div>
+<p>Este es el <b>repaso de 2do parcial</b> de la cátedra (solo un modelo; en el real puede variar). <b>Hacelo el domingo como simulacro</b>: cronómetro, sin mirar, y recién después abrí cada solución para corregirte.</p>
+<div class="callout warn"><span class="tt">Importante</span>Resolvelo vos primero. Abrir la solución sin intentarlo no entrena nada. La idea es detectar dónde te trabás.</div>
+
+<details class="pr"><summary>1) Resolver, si es posible: &nbsp; (a) \(2x^2=-4x\) &nbsp; (b) \(3x^2-75=0\) &nbsp; (c) \(-x^2+2x=-3\)</summary>
+<div class="sol">
+<p><b>(a)</b> \(2x^2+4x=0 \Rightarrow 2x(x+2)=0 \Rightarrow x_1=0,\ x_2=-2\).</p>
+<p><b>(b)</b> \(3x^2=75 \Rightarrow x^2=25 \Rightarrow x=\pm5\).</p>
+<p><b>(c)</b> \(-x^2+2x+3=0\) → multiplico por \(-1\): \(x^2-2x-3=0\). \(\Delta=4+12=16\). \(x=\dfrac{2\pm4}{2}\) → \(x_1=3,\ x_2=-1\).</p>
+</div></details>
+
+<details class="pr"><summary>2) Demanda \(15p+2x=720\), costo \(C(x)=200+6x\). ¿Qué precio \(p\) hace máxima la utilidad?</summary>
+<div class="sol">
+<p>Despejo el precio de la demanda: \(p=\dfrac{720-2x}{15}=48-\tfrac{2}{15}x\).</p>
+<p>Ingreso: \(I=p\cdot x=\left(48-\tfrac{2}{15}x\right)x=48x-\tfrac{2}{15}x^2\).</p>
+<p>Utilidad: \(U=I-C=48x-\tfrac{2}{15}x^2-(200+6x)=-\tfrac{2}{15}x^2+42x-200\).</p>
+<p>Es cuadrática con \(a=-\tfrac{2}{15},\,b=42\) → máximo en el vértice: \(x_v=-\dfrac{b}{2a}=-\dfrac{42}{2(-\tfrac{2}{15})}=\dfrac{42\cdot15}{4}=157{,}5\).</p>
+<p>Precio: \(p=48-\tfrac{2}{15}(157{,}5)=48-21=\boxed{\$27}\).</p>
+</div></details>
+
+<details class="pr"><summary>3) \(f(x)=2^{x}+1\): (a) ¿crece o decrece? (b) dominio e imagen (c) \(f(-1),f(0),f(1)\)</summary>
+<div class="sol">
+<p><b>(a)</b> Base \(2>1\) → <b>creciente</b>.</p>
+<p><b>(b)</b> \(\text{Dom}=\mathbb{R}\). Como \(2^x>0\), entonces \(2^x+1>1\) → \(\text{Im}=(1;+\infty)\) (asíntota \(y=1\)).</p>
+<p><b>(c)</b> \(f(-1)=2^{-1}+1=0{,}5+1=1{,}5\); \(\;f(0)=1+1=2\); \(\;f(1)=2+1=3\).</p>
+<p><b>(d)</b> El gráfico correcto es una exponencial creciente que pasa por \((0;2)\) y se acerca a la recta \(y=1\) por abajo (no por \(y=0\)).</p>
+</div></details>
+
+<details class="pr"><summary>4) \(\$50.000\) a \(6\%\) anual, \(5\) años. (a) monto e interés anual (b) monto mensual (c) tiempo para \(\$80.000\)</summary>
+<div class="sol">
+<p><b>(a)</b> \(C_f=50000(1{,}06)^5\approx \$66.911{,}28\). Interés \(=66911{,}28-50000\approx\$16.911{,}28\).</p>
+<p><b>(b)</b> Mensual: \(C_f=50000\left(1+\tfrac{0{,}06}{12}\right)^{12\cdot5}=50000(1{,}005)^{60}\approx \$67.442{,}51\).</p>
+<p><b>(c)</b> \(80000=50000(1{,}06)^t \Rightarrow 1{,}6=(1{,}06)^t\). Aplico log: \(t=\dfrac{\log 1{,}6}{\log 1{,}06}\approx\dfrac{0{,}2041}{0{,}0253}\approx 8{,}07\) años.</p>
+</div></details>
+
+<details class="pr"><summary>5) \(y=\log(2x)\): (a) dominio e imagen (b) \(f(0{,}5),f(0),f(50)\) (c) ¿existe \(x\) con \(f(x)\approx2{,}5\)? ¿y \(f(x)=-2\)?</summary>
+<div class="sol">
+<p><b>(a)</b> \(2x>0 \Rightarrow x>0\): \(\text{Dom}=(0;+\infty)\). \(\text{Im}=\mathbb{R}\).</p>
+<p><b>(b)</b> \(f(0{,}5)=\log1=0\); \(f(0)=\log0\) → <b>no existe</b>; \(f(50)=\log100=2\).</p>
+<p><b>(c)</b> \(\log(2x)=2{,}5 \Rightarrow 2x=10^{2{,}5}\approx316{,}23 \Rightarrow x\approx158{,}11\) (existe). &nbsp; \(\log(2x)=-2 \Rightarrow 2x=10^{-2}=0{,}01 \Rightarrow x=0{,}005\) (existe).</p>
+</div></details>
+
+<details class="pr"><summary>6) \(V(t)=15000\,e^{-0{,}15t}\): (a) valor a los 12 años (b) ¿cuándo vale la mitad?</summary>
+<div class="sol">
+<p><b>(a)</b> \(V(12)=15000\,e^{-0{,}15\cdot12}=15000\,e^{-1{,}8}\approx15000\cdot0{,}1653\approx\$2.479{,}48\).</p>
+<p><b>(b)</b> Mitad \(=7500\): \(7500=15000\,e^{-0{,}15t}\Rightarrow 0{,}5=e^{-0{,}15t}\). Aplico \(\ln\): \(\ln0{,}5=-0{,}15t \Rightarrow t=\dfrac{-0{,}6931}{-0{,}15}\approx4{,}62\) años.</p>
+</div></details>
+
+<div class="callout tip" style="margin-top:24px"><span class="tt">Antes de entregar el parcial</span>Revisá: ¿pusiste unidades (\$, unidades, años)? ¿verificaste las ecuaciones reemplazando? ¿respondiste lo que preguntan (a veces piden el <b>precio</b>, no la cantidad)? Esos puntos son regalados.</div>
+
+<a class="back" href="cuanti.html">← Volver a Instrumentos Cuantitativos</a>
+
+<p class="foot">Hecho desde los apuntes y TPs de cátedra · UCES · Instrumentos Cuantitativos · Prof. Salaj.<br>Fórmulas renderizadas con KaTeX · Gráficos propios · Videos de YouTube (julioprofe y otros). ¡Éxitos el lunes! 💪</p>
+
+</div>
+
+<script>
+function toggleTheme(){
+  const cur = document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  localStorage.setItem('theme', next);
+  document.getElementById('themeBtn').textContent = next === 'dark' ? '☀️' : '🌙';
+}
+const saved = localStorage.getItem('theme');
+if(saved){ document.documentElement.dataset.theme = saved; document.getElementById('themeBtn').textContent = saved === 'dark' ? '☀️' : '🌙'; }
+
+// checkboxes del plan (persisten)
+document.querySelectorAll('.chk').forEach(c=>{
+  c.checked = localStorage.getItem('p2-'+c.dataset.k) === '1';
+  c.addEventListener('change',()=>localStorage.setItem('p2-'+c.dataset.k, c.checked ? '1' : '0'));
+});
+
+// render KaTeX
+document.addEventListener("DOMContentLoaded", function(){
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "\\[", right: "\\]", display: true},
+      {left: "\\(", right: "\\)", display: false}
+    ],
+    throwOnError: false
+  });
+});
+</script>
+</body>
+</html>
