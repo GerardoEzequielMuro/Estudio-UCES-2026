@@ -195,10 +195,10 @@ a{color:var(--brand-deep)}
 
 /* práctica con solución */
 .pr{background:var(--paper-2);border:1px solid var(--line-strong);border-radius:12px;margin:11px 0;overflow:hidden;box-shadow:var(--shadow)}
-.pr summary{padding:13px 17px;cursor:pointer;font-weight:600;color:var(--ink);list-style:none;display:flex;gap:10px;align-items:flex-start}
+.pr summary{padding:13px 17px;cursor:pointer;font-weight:600;color:var(--ink);list-style:none}
 .pr summary::-webkit-details-marker{display:none}
-.pr summary::before{content:"?";flex:none;width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;
-  font-family:var(--mono);font-weight:700;font-size:.8rem;display:grid;place-items:center}
+.pr summary::before{content:"?";display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;
+  font-family:var(--mono);font-weight:700;font-size:.8rem;margin-right:10px;vertical-align:-7px}
 .pr[open] summary::before{content:"✓";background:var(--green)}
 .pr .sol{padding:2px 18px 16px 50px;border-top:1px dashed var(--line);font-size:.95rem}
 .pr .sol::before{content:"Solución";display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;
@@ -788,7 +788,7 @@ a{color:var(--brand-deep)}
     <div class="step"><div class="s">1</div><div class="c">\(C_f=50000\,(1+0{,}06)^{5}=50000\,(1{,}06)^{5}\)</div></div>
     <div class="step"><div class="s">2</div><div class="c">\((1{,}06)^5\approx 1{,}33823\) → \(C_f\approx 50000\cdot1{,}33823\approx \$66.911{,}28\)</div></div>
     <div class="step"><div class="s">3</div><div class="c"><b>Interés</b> = monto − capital = \(66911{,}28-50000=\$16.911{,}28\)</div></div>
-    <div class="result">Monto ≈ \$66.911,28 &nbsp;·&nbsp; Interés ≈ \$16.911,28</div>
+    <div class="result">Monto ≈ $66.911,28 &nbsp;·&nbsp; Interés ≈ $16.911,28</div>
   </div>
 </div>
 
@@ -1057,7 +1057,7 @@ a{color:var(--brand-deep)}
 <p><b>(c)</b> \(\ln(2x+2)=3 \Rightarrow 2x+2=e^{3}\approx20{,}09 \Rightarrow 2x=18{,}09 \Rightarrow x\approx9{,}04\). Sí existe (es \(&gt;-1\)).</p>
 </div></details>
 
-<div class="callout tip" style="margin-top:24px"><span class="tt">Antes de entregar el parcial</span>Revisá: ¿pusiste unidades (\$, unidades, años)? ¿verificaste las ecuaciones reemplazando? ¿respondiste lo que preguntan (a veces piden el <b>precio</b>, no la cantidad)? Esos puntos son regalados.</div>
+<div class="callout tip" style="margin-top:24px"><span class="tt">Antes de entregar el parcial</span>Revisá: ¿pusiste unidades ($, unidades, años)? ¿verificaste las ecuaciones reemplazando? ¿respondiste lo que preguntan (a veces piden el <b>precio</b>, no la cantidad)? Esos puntos son regalados.</div>
 
 <a class="back" href="cuanti.html">← Volver a Instrumentos Cuantitativos</a>
 
