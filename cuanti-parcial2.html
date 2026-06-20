@@ -373,14 +373,40 @@ a{color:var(--brand-deep)}
 <p>Si conocés la pendiente \(m\) y un punto \(P_1(x_1;y_1)\) por el que pasa la recta, usás la <b>ecuación punto-pendiente</b> (el "haz de rectas"):</p>
 <div class="box formula">\[ y-y_1=m\,(x-x_1) \]</div>
 
+<div class="callout key"><span class="tt">🔑 Habilidad base: "despejar \(y\)"</span>Despejar \(y\) = <b>dejar la \(y\) sola de un lado del igual</b>. La regla de oro: lo que está <b>sumando pasa restando</b> (y viceversa), y lo que está <b>multiplicando pasa dividiendo</b> (y viceversa). Lo usás en rectas Y en sistemas, así que conviene tenerlo aceitado.</div>
+
 <div class="ej">
   <div class="ej-h">Ejemplo tipo parcial (TP N°2, Act. 8)</div>
   <div class="ej-b">
     <p style="margin-top:10px"><b>Dada</b> la recta \(r_1:\;-25x+5y+5=0\), hallar la recta <b>perpendicular</b> a \(r_1\) que pasa por \(P(-2;-1)\).</p>
-    <div class="step"><div class="s">1</div><div class="c"><b>Despejá \(y\)</b> en \(r_1\) para ver su pendiente:<div class="mq">\[ 5y=25x-5 \;\Rightarrow\; y=5x-1 \;\Rightarrow\; m_1=5 \]</div></div></div>
-    <div class="step"><div class="s">2</div><div class="c"><b>Pendiente perpendicular:</b> opuesta e inversa de \(5\):<div class="mq">\[ m_2=-\frac{1}{m_1}=-\frac{1}{5} \]</div></div></div>
-    <div class="step"><div class="s">3</div><div class="c"><b>Usá punto-pendiente</b> con \(m_2=-\tfrac15\) y \(P(-2;-1)\):<div class="mq">\[ y-(-1)=-\tfrac{1}{5}\,(x-(-2)) \;\Rightarrow\; y+1=-\tfrac{1}{5}(x+2) \]</div></div></div>
-    <div class="step"><div class="s">4</div><div class="c"><b>Distribuí y despejá:</b><div class="mq">\[ y=-\tfrac{1}{5}x-\tfrac{2}{5}-1=-\tfrac{1}{5}x-\tfrac{7}{5} \]</div></div></div>
+
+    <div class="step"><div class="s">1</div><div class="c"><b>Despejo \(y\) en \(r_1\)</b> para poder ver su pendiente. Parto de:
+      <div class="mq">\[ -25x+5y+5=0 \]</div>
+      <span style="color:var(--muted);font-size:.9rem">↳ El \(-25x\) está restando del lado izquierdo. Lo <b>paso a la derecha sumando</b>:</span>
+      <div class="mq">\[ 5y+5=25x \]</div>
+      <span style="color:var(--muted);font-size:.9rem">↳ El \(+5\) está sumando a la izquierda. Lo <b>paso a la derecha restando</b>:</span>
+      <div class="mq">\[ 5y=25x-5 \]</div>
+      <span style="color:var(--muted);font-size:.9rem">↳ La \(y\) está multiplicada por \(5\). <b>Divido cada término por \(5\)</b>:</span>
+      <div class="mq">\[ y=\frac{25x}{5}-\frac{5}{5}=5x-1 \]</div>
+      <span style="color:var(--muted);font-size:.9rem">↳ Ya está en la forma \(y=mx+b\). El número que acompaña a la \(x\) es la pendiente:</span>
+      <div class="mq">\[ m_1=5 \]</div>
+    </div></div>
+
+    <div class="step"><div class="s">2</div><div class="c"><b>Pendiente de la perpendicular:</b> aplico "opuesta e inversa" sobre \(m_1=5=\tfrac{5}{1}\). Doy vuelta la fracción y le cambio el signo:
+      <div class="mq">\[ m_2=-\frac{1}{m_1}=-\frac{1}{5} \]</div></div></div>
+
+    <div class="step"><div class="s">3</div><div class="c"><b>Uso punto-pendiente</b> \(y-y_1=m(x-x_1)\) con \(m_2=-\tfrac15\) y el punto \(P(-2;-1)\), es decir \(x_1=-2,\ y_1=-1\):
+      <div class="mq">\[ y-(-1)=-\tfrac{1}{5}\,(x-(-2)) \]</div>
+      <span style="color:var(--muted);font-size:.9rem">↳ \(-(-1)=+1\) y \(-(-2)=+2\) (menos por menos da más):</span>
+      <div class="mq">\[ y+1=-\tfrac{1}{5}\,(x+2) \]</div></div></div>
+
+    <div class="step"><div class="s">4</div><div class="c"><b>Distribuyo y despejo \(y\).</b> Multiplico \(-\tfrac15\) por lo de adentro del paréntesis (\(x\) y \(2\)):
+      <div class="mq">\[ y+1=-\tfrac{1}{5}x-\tfrac{2}{5} \]</div>
+      <span style="color:var(--muted);font-size:.9rem">↳ Paso el \(+1\) a la derecha restando:</span>
+      <div class="mq">\[ y=-\tfrac{1}{5}x-\tfrac{2}{5}-1 \]</div>
+      <span style="color:var(--muted);font-size:.9rem">↳ Junto \(-\tfrac{2}{5}-1\). Como \(1=\tfrac{5}{5}\): \(-\tfrac{2}{5}-\tfrac{5}{5}=-\tfrac{7}{5}\):</span>
+      <div class="mq">\[ y=-\tfrac{1}{5}x-\tfrac{7}{5} \]</div></div></div>
+
     <div class="result">Recta perpendicular: \( \;y=-\dfrac{1}{5}x-\dfrac{7}{5} \)</div>
     <div class="callout tip" style="margin-bottom:4px"><span class="tt">Ojo con el enunciado</span>"La recta que <b>no intersecta</b> a \(r_1\)" = la <b>paralela</b> (misma \(m_1=5\)). "Perpendicular" = la que la cruza a 90°. Leé bien qué te piden.</div>
   </div>
@@ -453,9 +479,16 @@ a{color:var(--brand-deep)}
   <div class="ej-h">Sustitución (apunte de cátedra)</div>
   <div class="ej-b">
     <div class="mq">\[ \begin{cases} 2x+y=1 & (1)\\ 3x+2y=3 & (2)\end{cases} \]</div>
-    <div class="step"><div class="s">a</div><div class="c">Despejo \(y\) en (1): \(\;y=1-2x\)</div></div>
-    <div class="step"><div class="s">b</div><div class="c">Reemplazo en (2): \(\;3x+2(1-2x)=3 \Rightarrow 3x+2-4x=3 \Rightarrow -x=1 \Rightarrow x=-1\)</div></div>
-    <div class="step"><div class="s">c</div><div class="c">Vuelvo: \(\;y=1-2(-1)=3\)</div></div>
+    <div class="step"><div class="s">a</div><div class="c"><b>Despejo \(y\) en (1)</b> (porque tiene coeficiente 1, es lo más fácil). El \(2x\) pasa restando: \(\;y=1-2x\).</div></div>
+    <div class="step"><div class="s">b</div><div class="c"><b>Reemplazo ese \(y\) en (2)</b> y resuelvo. Donde dice \(y\) escribo \((1-2x)\):
+      <div class="mq">\[ 3x+2(1-2x)=3 \]</div>
+      <span style="color:var(--muted);font-size:.9rem">↳ Distribuyo el \(2\) (multiplico por \(1\) y por \(-2x\)):</span>
+      <div class="mq">\[ 3x+2-4x=3 \]</div>
+      <span style="color:var(--muted);font-size:.9rem">↳ Junto los términos con \(x\) (\(3x-4x=-x\)):</span>
+      <div class="mq">\[ -x+2=3 \]</div>
+      <span style="color:var(--muted);font-size:.9rem">↳ Paso el \(+2\) restando, y luego cambio el signo (\(\times(-1)\)):</span>
+      <div class="mq">\[ -x=1 \;\Rightarrow\; x=-1 \]</div></div></div>
+    <div class="step"><div class="s">c</div><div class="c"><b>Con \(x=-1\) calculo \(y\)</b> usando lo del paso (a): \(\;y=1-2(-1)=1+2=3\).</div></div>
     <div class="result">\(S=\{(-1;\,3)\}\) — compatible determinado</div>
   </div>
 </div>
@@ -467,11 +500,15 @@ a{color:var(--brand-deep)}
   <div class="ej-h">Igualación (apunte de cátedra)</div>
   <div class="ej-b">
     <div class="mq">\[ \begin{cases} x+y=6 & (1)\\ y=2x+3 & (2)\end{cases} \]</div>
-    <div class="step"><div class="s">a</div><div class="c">De (1): \(y=6-x\). &nbsp;De (2): \(y=2x+3\).</div></div>
-    <div class="step"><div class="s">b</div><div class="c">Igualo: \(\;6-x=2x+3 \Rightarrow 6-3=2x+x \Rightarrow 3=3x \Rightarrow x=1\)
-    <div class="callout warn" style="margin:8px 0 0"><span class="tt">Ojo (el apunte trae otro signo)</span>El apunte de la cátedra plantea \(2x-y=6\) y le da \(x=0,\,y=3\). Si en tu sistema aparece \(2x-y=6\), entonces \(y=2x-6\) y al igualar con \(y=2x+3\) llegás a \(2x-6=2x+3\), que es absurdo → <b>incompatible</b>. ¡La cuenta depende del signo! Copiá bien el sistema.</div></div></div>
-    <div class="step"><div class="s">c</div><div class="c">Reemplazo \(x=1\) en \(y=2x+3\): \(\;y=2(1)+3=5\)</div></div>
-    <div class="result">\(S=\{(1;\,5)\}\)</div>
+    <div class="step"><div class="s">a</div><div class="c"><b>Despejo \(y\) en las dos ecuaciones.</b> En (1) el \(x\) pasa restando → \(y=6-x\). La (2) ya viene despejada → \(y=2x+3\).</div></div>
+    <div class="step"><div class="s">b</div><div class="c"><b>Igualo las dos expresiones de \(y\)</b> (si las dos valen \(y\), valen lo mismo entre sí) y resuelvo:
+      <div class="mq">\[ 6-x=2x+3 \]</div>
+      <span style="color:var(--muted);font-size:.9rem">↳ Junto las \(x\) de un lado y los números del otro. Paso el \(2x\) restando y el \(3\) restando:</span>
+      <div class="mq">\[ 6-3=2x+x \]</div>
+      <span style="color:var(--muted);font-size:.9rem">↳ Hago las cuentas (\(6-3=3\) y \(2x+x=3x\)):</span>
+      <div class="mq">\[ 3=3x \;\Rightarrow\; x=\frac{3}{3}=1 \]</div></div></div>
+    <div class="step"><div class="s">c</div><div class="c"><b>Con \(x=1\) calculo \(y\)</b> en cualquiera de las dos (uso la (2)): \(\;y=2(1)+3=5\).</div></div>
+    <div class="result">\(S=\{(1;\,5)\}\) — compatible determinado</div>
   </div>
 </div>
 
@@ -479,13 +516,18 @@ a{color:var(--brand-deep)}
 <p><b>Conviene</b> casi siempre, sobre todo si ningún coeficiente es 1.</p>
 <div class="box"><b>Pasos:</b> (a) multiplicás una o ambas ecuaciones para que una incógnita tenga coeficientes <b>opuestos</b> · (b) sumás las dos ecuaciones: esa incógnita se elimina y resolvés la otra · (c) reemplazás para hallar la primera.</div>
 <div class="ej">
-  <div class="ej-h">Reducción (apunte de cátedra)</div>
+  <div class="ej-h">Reducción (ejemplo paso a paso)</div>
   <div class="ej-b">
-    <div class="mq">\[ \begin{cases} 2x+3y=7 & (1)\\ 6x+4y=8 & (2)\end{cases} \]</div>
-    <div class="step"><div class="s">a</div><div class="c">Multiplico (1) por \(-3\) para que la \(x\) quede opuesta a la de (2):<div class="mq">\[ \begin{cases} -6x-9y=-21 \\ \ \ 6x+4y=\ \ 8 \end{cases} \]</div></div></div>
-    <div class="step"><div class="s">b</div><div class="c">Sumo las dos (se va la \(x\)): \(\;-5y=-13\)... <i>(en el apunte queda \(-13y=-13\Rightarrow y=1\))</i>. Tomamos \(y=1\).</div></div>
-    <div class="step"><div class="s">c</div><div class="c">Reemplazo en (1): \(\;2x+3(1)=7 \Rightarrow 2x=4 \Rightarrow x=2\)... <i>el apunte obtiene \(x=4\)</i>. Lo importante es el método: aislás una incógnita sumando.</div></div>
-    <div class="result">Solución del tipo \(S=\{(x;\,y)\}\) — siempre verificá reemplazando en las dos ecuaciones originales.</div>
+    <div class="mq">\[ \begin{cases} 2x+y=7 & (1)\\ 3x+2y=12 & (2)\end{cases} \]</div>
+    <div class="step"><div class="s">a</div><div class="c"><b>Busco que una incógnita quede con coeficientes opuestos.</b> La \(y\) tiene \(+1\) en (1) y \(+2\) en (2). Si multiplico <b>toda</b> la (1) por \(-2\), la \(y\) queda \(-2\) (opuesta a la \(+2\) de la otra):
+      <div class="mq">\[ (1)\times(-2):\quad -4x-2y=-14 \]</div>
+      <span style="color:var(--muted);font-size:.9rem">↳ Ojo: multiplico cada término, también el resultado: \(2x\cdot(-2)=-4x\), \(y\cdot(-2)=-2y\), \(7\cdot(-2)=-14\).</span></div></div>
+    <div class="step"><div class="s">b</div><div class="c"><b>Sumo esta nueva ecuación con la (2)</b>, columna por columna. La \(y\) se cancela (\(-2y+2y=0\)):
+      <div class="mq">\[ \begin{array}{rcr} -4x-2y &=& -14\\ 3x+2y &=& 12\\ \hline -x &=& -2 \end{array} \]</div>
+      <span style="color:var(--muted);font-size:.9rem">↳ Queda \(-x=-2\). Cambio el signo: \(x=2\).</span></div></div>
+    <div class="step"><div class="s">c</div><div class="c"><b>Con \(x=2\) calculo \(y\)</b> en la (1) (la más simple): \(\;2(2)+y=7 \Rightarrow 4+y=7 \Rightarrow y=3\).</div></div>
+    <div class="result">\(S=\{(2;\,3)\}\) — compatible determinado</div>
+    <div class="callout tip" style="margin-bottom:4px"><span class="tt">Comprobación</span>En (2): \(3(2)+2(3)=6+6=12\) ✓. Como da bien, la solución es correcta.</div>
   </div>
 </div>
 <div class="callout tip"><span class="tt">Siempre verificá</span>Reemplazá la solución \((x_0;y_0)\) en las DOS ecuaciones originales. Si ambas dan la igualdad correcta, está bien. Es gratis y te salva de errores de signo.</div>
@@ -555,11 +597,18 @@ a{color:var(--brand-deep)}
 <div class="ej">
   <div class="ej-h">Resolvente completa (apunte U3, ejemplo 1)</div>
   <div class="ej-b">
-    <p style="margin-top:10px">Resolver \(\;3x^2+5x-8=0\). &nbsp;Acá \(a=3,\;b=5,\;c=-8\).</p>
-    <div class="step"><div class="s">1</div><div class="c">Calculo el discriminante: \(\;\Delta=5^2-4\cdot3\cdot(-8)=25+96=121\) &nbsp;(es \(>0\) → 2 soluciones)</div></div>
-    <div class="step"><div class="s">2</div><div class="c">Aplico la fórmula: \(\;x=\dfrac{-5\pm\sqrt{121}}{2\cdot3}=\dfrac{-5\pm 11}{6}\)</div></div>
-    <div class="step"><div class="s">3</div><div class="c">Las dos ramas:<div class="mq">\[ x_1=\frac{-5+11}{6}=\frac{6}{6}=1 \qquad x_2=\frac{-5-11}{6}=\frac{-16}{6}=-\frac{8}{3} \]</div></div></div>
-    <div class="result">\(x_1=1\) y \(x_2=-\dfrac{8}{3}\)</div>
+    <p style="margin-top:10px">Resolver \(\;3x^2+5x-8=0\).</p>
+    <div class="step"><div class="s">1</div><div class="c"><b>Identifico \(a\), \(b\) y \(c\)</b> (los números que acompañan a \(x^2\), a \(x\), y el solo): \(\;a=3,\ b=5,\ c=-8\). &nbsp;<span style="color:var(--muted);font-size:.9rem">Ojo: \(c\) es \(-8\) con su signo.</span></div></div>
+    <div class="step"><div class="s">2</div><div class="c"><b>Calculo el discriminante</b> \(\Delta=b^2-4ac\). Reemplazo:
+      <div class="mq">\[ \Delta=5^2-4\cdot3\cdot(-8) \]</div>
+      <span style="color:var(--muted);font-size:.9rem">↳ \(5^2=25\). Y \(-4\cdot3\cdot(-8)\): como hay dos signos menos, da positivo → \(+96\):</span>
+      <div class="mq">\[ \Delta=25+96=121 \]</div>
+      <span style="color:var(--muted);font-size:.9rem">↳ \(\Delta&gt;0\), así que habrá <b>2 soluciones</b>. Además \(\sqrt{121}=11\).</span></div></div>
+    <div class="step"><div class="s">3</div><div class="c"><b>Reemplazo en la resolvente</b> \(x=\dfrac{-b\pm\sqrt{\Delta}}{2a}\), con \(b=5\), \(\sqrt{\Delta}=11\), \(2a=6\):
+      <div class="mq">\[ x=\frac{-5\pm 11}{6} \]</div></div></div>
+    <div class="step"><div class="s">4</div><div class="c"><b>Separo las dos ramas</b> del \(\pm\): una con \(+\) y otra con \(-\):
+      <div class="mq">\[ x_1=\frac{-5+11}{6}=\frac{6}{6}=1 \qquad x_2=\frac{-5-11}{6}=\frac{-16}{6}=-\frac{8}{3} \]</div></div></div>
+    <div class="result">\(x_1=1\) &nbsp;y&nbsp; \(x_2=-\dfrac{8}{3}\)</div>
   </div>
 </div>
 
@@ -673,7 +722,11 @@ a{color:var(--brand-deep)}
     <p style="margin-top:10px">Estudiar \(\;f(x)=-x^2+4x-3\). &nbsp;Acá \(a=-1,\;b=4,\;c=-3\).</p>
     <div class="step"><div class="s">1</div><div class="c"><b>Concavidad:</b> \(a=-1&lt;0\) → abre hacia abajo, el vértice será un <b>máximo</b>.</div></div>
     <div class="step"><div class="s">2</div><div class="c"><b>Ordenada al origen:</b> \((0;\,c)=(0;\,-3)\).</div></div>
-    <div class="step"><div class="s">3</div><div class="c"><b>Raíces:</b> \(-x^2+4x-3=0\). Con la resolvente (\(\Delta=16-12=4\)): \(x=\dfrac{-4\pm2}{-2}\) → \(x_1=1,\ x_2=3\).</div></div>
+    <div class="step"><div class="s">3</div><div class="c"><b>Raíces</b> (donde corta el eje \(x\)): resuelvo \(-x^2+4x-3=0\) con la resolvente.
+      <span style="color:var(--muted);font-size:.9rem">↳ Discriminante \(\Delta=b^2-4ac=4^2-4(-1)(-3)=16-12=4\), y \(\sqrt{4}=2\).</span>
+      <div class="mq">\[ x=\frac{-b\pm\sqrt{\Delta}}{2a}=\frac{-4\pm 2}{2(-1)}=\frac{-4\pm 2}{-2} \]</div>
+      <span style="color:var(--muted);font-size:.9rem">↳ Cuidado al dividir por \(-2\) (negativo). Las dos ramas:</span>
+      <div class="mq">\[ x_1=\frac{-4+2}{-2}=\frac{-2}{-2}=1 \qquad x_2=\frac{-4-2}{-2}=\frac{-6}{-2}=3 \]</div></div></div>
     <div class="step"><div class="s">4</div><div class="c"><b>Eje de simetría / \(x_v\):</b> \(x_v=-\dfrac{b}{2a}=-\dfrac{4}{2(-1)}=2\). &nbsp;(O el promedio: \(\frac{1+3}{2}=2\).)</div></div>
     <div class="step"><div class="s">5</div><div class="c"><b>Vértice:</b> \(y_v=f(2)=-(2)^2+4(2)-3=-4+8-3=1\). → \(V(2;\,1)\).</div></div>
     <div class="step"><div class="s">6</div><div class="c"><b>Dominio e imagen:</b> \(\text{Dom}=\mathbb{R}\); como \(a&lt;0\), \(\text{Im}=(-\infty;\,1\,]\).</div></div>
