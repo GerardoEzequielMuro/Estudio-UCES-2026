@@ -257,6 +257,7 @@ a{color:var(--brand-deep)}
   <a href="#logaritmo">6 · Logaritmos</a>
   <a href="#formulario">🎴 Formulario</a>
   <a href="#examen">📝 Modelo de examen</a>
+  <a href="#parcial2024">📄 Parcial real 2024</a>
 </nav>
 
 <!-- ============================== PLAN ============================== -->
@@ -1016,6 +1017,44 @@ a{color:var(--brand-deep)}
 <div class="sol">
 <p><b>(a)</b> \(V(12)=15000\,e^{-0{,}15\cdot12}=15000\,e^{-1{,}8}\approx15000\cdot0{,}1653\approx\$2.479{,}48\).</p>
 <p><b>(b)</b> Mitad \(=7500\): \(7500=15000\,e^{-0{,}15t}\Rightarrow 0{,}5=e^{-0{,}15t}\). Aplico \(\ln\): \(\ln0{,}5=-0{,}15t \Rightarrow t=\dfrac{-0{,}6931}{-0{,}15}\approx4{,}62\) años.</p>
+</div></details>
+
+<!-- ============================== PARCIAL REAL 2024 ============================== -->
+<h2 id="parcial2024"><span class="num">📄</span> Parcial real 2024 (resuelto)</h2>
+<div class="sec-rule"></div>
+<div class="callout key"><span class="tt">Esto es el parcial de verdad</span>Es el <b>Segundo Examen Parcial del 24/06/2024</b> (un año antes del tuyo, misma cátedra, mismos temas). Fijate la estructura: <b>(1)</b> equilibrio de mercado con subsidio, <b>(2)</b> maximizar utilidad, <b>(3)</b> función exponencial, <b>(4)</b> función logarítmica. <b>Muy probablemente el tuyo sea igual con otros números.</b> Hacelo entero antes de mirar las soluciones.</div>
+
+<details class="pr"><summary>1) (25p) EcoTech — oferta \(p-0{,}05q=30\), demanda \(p=-\tfrac{1}{30}q+60\). (a) Con un subsidio de US$1 por unidad al productor, nuevo precio de equilibrio. (b) Ingreso total en el equilibrio antes y después.</summary>
+<div class="sol">
+<p><b>Equilibrio ANTES.</b> Oferta: \(p=0{,}05q+30\). Igualo con la demanda:</p>
+<p>\(0{,}05q+30=-\tfrac{1}{30}q+60 \Rightarrow \left(0{,}05+\tfrac{1}{30}\right)q=30 \Rightarrow \tfrac{1}{12}q=30 \Rightarrow q=360\), &nbsp; \(p=0{,}05(360)+30=\$48\).</p>
+<p><b>(a) Con subsidio de $1 al productor:</b> la oferta baja $1 (el productor acepta cobrar $1 menos porque el Estado se lo compensa) → nueva oferta \(p=0{,}05q+29\). Igualo con la demanda (que no cambia):</p>
+<p>\(0{,}05q+29=-\tfrac{1}{30}q+60 \Rightarrow \tfrac{1}{12}q=31 \Rightarrow q=372\), &nbsp; \(p=-\tfrac{1}{30}(372)+60=\boxed{\$47{,}60}\).</p>
+<p><b>(b) Ingreso total \(=p\cdot q\):</b> antes \(=48\times360=\$17.280\); después \(=47{,}60\times372=\$17.707{,}20\) (precio de mercado × cantidad).</p>
+</div></details>
+
+<details class="pr"><summary>2) (28p) TechSolutions — demanda \(10p+3x=500\), costo \(C(x)=150+5x\). Precio óptimo que maximiza la utilidad.</summary>
+<div class="sol">
+<p>Despejo el precio: \(p=\tfrac{500-3x}{10}=50-0{,}3x\).</p>
+<p>Ingreso: \(I=p\cdot x=(50-0{,}3x)x=50x-0{,}3x^2\).</p>
+<p>Utilidad: \(U=I-C=50x-0{,}3x^2-(150+5x)=-0{,}3x^2+45x-150\).</p>
+<p>Es cuadrática con \(a=-0{,}3,\,b=45\) → máximo en el vértice: \(x_v=-\dfrac{45}{2(-0{,}3)}=75\) contratos.</p>
+<p>Precio óptimo: \(p=50-0{,}3(75)=\boxed{\$27{,}50}\). &nbsp;(Utilidad máxima \(=U(75)=\$1.537{,}50\).)</p>
+</div></details>
+
+<details class="pr"><summary>3) (22p) \(f(x)=-1+0{,}2^{x}\): (a) ¿crece o decrece? (b) dominio e imagen (c) \(f(-2),f(0),f(3)\) (d) gráfico</summary>
+<div class="sol">
+<p><b>(a)</b> La base es \(0{,}2\) y \(0&lt;0{,}2&lt;1\) → <b>decreciente</b>.</p>
+<p><b>(b)</b> \(\text{Dom}=\mathbb{R}\). Como \(0{,}2^{x}&gt;0\), entonces \(0{,}2^{x}-1&gt;-1\) → \(\text{Im}=(-1;+\infty)\) (asíntota \(y=-1\)).</p>
+<p><b>(c)</b> \(f(-2)=0{,}2^{-2}-1=5^{2}-1=24\); &nbsp; \(f(0)=0{,}2^{0}-1=0\); &nbsp; \(f(3)=0{,}2^{3}-1=0{,}008-1=-0{,}992\).</p>
+<p><b>(d)</b> Exponencial decreciente que pasa por \((0;0)\) y se acerca a la recta \(y=-1\) por arriba.</p>
+</div></details>
+
+<details class="pr"><summary>4) (25p) \(f(x)=\ln(2x+2)\): (a) dominio como intervalo (b) \(f(1{,}5),f(-2),f(0)\) (c) ¿algún \(x\) con \(f(x)\approx3\)?</summary>
+<div class="sol">
+<p><b>(a)</b> El argumento debe ser \(&gt;0\): \(2x+2&gt;0 \Rightarrow x&gt;-1\) → \(\text{Dom}=(-1;+\infty)\).</p>
+<p><b>(b)</b> \(f(1{,}5)=\ln(2\cdot1{,}5+2)=\ln5\approx1{,}61\). &nbsp; \(f(-2)=\ln(-2)\): como \(-2&lt;-1\) está fuera del dominio → <b>no existe</b>. &nbsp; \(f(0)=\ln2\approx0{,}69\).</p>
+<p><b>(c)</b> \(\ln(2x+2)=3 \Rightarrow 2x+2=e^{3}\approx20{,}09 \Rightarrow 2x=18{,}09 \Rightarrow x\approx9{,}04\). Sí existe (es \(&gt;-1\)).</p>
 </div></details>
 
 <div class="callout tip" style="margin-top:24px"><span class="tt">Antes de entregar el parcial</span>Revisá: ¿pusiste unidades (\$, unidades, años)? ¿verificaste las ecuaciones reemplazando? ¿respondiste lo que preguntan (a veces piden el <b>precio</b>, no la cantidad)? Esos puntos son regalados.</div>
