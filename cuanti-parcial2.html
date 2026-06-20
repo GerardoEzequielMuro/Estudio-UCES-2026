@@ -536,9 +536,12 @@ a{color:var(--brand-deep)}
 <div class="ej">
   <div class="ej-h">Problema (TP N°2, Act. 10c)</div>
   <div class="ej-b">
-    <p style="margin-top:10px">Demanda: \(p+2x=36\). Oferta: \(p-3x=6\). Hallar el <b>punto de equilibrio</b> (donde precio y cantidad coinciden).</p>
-    <div class="step"><div class="s">1</div><div class="c">Es un sistema. Por reducción, resto (1)−(2): \(\;(p+2x)-(p-3x)=36-6 \Rightarrow 5x=30 \Rightarrow x=6\)</div></div>
-    <div class="step"><div class="s">2</div><div class="c">Reemplazo en \(p+2x=36\): \(\;p+2(6)=36 \Rightarrow p=24\)</div></div>
+    <p style="margin-top:10px">Demanda: \(p+2x=36\) &nbsp;(1). &nbsp; Oferta: \(p-3x=6\) &nbsp;(2). Hallar el <b>punto de equilibrio</b> (donde oferta y demanda dan el mismo precio y cantidad).</p>
+    <div class="step"><div class="s">1</div><div class="c"><b>Es un sistema</b> (dos ecuaciones, dos incógnitas \(p\) y \(x\)). Las dos tienen \(p\) con coeficiente 1, así que conviene <b>reducción restando</b> (1)−(2): así se elimina \(p\).
+      <div class="mq">\[ (p+2x)-(p-3x)=36-6 \]</div>
+      <span style="color:var(--muted);font-size:.9rem">↳ Distribuyo el menos (le cambia el signo a todo lo de (2)): \(p+2x-p+3x\). El \(p-p=0\) (¡por eso restamos!):</span>
+      <div class="mq">\[ 5x=30 \;\Rightarrow\; x=\frac{30}{5}=6 \]</div></div></div>
+    <div class="step"><div class="s">2</div><div class="c"><b>Con \(x=6\) calculo \(p\)</b> en (1): \(\;p+2(6)=36 \Rightarrow p+12=36 \Rightarrow p=36-12=24\).</div></div>
     <div class="result">Equilibrio: \(x=6\) unidades a \(p=\$24\)</div>
   </div>
 </div>
@@ -740,9 +743,11 @@ a{color:var(--brand-deep)}
   <div class="ej-h">Maximizar ingreso (TP N°4, Act. 2)</div>
   <div class="ej-b">
     <p style="margin-top:10px">El ingreso es \(\;I(x)=1500x-50x^2\). ¿Qué \(x\) da el ingreso máximo?</p>
-    <div class="step"><div class="s">1</div><div class="c">Es cuadrática con \(a=-50,\;b=1500\). Como \(a&lt;0\), hay máximo en el vértice.</div></div>
-    <div class="step"><div class="s">2</div><div class="c">\(x_v=-\dfrac{b}{2a}=-\dfrac{1500}{2(-50)}=\dfrac{1500}{100}=15\)</div></div>
-    <div class="result">El ingreso es máximo vendiendo \(x=15\) unidades. (El ingreso máximo es \(I(15)=1500\cdot15-50\cdot15^2=11250\).)</div>
+    <div class="step"><div class="s">1</div><div class="c"><b>Identifico \(a\) y \(b\).</b> Aunque esté escrita al revés, \(a\) es el número del \(x^2\) y \(b\) el del \(x\): \(\;a=-50,\ b=1500\). Como \(a&lt;0\), la parábola abre hacia abajo → hay un <b>máximo</b> en el vértice.</div></div>
+    <div class="step"><div class="s">2</div><div class="c"><b>Calculo la abscisa del vértice</b> con \(x_v=-\dfrac{b}{2a}\):
+      <div class="mq">\[ x_v=-\frac{1500}{2(-50)}=-\frac{1500}{-100}=15 \]</div>
+      <span style="color:var(--muted);font-size:.9rem">↳ Un negativo dividido por un negativo da positivo → \(15\).</span></div></div>
+    <div class="result">El ingreso es máximo vendiendo \(x=15\) unidades. (Si piden el ingreso máximo, reemplazás: \(I(15)=1500\cdot15-50\cdot15^2=22500-11250=11250\).)</div>
   </div>
 </div>
 
@@ -817,8 +822,10 @@ a{color:var(--brand-deep)}
   <div class="ej-h">Ecuación exponencial (igualando bases)</div>
   <div class="ej-b">
     <p style="margin-top:10px">Resolver \(\;2^{\,x+1}=8\).</p>
-    <div class="step"><div class="s">1</div><div class="c">Escribo 8 como potencia de 2: \(\;8=2^3\). Queda \(2^{x+1}=2^3\).</div></div>
-    <div class="step"><div class="s">2</div><div class="c">Misma base → igualo exponentes: \(\;x+1=3\).</div></div>
+    <div class="step"><div class="s">1</div><div class="c"><b>Pongo los dos lados con la misma base.</b> El \(8\) lo escribo como potencia de \(2\) (porque \(2\cdot2\cdot2=8\)): \(\;8=2^3\). Reemplazo:
+      <div class="mq">\[ 2^{\,x+1}=2^{3} \]</div></div></div>
+    <div class="step"><div class="s">2</div><div class="c"><b>Si las bases son iguales, los exponentes son iguales.</b> Entonces igualo lo de arriba:
+      <div class="mq">\[ x+1=3 \;\Rightarrow\; x=3-1=2 \]</div></div></div>
     <div class="result">\(x=2\)</div>
   </div>
 </div>
@@ -838,9 +845,11 @@ a{color:var(--brand-deep)}
   <div class="ej-h">Interés compuesto (Repaso 2do parcial, ej. 4)</div>
   <div class="ej-b">
     <p style="margin-top:10px">Se invierten \(\$50.000\) a \(6\%\) anual durante \(5\) años, capitalización anual.</p>
-    <div class="step"><div class="s">1</div><div class="c">\(C_f=50000\,(1+0{,}06)^{5}=50000\,(1{,}06)^{5}\)</div></div>
-    <div class="step"><div class="s">2</div><div class="c">\((1{,}06)^5\approx 1{,}33823\) → \(C_f\approx 50000\cdot1{,}33823\approx \$66.911{,}28\)</div></div>
-    <div class="step"><div class="s">3</div><div class="c"><b>Interés</b> = monto − capital = \(66911{,}28-50000=\$16.911{,}28\)</div></div>
+    <div class="step"><div class="s">1</div><div class="c"><b>Anoto los datos</b> y los meto en la fórmula \(C_f=C\left(1+\tfrac{r}{100}\right)^{t}\): capital \(C=50000\), rédito \(r=6\) (entonces \(\tfrac{6}{100}=0{,}06\)), tiempo \(t=5\).
+      <div class="mq">\[ C_f=50000\,(1+0{,}06)^{5}=50000\,(1{,}06)^{5} \]</div></div></div>
+    <div class="step"><div class="s">2</div><div class="c"><b>Primero la potencia, después multiplico</b> (orden de operaciones). Con calculadora: \((1{,}06)^5\approx 1{,}33823\).
+      <div class="mq">\[ C_f\approx 50000\cdot1{,}33823\approx \$66.911{,}28 \]</div></div></div>
+    <div class="step"><div class="s">3</div><div class="c"><b>El interés es lo que ganaste</b>, o sea el monto final menos lo que pusiste: \(\;66911{,}28-50000=\$16.911{,}28\).</div></div>
     <div class="result">Monto ≈ $66.911,28 &nbsp;·&nbsp; Interés ≈ $16.911,28</div>
   </div>
 </div>
@@ -902,9 +911,10 @@ a{color:var(--brand-deep)}
 <div class="ej">
   <div class="ej-h">Hallar la incógnita (TP N°5, Act. 4)</div>
   <div class="ej-b">
-    <div class="step"><div class="s">1</div><div class="c">\(\log_3 x=-4\): paso a forma de potencia → \(x=3^{-4}=\dfrac{1}{81}\).</div></div>
-    <div class="step"><div class="s">2</div><div class="c">\(\log_x 256=4\): significa \(x^4=256\) → \(x=\sqrt[4]{256}=4\).</div></div>
-    <div class="step"><div class="s">3</div><div class="c">\(\log(0{,}001)=x\) (base 10): \(0{,}001=10^{-3}\) → \(x=-3\).</div></div>
+    <p style="margin-top:10px;color:var(--muted);font-size:.92rem">La clave en todos: usar la definición \(\log_a b=c \iff a^{c}=b\) para pasarlo a una potencia.</p>
+    <div class="step"><div class="s">1</div><div class="c"><b>\(\log_3 x=-4\):</b> por la definición, la base \(3\) elevada al resultado \(-4\) da \(x\): \(\;x=3^{-4}\). Y \(3^{-4}=\dfrac{1}{3^{4}}=\dfrac{1}{81}\) (exponente negativo = uno dividido la potencia).</div></div>
+    <div class="step"><div class="s">2</div><div class="c"><b>\(\log_x 256=4\):</b> acá la incógnita es la base. Significa \(x^{4}=256\). Busco qué número a la cuarta da \(256\): \(\;x=\sqrt[4]{256}=4\) (porque \(4^4=256\)).</div></div>
+    <div class="step"><div class="s">3</div><div class="c"><b>\(\log(0{,}001)=x\):</b> es base \(10\). Pregunto "\(10\) a la cuánto da \(0{,}001\)". Como \(0{,}001=\dfrac{1}{1000}=10^{-3}\): \(\;x=-3\).</div></div>
   </div>
 </div>
 
@@ -938,9 +948,13 @@ a{color:var(--brand-deep)}
   <div class="ej-h">Función logarítmica (Repaso 2do parcial, ej. 5)</div>
   <div class="ej-b">
     <p style="margin-top:10px">Para \(\;y=\log(2x)\) (base 10):</p>
-    <div class="step"><div class="s">a</div><div class="c"><b>Dominio:</b> el argumento debe ser \(>0\): \(2x>0 \Rightarrow x>0\). → \(\text{Dom}=(0;+\infty)\). <b>Imagen</b>\(=\mathbb{R}\).</div></div>
-    <div class="step"><div class="s">b</div><div class="c">\(f(0{,}5)=\log(2\cdot0{,}5)=\log 1=0\). &nbsp; \(f(0)\): daría \(\log 0\) → <b>no existe</b>. &nbsp; \(f(50)=\log(100)=2\).</div></div>
-    <div class="step"><div class="s">c</div><div class="c">¿\(f(x)=-2\)? \(\log(2x)=-2 \Rightarrow 2x=10^{-2}=0{,}01 \Rightarrow x=0{,}005\). Sí existe (es \(>0\)).</div></div>
+    <div class="step"><div class="s">a</div><div class="c"><b>Dominio:</b> lo de adentro del log (el argumento) debe ser \(&gt;0\). Planteo \(2x&gt;0\) y despejo: \(x&gt;0\). → \(\text{Dom}=(0;+\infty)\). La <b>imagen</b> de un log es \(\mathbb{R}\) (todos los reales).</div></div>
+    <div class="step"><div class="s">b</div><div class="c"><b>Evalúo</b> (reemplazo cada valor en \(x\)):
+      <div class="mq">\[ f(0{,}5)=\log(2\cdot0{,}5)=\log 1=0 \qquad f(50)=\log(2\cdot50)=\log 100=2 \]</div>
+      <span style="color:var(--muted);font-size:.9rem">↳ \(f(0)=\log(2\cdot0)=\log 0\) → <b>no existe</b> (no se puede el log de 0). Tiene sentido: \(0\) no está en el dominio.</span></div></div>
+    <div class="step"><div class="s">c</div><div class="c"><b>¿Hay un \(x\) con \(f(x)=-2\)?</b> Planteo la ecuación y uso la definición (base 10):
+      <div class="mq">\[ \log(2x)=-2 \;\Rightarrow\; 2x=10^{-2}=0{,}01 \;\Rightarrow\; x=\frac{0{,}01}{2}=0{,}005 \]</div>
+      <span style="color:var(--muted);font-size:.9rem">↳ Como \(0{,}005&gt;0\), está en el dominio → <b>sí existe</b>.</span></div></div>
   </div>
 </div>
 
