@@ -137,6 +137,16 @@ a{color:var(--brand-deep)}
 
 .kbd{font-family:var(--mono);font-size:.82em;background:var(--ink);color:var(--paper);border-radius:6px;padding:2px 8px;
   box-shadow:0 2px 0 var(--line-strong);white-space:nowrap;display:inline-block;line-height:1.5;margin:1px 0}
+.why{display:inline}
+.why>summary{list-style:none;cursor:pointer;display:inline-block;font-family:var(--mono);font-size:.66rem;
+  letter-spacing:.03em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue);border-radius:999px;
+  padding:1px 9px;margin-left:6px;vertical-align:middle;user-select:none;white-space:nowrap}
+.why>summary::-webkit-details-marker{display:none}.why>summary::marker{content:""}
+.why[open]>summary{background:var(--blue);color:var(--paper)}
+.why .ans{display:block;margin:8px 0 4px;background:var(--paper);border:1px solid var(--line-strong);
+  border-left:3px solid var(--blue);border-radius:8px;padding:9px 13px;font-size:.93rem;color:var(--ink);
+  font-style:normal;line-height:1.55;font-family:var(--sans)}
+.why .ans b{color:var(--brand-deep)}
 .box{background:var(--paper-2);border:1px solid var(--line-strong);border-radius:var(--radius);padding:16px 20px;margin:16px 0;box-shadow:var(--shadow)}
 .box.formula{border-left:4px solid var(--blue);background:var(--paper)}
 .box h4{margin-top:0}
@@ -262,6 +272,8 @@ a{color:var(--brand-deep)}
   <a href="#examen">📝 Modelo de examen</a>
   <a href="#parcial2024">📄 Parcial real 2024</a>
 </nav>
+
+<div class="callout tip"><span class="tt">💡 Botones "¿por qué?"</span>Cuando veas un botoncito azul <span class="why" style="pointer-events:none"><span style="font-family:var(--mono);font-size:.66rem;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue);border-radius:999px;padding:1px 9px">¿por qué?</span></span> al lado de un paso, tocalo: se despliega <b>la razón de ese paso</b> (por qué se hace, no solo qué se hace). Están en los pasos que más confunden. Volvé a cerrarlo tocándolo de nuevo.</div>
 
 <!-- ============================== PLAN ============================== -->
 <h2 id="plan"><span class="num">📅</span> Plan de batalla: sábado, domingo y lunes</h2>
@@ -395,12 +407,12 @@ a{color:var(--brand-deep)}
       <div class="mq">\[ m_1=5 \]</div>
     </div></div>
 
-    <div class="step"><div class="s">2</div><div class="c"><b>Pendiente de la perpendicular:</b> aplico "opuesta e inversa" sobre \(m_1=5=\tfrac{5}{1}\). Doy vuelta la fracción y le cambio el signo:
+    <div class="step"><div class="s">2</div><div class="c"><b>Pendiente de la perpendicular:</b> aplico "opuesta e inversa" sobre \(m_1=5=\tfrac{5}{1}\). Doy vuelta la fracción y le cambio el signo:<details class="why"><summary>¿por qué opuesta e inversa?</summary><div class="ans">Dos rectas son perpendiculares (forman \(90°\)) cuando el producto de sus pendientes da \(-1\): \(m_1\cdot m_2=-1\). Despejando, \(m_2=-\dfrac{1}{m_1}\) — por eso se <b>da vuelta</b> la fracción (inversa) y se le <b>cambia el signo</b> (opuesta). Con \(m_1=\tfrac{5}{1}\) queda \(m_2=-\tfrac{1}{5}\). Chequeo: \(5\cdot(-\tfrac15)=-1\) ✓.</div></details>
       <div class="mq">\[ m_2=-\frac{1}{m_1}=-\frac{1}{5} \]</div></div></div>
 
     <div class="step"><div class="s">3</div><div class="c"><b>Uso punto-pendiente</b> \(y-y_1=m(x-x_1)\) con \(m_2=-\tfrac15\) y el punto \(P(-2;-1)\), es decir \(x_1=-2,\ y_1=-1\):
       <div class="mq">\[ y-(-1)=-\tfrac{1}{5}\,(x-(-2)) \]</div>
-      <span style="color:var(--muted);font-size:.9rem">↳ \(-(-1)=+1\) y \(-(-2)=+2\) (menos por menos da más):</span>
+      <span style="color:var(--muted);font-size:.9rem">↳ \(-(-1)=+1\) y \(-(-2)=+2\) (menos por menos da más):</span><details class="why"><summary>¿por qué + ?</summary><div class="ans">Restar un número negativo es lo mismo que <b>sumar</b> su positivo. El signo \(-\) de afuera <b>invierte</b> el signo de adentro: \(-(-1)\) = "lo opuesto de \(-1\)" = \(+1\). Regla rápida: <b>dos signos menos juntos se convierten en un más</b> \((--\,\to\,+)\).</div></details>
       <div class="mq">\[ y+1=-\tfrac{1}{5}\,(x+2) \]</div></div></div>
 
     <div class="step"><div class="s">4</div><div class="c"><b>Distribuyo y despejo \(y\).</b> Multiplico \(-\tfrac15\) por lo de adentro del paréntesis (\(x\) y \(2\)):
@@ -485,11 +497,11 @@ a{color:var(--brand-deep)}
     <div class="step"><div class="s">a</div><div class="c"><b>Despejo \(y\) en (1)</b> (porque tiene coeficiente 1, es lo más fácil). El \(2x\) pasa restando: \(\;y=1-2x\).</div></div>
     <div class="step"><div class="s">b</div><div class="c"><b>Reemplazo ese \(y\) en (2)</b> y resuelvo. Donde dice \(y\) escribo \((1-2x)\):
       <div class="mq">\[ 3x+2(1-2x)=3 \]</div>
-      <span style="color:var(--muted);font-size:.9rem">↳ Distribuyo el \(2\) (multiplico por \(1\) y por \(-2x\)):</span>
+      <span style="color:var(--muted);font-size:.9rem">↳ Distribuyo el \(2\) (multiplico por \(1\) y por \(-2x\)):</span><details class="why"><summary>¿por qué distribuir?</summary><div class="ans">El \(2\) está multiplicando a <b>todo</b> el paréntesis \((1-2x)\), no solo a una parte. La propiedad distributiva dice que hay que multiplicarlo por <b>cada</b> término de adentro: \(2\cdot 1=2\) y \(2\cdot(-2x)=-4x\). Por eso \(2(1-2x)=2-4x\). Si multiplicaras solo el \(1\), estarías cambiando el valor de la expresión.</div></details>
       <div class="mq">\[ 3x+2-4x=3 \]</div>
       <span style="color:var(--muted);font-size:.9rem">↳ Junto los términos con \(x\) (\(3x-4x=-x\)):</span>
       <div class="mq">\[ -x+2=3 \]</div>
-      <span style="color:var(--muted);font-size:.9rem">↳ Paso el \(+2\) restando, y luego cambio el signo (\(\times(-1)\)):</span>
+      <span style="color:var(--muted);font-size:.9rem">↳ Paso el \(+2\) restando, y luego cambio el signo (\(\times(-1)\)):</span><details class="why"><summary>¿por qué el ×(−1)?</summary><div class="ans">Te quedó \(-x=1\), o sea <b>"el opuesto de x vale 1"</b>. Pero vos querés saber cuánto vale \(x\) <b>sola y positiva</b>, no \(-x\). Multiplicás <b>los dos lados</b> por \(-1\) y se dan vuelta todos los signos: \((-1)\cdot(-x)=(-1)\cdot 1\Rightarrow x=-1\).<br><b>La intuición:</b> si el opuesto de un número es \(1\), el número es \(-1\). Se verifica: \(-(-1)=1\) ✓.<br><b>Reflejo útil:</b> siempre que te quede \(-x=\text{algo}\), multiplicá todo por \(-1\) para dejar la \(x\) positiva.</div></details>
       <div class="mq">\[ -x=1 \;\Rightarrow\; x=-1 \]</div></div></div>
     <div class="step"><div class="s">c</div><div class="c"><b>Con \(x=-1\) calculo \(y\)</b> usando lo del paso (a): \(\;y=1-2(-1)=1+2=3\).</div></div>
     <div class="result">\(S=\{(-1;\,3)\}\) — compatible determinado</div>
