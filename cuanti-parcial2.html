@@ -135,6 +135,8 @@ a{color:var(--brand-deep)}
 .idea::before{content:"💡 La idea en una frase";display:block;font-family:var(--mono);font-style:normal;font-size:.7rem;
   letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:700;margin-bottom:7px}
 
+.kbd{font-family:var(--mono);font-size:.82em;background:var(--ink);color:var(--paper);border-radius:6px;padding:2px 8px;
+  box-shadow:0 2px 0 var(--line-strong);white-space:nowrap;display:inline-block;line-height:1.5;margin:1px 0}
 .box{background:var(--paper-2);border:1px solid var(--line-strong);border-radius:var(--radius);padding:16px 20px;margin:16px 0;box-shadow:var(--shadow)}
 .box.formula{border-left:4px solid var(--blue);background:var(--paper)}
 .box h4{margin-top:0}
@@ -255,6 +257,7 @@ a{color:var(--brand-deep)}
   <a href="#funcion">4 · Función cuadrática</a>
   <a href="#exponencial">5 · Exponenciales</a>
   <a href="#logaritmo">6 · Logaritmos</a>
+  <a href="#calculadora">🧮 Calculadora Casio</a>
   <a href="#formulario">🎴 Formulario</a>
   <a href="#examen">📝 Modelo de examen</a>
   <a href="#parcial2024">📄 Parcial real 2024</a>
@@ -978,6 +981,84 @@ a{color:var(--brand-deep)}
   <a class="vid" href="https://www.youtube.com/watch?v=FNdq8uQGFqw" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/FNdq8uQGFqw/hqdefault.jpg" alt=""></div><div class="vb"><span class="vt">Logaritmos desde cero: propiedades, cálculo y ecuaciones</span><span class="vc">curso completo en un video</span></div></a>
   <a class="vid" href="https://www.youtube.com/watch?v=riqZcExsvcE" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://i.ytimg.com/vi/riqZcExsvcE/hqdefault.jpg" alt=""></div><div class="vb"><span class="vt">Ecuaciones logarítmicas (Ej. 1)</span><span class="vc">julioprofe</span></div></a>
 </div>
+
+<!-- ============================== CALCULADORA CASIO ============================== -->
+<h2 id="calculadora"><span class="num">🧮</span> Calculadora Casio fx-991LA CW (atajos para este parcial)</h2>
+<div class="sec-rule"></div>
+
+<div class="idea">Tu Casio es de la familia <b>ClassWiz CW</b> (menús por apps, botón <b>HOME</b>). No reemplaza saber el tema, pero te <b>verifica resultados</b> y te <b>resuelve sistemas, raíces y ecuaciones</b> en segundos. Acá van los atajos justos para lo que entra.</div>
+
+<div class="box">
+<h4>Las 4 teclas que tenés que conocer</h4>
+<ul style="margin:6px 0 0;padding-left:20px">
+<li><b>HOME</b> → te lleva al menú de apps (los iconitos). Todo arranca acá.</li>
+<li><b>CATALOG</b> → el "buscador" de funciones: derivadas \(\tfrac{d}{dx}\), \(\log\) en cualquier base, integrales, valor absoluto.</li>
+<li><b>VARIABLE</b> → para escribir o guardar \(x\), \(A\), \(B\)… (lo necesitás para el Solver).</li>
+<li><b>FORMAT</b> (tecla de formato/SD) → cambia el resultado entre <b>fracción exacta ↔ decimal</b>.</li>
+</ul>
+</div>
+
+<div class="callout tip"><span class="tt">Configurala una sola vez</span><b>SETTINGS → Calc Settings → Angle: Degree</b> (grados, salvo que el ejercicio pida radianes). &nbsp; <b>SETTINGS → Number Format → Norm 1</b> (o fijá 2 decimales si te lo piden). &nbsp; Ojo: <b>AC</b> limpia la pantalla pero <b>no</b> borra las variables guardadas.</div>
+
+<h3>① Sistemas y equilibrio de mercado (oferta = demanda)</h3>
+<div class="box"><b>Ruta:</b> <span class="kbd">HOME → Equation → Simultaneous Equation → 2 incógnitas</span>. Cargás los coeficientes de cada \(aX+bY=c\) y te da \(X\) e \(Y\) directo (el punto de cruce = equilibrio). Para 3×3 elegís 3 incógnitas.</div>
+<div class="ej">
+  <div class="ej-h">Equilibrio con subsidio (tipo Parcial 2024)</div>
+  <div class="ej-b">
+    <p style="margin-top:10px">Demanda \(Q_d=100-2P\) y oferta \(Q_s=-20+3P\). Hallar equilibrio.</p>
+    <div class="step"><div class="s">1</div><div class="c"><b>Igualo a la forma \(aP+bQ=c\).</b> Como \(Q=100-2P\) → \(2P+Q=100\). Y \(Q=-20+3P\) → \(-3P+Q=-20\).</div></div>
+    <div class="step"><div class="s">2</div><div class="c"><b>En la calc:</b> <span class="kbd">HOME → Equation → Simultaneous → 2 incógnitas</span>. Primera fila: \(2,\ 1,\ 100\). Segunda fila: \(-3,\ 1,\ -20\). Ejecutar.
+      <div class="mq">\[ P=24,\quad Q=52 \]</div></div></div>
+    <div class="step"><div class="s">3</div><div class="c"><b>Con subsidio \(s\) al productor:</b> el subsidio le sube el precio que recibe, así que en la oferta reemplazás \(P\) por \(P+s\), rearmás esa fila y volvés a correr el sistema. <i>El armado lo hacés vos; el cruce lo hace la calc.</i></div></div>
+    <div class="result">\(P^*=24\;\cdot\;Q^*=52\)</div>
+  </div>
+</div>
+
+<h3>② Cuadráticas y maximización de utilidad (vértice)</h3>
+<div class="box"><b>Raíces de \(ax^2+bx+c=0\):</b> <span class="kbd">HOME → Equation → Polynomial Equation → grado 2</span> → cargás \(a,b,c\). &nbsp; <b>Máximo/mínimo (vértice):</b> está en \(x^*=\dfrac{-b}{2a}\), lo tecleás directo.</div>
+<div class="callout key"><span class="tt">⭐ Truco "ver el máximo": app Table</span><span class="kbd">HOME → Table</span> → cargás \(f(x)=\) tu función de utilidad → definís <b>Start / End / Step</b> (ej. 0, 50, 1) → te imprime una tabla de valores. Buscás dónde deja de crecer y empieza a bajar: ahí está el óptimo. Es la forma más segura de no equivocarte de signo en el parcial.</div>
+<div class="callout tip"><span class="tt">Verificar con la derivada</span><span class="kbd">CATALOG → Func Analysis → d/dx</span> calcula la <b>derivada en un punto</b>. Evaluá \(U'(x)\) en tu \(x^*\): si da \(\approx 0\), confirmaste que ahí hay un extremo.</div>
+
+<h3>③ Exponenciales y logarítmicas</h3>
+<div class="box">
+<ul style="margin:6px 0 0;padding-left:20px">
+<li><b>Potencias:</b> la tecla \(x^\square\) para \((1{,}06)^5\), interés compuesto, etc.</li>
+<li><b>Log en cualquier base:</b> <span class="kbd">CATALOG → log□(□)</span> (no te quedes solo con \(\log\) base 10 y \(\ln\)).</li>
+<li><b>El número \(e\) y \(e^x\):</b> están en el teclado / CATALOG para \(V_0e^{kt}\).</li>
+<li><b>Resultado simbólico → decimal:</b> tecla <b>FORMAT</b> si te da \(\ln 2\) y querés el número.</li>
+</ul>
+</div>
+
+<h3>④ ⭐ El Solver — resuelve casi cualquier ecuación con una incógnita</h3>
+<div class="box"><b>Ruta:</b> <span class="kbd">HOME → Equation → Solver</span>. Escribís la ecuación <b>tal cual</b> (con <b>VARIABLE</b> para la \(x\)), le das una estimación inicial (poné \(1\)) y ejecutás. Sirve para despejar \(x\) de exponenciales, logarítmicas, punto de nivelación \(I=C\), etc. — <b>sin despejar a mano.</b></div>
+<div class="ej">
+  <div class="ej-h">Exponencial que no se puede igualar bases</div>
+  <div class="ej-b">
+    <p style="margin-top:10px">¿En cuántos años se duplica un capital al \(6\%\) anual? → resolver \(1{,}06^{\,t}=2\).</p>
+    <div class="step"><div class="s">1</div><div class="c"><b>Solver:</b> <span class="kbd">HOME → Equation → Solver</span>. Escribo <span class="kbd">1.06^x = 2</span> (la \(x\) con la tecla VARIABLE).</div></div>
+    <div class="step"><div class="s">2</div><div class="c"><b>Estimación inicial</b> \(x=1\), ejecuto. La calc devuelve:
+      <div class="mq">\[ t\approx 11{,}9\ \text{años} \]</div></div></div>
+    <div class="step"><div class="s">3</div><div class="c"><b>A mano daría lo mismo</b> con logaritmo: \(t=\dfrac{\ln 2}{\ln 1{,}06}\approx 11{,}9\). El Solver te ahorra el despeje (pero sabé hacerlo por si piden el procedimiento).</div></div>
+    <div class="result">\(t\approx 11{,}9\) años</div>
+  </div>
+</div>
+
+<div class="callout warn"><span class="tt">⚠️ Que la calc no te juegue en contra</span>
+<b>1.</b> El profe suele pedir <b>el procedimiento</b>, no solo el número: usá la calc para <b>verificar</b>, pero escribí los pasos. &nbsp;
+<b>2.</b> Revisá <b>Angle: Degree</b> antes de empezar. &nbsp;
+<b>3.</b> En el Solver, si te da un resultado raro, probá <b>otra estimación inicial</b> (puede haber más de una solución).</div>
+
+<h4>✏️ Probá vos solo</h4>
+<details class="pr"><summary>Probá vos: con la calc, resolvé el sistema \(\;3x+2y=12\;\) y \(\;x-y=1\;\). ¿Qué app usás y qué da?</summary>
+<div class="sol">
+<p><b>App:</b> <span class="kbd">HOME → Equation → Simultaneous → 2 incógnitas</span>. Fila 1: \(3,\ 2,\ 12\). Fila 2: \(1,\ -1,\ 1\).</p>
+<p><b>Resultado:</b> \(x=2{,}8\;\), \(y=1{,}8\). (Verificás: \(3\cdot2{,}8+2\cdot1{,}8=12\) ✓.)</p>
+</div></details>
+<details class="pr"><summary>Probá vos: hallá con el Solver para qué \(x\) vale \(\;200\,e^{0{,}05x}=500\).</summary>
+<div class="sol">
+<p><span class="kbd">HOME → Equation → Solver</span> → escribí <span class="kbd">200·e^(0.05·x) = 500</span>, estimación \(1\).</p>
+<p>Da \(x\approx 18{,}33\). (Comprobación: \(\ln(2{,}5)/0{,}05\approx 18{,}33\).)</p>
+</div></details>
 
 <!-- ============================== MODELO DE EXAMEN ============================== -->
 <!-- ============================== FORMULARIO CRÍTICO ============================== -->
