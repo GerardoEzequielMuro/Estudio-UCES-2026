@@ -162,9 +162,15 @@ a{color:var(--brand-deep)}
 .pr summary::before{content:"?";display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;
   font-family:var(--mono);font-weight:700;font-size:.8rem;margin-right:10px;vertical-align:-7px}
 .pr[open] summary::before{content:"✓";background:var(--green)}
-.pr .sol{padding:2px 18px 16px 50px;border-top:1px dashed var(--line);font-size:.95rem}
+.pr .sol{padding:8px 18px 18px 46px;border-top:1px dashed var(--line);font-size:.95rem;background:var(--paper)}
 .pr .sol::before{content:"Solución";display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--green);font-weight:700;margin:10px 0 6px}
+  text-transform:uppercase;color:var(--green);font-weight:700;margin:10px 0 12px}
+/* cada paso de la solución, separado y ordenado */
+.pr .sol p{margin:0 0 13px;line-height:1.72;border-left:2px solid var(--brand-soft);padding-left:12px}
+.pr .sol p:last-child{margin-bottom:0}
+.pr .sol p>b:first-child{color:var(--brand-deep)}
+.pr .sol .mq{margin:-2px 0 14px;padding:4px 10px;background:var(--paper-2);border:1px solid var(--line);border-radius:9px;overflow-x:auto}
+.pr .sol .mq .katex-display{margin:6px 0!important}
 .pts{font-family:var(--mono);font-size:.72rem;font-weight:700;color:#fff;background:var(--blue);border-radius:6px;padding:1px 7px;margin-right:7px;vertical-align:1px}
 
 .back{display:inline-block;margin-top:46px;color:var(--brand-deep);text-decoration:none;font-weight:600;font-size:.95rem}
@@ -172,7 +178,8 @@ a{color:var(--brand-deep)}
 .foot{text-align:center;color:var(--muted);font-size:.84rem;margin-top:30px;padding-top:22px;border-top:1px solid var(--line-strong)}
 
 @media (max-width:560px){
-  .pr .sol{padding-left:30px}
+  .pr .sol{padding-left:22px}
+  .pr .sol p{padding-left:9px}
 }
 </style>
 </head>
@@ -217,7 +224,7 @@ a{color:var(--brand-deep)}
 <div class="sec-rule"></div>
 <div class="callout key"><span class="tt">Esto es el parcial de verdad</span>Es el <b>Segundo Examen Parcial del 23/06/2025</b> (el del año pasado, misma cátedra, mismos temas). Una alumna lo sacó <b>Distinguido (9)</b>. Fijate cómo es exactamente la estructura: probablemente el tuyo sea igual con otros números. Hacelo entero antes de mirar las soluciones.</div>
 
-<details class="pr"><summary><span class="pts">25p</span>1) <b>EcoLight</b> lanza lámparas LED recargables. El precio \(p\) (en US$) y la cantidad demandada \(q\) (en miles de unidades) cumplen \(\;12p+4q=480\). El costo de producción es \(C(q)=100+6q\). ¿Qué precio por unidad <b>maximiza la utilidad</b>?</summary>
+<details class="pr"><summary><span class="pts">25p</span>1) La empresa <b>EcoLight</b> está considerando lanzar una nueva línea de lámparas LED recargables. El precio de mercado (\(p\), en dólares) y la cantidad demandada (\(q\), en miles de unidades) están relacionados por la ecuación \(\;12p+4q=480\). El costo de producción está dado por \(C(q)=100+6q\). ¿Cuál debe ser el precio por unidad para maximizar la utilidad de la empresa?</summary>
 <div class="sol">
 <p><b>Despejo \(q\)</b> de la demanda: \(4q=480-12p \Rightarrow q=120-3p\).</p>
 <p><b>Ingreso</b> \(=p\cdot q\): \(\;I=p(120-3p)=120p-3p^2\).</p>
@@ -229,7 +236,7 @@ a{color:var(--brand-deep)}
 <p><b>Precio óptimo \(=\$23\) por unidad.</b> &nbsp;(Con eso: \(q=120-3\cdot23=51\) mil unidades, y la utilidad máxima es \(U(23)=\$767\).)</p>
 </div></details>
 
-<details class="pr"><summary><span class="pts">28p</span>2) Un emprendimiento de <b>miel artesanal</b>: la producción mensual \(x\) (en frascos) depende del precio \(p\) según \(\;75x=-1800+25p\). El costo por unidad es \(\$10\) y los costos fijos mensuales \(\$225\). ¿Qué precio por frasco logra una utilidad de \(\$500\)? <b>Verificá</b> que efectivamente se logra.</summary>
+<details class="pr"><summary><span class="pts">28p</span>2) Un emprendimiento rural produce <b>miel artesanal</b> y su producción mensual (\(x\), en frascos) depende del precio \(p\) según la relación \(\;75x=-1800+25p\). El costo por unidad es de \(\$10\) y los costos fijos mensuales son de \(\$225\). ¿Qué precio debe fijarse por frasco para lograr una utilidad de \(\$500\)? Se debe verificar que efectivamente se logra la utilidad de \(\$500\) con el precio determinado.</summary>
 <div class="sol">
 <p><b>Despejo \(x\):</b> \(\;x=\dfrac{-1800+25p}{75}=\dfrac{p}{3}-24\).</p>
 <p><b>Ingreso:</b> \(\;I=p\cdot x=p\left(\tfrac{p}{3}-24\right)=\tfrac{p^2}{3}-24p\).</p>
@@ -243,7 +250,7 @@ a{color:var(--brand-deep)}
 <p><b>Verificación</b> (reemplazo \(p=97\) en \(U\)): \(\;U=\tfrac{97^2}{3}-\tfrac{82}{3}\cdot97+15=\tfrac{9409-7954}{3}+15=\tfrac{1455}{3}+15=485+15=\boxed{500}\) ✓. &nbsp;(Producción: \(x=\tfrac{97}{3}-24\approx8{,}33\) frascos.)</p>
 </div></details>
 
-<details class="pr"><summary><span class="pts">25p</span>3) El <b>nivel de enfoque</b> durante la jornada laboral se modela con \(\;f(x)=1{,}5+0{,}4^{x}\), donde \(x\) son las horas continuas de trabajo. (a) ¿Crece o decrece? Justificá. (b) Dominio e imagen en contexto. (c) \(f(0),f(3),f(6)\). (d) Gráfico.</summary>
+<details class="pr"><summary><span class="pts">25p</span>3) Una empresa de bienestar digital desarrolló un sistema que mide el <b>nivel de enfoque</b> de una persona durante su jornada laboral, en función del tiempo (en horas) transcurrido desde que comenzó a trabajar sin interrupciones. La función que lo modela es \(\;f(x)=1{,}5+0{,}4^{x}\), donde \(x\) representa la cantidad de horas continuas de trabajo. a) ¿Cómo varía el nivel de enfoque a medida que transcurre el tiempo de trabajo sin pausas? ¿La función es creciente o decreciente? Justificar. b) Hallar el dominio y la imagen de la función, interpretando su significado en el contexto del problema. c) Calcular el nivel de enfoque luego de 0 horas, 3 horas y 6 horas de trabajo sin interrupciones. d) Representar gráficamente la función.</summary>
 <div class="sol">
 <p><b>(a)</b> La base es \(0{,}4\) y \(0<0{,}4<1\), entonces \(0{,}4^{x}\) es <b>decreciente</b>, así que \(f\) es <b>decreciente</b>. Interpretación: el nivel de enfoque <b>baja</b> a medida que pasan las horas sin pausas (uno se va agotando).</p>
 <p><b>(b)</b> Como \(x\) son horas de trabajo, en contexto \(\text{Dom}=[0;+\infty)\) (matemáticamente sería \(\mathbb{R}\)). Para la <b>imagen:</b> \(0{,}4^{x}>0\) siempre, así que \(f>1{,}5\); arranca en \(f(0)=2{,}5\) y baja hacia \(1{,}5\) sin tocarlo, entonces \(\text{Im}=(1{,}5\,;\,2{,}5]\). La recta \(y=1{,}5\) es <b>asíntota horizontal</b>: el enfoque nunca cae por debajo de \(1{,}5\) (es el piso).</p>
@@ -251,7 +258,7 @@ a{color:var(--brand-deep)}
 <p><b>(d)</b> Exponencial <b>decreciente</b> que pasa por \((0\,;\,2{,}5)\) y se acerca a la recta \(y=1{,}5\) por arriba, sin tocarla.</p>
 </div></details>
 
-<details class="pr"><summary><span class="pts">22p</span>4) Sea \(\;g(x)=\ln(5x-10)\). (a) Determiná el dominio. (b) Calculá \(g(3),g(2),g(0)\). (c) Hallá un \(x\) tal que \(g(x)\approx2\).</summary>
+<details class="pr"><summary><span class="pts">22p</span>4) Sea la función \(\;g(x)=\ln(5x-10)\). a) Determinar el dominio de la función. b) Calcular \(g(3)\), \(g(2)\) y \(g(0)\). c) Hallar un valor de \(x\) tal que \(g(x)\approx2\).</summary>
 <div class="sol">
 <p><b>(a)</b> El argumento del \(\ln\) debe ser \(>0\): \(\;5x-10>0 \Rightarrow x>2\). Entonces \(\text{Dom}=(2;+\infty)\).</p>
 <p><b>(b)</b> \(g(3)=\ln(5\cdot3-10)=\ln5\approx1{,}609\). &nbsp; \(g(2)=\ln(10-10)=\ln0\) → <b>no existe</b> (el 2 está fuera del dominio). &nbsp; \(g(0)=\ln(-10)\) → <b>no existe</b> (argumento negativo).</p>
