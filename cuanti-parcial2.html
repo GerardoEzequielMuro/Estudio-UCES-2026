@@ -160,6 +160,12 @@ a{color:var(--brand-deep)}
 .callout.key{background:var(--blue-soft);border-left:4px solid var(--blue)}
 .callout.key .tt{color:var(--blue)}
 
+/* nota compacta de calculadora dentro de la teoría */
+.calc{display:flex;gap:9px;align-items:flex-start;background:var(--paper);border:1px dashed var(--line-strong);
+  border-left:3px solid var(--brand);border-radius:0 9px 9px 0;padding:9px 13px;margin:12px 0;font-size:.9rem;line-height:1.55}
+.calc::before{content:"🧮";font-size:1.05rem;flex:none;line-height:1.4}
+.calc b{color:var(--brand-deep)}
+
 /* ejemplo resuelto */
 .ej{background:var(--paper);border:1px solid var(--line-strong);border-radius:var(--radius);margin:18px 0;overflow:hidden;box-shadow:var(--shadow)}
 .ej>.ej-h{background:linear-gradient(135deg,var(--brand-soft),var(--paper-2));padding:11px 18px;font-weight:700;color:var(--ink);
@@ -369,6 +375,7 @@ a{color:var(--brand-deep)}
 <p>Muestra directo dónde la recta <b>corta a los ejes</b>: \(a\) = abscisa al origen (corte con el eje \(x\), punto \((a;\,0)\)) &nbsp;·&nbsp; \(b\) = ordenada al origen (corte con el eje \(y\), punto \((0;\,b)\)).</p>
 </div>
 <div class="callout tip"><span class="tt">Cómo pasar de una a otra</span><b>General → explícita:</b> despejás \(y\). &nbsp; <b>Explícita → segmentaria:</b> pasás los términos con \(x\) e \(y\) a la izquierda igualados a un número y dividís todo para que el lado derecho quede \(=1\). Las tres describen exactamente la misma recta.</div>
+<div class="calc"><div><b>En la calculadora:</b> la pendiente de la forma general es \(m=-\dfrac{A}{B}\); calculala en la Casio y con la tecla <b>FORMAT</b> la ves como <b>fracción exacta</b> (ej. \(\tfrac34\) en lugar de \(0{,}75\)). Para chequear que un punto cae en la recta, cargá \(y=mx+b\) en la app <span class="kbd">HOME → Table</span>.</div></div>
 
 <h3>Las dos condiciones que tenés que saber sí o sí</h3>
 <div class="fig-row">
@@ -513,6 +520,7 @@ a{color:var(--brand-deep)}
   </figure>
 </div>
 <div class="callout key"><span class="tt">Atajo de clasificación</span>Despejá las dos rectas en forma \(y=mx+b\) y comparalas: <b>distinta pendiente</b> → determinado (1 solución). <b>Misma pendiente y misma ordenada</b> → indeterminado (infinitas). <b>Misma pendiente, distinta ordenada</b> → incompatible (ninguna).</div>
+<div class="calc"><div><b>En la calculadora:</b> para hallar el punto de cruce directo, llevá cada ecuación a la forma \(aX+bY=c\) y usá <span class="kbd">HOME → Equation → Simultaneous → 2 incógnitas</span> (cargás \(a,b,c\) de cada fila). <b>Para clasificar</b> igual conviene comparar las pendientes a mano: si la calc dice "sin solución" es incompatible, y si da "infinitas" es indeterminado.</div></div>
 
 <h3>Método 1 · Sustitución</h3>
 <p><b>Conviene</b> cuando alguna incógnita tiene coeficiente 1 (es fácil de despejar).</p>
@@ -642,6 +650,7 @@ a{color:var(--brand-deep)}
 \[ x=\dfrac{-b\pm\sqrt{\,b^{2}-4ac\,}}{2a} \]
 <p style="margin:8px 0 0">El \(\pm\) te da las dos soluciones: una con \(+\) (\(x_1\)) y otra con \(-\) (\(x_2\)).</p>
 </div>
+<div class="calc"><div><b>En la calculadora:</b> estas dos raíces salen directo con <span class="kbd">HOME → Equation → Polynomial → grado 2</span> cargando \(a,b,c\). Si te las muestra como complejas (con \(i\)), significa que \(\Delta<0\): <b>no hay raíces reales</b>. Usala para <b>verificar</b>, pero escribí la resolvente a mano (el profe corrige el procedimiento).</div></div>
 
 <h3>El discriminante: te dice cuántas soluciones hay <i>antes</i> de terminar</h3>
 <p>Lo de adentro de la raíz se llama <b>discriminante</b>:</p>
@@ -769,6 +778,7 @@ a{color:var(--brand-deep)}
 \[ x_v=-\frac{b}{2a} \qquad y_v=f(x_v) \]
 <p style="margin:6px 0 0">Primero calculás \(x_v\) con la fórmula. Después \(y_v\) reemplazando ese \(x_v\) en la función. <b>Si hay raíces, \(x_v\) también es el promedio:</b> \(x_v=\dfrac{x_1+x_2}{2}\).</p>
 </div>
+<div class="calc"><div><b>En la calculadora:</b> tecleá \(x_v=-b\div(2a)\) y después evaluá \(f(x_v)\) para el \(y_v\). Para <b>ver el máximo/mínimo</b> sin errar el signo, usá la app <span class="kbd">HOME → Table</span>: cargás la función, definís Start / End / Step y buscás en la tabla dónde deja de crecer y empieza a bajar (o al revés). Clave en problemas de <b>maximizar ingreso o utilidad</b>.</div></div>
 <div class="box formula">
 <h4>5) Eje de simetría</h4>
 \[ x=-\frac{b}{2a} \]
@@ -1096,6 +1106,7 @@ a{color:var(--brand-deep)}
 
 <h3>Cómo resolver ecuaciones exponenciales</h3>
 <div class="box"><b>Truco principal:</b> escribí los dos lados como potencias de la <b>misma base</b>. Si las bases son iguales, los exponentes son iguales.<div class="mq">\[ a^{\,m}=a^{\,n}\;\Longrightarrow\; m=n \]</div></div>
+<div class="calc"><div><b>En la calculadora:</b> cuando <b>no</b> se pueden igualar las bases (ej. \(1{,}06^{\,t}=2\)), no te trabes despejando: <span class="kbd">HOME → Equation → Solver</span>, escribís la ecuación con la \(x\) (tecla VARIABLE), estimación inicial \(1\) y te despeja el exponente. Las potencias e interés compuesto, con la tecla \(x^\square\); el número \(e\) y \(e^x\) en el teclado / CATALOG.</div></div>
 <div class="ej">
   <div class="ej-h">Ecuación exponencial (igualando bases)</div>
   <div class="ej-b">
@@ -1179,6 +1190,7 @@ a{color:var(--brand-deep)}
 <h4>Cambio de base (para usar la calculadora)</h4>
 \[ \log_a b=\frac{\log_c b}{\log_c a}\quad\text{(con \(\log\) o \(\ln\))} \]
 </div>
+<div class="calc"><div><b>En la calculadora:</b> tu Casio hace el log en <b>cualquier base</b> directo con <span class="kbd">CATALOG → log□(□)</span> (no te quedes solo con \(\log\) base 10 y \(\ln\) del teclado). Si tu modelo no lo tiene, usás esta fórmula de cambio de base con \(\log\) o \(\ln\). Para resolver una ecuación logarítmica, también sirve <span class="kbd">HOME → Equation → Solver</span>.</div></div>
 
 <div class="ej">
   <div class="ej-h">Logaritmos por definición (apunte U5)</div>
