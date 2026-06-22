@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3 Modelos de Parcial · 2do Parcial · Instrumentos Cuantitativos</title>
+<meta name="description" content="Tres modelos de parcial resueltos para el 2do parcial de Instrumentos Cuantitativos UCES: el parcial real 2025 y dos simulacros originales con soluciones paso a paso (equilibrio/maximización, verificación de utilidad, exponenciales y logaritmos).">
+
+<!-- KaTeX para fórmulas legibles -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  /* ===== PAPEL BEIGE (hoja real) ===== */
+  --bg:#e8ddc7;
+  --paper:#f7f0df;            /* hoja crema */
+  --paper-2:#f1e8d2;          /* hoja un tono más */
+  --ink:#3a2f1e;             /* tinta marrón oscuro */
+  --text:#4a3f2c;
+  --muted:#7d6f56;
+  --line:#e0d2b4;
+  --line-strong:#cdb98f;
+  --rule:#dfcfa8;            /* renglón de cuaderno */
+  --brand:#9a6a2f;           /* marrón dorado (lápiz) */
+  --brand-deep:#7a521f;
+  --brand-soft:#efe2c5;
+  --blue:#2f5d8a;            /* lapicera azul */
+  --blue-soft:#dde6f0;
+  --green:#3e7d4f;
+  --green-soft:#dceadb;
+  --red:#b1442f;            /* corrección en rojo */
+  --red-soft:#f4ddd4;
+  --gold:#b08010;
+  --gold-soft:#f6ead0;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --shadow:0 1px 2px rgba(58,47,30,.06),0 12px 30px -16px rgba(58,47,30,.28);
+  --radius:13px;
+}
+[data-theme="dark"]{
+  --bg:#16120c;
+  --paper:#221c12;
+  --paper-2:#2a2317;
+  --ink:#f1e7d2;
+  --text:#ddd0b4;
+  --muted:#a8987a;
+  --line:#3a3120;
+  --line-strong:#4d4129;
+  --rule:#332b1c;
+  --brand:#d6a85c;
+  --brand-deep:#e7c187;
+  --brand-soft:#332810;
+  --blue:#7fa8d4;
+  --blue-soft:#1a2535;
+  --green:#7cc08c;
+  --green-soft:#15281a;
+  --red:#e58a72;
+  --red-soft:#33180f;
+  --gold:#e0b54a;
+  --gold-soft:#2c2410;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 14px 34px -16px rgba(0,0,0,.7);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#16120c;--paper:#221c12;--paper-2:#2a2317;--ink:#f1e7d2;--text:#ddd0b4;--muted:#a8987a;
+    --line:#3a3120;--line-strong:#4d4129;--rule:#332b1c;--brand:#d6a85c;--brand-deep:#e7c187;--brand-soft:#332810;
+    --blue:#7fa8d4;--blue-soft:#1a2535;--green:#7cc08c;--green-soft:#15281a;--red:#e58a72;--red-soft:#33180f;
+    --gold:#e0b54a;--gold-soft:#2c2410;--shadow:0 1px 2px rgba(0,0,0,.4),0 14px 34px -16px rgba(0,0,0,.7);
+  }
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.72;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:var(--gold-soft);color:var(--brand-deep)}
+
+/* ===== HOJA ===== */
+.wrap{max-width:880px;margin:0 auto;min-height:100vh;background:var(--paper);
+  padding:0 clamp(18px,5vw,60px) 90px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+/* textura de renglones tenue */
+.wrap::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:repeating-linear-gradient(transparent,transparent 31px,var(--rule) 31px,var(--rule) 32px);
+  opacity:.35;-webkit-mask:linear-gradient(180deg,transparent 0,#000 120px);mask:linear-gradient(180deg,transparent 0,#000 120px)}
+.wrap>*{position:relative;z-index:1}
+
+.theme-btn{position:fixed;top:14px;right:14px;z-index:50;background:var(--paper);border:1px solid var(--line-strong);
+  border-radius:11px;width:42px;height:42px;font-size:1.1rem;cursor:pointer;color:var(--ink);
+  box-shadow:var(--shadow);transition:background .15s,transform .15s}
+.theme-btn:hover{background:var(--brand-soft);transform:rotate(-12deg)}
+
+/* ===== HEADER ===== */
+.site-head{position:relative;text-align:center;padding:52px 0 26px;border-bottom:2px solid var(--line-strong);margin-bottom:10px}
+.kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brand);font-weight:700;margin-bottom:13px}
+header h1{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,5.5vw,3rem);line-height:1.03;letter-spacing:-.025em;color:var(--ink);margin-bottom:12px}
+header .sub{color:var(--muted);font-size:1.02rem;max-width:60ch;margin:0 auto}
+.crumb{display:inline-flex;gap:8px;align-items:center;font-size:.82rem;color:var(--muted);margin-bottom:18px}
+.crumb a{color:var(--brand-deep);text-decoration:none;font-weight:600}
+.crumb a:hover{text-decoration:underline}
+
+.meta-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin-top:18px;font-size:.85rem;color:var(--muted)}
+.meta-row b{color:var(--ink)}
+.meta-row span{background:var(--paper-2);border:1px solid var(--line);border-radius:8px;padding:5px 11px}
+
+/* ===== NAV ===== */
+.toc{position:sticky;top:0;z-index:30;margin:14px -8px 0;padding:10px 8px;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(6px);border-bottom:1px solid var(--line);display:flex;gap:7px;overflow-x:auto;scrollbar-width:thin}
+.toc a{flex:none;font-size:.8rem;font-weight:600;color:var(--text);text-decoration:none;padding:7px 13px;border:1px solid var(--line);
+  border-radius:999px;background:var(--paper-2);white-space:nowrap;transition:.15s}
+.toc a:hover{border-color:var(--brand);color:var(--brand-deep);background:var(--brand-soft)}
+
+/* ===== TÍTULOS ===== */
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.5rem,3.4vw,2rem);letter-spacing:-.02em;color:var(--ink);
+  margin:60px 0 6px;scroll-margin-top:64px;display:flex;align-items:baseline;gap:13px}
+h2 .num{flex:none;font-family:var(--mono);font-size:1rem;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-deep));
+  width:34px;height:34px;border-radius:9px;display:grid;place-items:center;align-self:center}
+.sec-rule{height:2px;background:linear-gradient(90deg,var(--brand) 0,var(--line-strong) 40%,transparent);margin:6px 0 22px;border-radius:2px}
+h3{font-family:var(--serif);font-weight:600;font-size:1.28rem;color:var(--ink);margin:30px 0 10px}
+h4{font-size:1rem;font-weight:700;color:var(--ink);margin:18px 0 7px;font-family:var(--sans)}
+p{margin:10px 0}
+b,strong{color:var(--ink)}
+a{color:var(--brand-deep)}
+
+/* ===== BLOQUES ===== */
+.lead{font-size:1.05rem;color:var(--text);background:var(--paper-2);border-left:4px solid var(--brand);
+  border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.idea{font-family:var(--serif);font-size:1.12rem;font-style:italic;color:var(--ink);
+  background:var(--gold-soft);border:1px dashed var(--line-strong);border-radius:12px;padding:16px 20px;margin:16px 0;line-height:1.6}
+.idea::before{content:"💡 La idea en una frase";display:block;font-family:var(--mono);font-style:normal;font-size:.7rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:700;margin-bottom:7px}
+
+.kbd{font-family:var(--mono);font-size:.82em;background:var(--ink);color:var(--paper);border-radius:6px;padding:2px 8px;
+  box-shadow:0 2px 0 var(--line-strong);white-space:nowrap;display:inline-block;line-height:1.5;margin:1px 0}
+.box{background:var(--paper-2);border:1px solid var(--line-strong);border-radius:var(--radius);padding:16px 20px;margin:16px 0;box-shadow:var(--shadow)}
+.box.formula{border-left:4px solid var(--blue);background:var(--paper)}
+.box h4{margin-top:0}
+
+.callout{border-radius:0 12px 12px 0;padding:13px 17px;margin:14px 0;font-size:.95rem;border:1px solid var(--line);box-shadow:var(--shadow)}
+.callout .tt{display:block;font-weight:700;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;font-family:var(--mono)}
+.callout.tip{background:var(--green-soft);border-left:4px solid var(--green)}
+.callout.tip .tt{color:var(--green)}
+.callout.warn{background:var(--red-soft);border-left:4px solid var(--red)}
+.callout.warn .tt{color:var(--red)}
+.callout.key{background:var(--blue-soft);border-left:4px solid var(--blue)}
+.callout.key .tt{color:var(--blue)}
+
+/* math display centrado */
+.mq{overflow-x:auto;overflow-y:hidden;padding:6px 0}
+.katex{font-size:1.06em}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden;padding:4px 2px}
+
+/* práctica con solución */
+.pr{background:var(--paper-2);border:1px solid var(--line-strong);border-radius:12px;margin:11px 0;overflow:hidden;box-shadow:var(--shadow)}
+.pr summary{padding:13px 17px;cursor:pointer;font-weight:600;color:var(--ink);list-style:none}
+.pr summary::-webkit-details-marker{display:none}
+.pr summary::before{content:"?";display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;
+  font-family:var(--mono);font-weight:700;font-size:.8rem;margin-right:10px;vertical-align:-7px}
+.pr[open] summary::before{content:"✓";background:var(--green)}
+.pr .sol{padding:2px 18px 16px 50px;border-top:1px dashed var(--line);font-size:.95rem}
+.pr .sol::before{content:"Solución";display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--green);font-weight:700;margin:10px 0 6px}
+.pts{font-family:var(--mono);font-size:.72rem;font-weight:700;color:#fff;background:var(--blue);border-radius:6px;padding:1px 7px;margin-right:7px;vertical-align:1px}
+
+.back{display:inline-block;margin-top:46px;color:var(--brand-deep);text-decoration:none;font-weight:600;font-size:.95rem}
+.back:hover{text-decoration:underline}
+.foot{text-align:center;color:var(--muted);font-size:.84rem;margin-top:30px;padding-top:22px;border-top:1px solid var(--line-strong)}
+
+@media (max-width:560px){
+  .pr .sol{padding-left:30px}
+}
+</style>
+</head>
+<body>
+<button class="theme-btn" onclick="toggleTheme()" id="themeBtn" aria-label="Cambiar tema">🌙</button>
+<div class="wrap">
+
+<header class="site-head">
+  <div class="crumb"><a href="index.html">Plan de estudio</a> › <a href="cuanti.html">Instrumentos Cuantitativos</a> › <a href="cuanti-parcial2.html">Guía 2do parcial</a> › <span>3 modelos de parcial</span></div>
+  <div class="kicker">Simulacro · 3 parciales completos</div>
+  <h1>3 modelos de parcial resueltos</h1>
+  <p class="sub">El parcial real 2025 más dos simulacros originales con la misma estructura: equilibrio y maximización, verificación de utilidad, función exponencial y función logarítmica. Todo resuelto paso a paso.</p>
+  <div class="meta-row">
+    <span><b>Modelo 1:</b> parcial real 23/06/2025</span>
+    <span><b>Modelos 2 y 3:</b> simulacros nuevos</span>
+    <span><b>Cada uno:</b> 4 ejercicios · 100 puntos</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#como">📌 Cómo usarlos</a>
+  <a href="#modelo1">📄 Modelo 1 (real 2025)</a>
+  <a href="#modelo2">📝 Modelo 2</a>
+  <a href="#modelo3">📝 Modelo 3</a>
+  <a href="cuanti-parcial2.html">← Volver a la guía</a>
+</nav>
+
+<h2 id="como"><span class="num">📌</span> Cómo usar estos 3 modelos</h2>
+<div class="sec-rule"></div>
+<div class="idea">Un parcial no se "lee", se <b>hace</b>. Sentate con la calculadora y el reloj, resolvé un modelo entero sin mirar, y recién después abrí cada solución para corregirte. Los 3 modelos repiten la estructura del parcial real, así que si dominás estos, el día del examen ya lo viste.</div>
+
+<div class="callout key"><span class="tt">La estructura que se repite (parcial 2024 y 2025)</span>Siempre caen los mismos 4 tipos: <b>(1)</b> equilibrio de mercado o <b>maximizar utilidad</b> (cuadrática), <b>(2)</b> un problema con <b>verificación</b> (hallar el precio para una utilidad dada y comprobarla), <b>(3)</b> <b>función exponencial</b> (crece/decrece, dominio e imagen, evaluar, graficar), <b>(4)</b> <b>función logarítmica</b> (dominio, evaluar, hallar un \(x\)). Cambian los números y el contexto, no el esqueleto.</div>
+
+<div class="callout warn"><span class="tt">Antes de entregar (puntos regalados)</span><b>1.</b> ¿Pusiste unidades ($, miles de unidades, años)? &nbsp; <b>2.</b> ¿Respondiste lo que piden? A veces piden el <b>precio</b> \(p\), no la cantidad. &nbsp; <b>3.</b> ¿Verificaste reemplazando? &nbsp; <b>4.</b> En máximos, el precio sale de reemplazar \(x_v\) (o \(p_v\)) en la relación, no es el vértice mismo si la incógnita es la otra variable.</div>
+
+<div class="callout tip"><span class="tt">🧮 La calculadora es tu segunda opinión</span>Usá la Casio para <b>verificar</b>, no para reemplazar el procedimiento (el profe corrige los pasos). Sistemas: <span class="kbd">Equation → Simultaneous</span>. Raíces de cuadráticas: <span class="kbd">Equation → Polynomial → grado 2</span>. Despejar de exponenciales o logaritmos: <span class="kbd">Equation → Solver</span>. Ver el máximo: app <span class="kbd">Table</span>. <a href="cuanti-parcial2.html#calculadora">↳ guía completa de la Casio</a></div>
+
+<!-- ============================== MODELO 1 (REAL 2025) ============================== -->
+<h2 id="modelo1"><span class="num">📄</span> Modelo 1 · Parcial real 23/06/2025</h2>
+<div class="sec-rule"></div>
+<div class="callout key"><span class="tt">Esto es el parcial de verdad</span>Es el <b>Segundo Examen Parcial del 23/06/2025</b> (el del año pasado, misma cátedra, mismos temas). Una alumna lo sacó <b>Distinguido (9)</b>. Fijate cómo es exactamente la estructura: probablemente el tuyo sea igual con otros números. Hacelo entero antes de mirar las soluciones.</div>
+
+<details class="pr"><summary><span class="pts">25p</span>1) <b>EcoLight</b> lanza lámparas LED recargables. El precio \(p\) (en US$) y la cantidad demandada \(q\) (en miles de unidades) cumplen \(\;12p+4q=480\). El costo de producción es \(C(q)=100+6q\). ¿Qué precio por unidad <b>maximiza la utilidad</b>?</summary>
+<div class="sol">
+<p><b>Despejo \(q\)</b> de la demanda: \(4q=480-12p \Rightarrow q=120-3p\).</p>
+<p><b>Ingreso</b> \(=p\cdot q\): \(\;I=p(120-3p)=120p-3p^2\).</p>
+<p><b>Costo en función de \(p\)</b> (reemplazo \(q\) en \(C\)): \(\;C=100+6(120-3p)=100+720-18p=820-18p\).</p>
+<p><b>Utilidad</b> \(=I-C\):</p>
+<div class="mq">\[ U(p)=120p-3p^2-(820-18p)=-3p^2+138p-820 \]</div>
+<p>Es una cuadrática con \(a=-3<0\) (abre hacia abajo, tiene <b>máximo</b>). El máximo está en el vértice:</p>
+<div class="mq">\[ p_v=-\frac{b}{2a}=-\frac{138}{2(-3)}=\frac{138}{6}=23 \]</div>
+<p><b>Precio óptimo \(=\$23\) por unidad.</b> &nbsp;(Con eso: \(q=120-3\cdot23=51\) mil unidades, y la utilidad máxima es \(U(23)=\$767\).)</p>
+</div></details>
+
+<details class="pr"><summary><span class="pts">28p</span>2) Un emprendimiento de <b>miel artesanal</b>: la producción mensual \(x\) (en frascos) depende del precio \(p\) según \(\;75x=-1800+25p\). El costo por unidad es \(\$10\) y los costos fijos mensuales \(\$225\). ¿Qué precio por frasco logra una utilidad de \(\$500\)? <b>Verificá</b> que efectivamente se logra.</summary>
+<div class="sol">
+<p><b>Despejo \(x\):</b> \(\;x=\dfrac{-1800+25p}{75}=\dfrac{p}{3}-24\).</p>
+<p><b>Ingreso:</b> \(\;I=p\cdot x=p\left(\tfrac{p}{3}-24\right)=\tfrac{p^2}{3}-24p\).</p>
+<p><b>Costo</b> (variable + fijo): \(\;C=10x+225=10\left(\tfrac{p}{3}-24\right)+225=\tfrac{10p}{3}-15\).</p>
+<p><b>Utilidad:</b> \(\;U=I-C=\tfrac{p^2}{3}-24p-\left(\tfrac{10p}{3}-15\right)=\tfrac{p^2}{3}-\tfrac{82}{3}p+15\).</p>
+<p><b>Igualo a 500</b> y multiplico todo por 3:</p>
+<div class="mq">\[ \tfrac{p^2}{3}-\tfrac{82}{3}p+15=500 \;\Rightarrow\; p^2-82p+45=1500 \;\Rightarrow\; p^2-82p-1455=0 \]</div>
+<p><b>Resolvente:</b> \(\Delta=82^2+4\cdot1455=6724+5820=12544\), y \(\sqrt{12544}=112\).</p>
+<div class="mq">\[ p=\frac{82\pm112}{2} \;\Rightarrow\; p_1=97,\quad p_2=-15 \]</div>
+<p>El precio negativo no tiene sentido, así que <b>el precio es \(\$97\) por frasco</b>.</p>
+<p><b>Verificación</b> (reemplazo \(p=97\) en \(U\)): \(\;U=\tfrac{97^2}{3}-\tfrac{82}{3}\cdot97+15=\tfrac{9409-7954}{3}+15=\tfrac{1455}{3}+15=485+15=\boxed{500}\) ✓. &nbsp;(Producción: \(x=\tfrac{97}{3}-24\approx8{,}33\) frascos.)</p>
+</div></details>
+
+<details class="pr"><summary><span class="pts">25p</span>3) El <b>nivel de enfoque</b> durante la jornada laboral se modela con \(\;f(x)=1{,}5+0{,}4^{x}\), donde \(x\) son las horas continuas de trabajo. (a) ¿Crece o decrece? Justificá. (b) Dominio e imagen en contexto. (c) \(f(0),f(3),f(6)\). (d) Gráfico.</summary>
+<div class="sol">
+<p><b>(a)</b> La base es \(0{,}4\) y \(0<0{,}4<1\), entonces \(0{,}4^{x}\) es <b>decreciente</b>, así que \(f\) es <b>decreciente</b>. Interpretación: el nivel de enfoque <b>baja</b> a medida que pasan las horas sin pausas (uno se va agotando).</p>
+<p><b>(b)</b> Como \(x\) son horas de trabajo, en contexto \(\text{Dom}=[0;+\infty)\) (matemáticamente sería \(\mathbb{R}\)). Para la <b>imagen:</b> \(0{,}4^{x}>0\) siempre, así que \(f>1{,}5\); arranca en \(f(0)=2{,}5\) y baja hacia \(1{,}5\) sin tocarlo, entonces \(\text{Im}=(1{,}5\,;\,2{,}5]\). La recta \(y=1{,}5\) es <b>asíntota horizontal</b>: el enfoque nunca cae por debajo de \(1{,}5\) (es el piso).</p>
+<p><b>(c)</b> \(f(0)=1{,}5+0{,}4^{0}=1{,}5+1=2{,}5\); &nbsp; \(f(3)=1{,}5+0{,}4^{3}=1{,}5+0{,}064=1{,}564\); &nbsp; \(f(6)=1{,}5+0{,}4^{6}=1{,}5+0{,}004096\approx1{,}504\).</p>
+<p><b>(d)</b> Exponencial <b>decreciente</b> que pasa por \((0\,;\,2{,}5)\) y se acerca a la recta \(y=1{,}5\) por arriba, sin tocarla.</p>
+</div></details>
+
+<details class="pr"><summary><span class="pts">22p</span>4) Sea \(\;g(x)=\ln(5x-10)\). (a) Determiná el dominio. (b) Calculá \(g(3),g(2),g(0)\). (c) Hallá un \(x\) tal que \(g(x)\approx2\).</summary>
+<div class="sol">
+<p><b>(a)</b> El argumento del \(\ln\) debe ser \(>0\): \(\;5x-10>0 \Rightarrow x>2\). Entonces \(\text{Dom}=(2;+\infty)\).</p>
+<p><b>(b)</b> \(g(3)=\ln(5\cdot3-10)=\ln5\approx1{,}609\). &nbsp; \(g(2)=\ln(10-10)=\ln0\) → <b>no existe</b> (el 2 está fuera del dominio). &nbsp; \(g(0)=\ln(-10)\) → <b>no existe</b> (argumento negativo).</p>
+<p><b>(c)</b> Planteo \(\ln(5x-10)=2\) y uso la definición (\(\ln a=b \iff e^{b}=a\)):</p>
+<div class="mq">\[ 5x-10=e^{2}\approx7{,}389 \;\Rightarrow\; 5x\approx17{,}389 \;\Rightarrow\; x\approx3{,}48 \]</div>
+<p>Como \(3{,}48>2\), está en el dominio: <b>sí existe</b>.</p>
+</div></details>
+
+<!-- ============================== MODELO 2 ============================== -->
+<h2 id="modelo2"><span class="num">📝</span> Modelo 2 · Simulacro</h2>
+<div class="sec-rule"></div>
+<div class="callout warn"><span class="tt">Hacelo cronometrado</span>Original, mismo nivel y misma estructura que el real. Date unos 90 minutos, sin mirar las soluciones hasta terminar.</div>
+
+<details class="pr"><summary><span class="pts">25p</span>1) <b>AquaPura</b> vende agua embotellada. El precio \(p\) (en US$) y la cantidad \(q\) (en miles de unidades) cumplen \(\;8p+2q=320\). El costo es \(C(q)=80+4q\). ¿Qué precio por unidad <b>maximiza la utilidad</b>?</summary>
+<div class="sol">
+<p><b>Despejo \(q\):</b> \(\;2q=320-8p \Rightarrow q=160-4p\).</p>
+<p><b>Ingreso:</b> \(\;I=p\cdot q=p(160-4p)=160p-4p^2\).</p>
+<p><b>Costo en función de \(p\):</b> \(\;C=80+4(160-4p)=80+640-16p=720-16p\).</p>
+<p><b>Utilidad:</b></p>
+<div class="mq">\[ U(p)=160p-4p^2-(720-16p)=-4p^2+176p-720 \]</div>
+<p>Cuadrática con \(a=-4<0\) → máximo en el vértice:</p>
+<div class="mq">\[ p_v=-\frac{176}{2(-4)}=\frac{176}{8}=22 \]</div>
+<p><b>Precio óptimo \(=\$22\) por unidad.</b> &nbsp;(Entonces \(q=160-88=72\) mil unidades y \(U(22)=\$1.216\).)</p>
+</div></details>
+
+<details class="pr"><summary><span class="pts">28p</span>2) Un taller de <b>velas artesanales</b>: la producción mensual \(x\) depende del precio \(p\) según \(\;75x=-1500+25p\). El costo por unidad es \(\$10\) y los costos fijos \(\$200\). ¿Qué precio logra una utilidad de \(\$600\)? <b>Verificalo</b>.</summary>
+<div class="sol">
+<p><b>Despejo \(x\):</b> \(\;x=\dfrac{-1500+25p}{75}=\dfrac{p}{3}-20\).</p>
+<p><b>Ingreso:</b> \(\;I=p\cdot x=\tfrac{p^2}{3}-20p\).</p>
+<p><b>Costo:</b> \(\;C=10x+200=10\left(\tfrac{p}{3}-20\right)+200=\tfrac{10p}{3}+0=\tfrac{10p}{3}\) &nbsp;(porque \(-200+200=0\)).</p>
+<p><b>Utilidad:</b> \(\;U=\tfrac{p^2}{3}-20p-\tfrac{10p}{3}=\tfrac{p^2}{3}-\tfrac{70}{3}p\).</p>
+<p><b>Igualo a 600</b> y multiplico por 3:</p>
+<div class="mq">\[ \tfrac{p^2}{3}-\tfrac{70}{3}p=600 \;\Rightarrow\; p^2-70p=1800 \;\Rightarrow\; p^2-70p-1800=0 \]</div>
+<p><b>Resolvente:</b> \(\Delta=70^2+4\cdot1800=4900+7200=12100\), \(\sqrt{12100}=110\).</p>
+<div class="mq">\[ p=\frac{70\pm110}{2} \;\Rightarrow\; p_1=90,\quad p_2=-20 \]</div>
+<p>Descarto el negativo: <b>el precio es \(\$90\)</b>.</p>
+<p><b>Verificación:</b> \(x=\tfrac{90}{3}-20=10\) velas. \(I=90\cdot10=900\); \(C=10\cdot10+200=300\); \(U=900-300=\boxed{600}\) ✓.</p>
+</div></details>
+
+<details class="pr"><summary><span class="pts">25p</span>3) El número de <b>seguidores</b> (en miles) de una cuenta crece según \(\;f(x)=1+2^{x}\), con \(x\) en semanas. (a) ¿Crece o decrece? Justificá. (b) Dominio e imagen en contexto. (c) \(f(0),f(2),f(4)\). (d) Gráfico.</summary>
+<div class="sol">
+<p><b>(a)</b> La base es \(2\) y \(2>1\), entonces \(2^{x}\) es <b>creciente</b> → \(f\) es <b>creciente</b>. Los seguidores aumentan cada vez más rápido con las semanas.</p>
+<p><b>(b)</b> En contexto \(\text{Dom}=[0;+\infty)\) (las semanas no son negativas). <b>Imagen:</b> \(2^{x}>0\) → \(f>1\); arranca en \(f(0)=2\) y crece sin tope, así que \(\text{Im}=[2;+\infty)\). La recta \(y=1\) es la <b>asíntota horizontal</b> (relevante hacia la izquierda, \(x\to-\infty\)).</p>
+<p><b>(c)</b> \(f(0)=1+2^{0}=1+1=2\); &nbsp; \(f(2)=1+2^{2}=1+4=5\); &nbsp; \(f(4)=1+2^{4}=1+16=17\).</p>
+<p><b>(d)</b> Exponencial <b>creciente</b> que pasa por \((0\,;\,2)\) y sube cada vez más empinada; la recta \(y=1\) es asíntota por la izquierda.</p>
+</div></details>
+
+<details class="pr"><summary><span class="pts">22p</span>4) Sea \(\;g(x)=\log(2x-8)\) (logaritmo en base 10). (a) Dominio. (b) \(g(9),g(5),g(4)\). (c) Hallá \(x\) tal que \(g(x)=2\).</summary>
+<div class="sol">
+<p><b>(a)</b> \(\;2x-8>0 \Rightarrow x>4\). Entonces \(\text{Dom}=(4;+\infty)\).</p>
+<p><b>(b)</b> \(g(9)=\log(18-8)=\log10=1\). &nbsp; \(g(5)=\log(10-8)=\log2\approx0{,}301\). &nbsp; \(g(4)=\log0\) → <b>no existe</b> (el 4 no está en el dominio).</p>
+<p><b>(c)</b> \(\log(2x-8)=2\) significa (base 10) \(\;2x-8=10^{2}=100\):</p>
+<div class="mq">\[ 2x=108 \;\Rightarrow\; x=54 \]</div>
+<p>Como \(54>4\), está en el dominio: <b>sí existe</b>.</p>
+</div></details>
+
+<!-- ============================== MODELO 3 ============================== -->
+<h2 id="modelo3"><span class="num">📝</span> Modelo 3 · Simulacro</h2>
+<div class="sec-rule"></div>
+<div class="callout warn"><span class="tt">El último antes del parcial</span>Si sacás este entero sin trabarte, llegás listo. Cronómetro, calculadora y a fondo.</div>
+
+<details class="pr"><summary><span class="pts">25p</span>1) <b>TechNova</b> vende auriculares inalámbricos. El precio \(p\) (en US$) y la cantidad \(q\) (en miles de unidades) cumplen \(\;10p+5q=600\). El costo es \(C(q)=100+8q\). ¿Qué precio <b>maximiza la utilidad</b>?</summary>
+<div class="sol">
+<p><b>Despejo \(q\):</b> \(\;5q=600-10p \Rightarrow q=120-2p\).</p>
+<p><b>Ingreso:</b> \(\;I=p\cdot q=p(120-2p)=120p-2p^2\).</p>
+<p><b>Costo en función de \(p\):</b> \(\;C=100+8(120-2p)=100+960-16p=1060-16p\).</p>
+<p><b>Utilidad:</b></p>
+<div class="mq">\[ U(p)=120p-2p^2-(1060-16p)=-2p^2+136p-1060 \]</div>
+<p>Cuadrática con \(a=-2<0\) → máximo en el vértice:</p>
+<div class="mq">\[ p_v=-\frac{136}{2(-2)}=\frac{136}{4}=34 \]</div>
+<p><b>Precio óptimo \(=\$34\) por unidad.</b> &nbsp;(Entonces \(q=120-68=52\) mil unidades y \(U(34)=\$1.252\).)</p>
+</div></details>
+
+<details class="pr"><summary><span class="pts">28p</span>2) Una cooperativa de <b>jabones artesanales</b>: la producción mensual \(x\) depende del precio \(p\) según \(\;60x=-1200+30p\). El costo por unidad es \(\$10\) y los costos fijos \(\$150\). ¿Qué precio logra una utilidad de \(\$350\)? <b>Verificalo</b>.</summary>
+<div class="sol">
+<p><b>Despejo \(x\):</b> \(\;x=\dfrac{-1200+30p}{60}=\dfrac{p}{2}-20\).</p>
+<p><b>Ingreso:</b> \(\;I=p\cdot x=\tfrac{p^2}{2}-20p\).</p>
+<p><b>Costo:</b> \(\;C=10x+150=10\left(\tfrac{p}{2}-20\right)+150=5p-200+150=5p-50\).</p>
+<p><b>Utilidad:</b> \(\;U=\tfrac{p^2}{2}-20p-(5p-50)=\tfrac{p^2}{2}-25p+50\).</p>
+<p><b>Igualo a 350</b> y multiplico por 2:</p>
+<div class="mq">\[ \tfrac{p^2}{2}-25p+50=350 \;\Rightarrow\; p^2-50p+100=700 \;\Rightarrow\; p^2-50p-600=0 \]</div>
+<p><b>Resolvente:</b> \(\Delta=50^2+4\cdot600=2500+2400=4900\), \(\sqrt{4900}=70\).</p>
+<div class="mq">\[ p=\frac{50\pm70}{2} \;\Rightarrow\; p_1=60,\quad p_2=-10 \]</div>
+<p>Descarto el negativo: <b>el precio es \(\$60\)</b>.</p>
+<p><b>Verificación:</b> \(x=\tfrac{60}{2}-20=10\) jabones. \(I=60\cdot10=600\); \(C=10\cdot10+150=250\); \(U=600-250=\boxed{350}\) ✓.</p>
+</div></details>
+
+<details class="pr"><summary><span class="pts">25p</span>3) El <b>nivel de carga</b> de una batería se modela con \(\;f(x)=1{,}2+0{,}5^{x}\), con \(x\) en horas de uso. (a) ¿Crece o decrece? Justificá. (b) Dominio e imagen en contexto. (c) \(f(0),f(2),f(4)\). (d) Gráfico.</summary>
+<div class="sol">
+<p><b>(a)</b> La base es \(0{,}5\) y \(0<0{,}5<1\), entonces \(0{,}5^{x}\) es <b>decreciente</b> → \(f\) es <b>decreciente</b>. La carga baja con las horas de uso.</p>
+<p><b>(b)</b> En contexto \(\text{Dom}=[0;+\infty)\). <b>Imagen:</b> \(0{,}5^{x}>0\) → \(f>1{,}2\); arranca en \(f(0)=2{,}2\) y baja hacia \(1{,}2\), así que \(\text{Im}=(1{,}2\,;\,2{,}2]\). La recta \(y=1{,}2\) es <b>asíntota horizontal</b> (la carga no baja de ese piso).</p>
+<p><b>(c)</b> \(f(0)=1{,}2+0{,}5^{0}=1{,}2+1=2{,}2\); &nbsp; \(f(2)=1{,}2+0{,}5^{2}=1{,}2+0{,}25=1{,}45\); &nbsp; \(f(4)=1{,}2+0{,}5^{4}=1{,}2+0{,}0625=1{,}2625\).</p>
+<p><b>(d)</b> Exponencial <b>decreciente</b> que pasa por \((0\,;\,2{,}2)\) y se acerca a la recta \(y=1{,}2\) por arriba.</p>
+</div></details>
+
+<details class="pr"><summary><span class="pts">22p</span>4) Sea \(\;g(x)=\ln(2x-4)\). (a) Dominio. (b) \(g(3),g(2),g(0)\). (c) Hallá \(x\) tal que \(g(x)\approx1{,}5\).</summary>
+<div class="sol">
+<p><b>(a)</b> \(\;2x-4>0 \Rightarrow x>2\). Entonces \(\text{Dom}=(2;+\infty)\).</p>
+<p><b>(b)</b> \(g(3)=\ln(6-4)=\ln2\approx0{,}693\). &nbsp; \(g(2)=\ln0\) → <b>no existe</b>. &nbsp; \(g(0)=\ln(-4)\) → <b>no existe</b> (argumento negativo).</p>
+<p><b>(c)</b> \(\ln(2x-4)=1{,}5\) significa \(\;2x-4=e^{1{,}5}\approx4{,}482\):</p>
+<div class="mq">\[ 2x\approx8{,}482 \;\Rightarrow\; x\approx4{,}24 \]</div>
+<p>Como \(4{,}24>2\), está en el dominio: <b>sí existe</b>.</p>
+</div></details>
+
+<div class="callout tip" style="margin-top:24px"><span class="tt">Si dominás estos 3, dominás el parcial</span>Los tres modelos repiten el mismo esqueleto del examen real. Si te trabaste en algún tipo de ejercicio, volvé al tema correspondiente en la <a href="cuanti-parcial2.html">guía</a> y repasalo antes de seguir. El día del parcial, leé bien <b>qué</b> te piden y <b>verificá</b> siempre.</div>
+
+<a class="back" href="cuanti-parcial2.html">← Volver a la guía del 2do parcial</a>
+
+<p class="foot">Modelo 1 transcripto del Segundo Examen Parcial UCES 23/06/2025 · Modelos 2 y 3 originales, misma estructura y nivel · Instrumentos Cuantitativos · Prof. Salaj.<br>Fórmulas renderizadas con KaTeX. ¡Éxitos! 💪</p>
+
+</div>
+
+<script>
+function toggleTheme(){
+  const cur = document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  localStorage.setItem('theme', next);
+  document.getElementById('themeBtn').textContent = next === 'dark' ? '☀️' : '🌙';
+}
+const saved = localStorage.getItem('theme');
+if(saved){ document.documentElement.dataset.theme = saved; document.getElementById('themeBtn').textContent = saved === 'dark' ? '☀️' : '🌙'; }
+
+// render KaTeX
+document.addEventListener("DOMContentLoaded", function(){
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "\\[", right: "\\]", display: true},
+      {left: "\\(", right: "\\)", display: false}
+    ],
+    throwOnError: false
+  });
+});
+</script>
+</body>
+</html>
