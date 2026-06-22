@@ -846,6 +846,20 @@ a{color:var(--brand-deep)}
 </div>
 <div class="callout key"><span class="tt">Traslaciones (¡cuidado dónde está el número!)</span>\(f(x)=a^{x}+b\) → mueve la gráfica \(b\) <b>hacia arriba/abajo</b> (cambia la asíntota y la imagen). &nbsp; \(f(x)=a^{x+b}\) → mueve \(b\) <b>hacia los costados</b>. En \(2^x+1\) la imagen pasa a ser \((1;+\infty)\).</div>
 
+<h3>La asíntota horizontal, en detalle</h3>
+<div class="box">
+<p style="margin-top:0">La <b>asíntota</b> es una recta a la que la curva se <b>acerca infinitamente sin tocarla nunca</b>. En la exponencial es una recta <b>horizontal</b>: del lado donde la función "se aplasta", la gráfica corre cada vez más pegada a ella, pero jamás la cruza.</p>
+<h4>¿Dónde está?</h4>
+<ul style="margin:6px 0 0;padding-left:20px">
+<li>En la exponencial <b>base</b> \(f(x)=a^{x}\): la asíntota es el <b>eje \(x\)</b>, o sea la recta \(\;y=0\).</li>
+<li>Con <b>traslación vertical</b> \(f(x)=a^{x}+b\): la asíntota <b>sube o baja junto con la curva</b> y pasa a ser \(\;y=b\). Ej.: en \(2^{x}+1\) → asíntota \(y=1\); en \(0{,}2^{x}-1\) → asíntota \(y=-1\).</li>
+<li>La traslación horizontal \(a^{x+b}\) <b>no</b> cambia la asíntota (sigue siendo \(y=0\)): solo corre la gráfica a los costados.</li>
+</ul>
+<h4 style="margin-top:14px">El truco que une todo</h4>
+<p style="margin:4px 0 0">La asíntota te da <b>gratis la imagen</b>: la exponencial siempre queda de <b>un solo lado</b> de ella. Como \(a^{x}>0\), entonces \(a^{x}+b>b\) → \(\text{Im}=(b;+\infty)\). Por eso el mismo número \(b\) que mueve la asíntota es el que aparece como extremo de la imagen.</p>
+</div>
+<div class="callout key"><span class="tt">¿Por qué nunca la toca?</span>Tocar la asíntota \(y=b\) significaría \(a^{x}+b=b\), o sea \(a^{x}=0\). Pero una potencia de base positiva <b>nunca da 0</b> (se hace cada vez más chica, pero siempre positiva). Por eso la curva se le pega "en el infinito" sin cruzarla, y el extremo de la imagen va con <b>paréntesis</b> (abierto, \(b\) no se alcanza), nunca con corchete.</div>
+
 <h3>Cómo resolver ecuaciones exponenciales</h3>
 <div class="box"><b>Truco principal:</b> escribí los dos lados como potencias de la <b>misma base</b>. Si las bases son iguales, los exponentes son iguales.<div class="mq">\[ a^{\,m}=a^{\,n}\;\Longrightarrow\; m=n \]</div></div>
 <div class="ej">
@@ -969,6 +983,7 @@ a{color:var(--brand-deep)}
 <ul style="margin:6px 0 0;padding-left:20px">
 <li><b>Dominio:</b> \((0;+\infty)\) — ¡solo existe para \(x>0\)! No se puede el log de 0 ni de negativos.</li>
 <li><b>Imagen:</b> \(\mathbb{R}\).</li>
+<li><b>Asíntota vertical:</b> la recta \(x=0\) (el eje \(y\)). La curva se pega al eje \(y\) cuando \(x\) se acerca a \(0\) por la derecha, pero no lo toca (coherente con que el dominio es \(x>0\)). Es el <b>espejo</b> de la asíntota horizontal de la exponencial: como son inversas, lo que en una es horizontal \(y=0\), en la otra es vertical \(x=0\).</li>
 <li>Pasa por \((1;0)\) (porque \(\log_a 1=0\)) y por \((a;1)\).</li>
 <li><b>Crece</b> si \(a>1\); <b>decrece</b> si \(0&lt;a&lt;1\).</li>
 </ul>
