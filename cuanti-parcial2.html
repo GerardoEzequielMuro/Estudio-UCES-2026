@@ -611,6 +611,18 @@ a{color:var(--brand-deep)}
 <p style="margin:6px 0 0">\(a\) = coeficiente cuadrático, \(b\) = lineal, \(c\) = término independiente.</p>
 </div>
 
+<h3>Clasificación de las ecuaciones cuadráticas</h3>
+<p>Según qué coeficientes aparezcan, la ecuación es <b>completa</b> o <b>incompleta</b>. Reconocer el tipo te ahorra trabajo: las incompletas salen más rápido <b>sin</b> usar la resolvente.</p>
+<table class="tbl">
+<caption>Tipos según los coeficientes \(a\), \(b\) y \(c\) (siempre \(a\neq0\))</caption>
+<tr><th>Tipo</th><th>Forma</th><th>Cómo conviene resolverla</th></tr>
+<tr><td><b>Completa</b></td><td style="text-align:left">\(ax^2+bx+c=0\) &nbsp;<span style="color:var(--muted);font-size:.88rem">(\(b\neq0\) y \(c\neq0\))</span></td><td style="text-align:left">Con la <b>resolvente</b>.</td></tr>
+<tr><td><b>Incompleta</b><br><span style="color:var(--muted);font-size:.88rem">(sin \(c\))</span></td><td style="text-align:left">\(ax^2+bx=0\)</td><td style="text-align:left"><b>Factor común \(x\):</b> \(x(ax+b)=0\) → \(x_1=0\) y \(x_2=-\dfrac{b}{a}\).</td></tr>
+<tr><td><b>Incompleta</b><br><span style="color:var(--muted);font-size:.88rem">(sin \(b\))</span></td><td style="text-align:left">\(ax^2+c=0\)</td><td style="text-align:left"><b>Despejás \(x^2\):</b> \(x^2=-\dfrac{c}{a}\) → \(x=\pm\sqrt{-\tfrac{c}{a}}\). Si ese número da negativo, <b>no hay solución real</b>.</td></tr>
+<tr><td><b>Incompleta</b><br><span style="color:var(--muted);font-size:.88rem">(sin \(b\) ni \(c\))</span></td><td style="text-align:left">\(ax^2=0\)</td><td style="text-align:left">\(x^2=0\) → <b>\(x=0\)</b> (solución única, raíz doble).</td></tr>
+</table>
+<div class="callout tip"><span class="tt">Atajo</span>Si falta el término independiente (\(c=0\)) → sacá <b>factor común \(x\)</b> y una solución es siempre \(x=0\). Si falta el término lineal (\(b=0\)) → <b>despejá \(x^2\)</b> directo. La resolvente funciona en todos los casos, pero es la cuenta más larga.</div>
+
 <h3>La resolvente (sirve siempre)</h3>
 <div class="box formula">
 \[ x=\dfrac{-b\pm\sqrt{\,b^{2}-4ac\,}}{2a} \]
