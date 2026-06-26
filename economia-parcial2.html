@@ -276,6 +276,7 @@ table.sheet tr.hot td{background:var(--blue-soft);outline:2px solid var(--blue);
 .dlbtn .ico{font-size:1.3rem}
 .dlbtn small{display:block;font-weight:500;opacity:.92;font-size:.76rem;font-family:var(--mono)}
 
+.tbl tr.hot2 td{background:var(--blue-soft);font-weight:600;color:var(--ink)}
 </style>
 </head>
 <body>
@@ -307,6 +308,7 @@ table.sheet tr.hot td{background:var(--blue-soft);outline:2px solid var(--blue);
   <a href="#excedente">8 · Excedente del productor</a>
   <a href="#formulario">🎴 Formulario</a>
   <a href="#examen">📝 Modelo de examen</a>
+  <a href="#guia">📋 Guía resuelta</a>
 </nav>
 
 <div class="callout tip"><span class="tt">💡 Cómo está armada</span>Lo que <b>entra seguro</b> está marcado en cada tema. La <b>parte práctica es en Excel</b>: vas a encontrar <b>planillas interactivas acá mismo</b> (cambiás los números amarillos y se recalcula todo solo, con gráficos), las <b>fórmulas de Excel</b> al pie de cada una, y un <b>archivo .xlsx para descargar</b> con todo armado. Los pasos que más confunden tienen un botón azul <span class="why" style="pointer-events:none"><span style="font-family:var(--mono);font-size:.66rem;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue);border-radius:999px;padding:1px 9px">¿por qué?</span></span> — tocalo y se abre la razón.</div>
@@ -741,6 +743,149 @@ table.sheet tr.hot td{background:var(--blue-soft);outline:2px solid var(--blue);
 </div></details>
 
 <div class="callout tip" style="margin-top:24px"><span class="tt">Antes de entregar</span>Revisá: ¿pusiste <b>unidades</b> ($, unidades)? ¿en elasticidad respondiste el <b>tipo</b> y no solo el número? ¿en costos <b>marcaste y explicaste</b> el q del mínimo? ¿distinguiste <b>cantidad ofrecida</b> (movimiento) de <b>oferta</b> (desplazamiento)? Esos puntos son regalados.</div>
+
+<h2 id="guia"><span class="num">📋</span> Guía de cátedra resuelta (cálculo + interpretación)</h2>
+<div class="sec-rule"></div>
+<div class="callout warn"><span class="tt">Lo que más se pierde puntos</span>Casi todos los ejercicios de la guía piden <b>dos cosas</b>: <b>(1)</b> resolver con la fórmula y <b>(2)</b> <b>interpretar / responder con palabras</b> ("interpretá", "explicá", "¿le conviene?", "describí", "justificá"). El número solo <b>no alcanza</b>: hay que escribir qué significa. Por eso, en cada ejercicio separé <b>el cálculo</b> de la <b>✍️ respuesta teórica</b> (lo que tenés que poner en la hoja).</div>
+
+<h3>Unidad 2 · Demanda, elasticidad e ingreso</h3>
+
+<details class="pr"><summary>U2·7) Elasticidad-precio en el punto. A: P=$20, Q=50 · B: P=$10, Q=90. Calculá la elasticidad en A y en B e interpretá.</summary>
+<div class="sol">
+<p><b>Cálculo.</b> La pendiente entre los puntos es \(\frac{\Delta Q}{\Delta P}=\frac{90-50}{10-20}=-4\). Aplico \(E=\frac{\Delta Q}{\Delta P}\cdot\frac{P}{Q}\):</p>
+<p>En <b>A</b>: \(E=-4\cdot\frac{20}{50}=-1{,}6\Rightarrow |E|=1{,}6\). &nbsp; En <b>B</b>: \(E=-4\cdot\frac{10}{90}=-0{,}44\Rightarrow |E|=0{,}44\).</p>
+<div class="callout tip"><span class="tt">✍️ Respuesta teórica</span>En <b>A</b> (precio alto) la demanda es <b>elástica</b> (\(1{,}6&gt;1\)): la cantidad reacciona mucho al precio. En <b>B</b> (precio bajo) es <b>inelástica</b> (\(0{,}44&lt;1\)). Es lo típico de una demanda lineal: <b>arriba elástica, abajo inelástica</b>, y unitaria en el medio.</div>
+</div></details>
+
+<details class="pr"><summary>U2·8) Elasticidad-arco. Una pizzería vende 200 pizzas a $8.000; al subir a $10.000 vende 150. ¿Es elástica? ¿Le conviene subir el precio?</summary>
+<div class="sol">
+<p><b>Cálculo (método del arco).</b> \(\Delta\%Q=\frac{150-200}{(200+150)/2}=\frac{-50}{175}=-0{,}286\); \(\ \Delta\%P=\frac{10000-8000}{(8000+10000)/2}=\frac{2000}{9000}=0{,}222\). &nbsp; \(|E|=\left|\frac{-0{,}286}{0{,}222}\right|=1{,}29\).</p>
+<p><b>Ingreso total.</b> Antes: \(200\times8000=\$1.600.000\). Después: \(150\times10000=\$1.500.000\).</p>
+<div class="callout tip"><span class="tt">✍️ Respuesta teórica</span>La demanda es <b>elástica</b> (\(1{,}29&gt;1\)). Por eso, al subir el precio el <b>ingreso total bajó</b> ($1.600.000 → $1.500.000). <b>No le conviene subir el precio</b>: en demanda elástica, para aumentar el ingreso hay que <b>bajarlo</b>.</div>
+</div></details>
+
+<details class="pr"><summary>U2·9) Ingreso total. La demanda de cine es Q = 1000 − 50P. Calculá el IT a P=10 y P=12, la elasticidad en cada punto y explicá el efecto sobre el ingreso.</summary>
+<div class="sol">
+<p><b>Cálculo.</b> \(P=10\Rightarrow Q=500,\ IT=5000\). &nbsp; \(P=12\Rightarrow Q=400,\ IT=4800\).</p>
+<p>Elasticidad \(E=\frac{dQ}{dP}\cdot\frac{P}{Q}\) con \(\frac{dQ}{dP}=-50\): en \(P=10\): \(E=-50\cdot\frac{10}{500}=-1\) (<b>unitaria</b>); en \(P=12\): \(E=-50\cdot\frac{12}{400}=-1{,}5\) (<b>elástica</b>).</p>
+<div class="callout tip"><span class="tt">✍️ Respuesta teórica</span>En \(P=10\) la elasticidad es <b>unitaria</b> (\(|E|=1\)) → ahí el <b>ingreso total es máximo</b>. Subir el precio a 12 entra en el <b>tramo elástico</b>, y por eso el <b>IT cae</b> ($5.000 → $4.800). Conclusión: pasado el punto de IT máximo, subir el precio <b>reduce</b> el ingreso.</div>
+</div></details>
+
+<details class="pr"><summary>U2·10) Elasticidad cruzada. Sube el café de $5 a $6 y la demanda de té pasa de 300 a 330 kg. Calculá e indicá qué tipo de bienes son.</summary>
+<div class="sol">
+<p><b>Cálculo (arco).</b> \(\Delta\%Q_{té}=\frac{330-300}{315}=0{,}095\); \(\ \Delta\%P_{café}=\frac{6-5}{5{,}5}=0{,}182\). &nbsp; \(E_{xy}=\frac{0{,}095}{0{,}182}=+0{,}52\).</p>
+<div class="callout tip"><span class="tt">✍️ Respuesta teórica</span>La elasticidad cruzada es <b>positiva</b> (\(+0{,}52\)) → café y té son <b>bienes sustitutos</b>: como subió el café, la gente se pasó al té (su demanda aumentó). Si hubiese dado <b>negativa</b> serían complementarios; <b>cero</b>, independientes.</div>
+</div></details>
+
+<details class="pr"><summary>U2·11) Elasticidad-ingreso. La demanda de bebidas pasa de 800 a 1040 cuando el ingreso sube de $20.000 a $25.000. Calculá e indicá qué tipo de bien es.</summary>
+<div class="sol">
+<p><b>Cálculo.</b> \(E_I=\frac{\Delta\%Q}{\Delta\%Y}=\frac{240/800}{5000/20000}=\frac{0{,}30}{0{,}25}=1{,}2\) (con método del arco da \(\approx1{,}17\), mismo signo y mismo tipo).</p>
+<div class="callout tip"><span class="tt">✍️ Respuesta teórica</span>\(E_I=1{,}2&gt;1\) → es un <b>bien normal de lujo</b>: cuando la gente gana más, su consumo aumenta <b>más que proporcionalmente</b> que el ingreso. (Si fuera \(0&lt;E_I&lt;1\) sería normal necesario; si \(E_I&lt;0\), inferior.)</div>
+</div></details>
+
+<details class="pr"><summary>U2·12) Curva de Engel. Ingreso: 1000, 2000, 3000, 4000, 5000. Gasto en alimentos: 400, 700, 950, 1150, 1300. Graficá y decí si es bien normal o inferior.</summary>
+<div class="sol">
+<p><b>Cálculo / lectura.</b> A medida que sube el ingreso, el gasto en alimentos <b>sube</b> (400 → 1300), así que la curva de Engel tiene <b>pendiente positiva</b>. Pero la <b>proporción</b> gastada en alimentos <b>cae</b>: \(400/1000=40\%\) y \(1300/5000=26\%\).</p>
+<div class="callout tip"><span class="tt">✍️ Respuesta teórica</span>Los alimentos son un <b>bien normal</b> (a más ingreso, más consumo → Engel con pendiente positiva), pero <b>de primera necesidad</b>: como la proporción del ingreso destinada cae al subir la renta, su elasticidad-ingreso es \(0&lt;E_I&lt;1\). (Es la <b>Ley de Engel</b>.)</div>
+</div></details>
+
+<h3>Unidad 3 · Productor: oferta, producción, costos</h3>
+
+<details class="pr"><summary>U3·2) Curva de oferta. Indicá qué pasa con la curva si: (a) hay una mejora tecnológica, (b) se impone un impuesto a las ventas, (c) aumentan los costos de producción.</summary>
+<div class="sol">
+<p><b>Respuesta (es 100% teórica — hay que explicar cada caso):</b></p>
+<div class="callout tip"><span class="tt">✍️ Respuesta teórica</span>
+<b>(a) Mejora tecnológica:</b> baja el costo de producir → la oferta <b>se desplaza a la derecha</b> (más cantidad ofrecida a cada precio).<br>
+<b>(b) Impuesto a las ventas:</b> encarece producir/vender → la oferta <b>se desplaza a la izquierda</b> (menos oferta a cada precio).<br>
+<b>(c) Aumentan los costos:</b> igual que el impuesto, la oferta <b>se desplaza a la izquierda</b>.<br>
+En los tres casos cambia <b>otra cosa</b> y no el precio del bien, por eso <b>se desplaza toda la curva</b> (no es un movimiento sobre ella).</div>
+</div></details>
+
+<details class="pr"><summary>U3·3) Excedente del productor. Está dispuesto a vender a $50 y el precio de mercado es $80. Calculalo y explicá qué representa.</summary>
+<div class="sol">
+<p><b>Cálculo.</b> \(EP=\text{Precio de mercado}-\text{Costo mínimo aceptable}=80-50=\$30\) por unidad.</p>
+<div class="callout tip"><span class="tt">✍️ Respuesta teórica</span>El excedente del productor (<b>$30</b>) es la <b>"ganancia" del vendedor</b>: la diferencia entre lo que efectivamente cobra ($80) y el mínimo al que estaba dispuesto a vender ($50). En el gráfico es el <b>área entre el precio de mercado y la curva de oferta</b>.</div>
+</div></details>
+
+<details class="pr"><summary>U3·4) Elasticidad de la oferta. La oferta es Qo = 2P + 3. Calculá la elasticidad cuando el precio sube de $5 a $6 e interpretá.</summary>
+<div class="sol">
+<p><b>Cálculo.</b> \(Q_o(5)=13\), \(Q_o(6)=15\). Punto en \(P=5\): \(E=\frac{dQ}{dP}\cdot\frac{P}{Q}=2\cdot\frac{5}{13}=0{,}77\) (por arco da \(\approx0{,}79\)).</p>
+<div class="callout tip"><span class="tt">✍️ Respuesta teórica</span>La elasticidad de la oferta es <b>positiva</b> (siempre lo es: la curva sube) e <b>inelástica</b> (\(0{,}77&lt;1\)): ante una suba de precio la cantidad ofrecida reacciona <b>poco</b>. A <b>largo plazo</b> sería más elástica, porque hay tiempo de ampliar la producción.</div>
+</div></details>
+
+<details class="pr"><summary>U3·5) Producción en el corto plazo. Completá PMg y PMe, marcá el óptimo técnico y describí el comportamiento de las curvas.</summary>
+<div class="sol">
+<p><b>Cálculo</b> (\(PMg=\Delta PT\), \(PMe=PT/L\)):</p>
+<table class="tbl"><thead><tr><th>L</th><th>PT</th><th>PMg</th><th>PMe</th></tr></thead><tbody>
+<tr><td>1</td><td>55</td><td>55</td><td>55,0</td></tr>
+<tr><td>2</td><td>114</td><td>59</td><td>57,0</td></tr>
+<tr><td>3</td><td>250</td><td><b>136</b></td><td>83,3</td></tr>
+<tr><td>4</td><td>381</td><td>131</td><td>95,3</td></tr>
+<tr class="hot2"><td>5</td><td>500</td><td>119</td><td><b>100,0</b></td></tr>
+<tr><td>6</td><td>580</td><td>80</td><td>96,7</td></tr>
+<tr><td>7</td><td>653</td><td>73</td><td>93,3</td></tr>
+<tr><td>8</td><td>695</td><td>42</td><td>86,9</td></tr>
+<tr><td>9</td><td>720</td><td>25</td><td>80,0</td></tr>
+<tr><td>10</td><td>720</td><td>0</td><td>72,0</td></tr>
+</tbody></table>
+<div class="callout tip"><span class="tt">✍️ Respuesta teórica</span>El <b>PMg</b> sube hasta \(L=3\) (llega a 136) y después <b>cae</b>: ahí empiezan los <b>rendimientos decrecientes</b>. El <b>óptimo técnico</b> es el <b>máximo del PMe</b>, en <b>\(L=5\)</b> (PMe = 100); justo ahí el <b>PMg corta al PMe</b>. Mientras \(PMg&gt;PMe\) el medio sube; cuando \(PMg&lt;PMe\) el medio baja. Con \(L=10\) el PMg es 0: sumar gente ya no agrega producto.</div>
+</div></details>
+
+<details class="pr"><summary>U3·6) Producción en el largo plazo. Partiendo de L=4, K=2, Q=60, al duplicar a L=8, K=4 se obtiene: A) Q=160, B) Q=100, C) Q=120. ¿Qué rendimientos a escala hay en cada caso?</summary>
+<div class="sol">
+<p><b>Cálculo.</b> Duplicar los factores debería duplicar la producción a \(60\times2=120\) si fueran constantes. Comparo cada caso con 120:</p>
+<div class="callout tip"><span class="tt">✍️ Respuesta teórica</span>
+<b>A) Q=160 &gt; 120</b> → <b>rendimientos crecientes</b> (la producción más que se duplicó).<br>
+<b>B) Q=100 &lt; 120</b> → <b>rendimientos decrecientes</b> (creció menos que el doble).<br>
+<b>C) Q=120 = 120</b> → <b>rendimientos constantes</b> (creció exactamente el doble).<br>
+Esto es de <b>largo plazo</b>: cambian <b>todos</b> los factores a la vez (no confundir con los rendimientos decrecientes del corto plazo, donde solo varía el trabajo).</div>
+</div></details>
+
+<details class="pr"><summary>U3·7) Costo contable, de oportunidad y económico. Un heladero paga $70.000 de materia prima y $50.000 de sueldo. Usa un local propio (otros pagan $30.000 de alquiler). Si trabajara de electricista ganaría $200.000.</summary>
+<div class="sol">
+<p><b>Cálculo.</b> <b>Explícitos</b> (lo que paga): \(70.000+50.000=\$120.000\). <b>Implícitos</b> (lo que resigna): alquiler no cobrado \(30.000\) + sueldo de electricista resignado \(200.000=\$230.000\).</p>
+<p>Costo <b>contable</b> = explícitos = <b>$120.000</b>. Costo de <b>oportunidad</b> = implícitos = <b>$230.000</b>. Costo <b>económico</b> = \(120.000+230.000=\) <b>$350.000</b>.</p>
+<div class="callout tip"><span class="tt">✍️ Respuesta teórica</span>El <b>contador</b> solo ve los $120.000 que salen del bolsillo. El <b>economista</b> suma lo que el heladero <b>resigna</b> por dedicarse a esto (el alquiler que no cobra y el sueldo de electricista que no gana): por eso el <b>costo económico ($350.000)</b> es mucho mayor. Para que el negocio convenga de verdad, el ingreso tiene que superar esos $350.000.</div>
+</div></details>
+
+<details class="pr"><summary>U3·8) Costos (la práctica del parcial). CF=45. Completá CT, CMg, CTMe, CFMe, CVMe e identificá el nivel de producción que minimiza el costo.</summary>
+<div class="sol">
+<p><b>Cálculo</b> (\(CT=CF+CV\), \(CMg=\Delta CT\), \(CTMe=CT/q\), \(CFMe=45/q\), \(CVMe=CV/q\)):</p>
+<div class="xls-wrap"><table class="tbl"><thead><tr><th>q</th><th>CV</th><th>CT</th><th>CMg</th><th>CTMe</th><th>CFMe</th><th>CVMe</th></tr></thead><tbody>
+<tr><td>1</td><td>22,5</td><td>67,5</td><td>22,5</td><td>67,5</td><td>45,0</td><td>22,5</td></tr>
+<tr><td>2</td><td>35</td><td>80,0</td><td>12,5</td><td>40,0</td><td>22,5</td><td>17,5</td></tr>
+<tr><td>3</td><td>45</td><td>90,0</td><td>10,0</td><td>30,0</td><td>15,0</td><td>15,0</td></tr>
+<tr><td>4</td><td>52,5</td><td>97,5</td><td>7,5</td><td>24,4</td><td>11,3</td><td>13,1</td></tr>
+<tr><td>5</td><td>62,5</td><td>107,5</td><td>10,0</td><td>21,5</td><td>9,0</td><td>12,5</td></tr>
+<tr><td>6</td><td>77,5</td><td>122,5</td><td>15,0</td><td>20,4</td><td>7,5</td><td>12,9</td></tr>
+<tr class="hot2"><td>7</td><td>93,7</td><td>138,7</td><td>16,2</td><td><b>19,8</b></td><td>6,4</td><td>13,4</td></tr>
+<tr><td>8</td><td>115</td><td>160,0</td><td>21,3</td><td>20,0</td><td>5,6</td><td>14,4</td></tr>
+<tr><td>9</td><td>143,7</td><td>188,7</td><td>28,7</td><td>21,0</td><td>5,0</td><td>16,0</td></tr>
+<tr><td>10</td><td>177,5</td><td>222,5</td><td>33,8</td><td>22,3</td><td>4,5</td><td>17,8</td></tr>
+</tbody></table></div>
+<div class="callout tip"><span class="tt">✍️ Respuesta teórica</span>El <b>costo total medio (CTMe) se minimiza en \(q=7\)</b> (CTMe = 19,8) — esa es la <b>escala eficiente</b>. Justo ahí el <b>CMg corta al CTMe desde abajo</b> (\(CMg\approx CTMe\)): antes de \(q=7\) el medio baja, después sube. El <b>CFMe siempre baja</b> (repartís el fijo entre más unidades). <b>Ese \(q=7\) es lo que hay que marcar y explicar en el gráfico.</b></div>
+</div></details>
+
+<details class="pr"><summary>U3·11/12) Isocosto. Con w=10, r=20 y un presupuesto C₀=400 que luego pasa a C₁=600, formulá y graficá las isocostos.</summary>
+<div class="sol">
+<p><b>Cálculo.</b> Isocosto: \(wL+rK=C \Rightarrow 10L+20K=C \Rightarrow K=\frac{C}{20}-\frac{1}{2}L\).</p>
+<p>Con \(C_0=400\): \(K=20-0{,}5L\) (corta los ejes en \(K=20\) y \(L=40\)). Con \(C_1=600\): \(K=30-0{,}5L\) (\(K=30\), \(L=60\)).</p>
+<div class="callout tip"><span class="tt">✍️ Respuesta teórica</span>Las dos isocostos son <b>rectas paralelas</b> (misma pendiente \(-w/r=-0{,}5\)). Al subir el presupuesto de 400 a 600, la recta <b>se desplaza a la derecha</b> (sin cambiar la inclinación): con más plata podés comprar más de ambos factores.</div>
+</div></details>
+
+<details class="pr"><summary>U3·13) Isocuanta. Dibujá la isocuanta de la función Q = L·K para Q = 30.</summary>
+<div class="sol">
+<p><b>Cálculo.</b> \(L\cdot K=30 \Rightarrow K=\dfrac{30}{L}\). Algunos puntos: \((L,K)=(2;15),(3;10),(5;6),(6;5),(10;3),(15;2)\).</p>
+<div class="callout tip"><span class="tt">✍️ Respuesta teórica</span>Es una <b>hipérbola convexa al origen</b> con <b>pendiente negativa</b>: todas esas combinaciones de trabajo y capital producen <b>lo mismo (30)</b>. Si usás más trabajo, necesitás menos capital para la misma producción. Su pendiente es la <b>TMST</b> (relación \(PMg_L/PMg_K\)) y dos isocuantas <b>nunca se cruzan</b>.</div>
+</div></details>
+
+<details class="pr"><summary>U3·15) Equilibrio del productor. r=$30, w=$15, CT=$750, con PMK=L y PML=K. Hallá la combinación que maximiza la producción.</summary>
+<div class="sol">
+<p><b>Cálculo.</b> Condición de óptimo: \(\dfrac{PML}{w}=\dfrac{PMK}{r}\Rightarrow \dfrac{K}{15}=\dfrac{L}{30}\Rightarrow L=2K\).</p>
+<p>Reemplazo en la isocosto \(wL+rK=750\): \(15(2K)+30K=750\Rightarrow 60K=750\Rightarrow K=12{,}5,\ L=25\).</p>
+<div class="callout tip"><span class="tt">✍️ Respuesta teórica</span>El óptimo es <b>L=25 y K=12,5</b>: ahí la <b>isocosto es tangente a la isocuanta más alta</b> alcanzable con $750. Se cumple que <b>el último peso gastado rinde igual en trabajo que en capital</b>. (Verificación: \(15\cdot25+30\cdot12{,}5=750\) ✓.)</div>
+</div></details>
+
 
 <a class="back" href="economia.html">← Volver a Fundamentos de Economía I</a>
 
