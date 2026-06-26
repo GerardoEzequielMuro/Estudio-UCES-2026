@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía Intensiva · 2do Parcial · Fundamentos de Economía I</title>
+<meta name="description" content="Guía intensiva 2do parcial Fundamentos de Economía I UCES: elasticidad e ingreso total, oferta, producción, costos, isocuanta e isocosto, excedente del productor. Con planillas Excel interactivas y descargables.">
+
+<!-- KaTeX para fórmulas legibles -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  /* ===== PAPEL BEIGE (hoja real) ===== */
+  --bg:#e8ddc7;
+  --paper:#f7f0df;            /* hoja crema */
+  --paper-2:#f1e8d2;          /* hoja un tono más */
+  --ink:#3a2f1e;             /* tinta marrón oscuro */
+  --text:#4a3f2c;
+  --muted:#7d6f56;
+  --line:#e0d2b4;
+  --line-strong:#cdb98f;
+  --rule:#dfcfa8;            /* renglón de cuaderno */
+  --brand:#9a6a2f;           /* marrón dorado (lápiz) */
+  --brand-deep:#7a521f;
+  --brand-soft:#efe2c5;
+  --blue:#2f5d8a;            /* lapicera azul */
+  --blue-soft:#dde6f0;
+  --green:#3e7d4f;
+  --green-soft:#dceadb;
+  --red:#b1442f;            /* corrección en rojo */
+  --red-soft:#f4ddd4;
+  --gold:#b08010;
+  --gold-soft:#f6ead0;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --shadow:0 1px 2px rgba(58,47,30,.06),0 12px 30px -16px rgba(58,47,30,.28);
+  --radius:13px;
+}
+[data-theme="dark"]{
+  --bg:#16120c;
+  --paper:#221c12;
+  --paper-2:#2a2317;
+  --ink:#f1e7d2;
+  --text:#ddd0b4;
+  --muted:#a8987a;
+  --line:#3a3120;
+  --line-strong:#4d4129;
+  --rule:#332b1c;
+  --brand:#d6a85c;
+  --brand-deep:#e7c187;
+  --brand-soft:#332810;
+  --blue:#7fa8d4;
+  --blue-soft:#1a2535;
+  --green:#7cc08c;
+  --green-soft:#15281a;
+  --red:#e58a72;
+  --red-soft:#33180f;
+  --gold:#e0b54a;
+  --gold-soft:#2c2410;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 14px 34px -16px rgba(0,0,0,.7);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#16120c;--paper:#221c12;--paper-2:#2a2317;--ink:#f1e7d2;--text:#ddd0b4;--muted:#a8987a;
+    --line:#3a3120;--line-strong:#4d4129;--rule:#332b1c;--brand:#d6a85c;--brand-deep:#e7c187;--brand-soft:#332810;
+    --blue:#7fa8d4;--blue-soft:#1a2535;--green:#7cc08c;--green-soft:#15281a;--red:#e58a72;--red-soft:#33180f;
+    --gold:#e0b54a;--gold-soft:#2c2410;--shadow:0 1px 2px rgba(0,0,0,.4),0 14px 34px -16px rgba(0,0,0,.7);
+  }
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.72;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:var(--gold-soft);color:var(--brand-deep)}
+
+/* ===== HOJA ===== */
+.wrap{max-width:880px;margin:0 auto;min-height:100vh;background:var(--paper);
+  padding:0 clamp(18px,5vw,60px) 90px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+/* textura de renglones tenue */
+.wrap::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:repeating-linear-gradient(transparent,transparent 31px,var(--rule) 31px,var(--rule) 32px);
+  opacity:.35;-webkit-mask:linear-gradient(180deg,transparent 0,#000 120px);mask:linear-gradient(180deg,transparent 0,#000 120px)}
+.wrap>*{position:relative;z-index:1}
+
+.theme-btn{position:fixed;top:14px;right:14px;z-index:50;background:var(--paper);border:1px solid var(--line-strong);
+  border-radius:11px;width:42px;height:42px;font-size:1.1rem;cursor:pointer;color:var(--ink);
+  box-shadow:var(--shadow);transition:background .15s,transform .15s}
+.theme-btn:hover{background:var(--brand-soft);transform:rotate(-12deg)}
+
+/* ===== HEADER ===== */
+.site-head{position:relative;text-align:center;padding:52px 0 26px;border-bottom:2px solid var(--line-strong);margin-bottom:10px}
+.kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brand);font-weight:700;margin-bottom:13px}
+header h1{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,5.5vw,3rem);line-height:1.03;letter-spacing:-.025em;color:var(--ink);margin-bottom:12px}
+header .sub{color:var(--muted);font-size:1.02rem;max-width:60ch;margin:0 auto}
+.crumb{display:inline-flex;gap:8px;align-items:center;font-size:.82rem;color:var(--muted);margin-bottom:18px}
+.crumb a{color:var(--brand-deep);text-decoration:none;font-weight:600}
+.crumb a:hover{text-decoration:underline}
+
+.meta-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin-top:18px;font-size:.85rem;color:var(--muted)}
+.meta-row b{color:var(--ink)}
+.meta-row span{background:var(--paper-2);border:1px solid var(--line);border-radius:8px;padding:5px 11px}
+
+/* ===== NAV ===== */
+.toc{position:sticky;top:0;z-index:30;margin:14px -8px 0;padding:10px 8px;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(6px);border-bottom:1px solid var(--line);display:flex;gap:7px;overflow-x:auto;scrollbar-width:thin}
+.toc a{flex:none;font-size:.8rem;font-weight:600;color:var(--text);text-decoration:none;padding:7px 13px;border:1px solid var(--line);
+  border-radius:999px;background:var(--paper-2);white-space:nowrap;transition:.15s}
+.toc a:hover{border-color:var(--brand);color:var(--brand-deep);background:var(--brand-soft)}
+
+/* ===== TÍTULOS ===== */
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.5rem,3.4vw,2rem);letter-spacing:-.02em;color:var(--ink);
+  margin:60px 0 6px;scroll-margin-top:64px;display:flex;align-items:baseline;gap:13px}
+h2 .num{flex:none;font-family:var(--mono);font-size:1rem;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-deep));
+  width:34px;height:34px;border-radius:9px;display:grid;place-items:center;align-self:center}
+.sec-rule{height:2px;background:linear-gradient(90deg,var(--brand) 0,var(--line-strong) 40%,transparent);margin:6px 0 22px;border-radius:2px}
+h3{font-family:var(--serif);font-weight:600;font-size:1.28rem;color:var(--ink);margin:30px 0 10px}
+h4{font-size:1rem;font-weight:700;color:var(--ink);margin:18px 0 7px;font-family:var(--sans)}
+p{margin:10px 0}
+b,strong{color:var(--ink)}
+a{color:var(--brand-deep)}
+
+/* ===== BLOQUES ===== */
+.lead{font-size:1.05rem;color:var(--text);background:var(--paper-2);border-left:4px solid var(--brand);
+  border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.idea{font-family:var(--serif);font-size:1.12rem;font-style:italic;color:var(--ink);
+  background:var(--gold-soft);border:1px dashed var(--line-strong);border-radius:12px;padding:16px 20px;margin:16px 0;line-height:1.6}
+.idea::before{content:"💡 La idea en una frase";display:block;font-family:var(--mono);font-style:normal;font-size:.7rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:700;margin-bottom:7px}
+
+.kbd{font-family:var(--mono);font-size:.82em;background:var(--ink);color:var(--paper);border-radius:6px;padding:2px 8px;
+  box-shadow:0 2px 0 var(--line-strong);white-space:nowrap;display:inline-block;line-height:1.5;margin:1px 0}
+.why{display:inline}
+.why>summary{list-style:none;cursor:pointer;display:inline-block;font-family:var(--mono);font-size:.66rem;
+  letter-spacing:.03em;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue);border-radius:999px;
+  padding:1px 9px;margin-left:6px;vertical-align:middle;user-select:none;white-space:nowrap}
+.why>summary::-webkit-details-marker{display:none}.why>summary::marker{content:""}
+.why[open]>summary{background:var(--blue);color:var(--paper)}
+.why .ans{display:block;margin:8px 0 4px;background:var(--paper);border:1px solid var(--line-strong);
+  border-left:3px solid var(--blue);border-radius:8px;padding:9px 13px;font-size:.93rem;color:var(--ink);
+  font-style:normal;line-height:1.55;font-family:var(--sans)}
+.why .ans b{color:var(--brand-deep)}
+.box{background:var(--paper-2);border:1px solid var(--line-strong);border-radius:var(--radius);padding:16px 20px;margin:16px 0;box-shadow:var(--shadow)}
+.box.formula{border-left:4px solid var(--blue);background:var(--paper)}
+.box h4{margin-top:0}
+
+.callout{border-radius:0 12px 12px 0;padding:13px 17px;margin:14px 0;font-size:.95rem;border:1px solid var(--line);box-shadow:var(--shadow)}
+.callout .tt{display:block;font-weight:700;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;font-family:var(--mono)}
+.callout.tip{background:var(--green-soft);border-left:4px solid var(--green)}
+.callout.tip .tt{color:var(--green)}
+.callout.warn{background:var(--red-soft);border-left:4px solid var(--red)}
+.callout.warn .tt{color:var(--red)}
+.callout.key{background:var(--blue-soft);border-left:4px solid var(--blue)}
+.callout.key .tt{color:var(--blue)}
+
+/* nota compacta de calculadora dentro de la teoría */
+.calc{display:flex;gap:9px;align-items:flex-start;background:var(--paper);border:1px dashed var(--line-strong);
+  border-left:3px solid var(--brand);border-radius:0 9px 9px 0;padding:9px 13px;margin:12px 0;font-size:.9rem;line-height:1.55}
+.calc::before{content:"🧮";font-size:1.05rem;flex:none;line-height:1.4}
+.calc b{color:var(--brand-deep)}
+
+/* ejemplo resuelto */
+.ej{background:var(--paper);border:1px solid var(--line-strong);border-radius:var(--radius);margin:18px 0;overflow:hidden;box-shadow:var(--shadow)}
+.ej>.ej-h{background:linear-gradient(135deg,var(--brand-soft),var(--paper-2));padding:11px 18px;font-weight:700;color:var(--ink);
+  font-size:.92rem;border-bottom:1px solid var(--line-strong);display:flex;align-items:center;gap:9px}
+.ej>.ej-h::before{content:"✍️";font-size:1rem}
+.ej-b{padding:6px 20px 16px}
+.step{display:flex;gap:13px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.step:last-child{border-bottom:none}
+.step .s{flex:none;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-family:var(--mono);
+  font-weight:700;font-size:.82rem;display:grid;place-items:center;margin-top:2px}
+.step .c{flex:1;min-width:0}
+.result{background:var(--green-soft);border:1px solid var(--green);border-radius:9px;padding:9px 14px;margin-top:10px;font-weight:600;color:var(--ink)}
+
+/* math display centrado */
+.mq{overflow-x:auto;overflow-y:hidden;padding:6px 0}
+.katex{font-size:1.06em}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden;padding:4px 2px}
+
+/* SVG diagrama */
+.fig{background:var(--paper);border:1px solid var(--line-strong);border-radius:var(--radius);padding:14px;margin:18px 0;text-align:center;box-shadow:var(--shadow)}
+.fig svg{max-width:100%;height:auto}
+.fig figcaption{font-size:.84rem;color:var(--muted);margin-top:9px;font-style:italic}
+.fig-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.fig-row .fig{margin:0}
+
+/* tabla */
+.tbl{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92rem;background:var(--paper)}
+.tbl th,.tbl td{border:1px solid var(--line-strong);padding:7px 11px;text-align:center}
+.tbl th{background:var(--brand-soft);color:var(--ink);font-weight:700}
+.tbl caption{font-size:.82rem;color:var(--muted);margin-bottom:6px}
+
+/* videos */
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:14px 0}
+.vid{display:block;text-decoration:none;color:var(--text);background:var(--paper-2);border:1px solid var(--line-strong);
+  border-radius:12px;overflow:hidden;box-shadow:var(--shadow);transition:transform .15s,border-color .15s}
+.vid:hover{transform:translateY(-3px);border-color:var(--red)}
+.vid .thumb{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden}
+.vid .thumb img{width:100%;height:100%;object-fit:cover;display:block;opacity:.92}
+.vid .thumb::after{content:"▶";position:absolute;inset:0;margin:auto;width:46px;height:46px;border-radius:50%;
+  background:rgba(177,68,47,.92);color:#fff;font-size:1.1rem;display:grid;place-items:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.vid .vb{padding:10px 13px}
+.vid .vt{font-weight:600;font-size:.88rem;color:var(--ink);line-height:1.35;display:block}
+.vid .vc{font-size:.75rem;color:var(--muted);margin-top:4px;font-family:var(--mono)}
+
+/* práctica con solución */
+.pr{background:var(--paper-2);border:1px solid var(--line-strong);border-radius:12px;margin:11px 0;overflow:hidden;box-shadow:var(--shadow)}
+.pr summary{padding:13px 17px;cursor:pointer;font-weight:600;color:var(--ink);list-style:none}
+.pr summary::-webkit-details-marker{display:none}
+.pr summary::before{content:"?";display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;
+  font-family:var(--mono);font-weight:700;font-size:.8rem;margin-right:10px;vertical-align:-7px}
+.pr[open] summary::before{content:"✓";background:var(--green)}
+.pr .sol{padding:2px 18px 16px 50px;border-top:1px dashed var(--line);font-size:.95rem}
+.pr .sol::before{content:"Solución";display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--green);font-weight:700;margin:10px 0 6px}
+
+/* plan de fin de semana */
+.plan{display:grid;gap:12px;margin:18px 0}
+.dayc{background:var(--paper);border:1px solid var(--line-strong);border-radius:12px;padding:0;overflow:hidden;box-shadow:var(--shadow)}
+.dayc .dh{padding:13px 18px;font-weight:700;color:#fff;display:flex;justify-content:space-between;align-items:center;font-size:.95rem}
+.dayc.d1 .dh{background:linear-gradient(135deg,var(--brand),var(--brand-deep))}
+.dayc.d2 .dh{background:linear-gradient(135deg,var(--blue),#23456b)}
+.dayc.d3 .dh{background:linear-gradient(135deg,var(--green),#2c5a39)}
+.dayc .dh .t{font-family:var(--mono);font-weight:600;font-size:.78rem;opacity:.9}
+.dayc ul{padding:13px 20px 15px 38px;font-size:.93rem}
+.dayc li{margin-bottom:6px}
+.dayc li::marker{color:var(--brand)}
+.chk{accent-color:var(--brand);width:15px;height:15px;margin-right:8px;vertical-align:-2px}
+
+/* chips de fórmula inline destacada */
+.kf{background:var(--paper);border:1px solid var(--line-strong);border-radius:8px;padding:2px 8px;display:inline-block}
+
+.back{display:inline-block;margin-top:46px;color:var(--brand-deep);text-decoration:none;font-weight:600;font-size:.95rem}
+.back:hover{text-decoration:underline}
+.foot{text-align:center;color:var(--muted);font-size:.84rem;margin-top:30px;padding-top:22px;border-top:1px solid var(--line-strong)}
+
+@media (max-width:560px){
+  .ej-b{padding:6px 14px 14px}
+  .pr .sol{padding-left:30px}
+}
+
+/* ===== PLANILLA INTERACTIVA (mini-Excel) ===== */
+.xls{margin:18px 0;border:1px solid var(--line-strong);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:var(--paper)}
+.xls-h{background:linear-gradient(135deg,#1f7a4d,#155c39);color:#fff;padding:10px 16px;font-weight:700;font-size:.92rem;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.xls-h::before{content:"";width:18px;height:18px;border-radius:4px;background:#fff;flex:none;
+  -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M4 3h16v18H4z M9 3v18 M4 9h16 M4 15h16' fill='none' stroke='black' stroke-width='1.6'/></svg>") center/contain no-repeat;
+  mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M4 3h16v18H4z M9 3v18 M4 9h16 M4 15h16' fill='none' stroke='black' stroke-width='1.6'/></svg>") center/contain no-repeat}
+.xls-h .lbl{font-family:var(--mono);font-size:.66rem;font-weight:700;background:rgba(255,255,255,.22);padding:2px 8px;border-radius:6px;letter-spacing:.04em}
+.xls-wrap{overflow-x:auto}
+table.sheet{width:100%;border-collapse:collapse;font-size:.9rem;font-family:var(--mono)}
+table.sheet th,table.sheet td{border:1px solid var(--line-strong);padding:5px 8px;text-align:center;white-space:nowrap}
+table.sheet thead th{background:var(--paper-2);color:var(--ink);font-weight:700;font-family:var(--sans);font-size:.82rem;position:sticky;top:0}
+table.sheet td.xcc{background:var(--green-soft);color:var(--ink);font-weight:600}
+table.sheet td.lo{color:var(--muted)}
+table.sheet tr.hot td{background:var(--blue-soft);outline:2px solid var(--blue);outline-offset:-2px}
+.cell-in{width:62px;border:1px solid var(--line-strong);background:var(--gold-soft);color:var(--ink);
+  border-radius:6px;padding:4px 6px;font-family:var(--mono);font-size:.9rem;text-align:center;font-weight:700}
+.cell-in:focus{outline:2px solid var(--brand);outline-offset:0;background:#fff}
+.xls-foot{padding:9px 16px;border-top:1px dashed var(--line);font-size:.82rem;color:var(--muted);display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap}
+.xls-foot .fx{font-family:var(--mono);background:var(--paper-2);border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--blue);font-size:.8rem}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--muted);margin:8px 2px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:13px;height:13px;border-radius:3px;display:inline-block;border:1px solid var(--line-strong)}
+.chartbox{padding:10px 14px 4px}
+.dlbtn{display:inline-flex;gap:10px;align-items:center;text-decoration:none;background:linear-gradient(135deg,#1f7a4d,#155c39);
+  color:#fff;font-weight:700;padding:13px 20px;border-radius:12px;box-shadow:var(--shadow);font-size:.96rem;transition:transform .15s}
+.dlbtn:hover{transform:translateY(-2px)}
+.dlbtn .ico{font-size:1.3rem}
+.dlbtn small{display:block;font-weight:500;opacity:.92;font-size:.76rem;font-family:var(--mono)}
+
+</style>
+</head>
+<body>
+<button class="theme-btn" onclick="toggleTheme()" id="themeBtn" aria-label="Cambiar tema">🌙</button>
+<div class="wrap">
+<header class="site-head">
+  <div class="crumb"><a href="index.html">Plan de estudio</a> › <a href="economia.html">Fundamentos de Economía I</a> › <span>Guía 2do parcial</span></div>
+  <div class="kicker">Guía Intensiva · Modo fin de semana</div>
+  <h1>Todo para el 2do parcial</h1>
+  <p class="sub">Elasticidad e ingreso total · Oferta (movimiento vs. desplazamiento) · Producción a corto y largo plazo · Isocuanta e isocosto · Costos y excedente del productor. Teoría desde cero + <b>planillas de Excel interactivas</b> en la misma página y un archivo <b>.xlsx descargable</b> con las fórmulas armadas.</p>
+  <div class="meta-row">
+    <span><b>Modalidad:</b> Teoría + Práctica en Excel</span>
+    <span><b>Temas:</b> Tema 1 y Tema 2</span>
+    <span><b>Fuente:</b> apuntes de cátedra UCES</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#plan">📅 Plan</a>
+  <a href="#excel">📊 Excel</a>
+  <a href="#conexiones">🔗 Conexiones</a>
+  <a href="#elasticidad">1 · Elasticidad e IT</a>
+  <a href="#oferta">2 · Oferta</a>
+  <a href="#produccion">3 · Producción</a>
+  <a href="#empresa">4 · Decisión · Isocuanta · Isocosto</a>
+  <a href="#costos-tipo">5 · Costo contable/oport./econ.</a>
+  <a href="#costos">6 · Costos y mínimo</a>
+  <a href="#elast-ingreso">7 · Elasticidad-ingreso</a>
+  <a href="#excedente">8 · Excedente del productor</a>
+  <a href="#formulario">🎴 Formulario</a>
+  <a href="#examen">📝 Modelo de examen</a>
+</nav>
+
+<div class="callout tip"><span class="tt">💡 Cómo está armada</span>Lo que <b>entra seguro</b> está marcado en cada tema. La <b>parte práctica es en Excel</b>: vas a encontrar <b>planillas interactivas acá mismo</b> (cambiás los números amarillos y se recalcula todo solo, con gráficos), las <b>fórmulas de Excel</b> al pie de cada una, y un <b>archivo .xlsx para descargar</b> con todo armado. Los pasos que más confunden tienen un botón azul <span class="why" style="pointer-events:none"><span style="font-family:var(--mono);font-size:.66rem;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue);border-radius:999px;padding:1px 9px">¿por qué?</span></span> — tocalo y se abre la razón.</div>
+
+<!-- ============================== PLAN ============================== -->
+<h2 id="plan"><span class="num">📅</span> Plan de batalla del fin de semana</h2>
+<div class="sec-rule"></div>
+<p>El parcial mezcla <b>teoría</b> (definiciones y curvas) con <b>práctica en Excel</b> (tablas de ingreso, producción y costos). La clave: leé la teoría corta de cada tema y <b>enseguida tocá la planilla</b> de al lado. Tildá lo que terminás (se guarda solo en este navegador).</p>
+<div class="plan">
+  <div class="dayc d1">
+    <div class="dh"><span>DÍA 1 · Teoría dura + ingreso</span><span class="t">~4 h</span></div>
+    <ul>
+      <li><input type="checkbox" class="chk" data-k="s1">Tema 1: Elasticidad-precio de la demanda y su relación con el <b>ingreso total</b></li>
+      <li><input type="checkbox" class="chk" data-k="s2">Tema 2: Ley de oferta · movimiento vs. desplazamiento de la curva</li>
+      <li><input type="checkbox" class="chk" data-k="s3">Jugá con la <a href="#elasticidad">planilla de Ingreso Total</a> hasta que la regla "elástica → baja precio, sube IT" te salga sola</li>
+    </ul>
+  </div>
+  <div class="dayc d2">
+    <div class="dh"><span>DÍA 2 · Producción y costos (el corazón de la práctica)</span><span class="t">~4 h</span></div>
+    <ul>
+      <li><input type="checkbox" class="chk" data-k="d1">Producción a corto plazo: <b>PMg y PMe</b> + gráficos (planilla de Producción)</li>
+      <li><input type="checkbox" class="chk" data-k="d2">Costos: CT, CF, CFMe, CVMe, CMg + el <b>q que minimiza el costo medio</b> (planilla de Costos)</li>
+      <li><input type="checkbox" class="chk" data-k="d3">Costo contable, de oportunidad y económico · descargá el <a href="#excel">Excel</a> y rehacelo vos</li>
+    </ul>
+  </div>
+  <div class="dayc d3">
+    <div class="dh"><span>DÍA 3 · Integrar y simular</span><span class="t">~2 h</span></div>
+    <ul>
+      <li><input type="checkbox" class="chk" data-k="l1">Isocuanta e isocosto · decisión básica de la empresa · excedente del productor</li>
+      <li><input type="checkbox" class="chk" data-k="l2">Repasá el <a href="#formulario">formulario</a> hasta poder recitarlo</li>
+      <li><input type="checkbox" class="chk" data-k="l3">Hacé el <a href="#examen">modelo de examen</a> completo, cronometrado, sin mirar la solución</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============================== EXCEL ============================== -->
+<h2 id="excel"><span class="num">📊</span> La práctica en Excel</h2>
+<div class="sec-rule"></div>
+<p>Toda la parte práctica del parcial (ingreso, producción, costos) se arma con <b>tablas y fórmulas</b>. Te dejo el archivo con todo ya construido para que veas las fórmulas reales y practiques cambiando datos:</p>
+<div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:16px 0">
+  <a class="dlbtn" href="economia-practica.xlsx" download><span class="ico">⬇️</span><span>Descargar planilla<small>economia-practica.xlsx · 5 hojas con fórmulas</small></span></a>
+  <p style="margin:0;color:var(--muted);font-size:.9rem;flex:1;min-width:200px">Adentro: Ingreso&amp;Elasticidad · Producción CP · Costos · Costo económico y Excedente · y una hoja de <b>ejercicios en blanco</b> para resolver vos.</p>
+</div>
+<div class="legend">
+  <span><i style="background:#f6ead0"></i> Celdas <b>amarillas</b> = datos (cambialos)</span>
+  <span><i style="background:#dceadb"></i> Celdas <b>verdes</b> = fórmulas (=...) </span>
+  <span><i style="background:#dde6f0"></i> Celdas <b>azules</b> = resultado clave</span>
+</div>
+<div class="callout key"><span class="tt">No tenés que saber Excel "de programador"</span>Con 6 fórmulas alcanza para todo el parcial: <span class="fx" style="font-family:var(--mono)">=A2*B2</span> (multiplicar), <span class="fx" style="font-family:var(--mono)">=B3-B2</span> (restar, para lo "marginal"), <span class="fx" style="font-family:var(--mono)">=C2/A2</span> (dividir, para lo "medio"), y arrastrar hacia abajo. Abajo, en cada planilla, te muestro exactamente cuál va.</div>
+
+<!-- ============================== CONEXIONES ============================== -->
+<h2 id="conexiones"><span class="num">🔗</span> Cómo se conectan los temas</h2>
+<div class="sec-rule"></div>
+<p>No son ocho temas sueltos: es <b>una sola historia</b> — cómo decide una empresa cuánto producir y a qué precio vender.</p>
+<div class="box" style="border-left:4px solid var(--blue)">
+  <h4 style="margin-top:0">🔵 El lado del comprador (demanda)</h4>
+  <p style="margin:4px 0"><b>Elasticidad → ingreso total → elasticidad-ingreso.</b> Qué tan sensible es la gente al precio decide si subir o bajar el precio te conviene (efecto sobre el IT). Y qué tan sensible es al <i>ingreso del bolsillo</i> clasifica al bien (normal, inferior, de lujo).</p>
+</div>
+<div class="box" style="border-left:4px solid var(--brand)">
+  <h4 style="margin-top:0">🟤 El lado del vendedor (producción y costos)</h4>
+  <p style="margin:4px 0"><b>Producción → costos → decisión.</b> Con cuántos factores producís sale el <b>producto</b> (PMg, PMe); de ahí salen los <b>costos</b> (CT, CMe, CMg). La empresa elige el \(q\) donde le conviene, y combina factores con <b>isocuanta + isocosto</b> para gastar lo mínimo.</p>
+</div>
+<div class="box" style="border-left:4px solid var(--green)">
+  <h4 style="margin-top:0">🟢 Donde se encuentran (mercado)</h4>
+  <p style="margin:4px 0"><b>Oferta + excedente del productor.</b> La <b>ley de oferta</b> (a más precio, más cantidad) viene del costo marginal. Lo que la empresa gana por vender más caro que su costo mínimo es el <b>excedente del productor</b>.</p>
+</div>
+
+<!-- ============================== 1. ELASTICIDAD E IT ============================== -->
+<h2 id="elasticidad"><span class="num">1</span> Elasticidad-precio de la demanda y el ingreso total</h2>
+<div class="sec-rule"></div>
+<div class="idea">La <b>elasticidad</b> mide cuánto cambia la cantidad cuando cambia el precio. Si la gente reacciona <b>mucho</b> (elástica), bajar el precio te hace ganar más; si reacciona <b>poco</b> (inelástica), bajar el precio te hace perder.</div>
+
+<h3>La fórmula</h3>
+<div class="box formula">
+\[ E_p=\left|\dfrac{\Delta\% \text{ Cantidad}}{\Delta\% \text{ Precio}}\right| \]
+<p style="margin:6px 0 0">Para tramos grandes se usa la <b>elasticidad-arco</b> (método del punto medio), que promedia entre los dos puntos para que dé igual subas o bajes:</p>
+</div>
+<div class="box formula">\[ E_p=\left|\dfrac{(Q_2-Q_1)/\left(\tfrac{Q_1+Q_2}{2}\right)}{(P_2-P_1)/\left(\tfrac{P_1+P_2}{2}\right)}\right| \]</div>
+
+<div class="box">
+<h4 style="margin-top:0">Los tres casos (lo que tenés que reconocer)</h4>
+<table class="tbl">
+<thead><tr><th>Tipo</th><th>Valor</th><th>Si BAJÁS el precio…</th><th>El ingreso total (IT)…</th></tr></thead>
+<tbody>
+<tr><td><b>Elástica</b></td><td>\(E_p>1\)</td><td>la cantidad sube más que el precio</td><td><b style="color:var(--green)">SUBE</b> (van en contra)</td></tr>
+<tr><td><b>Inelástica</b></td><td>\(E_p<1\)</td><td>la cantidad sube poco</td><td><b style="color:var(--red)">BAJA</b> (van juntos)</td></tr>
+<tr><td><b>Unitaria</b></td><td>\(E_p=1\)</td><td>cantidad y precio cambian igual</td><td><b>NO cambia</b> (acá el IT es <b>máximo</b>)</td></tr>
+</tbody></table>
+</div>
+<div class="callout key"><span class="tt">Pregunta fija</span>El <b>ingreso total</b> es \(IT=P\cdot Q\). En una demanda lineal, la elasticidad es <b>alta con precios altos</b> y <b>baja con precios bajos</b>; en el punto medio es <b>unitaria</b>, y justo ahí el IT llega a su <b>máximo</b>.</div>
+
+<div class="fig">
+<svg viewBox="0 0 470 290" aria-label="Demanda lineal y zonas de elasticidad">
+  <line x1="55" y1="240" x2="445" y2="240" stroke="#7d6f56" stroke-width="1.5"/>
+  <line x1="55" y1="240" x2="55" y2="25" stroke="#7d6f56" stroke-width="1.5"/>
+  <text x="448" y="244" font-size="12" fill="#7d6f56">Q</text>
+  <text x="42" y="28" font-size="12" fill="#7d6f56">P</text>
+  <line x1="55" y1="45" x2="410" y2="230" stroke="#2f5d8a" stroke-width="2.6"/>
+  <text x="372" y="222" font-size="12" fill="#2f5d8a" font-weight="700">Demanda</text>
+  <line x1="232" y1="138" x2="232" y2="240" stroke="#9a6a2f" stroke-width="1.3" stroke-dasharray="4 4"/>
+  <circle cx="232" cy="138" r="5" fill="#9a6a2f"/>
+  <text x="240" y="132" font-size="11.5" fill="#9a6a2f" font-weight="700">E_p = 1 · IT máximo</text>
+  <text x="120" y="86" font-size="11.5" fill="#3e7d4f" font-weight="700">tramo elástico (E_p &gt; 1)</text>
+  <text x="120" y="100" font-size="10" fill="#7d6f56">baja P → sube IT</text>
+  <text x="250" y="206" font-size="11.5" fill="#b1442f" font-weight="700">tramo inelástico (E_p &lt; 1)</text>
+  <text x="250" y="220" font-size="10" fill="#7d6f56">baja P → baja IT</text>
+  <text x="232" y="256" font-size="10" fill="#9a6a2f" text-anchor="middle">Q del IT máx</text>
+</svg>
+<figcaption>En una demanda lineal la elasticidad cambia a lo largo de la curva: <b>elástica arriba</b> (precios altos), <b>unitaria en el punto medio</b> (ahí el IT es máximo) e <b>inelástica abajo</b> (precios bajos).</figcaption>
+</div>
+
+<h3>✍️ Práctica en Excel · Ingreso total y elasticidad</h3>
+<p>Esta es la tabla típica. Cambiá los <b>precios y cantidades amarillos</b>: el IT, la elasticidad-arco y el tipo se recalculan solos, y el gráfico te muestra la "loma" del ingreso.</p>
+
+<div class="xls">
+  <div class="xls-h">Ingreso total &amp; Elasticidad-arco <span class="lbl">Hoja 1 del .xlsx</span></div>
+  <div class="xls-wrap">
+    <table class="sheet" id="tIT">
+      <thead><tr><th>Precio (P)</th><th>Cantidad (Q)</th><th>IT = P·Q</th><th>|E<sub>p</sub>| arco</th><th>Tipo</th></tr></thead>
+      <tbody><!-- filas generadas por JS --></tbody>
+    </table>
+  </div>
+  <div class="chartbox"><svg id="svgIT" viewBox="0 0 520 250" role="img" aria-label="Curva de ingreso total"></svg></div>
+  <div class="xls-foot"><b>Fórmulas:</b> <span class="fx">IT → =A2*B2</span> <span class="fx">|Ep| → =ABS( ((B3-B2)/((B2+B3)/2)) / ((A3-A2)/((A2+A3)/2)) )</span></div>
+</div>
+<div class="callout tip"><span class="tt">Mirá el gráfico</span>El IT sube mientras la demanda es <b>elástica</b>, toca el <b>techo</b> cuando es <b>unitaria</b>, y baja cuando es <b>inelástica</b>. Ese pico es el precio que <b>maximiza el ingreso</b>.</div>
+
+<!-- ============================== 2. OFERTA ============================== -->
+<h2 id="oferta"><span class="num">2</span> Ley de oferta: movimiento vs. desplazamiento</h2>
+<div class="sec-rule"></div>
+<div class="idea">La <b>ley de oferta</b>: a mayor precio, mayor cantidad ofrecida (la curva <b>sube</b>). Lo que el examen pregunta seguro: distinguir cuándo te <b>movés sobre</b> la curva y cuándo la curva <b>entera se corre</b>.</div>
+
+<div class="box">
+<table class="tbl">
+<thead><tr><th></th><th>Movimiento sobre la curva</th><th>Desplazamiento de la curva</th></tr></thead>
+<tbody>
+<tr><td><b>Qué lo causa</b></td><td>cambia el <b>precio del propio bien</b></td><td>cambia <b>otra cosa</b> (no el precio)</td></tr>
+<tr><td><b>Ejemplos</b></td><td>sube el precio → ofrezco más (subo por la misma curva)</td><td>costo de insumos, tecnología, impuestos/subsidios, n.º de vendedores, expectativas</td></tr>
+<tr><td><b>Resultado</b></td><td>cambia la <b>cantidad ofrecida</b></td><td>cambia la <b>oferta</b> (toda la curva va a la derecha = más, o izquierda = menos)</td></tr>
+</tbody></table>
+</div>
+<div class="callout warn"><span class="tt">⚠️ La trampa clásica</span>"Sube el precio" = movimiento <b>sobre</b> la curva (cambia la <i>cantidad ofrecida</i>). "Baja el costo de la materia prima / mejora la tecnología" = <b>desplazamiento</b> de toda la curva a la derecha (cambia la <i>oferta</i>). Mezclar estos dos es el error más penalizado.</div>
+<div class="fig">
+<svg viewBox="0 0 460 240" aria-label="Oferta: movimiento y desplazamiento">
+  <line x1="50" y1="200" x2="440" y2="200" stroke="#7d6f56" stroke-width="1.5"/>
+  <line x1="50" y1="200" x2="50" y2="20" stroke="#7d6f56" stroke-width="1.5"/>
+  <text x="445" y="204" font-size="12" fill="#7d6f56">Q</text><text x="38" y="22" font-size="12" fill="#7d6f56">P</text>
+  <line x1="80" y1="200" x2="360" y2="40" stroke="#2f5d8a" stroke-width="2.5"/>
+  <text x="330" y="40" font-size="12" fill="#2f5d8a">O</text>
+  <line x1="150" y1="200" x2="430" y2="40" stroke="#3e7d4f" stroke-width="2.5" stroke-dasharray="6 5"/>
+  <text x="338" y="48" font-size="11.5" fill="#3e7d4f">O′ (más oferta)</text>
+  <circle cx="180" cy="143" r="4" fill="#9a6a2f"/><circle cx="250" cy="103" r="4" fill="#9a6a2f"/>
+  <path d="M186 138 L244 108" stroke="#9a6a2f" stroke-width="1.5" marker-end="url(#a)"/>
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#9a6a2f"/></marker></defs>
+  <text x="186" y="172" font-size="10.5" fill="#9a6a2f">movimiento (sube P)</text>
+</svg>
+<figcaption>Azul: subir el precio te mueve <b>sobre</b> la misma curva. Verde punteada: una mejora de tecnología/insumos <b>desplaza</b> toda la oferta a la derecha.</figcaption>
+</div>
+
+<!-- ============================== 3. PRODUCCIÓN ============================== -->
+<h2 id="produccion"><span class="num">3</span> Producción a corto y largo plazo</h2>
+<div class="sec-rule"></div>
+<div class="idea">La diferencia es por los <b>factores</b>: en el <b>corto plazo</b> hay al menos uno <b>fijo</b> (no lo podés cambiar ya — la planta, las máquinas). En el <b>largo plazo</b> <b>todos</b> los factores son <b>variables</b> (hasta podés mudar la fábrica).</div>
+
+<div class="box">
+<table class="tbl">
+<thead><tr><th></th><th>Corto plazo (CP)</th><th>Largo plazo (LP)</th></tr></thead>
+<tbody>
+<tr><td><b>Factores</b></td><td>hay fijos (capital/planta) y variables (trabajo)</td><td><b>todos variables</b></td></tr>
+<tr><td><b>Qué ajustás</b></td><td>solo el factor variable (contratás/echás gente)</td><td>tamaño de planta, tecnología, todo</td></tr>
+<tr><td><b>Ley clave</b></td><td><b>rendimientos marginales decrecientes</b></td><td>rendimientos a escala</td></tr>
+</tbody></table>
+</div>
+<div class="box formula">
+<h4 style="margin-top:0">Las dos fórmulas del corto plazo</h4>
+\[ PMg=\dfrac{\Delta PT}{\Delta L} \qquad PMe=\dfrac{PT}{L} \]
+<p style="margin:6px 0 0"><b>PMg</b> (producto marginal): cuánto suma el <b>último</b> trabajador. <b>PMe</b> (producto medio): la <b>productividad</b> por trabajador.</p>
+</div>
+<div class="callout key"><span class="tt">La relación que cae seguro</span>Mientras <b>PMg &gt; PMe</b>, el <b>PMe sube</b>. Cuando <b>PMg &lt; PMe</b>, el <b>PMe baja</b>. Por eso el PMg <b>corta al PMe en su punto más alto</b>. (Igualito que tu promedio: si la última nota es mayor que tu promedio, el promedio sube.)</div>
+
+<h3>✍️ Práctica en Excel · Producto marginal y medio</h3>
+<p>Cambiá el <b>Producto Total (PT) amarillo</b> y mirá cómo el PMg crece, llega a un máximo y cae (rendimientos decrecientes), y cómo el PMg cruza al PMe en su pico.</p>
+<div class="xls">
+  <div class="xls-h">Producción en el corto plazo <span class="lbl">Hoja 2 del .xlsx</span></div>
+  <div class="xls-wrap">
+    <table class="sheet" id="tProd">
+      <thead><tr><th>Trabajo L</th><th>Producto Total PT</th><th>PMg = ΔPT/ΔL</th><th>PMe = PT/L</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="chartbox"><svg id="svgProd" viewBox="0 0 520 250" role="img" aria-label="Curvas de producto marginal y medio"></svg></div>
+  <div class="xls-foot"><b>Fórmulas:</b> <span class="fx">PMg → =B3-B2</span> <span class="fx">PMe → =B3/A3</span> <span style="color:var(--muted)">(restás para lo marginal, dividís para lo medio)</span></div>
+</div>
+
+<!-- ============================== 4. EMPRESA / ISOCUANTA / ISOCOSTO ============================== -->
+<h2 id="empresa"><span class="num">4</span> Decisión básica · Isocuanta · Isocosto</h2>
+<div class="sec-rule"></div>
+<div class="idea">La <b>decisión básica de toda empresa</b>: producir la cantidad y combinar los factores de modo de <b>maximizar el beneficio</b> — o, lo mismo visto al revés, lograr la producción buscada al <b>menor costo posible</b>.</div>
+
+<h3>Isocuanta</h3>
+<p>Muestra todas las combinaciones de <b>trabajo (L)</b> y <b>capital (K)</b> que dan la <b>misma cantidad</b> de producto.</p>
+<div class="box">
+<ul style="margin:6px 0 0 18px">
+<li>Tiene <b>pendiente negativa</b> y es <b>convexa</b> (curvada hacia el origen).</li>
+<li><b>No se cruzan</b> entre sí; más a la derecha = más producción.</li>
+<li>Su pendiente es la <b>TMST</b> (tasa marginal de sustitución técnica) \(=\dfrac{PMg_L}{PMg_K}\): cuánto capital podés sacar al sumar una unidad de trabajo manteniendo la producción.</li>
+</ul>
+</div>
+
+<h3>Isocosto</h3>
+<p>Muestra las combinaciones de factores que <b>cuestan lo mismo</b>:</p>
+<div class="box formula">
+\[ CT_0 = w\,L + r\,K \qquad \text{pendiente} = -\dfrac{w}{r} \]
+<p style="margin:6px 0 0">\(w\) = precio del trabajo (salario) · \(r\) = precio del capital. Es una <b>recta</b>.</p>
+</div>
+<div class="callout key"><span class="tt">El óptimo (minimización de costos)</span>El costo mínimo para una producción dada está donde la <b>isocosto es tangente a la isocuanta</b>. Ahí se cumple \(\dfrac{PMg_L}{w}=\dfrac{PMg_K}{r}\): <b>el último peso gastado rinde igual en cualquier factor</b>.</div>
+<div class="fig">
+<svg viewBox="0 0 380 250" aria-label="Isocuanta tangente a isocosto">
+  <line x1="45" y1="210" x2="360" y2="210" stroke="#7d6f56" stroke-width="1.5"/>
+  <line x1="45" y1="210" x2="45" y2="20" stroke="#7d6f56" stroke-width="1.5"/>
+  <text x="350" y="228" font-size="12" fill="#7d6f56">L</text><text x="30" y="24" font-size="12" fill="#7d6f56">K</text>
+  <path d="M70 60 Q120 150 320 195" fill="none" stroke="#9a6a2f" stroke-width="2.5"/>
+  <text x="300" y="180" font-size="11" fill="#9a6a2f">isocuanta (q fijo)</text>
+  <line x1="70" y1="210" x2="330" y2="55" stroke="#2f5d8a" stroke-width="2.2"/>
+  <text x="250" y="80" font-size="11" fill="#2f5d8a">isocosto</text>
+  <circle cx="158" cy="132" r="5" fill="#3e7d4f"/>
+  <text x="165" y="125" font-size="11" fill="#3e7d4f">óptimo (tangencia)</text>
+</svg>
+<figcaption>El punto donde la recta de isocosto apenas roza la isocuanta es la combinación de menor costo.</figcaption>
+</div>
+
+<!-- ============================== 5. COSTO CONTABLE / OPORTUNIDAD / ECONÓMICO ============================== -->
+<h2 id="costos-tipo"><span class="num">5</span> Costo contable, de oportunidad y económico</h2>
+<div class="sec-rule"></div>
+<div class="idea">El <b>economista</b> cuenta más cosas que el contador. Suma lo que pagás <b>de verdad</b> (explícito) <b>y</b> lo que <b>resignás</b> por no usar tus recursos en otra cosa (implícito, de oportunidad).</div>
+<div class="box">
+<table class="tbl">
+<thead><tr><th>Tipo de costo</th><th>Qué incluye</th><th>Ejemplo</th></tr></thead>
+<tbody>
+<tr><td><b>Contable (explícito)</b></td><td>lo que <b>pagás</b> con plata</td><td>insumos, sueldos, alquiler, luz</td></tr>
+<tr><td><b>De oportunidad (implícito)</b></td><td>lo que <b>resignás</b> al elegir esto</td><td>tu sueldo en otro empleo, el interés del capital propio</td></tr>
+<tr><td><b>Económico</b></td><td><b>explícito + implícito</b></td><td>todo lo de arriba sumado</td></tr>
+</tbody></table>
+</div>
+<div class="box formula">
+\[ \text{Beneficio contable}=Ingreso-\text{costos explícitos} \]
+\[ \text{Beneficio económico}=Ingreso-\text{costo económico} \]
+</div>
+<div class="ej">
+<div class="ej-h">Ejemplo resuelto</div>
+<div class="ej-b">
+<div class="step"><div class="s">1</div><div class="c">Una pyme vende por <b>$200.000</b>. Paga insumos y sueldos por <b>$120.000</b> (explícito). El dueño deja un empleo de <b>$50.000</b> para atenderla (implícito / de oportunidad).</div></div>
+<div class="step"><div class="s">2</div><div class="c"><b>Beneficio contable</b> \(=200.000-120.000=\$80.000\).</div></div>
+<div class="step"><div class="s">3</div><div class="c"><b>Costo económico</b> \(=120.000+50.000=\$170.000\). <b>Beneficio económico</b> \(=200.000-170.000=\$30.000\).</div></div>
+<div class="result">Como el beneficio económico es <b>positivo ($30.000)</b>, conviene seguir: gana más que en la mejor alternativa. (Está en la hoja 4 del Excel.)</div>
+</div>
+</div>
+
+<!-- ============================== 6. COSTOS ============================== -->
+<h2 id="costos"><span class="num">6</span> Familia de costos y el nivel que minimiza el costo</h2>
+<div class="sec-rule"></div>
+<div class="idea">De un solo dato (cuánto cuesta producir cada cantidad) salen <b>siete costos</b>. Y hay un \(q\) <b>estrella</b>: el que hace mínimo el costo medio. Identificarlo y explicarlo es <b>pregunta segura</b>.</div>
+<div class="box formula">
+<h4 style="margin-top:0">Las fórmulas (todas son sumar, restar o dividir)</h4>
+\[ CT=CF+CV \qquad CFMe=\dfrac{CF}{q} \qquad CVMe=\dfrac{CV}{q} \]
+\[ CMe=\dfrac{CT}{q} \qquad CMg=\dfrac{\Delta CT}{\Delta q} \]
+<p style="margin:6px 0 0"><b>CF</b> no cambia con \(q\) (alquiler) · <b>CV</b> sí (insumos) · <b>CMg</b> es lo que cuesta la <b>última</b> unidad.</p>
+</div>
+<div class="callout key"><span class="tt">El punto que tenés que explicar</span>El <b>costo medio (CMe) se minimiza</b> en el \(q\) donde la curva de <b>costo marginal (CMg) lo corta desde abajo</b>. Antes de ese punto \(CMg<CMe\) (el medio baja); después \(CMg>CMe\) (el medio sube). Justo en el mínimo, <b>CMg = CMe</b>.</div>
+
+<div class="fig">
+<svg viewBox="0 0 470 310" aria-label="Curvas de costo medio variable, medio total y marginal">
+  <line x1="55" y1="270" x2="445" y2="270" stroke="#7d6f56" stroke-width="1.5"/>
+  <line x1="55" y1="270" x2="55" y2="25" stroke="#7d6f56" stroke-width="1.5"/>
+  <text x="448" y="274" font-size="12" fill="#7d6f56">q</text>
+  <text x="40" y="28" font-size="12" fill="#7d6f56">$</text>
+  <!-- CMg (rojo, J) -->
+  <path d="M70,150 C115,212 150,216 170,210 C215,198 250,180 300,150 C345,122 390,80 420,45" fill="none" stroke="#b1442f" stroke-width="2.6"/>
+  <text x="424" y="44" font-size="12" fill="#b1442f" font-weight="700">CMg</text>
+  <!-- CMe (azul, U) -->
+  <path d="M120,140 C195,182 248,179 272,179 C322,179 372,120 420,72" fill="none" stroke="#2f5d8a" stroke-width="2.6"/>
+  <text x="424" y="72" font-size="12" fill="#2f5d8a" font-weight="700">CMe</text>
+  <!-- CVMe (verde, U) -->
+  <path d="M95,158 C145,200 185,206 212,206 C268,206 330,156 415,96" fill="none" stroke="#3e7d4f" stroke-width="2.4" stroke-dasharray="7 4"/>
+  <text x="392" y="110" font-size="12" fill="#3e7d4f" font-weight="700">CVMe</text>
+  <!-- crossings -->
+  <circle cx="212" cy="206" r="4.5" fill="#9a6a2f"/>
+  <line x1="212" y1="206" x2="212" y2="270" stroke="#9a6a2f" stroke-width="1.1" stroke-dasharray="3 4"/>
+  <text x="212" y="285" font-size="9.5" fill="#9a6a2f" text-anchor="middle">mín CVMe</text>
+  <circle cx="272" cy="179" r="4.5" fill="#9a6a2f"/>
+  <line x1="272" y1="179" x2="272" y2="270" stroke="#9a6a2f" stroke-width="1.1" stroke-dasharray="3 4"/>
+  <text x="276" y="285" font-size="9.5" fill="#9a6a2f">q* mín CMe</text>
+</svg>
+<figcaption>El gráfico que cae en el parcial: el <b>CMg corta al CVMe y al CMe justo en sus puntos mínimos</b>. A la izquierda del cruce el costo medio baja; a la derecha sube. Ese <b>q*</b> es el que minimiza el costo medio.</figcaption>
+</div>
+
+<h3>✍️ Práctica en Excel · Tabla de costos y mínimo</h3>
+<p>Cambiá el <b>Costo Fijo</b> y la columna de <b>Costo Variable</b> (amarillos). Todo se recalcula y la fila del <b>CMe mínimo se pinta de azul</b>. El gráfico muestra las curvas en U del CMe y el CMg cruzándose.</p>
+<div class="xls">
+  <div class="xls-h">Familia de costos de corto plazo <span class="lbl">Hoja 3 del .xlsx</span>
+    <span style="margin-left:auto;font-weight:600;font-size:.85rem">CF =
+      <input class="cell-in" id="cfIn" type="number" value="60" style="width:70px"></span>
+  </div>
+  <div class="xls-wrap">
+    <table class="sheet" id="tCost">
+      <thead><tr><th>q</th><th>CF</th><th>CV</th><th>CT</th><th>CFMe</th><th>CVMe</th><th>CMe</th><th>CMg</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="chartbox"><svg id="svgCost" viewBox="0 0 520 260" role="img" aria-label="Curvas de costo medio y marginal"></svg></div>
+  <div class="xls-foot"><b>Fórmulas:</b> <span class="fx">CT → =B2+C2</span> <span class="fx">CFMe → =B2/A2</span> <span class="fx">CVMe → =C2/A2</span> <span class="fx">CMe → =D2/A2</span> <span class="fx">CMg → =D3-D2</span></div>
+</div>
+<div id="costMsg" class="callout tip" style="margin-top:10px"><span class="tt">Resultado</span><span id="costMsgTxt">—</span></div>
+
+<!-- ============================== 7. ELASTICIDAD INGRESO ============================== -->
+<h2 id="elast-ingreso"><span class="num">7</span> Elasticidad-ingreso de la demanda</h2>
+<div class="sec-rule"></div>
+<div class="idea">No es la elasticidad-<i>precio</i>: acá cambia el <b>ingreso del bolsillo</b> de la gente. Mide cuánto cambia la cantidad demandada cuando la gente tiene <b>más (o menos) plata</b>. Sirve para <b>clasificar el bien</b>.</div>
+<div class="box formula">\[ E_I=\dfrac{\Delta\%\,\text{Cantidad demandada}}{\Delta\%\,\text{Ingreso}} \]</div>
+<div class="box">
+<table class="tbl">
+<thead><tr><th>Valor de \(E_I\)</th><th>Tipo de bien</th><th>Qué significa</th></tr></thead>
+<tbody>
+<tr><td>\(E_I<0\) (negativa)</td><td><b>Inferior</b></td><td>ganás más → comprás <b>menos</b> (ej. el "segundo marca")</td></tr>
+<tr><td>\(0<E_I<1\)</td><td><b>Normal necesario</b></td><td>sube algo, pero menos que el ingreso (comida básica)</td></tr>
+<tr><td>\(E_I>1\)</td><td><b>Normal de lujo</b></td><td>sube más que el ingreso (viajes, autos)</td></tr>
+</tbody></table>
+</div>
+<div class="callout tip"><span class="tt">No confundir</span><b>Elasticidad-precio</b> → reacciona al <b>precio del bien</b>. <b>Elasticidad-ingreso</b> → reacciona al <b>ingreso de la persona</b>. <b>Elasticidad-cruzada</b> → reacciona al <b>precio de otro bien</b> (positiva = sustitutos, negativa = complementarios).</div>
+
+<!-- ============================== 8. EXCEDENTE DEL PRODUCTOR ============================== -->
+<h2 id="excedente"><span class="num">8</span> Excedente del productor</h2>
+<div class="sec-rule"></div>
+<div class="idea">Es la <b>"ganancia" del vendedor</b>: la diferencia entre el precio que <b>realmente cobra</b> y el <b>mínimo</b> al que hubiese estado dispuesto a vender.</div>
+<div class="box formula">\[ \text{Excedente del productor}= \text{Precio de mercado} - \text{Costo mínimo aceptable} \]</div>
+<p>Si estabas dispuesto a vender a <b>$50</b> y el mercado paga <b>$80</b>, tu excedente es <b>$30</b> por unidad. En el gráfico de oferta y demanda es el <b>área entre el precio y la curva de oferta</b>.</p>
+<div class="fig">
+<svg viewBox="0 0 420 240" aria-label="Excedente del productor">
+  <line x1="50" y1="200" x2="400" y2="200" stroke="#7d6f56" stroke-width="1.5"/>
+  <line x1="50" y1="200" x2="50" y2="20" stroke="#7d6f56" stroke-width="1.5"/>
+  <text x="392" y="218" font-size="12" fill="#7d6f56">Q</text><text x="36" y="24" font-size="12" fill="#7d6f56">P</text>
+  <polygon points="50,160 300,80 300,160" fill="#dceadb" stroke="none"/>
+  <line x1="60" y1="180" x2="360" y2="55" stroke="#2f5d8a" stroke-width="2.5"/>
+  <text x="330" y="55" font-size="12" fill="#2f5d8a">Oferta</text>
+  <line x1="50" y1="80" x2="300" y2="80" stroke="#b1442f" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="305" y="84" font-size="11" fill="#b1442f">P de mercado</text>
+  <text x="120" y="135" font-size="12" fill="#3e7d4f" font-weight="bold">Excedente</text>
+  <text x="120" y="150" font-size="12" fill="#3e7d4f" font-weight="bold">del productor</text>
+</svg>
+<figcaption>El área verde entre el precio de mercado y la curva de oferta es el excedente del productor.</figcaption>
+</div>
+<div class="callout key"><span class="tt">Dato que también cae</span><b>Elasticidad de la oferta</b>: siempre <b>positiva</b> (la curva sube). Elástica si \(>1\), inelástica si \(<1\), unitaria si \(=1\), <b>nula</b> si la curva es vertical, <b>infinita</b> si es horizontal. A <b>largo plazo</b> la oferta es <b>más elástica</b> (hay tiempo de ampliar la planta).</div>
+
+<!-- ============================== FORMULARIO ============================== -->
+<h2 id="formulario"><span class="num">🎴</span> Formulario crítico (la chuleta final)</h2>
+<div class="sec-rule"></div>
+<p>Todo lo imprescindible en una pantalla. <b>Esto es lo que tenés que poder recitar el día del parcial.</b></p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px;margin:16px 0">
+  <div class="box formula">
+    <h4>1 · Elasticidad e IT</h4>
+    <div class="mq">\[ E_p=\left|\tfrac{\Delta\% Q}{\Delta\% P}\right|\quad IT=P\cdot Q \]</div>
+    <p style="margin:4px 0 0;font-size:.9rem">Elástica \(>1\): baja P → sube IT. Inelástica \(<1\): baja P → baja IT. Unitaria \(=1\): IT máximo.</p>
+  </div>
+  <div class="box formula">
+    <h4>2 · Oferta</h4>
+    <p style="margin:4px 0 0;font-size:.9rem">A más P, más Q (sube). <b>Cambia P</b> → movimiento sobre la curva. <b>Cambia otra cosa</b> (costos, tecnología, impuestos) → desplaza la curva.</p>
+  </div>
+  <div class="box formula">
+    <h4>3 · Producción CP</h4>
+    <div class="mq">\[ PMg=\tfrac{\Delta PT}{\Delta L}\quad PMe=\tfrac{PT}{L} \]</div>
+    <p style="margin:4px 0 0;font-size:.9rem">CP: hay factor fijo. LP: todo variable. PMg corta al PMe en su máximo.</p>
+  </div>
+  <div class="box formula">
+    <h4>4 · Isocuanta / Isocosto</h4>
+    <div class="mq">\[ CT_0=wL+rK \]</div>
+    <p style="margin:4px 0 0;font-size:.9rem">Isocuanta: igual producción. Isocosto: igual costo (pend. \(-w/r\)). Óptimo = tangencia: \(\tfrac{PMg_L}{w}=\tfrac{PMg_K}{r}\).</p>
+  </div>
+  <div class="box formula">
+    <h4>5 · Costos</h4>
+    <div class="mq">\[ CT=CF+CV\quad CMe=\tfrac{CT}{q}\quad CMg=\tfrac{\Delta CT}{\Delta q} \]</div>
+    <p style="margin:4px 0 0;font-size:.9rem">CMe mínimo donde <b>CMg = CMe</b>. Económico = explícito + implícito.</p>
+  </div>
+  <div class="box formula">
+    <h4>6 · Elast-ingreso / Excedente</h4>
+    <div class="mq">\[ E_I=\tfrac{\Delta\% Q}{\Delta\% Ingreso} \]</div>
+    <p style="margin:4px 0 0;font-size:.9rem">\(<0\) inferior · \(0\text{–}1\) necesario · \(>1\) lujo. Excedente productor = P mercado − costo mínimo.</p>
+  </div>
+</div>
+<div class="callout warn"><span class="tt">🎯 Lo que cae casi seguro</span>Calcular IT y decir el tipo de elasticidad · armar la tabla de PMg/PMe y graficar · armar la familia de costos e <b>identificar el q que minimiza el CMe</b> · distinguir costo contable / de oportunidad / económico · diferenciar movimiento vs. desplazamiento de la oferta · isocuanta + isocosto · excedente del productor. <b>Practicá ESTO en el Excel.</b></div>
+
+<!-- ============================== MODELO DE EXAMEN ============================== -->
+<h2 id="examen"><span class="num">📝</span> Modelo de examen (con soluciones)</h2>
+<div class="sec-rule"></div>
+<p>Hacelo como simulacro: resolvé primero, abrí la solución recién después para corregirte.</p>
+<div class="callout warn"><span class="tt">Importante</span>Abrir la solución sin intentarlo no entrena. La idea es detectar dónde te trabás.</div>
+
+<details class="pr"><summary>1) Una demanda pasa de \(P=8,\ Q=20\) a \(P=6,\ Q=40\). (a) Elasticidad-arco. (b) ¿Qué tipo es? (c) ¿Qué pasó con el IT?</summary>
+<div class="sol">
+<p><b>(a)</b> \(\Delta\%Q=\dfrac{40-20}{(20+40)/2}=\dfrac{20}{30}=0{,}667\); \(\ \Delta\%P=\dfrac{6-8}{(8+6)/2}=\dfrac{-2}{7}=-0{,}286\). &nbsp; \(E_p=\left|\dfrac{0{,}667}{-0{,}286}\right|\approx 2{,}33\).</p>
+<p><b>(b)</b> Como \(E_p>1\) → <b>elástica</b>.</p>
+<p><b>(c)</b> IT antes \(=8\times20=160\); IT después \(=6\times40=240\). <b>El IT subió</b> (bajó el precio y, por ser elástica, el ingreso aumentó). ✔</p>
+</div></details>
+
+<details class="pr"><summary>2) PT con 0,1,2,3,4 trabajadores: 0, 12, 28, 39, 46. Calculá PMg y PMe e indicá cuándo el PMe empieza a bajar.</summary>
+<div class="sol">
+<p><b>PMg</b> (resto cada PT con el anterior): —, 12, 16, 11, 7.</p>
+<p><b>PMe</b> (PT/L): —, 12, 14, 13, 11,5.</p>
+<p>El <b>PMe</b> sube hasta \(L=2\) (14) y después baja. Coincide con que ahí el <b>PMg (11) cae por debajo del PMe (14)</b>: a partir de ese punto el promedio baja. ✔</p>
+</div></details>
+
+<details class="pr"><summary>3) CF = 40. CV para q = 1..5: 25, 45, 60, 80, 110. Armá CT, CMe y CMg, y decí en qué q se minimiza el CMe.</summary>
+<div class="sol">
+<p><b>CT</b> (=CF+CV): 65, 85, 100, 120, 150.</p>
+<p><b>CMe</b> (=CT/q): 65, 42,5, 33,3, 30, 30.</p>
+<p><b>CMg</b> (=ΔCT): 25, 20, 15, 20, 30.</p>
+<p>El <b>CMe mínimo</b> está en torno a <b>q = 4</b> (CMe = 30), donde el CMg (20) todavía está por debajo o igualando al CMe y empieza a empujarlo hacia arriba. A partir de ahí el CMe sube. ✔</p>
+</div></details>
+
+<details class="pr"><summary>4) Un local factura $300.000. Paga $180.000 en gastos. El dueño resignó un sueldo de $70.000. (a) Beneficio contable. (b) Económico. (c) ¿Conviene seguir?</summary>
+<div class="sol">
+<p><b>(a)</b> Contable \(=300.000-180.000=\$120.000\).</p>
+<p><b>(b)</b> Costo económico \(=180.000+70.000=250.000\). Económico \(=300.000-250.000=\$50.000\).</p>
+<p><b>(c)</b> El beneficio económico es <b>positivo ($50.000)</b> → <b>conviene seguir</b>: incluso descontando lo que resignó, gana más que en la alternativa. ✔</p>
+</div></details>
+
+<details class="pr"><summary>5) (Teórico) Sube el precio internacional de la harina. ¿La oferta de pan se mueve sobre la curva o se desplaza? ¿Hacia dónde?</summary>
+<div class="sol">
+<p>La harina es un <b>insumo</b> (no es el precio del pan). Entonces <b>se desplaza toda la curva de oferta</b>, y como el costo <b>subió</b>, se corre hacia la <b>izquierda</b> (menos oferta a cada precio). Si en cambio subiera el <b>precio del pan</b>, sería un <b>movimiento sobre</b> la curva (más cantidad ofrecida). ✔</p>
+</div></details>
+
+<details class="pr"><summary>6) (Teórico) Definí excedente del productor y explicá por qué la elasticidad de la oferta es mayor a largo plazo.</summary>
+<div class="sol">
+<p><b>Excedente del productor</b> = diferencia entre el precio de mercado y el costo mínimo al que el productor aceptaba vender (su "ganancia" por vender más caro de lo mínimo).</p>
+<p><b>Elasticidad mayor a LP</b>: en el largo plazo todos los factores son variables, así que la empresa <b>puede ampliar la planta, contratar más, invertir</b>. Con tiempo, ante una suba de precio puede aumentar mucho más la cantidad ofrecida → la oferta responde más → es <b>más elástica</b>. ✔</p>
+</div></details>
+
+<div class="callout tip" style="margin-top:24px"><span class="tt">Antes de entregar</span>Revisá: ¿pusiste <b>unidades</b> ($, unidades)? ¿en elasticidad respondiste el <b>tipo</b> y no solo el número? ¿en costos <b>marcaste y explicaste</b> el q del mínimo? ¿distinguiste <b>cantidad ofrecida</b> (movimiento) de <b>oferta</b> (desplazamiento)? Esos puntos son regalados.</div>
+
+<a class="back" href="economia.html">← Volver a Fundamentos de Economía I</a>
+
+<p class="foot">Hecho desde los apuntes de cátedra · UCES · Fundamentos de Economía I · 2026.<br>Fórmulas con KaTeX · Planillas interactivas y gráficos propios · Excel con openpyxl. ¡Éxitos en el parcial! 💪</p>
+
+</div>
+
+<script>
+function toggleTheme(){
+  const cur = document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  localStorage.setItem('theme', next);
+  document.getElementById('themeBtn').textContent = next === 'dark' ? '☀️' : '🌙';
+}
+const saved = localStorage.getItem('theme');
+if(saved){ document.documentElement.dataset.theme = saved; document.getElementById('themeBtn').textContent = saved === 'dark' ? '☀️' : '🌙'; }
+
+document.querySelectorAll('.chk').forEach(c=>{
+  c.checked = localStorage.getItem('eco2-'+c.dataset.k) === '1';
+  c.addEventListener('change',()=>localStorage.setItem('eco2-'+c.dataset.k, c.checked ? '1' : '0'));
+});
+
+/* ===================== HELPERS DE GRÁFICO SVG ===================== */
+const NS="http://www.w3.org/2000/svg";
+function el(tag,attrs){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
+function cssVar(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()||'#888';}
+function plot(svg, series, opt){
+  opt=opt||{}; const W=520,H=opt.H||250, mL=44,mR=14,mT=14,mB=30;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`); svg.innerHTML='';
+  let xs=[],ys=[]; series.forEach(s=>s.pts.forEach(p=>{xs.push(p[0]);ys.push(p[1]);}));
+  if(!xs.length)return;
+  let xmin=Math.min(...xs),xmax=Math.max(...xs),ymin=Math.min(0,...ys),ymax=Math.max(...ys);
+  if(xmax===xmin)xmax=xmin+1; if(ymax===ymin)ymax=ymin+1;
+  const sx=x=>mL+(x-xmin)/(xmax-xmin)*(W-mL-mR);
+  const sy=y=>H-mB-(y-ymin)/(ymax-ymin)*(H-mT-mB);
+  const ink=cssVar('--muted'), line=cssVar('--line-strong');
+  // ejes
+  svg.appendChild(el('line',{x1:mL,y1:H-mB,x2:W-mR,y2:H-mB,stroke:ink,'stroke-width':1.2}));
+  svg.appendChild(el('line',{x1:mL,y1:mT,x2:mL,y2:H-mB,stroke:ink,'stroke-width':1.2}));
+  // gridlines y
+  for(let i=0;i<=4;i++){const yv=ymin+(ymax-ymin)*i/4;const yy=sy(yv);
+    svg.appendChild(el('line',{x1:mL,y1:yy,x2:W-mR,y2:yy,stroke:line,'stroke-width':.5,'stroke-dasharray':'2 3'}));
+    const t=el('text',{x:mL-6,y:yy+3,'font-size':9,fill:ink,'text-anchor':'end'});t.textContent=Math.round(yv);svg.appendChild(t);}
+  // x labels
+  series[0].pts.forEach(p=>{const t=el('text',{x:sx(p[0]),y:H-mB+13,'font-size':9,fill:ink,'text-anchor':'middle'});t.textContent=p[0];svg.appendChild(t);});
+  if(opt.xlab){const t=el('text',{x:W-mR,y:H-mB+24,'font-size':10,fill:ink,'text-anchor':'end'});t.textContent=opt.xlab;svg.appendChild(t);}
+  // series
+  series.forEach(s=>{
+    let d=s.pts.map((p,i)=>(i?'L':'M')+sx(p[0])+' '+sy(p[1])).join(' ');
+    svg.appendChild(el('path',{d,fill:'none',stroke:s.color,'stroke-width':2.4,'stroke-dasharray':s.dash||'0'}));
+    s.pts.forEach(p=>svg.appendChild(el('circle',{cx:sx(p[0]),cy:sy(p[1]),r:2.6,fill:s.color})));
+    if(s.label){const lp=s.pts[s.pts.length-1];const t=el('text',{x:sx(lp[0])-2,y:sy(lp[1])-6,'font-size':10,fill:s.color,'text-anchor':'end','font-weight':700});t.textContent=s.label;svg.appendChild(t);}
+  });
+}
+
+/* ===================== 1 · INGRESO TOTAL ===================== */
+const itData=[[10,0],[9,10],[8,20],[7,30],[6,40],[5,50],[4,60],[3,70]];
+function buildIT(){
+  const tb=document.querySelector('#tIT tbody'); tb.innerHTML='';
+  itData.forEach((row,i)=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td><input class="cell-in" data-r="${i}" data-c="0" type="number" value="${row[0]}"></td>
+      <td><input class="cell-in" data-r="${i}" data-c="1" type="number" value="${row[1]}"></td>
+      <td class="xcc" id="itIT${i}">—</td><td class="xcc" id="itE${i}">—</td><td class="xcc" id="itT${i}">—</td>`;
+    tb.appendChild(tr);
+  });
+  tb.querySelectorAll('input').forEach(inp=>inp.addEventListener('input',e=>{
+    itData[+e.target.dataset.r][+e.target.dataset.c]=parseFloat(e.target.value)||0; recalcIT();
+  }));
+}
+function recalcIT(){
+  const itpts=[];
+  for(let i=0;i<itData.length;i++){
+    const P=itData[i][0],Q=itData[i][1],IT=P*Q;
+    document.getElementById('itIT'+i).textContent=IT.toFixed(0);
+    itpts.push([Q,IT]);
+    if(i>0){
+      const P0=itData[i-1][0],Q0=itData[i-1][1];
+      const dQ=(Q-Q0)/((Q+Q0)/2||1), dP=(P-P0)/((P+P0)/2||1);
+      const E=dP===0?NaN:Math.abs(dQ/dP);
+      document.getElementById('itE'+i).textContent=isFinite(E)?E.toFixed(2):'—';
+      document.getElementById('itT'+i).textContent=!isFinite(E)?'—':(E>1.05?'Elástica':(E<0.95?'Inelástica':'Unitaria'));
+    }
+  }
+  itpts.sort((a,b)=>a[0]-b[0]);
+  plot(document.getElementById('svgIT'),[{pts:itpts,color:cssVar('--blue'),label:'IT'}],{xlab:'Q'});
+}
+
+/* ===================== 3 · PRODUCCIÓN ===================== */
+const ptData=[0,10,24,39,52,60,66,70,70,63];
+function buildProd(){
+  const tb=document.querySelector('#tProd tbody'); tb.innerHTML='';
+  ptData.forEach((v,i)=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td class="lo">${i}</td>
+      <td><input class="cell-in" data-i="${i}" type="number" value="${v}"></td>
+      <td class="xcc" id="pmg${i}">—</td><td class="xcc" id="pme${i}">—</td>`;
+    tb.appendChild(tr);
+  });
+  tb.querySelectorAll('input').forEach(inp=>inp.addEventListener('input',e=>{
+    ptData[+e.target.dataset.i]=parseFloat(e.target.value)||0; recalcProd();
+  }));
+}
+function recalcProd(){
+  const pmg=[],pme=[];
+  for(let i=0;i<ptData.length;i++){
+    if(i>0){
+      const g=ptData[i]-ptData[i-1], m=ptData[i]/i;
+      document.getElementById('pmg'+i).textContent=g.toFixed(1);
+      document.getElementById('pme'+i).textContent=m.toFixed(1);
+      pmg.push([i,g]); pme.push([i,m]);
+    }
+  }
+  plot(document.getElementById('svgProd'),[
+    {pts:pmg,color:cssVar('--brand'),label:'PMg'},
+    {pts:pme,color:cssVar('--green'),label:'PMe',dash:'6 4'}
+  ],{xlab:'L'});
+}
+
+/* ===================== 6 · COSTOS ===================== */
+const cvData=[0,30,50,62,72,85,105,140,190,260];
+function buildCost(){
+  const tb=document.querySelector('#tCost tbody'); tb.innerHTML='';
+  cvData.forEach((v,i)=>{
+    const tr=document.createElement('tr'); tr.id='crow'+i;
+    tr.innerHTML=`<td class="lo">${i}</td><td class="xcc" id="cf${i}">—</td>
+      <td><input class="cell-in" data-i="${i}" type="number" value="${v}"></td>
+      <td class="xcc" id="ct${i}">—</td><td class="xcc" id="cfme${i}">—</td>
+      <td class="xcc" id="cvme${i}">—</td><td class="xcc" id="cme${i}">—</td>
+      <td class="xcc" id="cmg${i}">—</td>`;
+    tb.appendChild(tr);
+  });
+  tb.querySelectorAll('input').forEach(inp=>inp.addEventListener('input',e=>{
+    cvData[+e.target.dataset.i]=parseFloat(e.target.value)||0; recalcCost();
+  }));
+  document.getElementById('cfIn').addEventListener('input',recalcCost);
+}
+function recalcCost(){
+  const CF=parseFloat(document.getElementById('cfIn').value)||0;
+  const cmePts=[],cmgPts=[]; let prevCT=null, minCme=Infinity, minQ=null, minCmeVal=null;
+  for(let i=0;i<cvData.length;i++){
+    const CV=cvData[i], CT=CF+CV;
+    document.getElementById('cf'+i).textContent=CF.toFixed(0);
+    document.getElementById('ct'+i).textContent=CT.toFixed(0);
+    document.getElementById('crow'+i).classList.remove('hot');
+    if(i>0){
+      const cfme=CF/i, cvme=CV/i, cme=CT/i, cmg=CT-prevCT;
+      document.getElementById('cfme'+i).textContent=cfme.toFixed(1);
+      document.getElementById('cvme'+i).textContent=cvme.toFixed(1);
+      document.getElementById('cme'+i).textContent=cme.toFixed(1);
+      document.getElementById('cmg'+i).textContent=cmg.toFixed(1);
+      cmePts.push([i,cme]); cmgPts.push([i,cmg]);
+      if(cme<minCme){minCme=cme; minQ=i; minCmeVal=cme;}
+    }
+    prevCT=CT;
+  }
+  if(minQ!==null){
+    document.getElementById('crow'+minQ).classList.add('hot');
+    document.getElementById('costMsgTxt').innerHTML=
+      `El <b>costo medio se minimiza en q = ${minQ}</b>, con CMe = <b>${minCmeVal.toFixed(2)}</b>. `+
+      `Es el punto donde el CMg cruza al CMe desde abajo. Cambiá los datos amarillos y mirá cómo se mueve.`;
+  }
+  plot(document.getElementById('svgCost'),[
+    {pts:cmePts,color:cssVar('--blue'),label:'CMe'},
+    {pts:cmgPts,color:cssVar('--red'),label:'CMg',dash:'6 4'}
+  ],{H:260,xlab:'q'});
+}
+
+/* ===================== INIT ===================== */
+buildIT(); buildProd(); buildCost();
+recalcIT(); recalcProd(); recalcCost();
+
+document.addEventListener("DOMContentLoaded", function(){
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "\\[", right: "\\]", display: true},
+      {left: "\\(", right: "\\)", display: false}
+    ],
+    throwOnError: false
+  });
+});
+// redibujar al cambiar tema (colores nuevos)
+document.getElementById('themeBtn').addEventListener('click',()=>{setTimeout(()=>{recalcIT();recalcProd();recalcCost();},30);});
+</script>
+</body>
+</html>
