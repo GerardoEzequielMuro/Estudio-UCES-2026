@@ -697,12 +697,22 @@
 
 <div class="callout">
   <div class="ct">5 · Abastecimiento (Unidad 5)</div>
-  <p>La función de abastecimiento comprende 3 subfunciones encadenadas (ciclo): <strong>almacenaje</strong> (detecta la necesidad al llegar al punto de pedido) → <strong>compras</strong> (estudia proveedores y ejecuta) → <strong>recepción</strong> (controla e ingresa el bien). Maneja dos costos contrapuestos: el de <strong>ordenamiento</strong> y el de <strong>mantener existencias</strong>. Componentes que asocian en el parcial:</p>
+  <p>La función de abastecimiento comprende <strong>3 subfunciones encadenadas</strong> (ciclo): <strong>almacenaje</strong> (detecta la necesidad al llegar al punto de pedido) → <strong>compras</strong> (estudia proveedores, ejecuta y hace el seguimiento) → <strong>recepción</strong> (controla e ingresa el bien).</p>
+  <p><strong>Los dos costos contrapuestos</strong> (el lote óptimo busca minimizar su suma):</p>
   <ul>
     <li><strong>Costo de ordenamiento (de pedir):</strong> costos de colocar una orden de compra, transportes y gastos generales de importación.</li>
-    <li><strong>Punto de pedido (reorden):</strong> el nivel de stock de materia prima que, al alcanzarse, dispara una nueva orden de compra.</li>
-    <li><strong>Lote óptimo</strong> (cantidad económica de pedido, qo): la cantidad a pedir que minimiza la suma de los costos relevantes; está donde se cruzan la curva de mantener existencias y la de ordenar.</li>
+    <li><strong>Costo de mantener existencias:</strong> costo de tener el stock guardado (almacenamiento, inmovilización de capital, seguros, etc.).</li>
   </ul>
+  <p><strong>Conceptos del manejo de inventarios</strong> (los que asocian en el parcial y otros que pueden caer):</p>
+  <ul>
+    <li><strong>Punto de pedido (reorden):</strong> el nivel de stock de materia prima que, al alcanzarse, dispara una nueva orden de compra.</li>
+    <li><strong>Lote de compra:</strong> la cantidad que se pide en cada orden.</li>
+    <li><strong>Lote óptimo</strong> (cantidad económica de pedido, qo): la cantidad a pedir que minimiza la suma de los costos relevantes; está donde se cruzan la curva de mantener existencias y la de ordenar.</li>
+    <li><strong>Stock / inventario de seguridad:</strong> stock mínimo de reserva para no quedar sin material si hay demoras o sube el consumo.</li>
+    <li><strong>Lapso de reaprovisionamiento:</strong> el tiempo que pasa desde que se hace el pedido hasta que se repone (consumo hasta el punto de pedido).</li>
+  </ul>
+  <p><strong>Fórmula del lote óptimo:</strong> &nbsp;qo = √( 2 · Q · C₂ ÷ (T · C₁) ) &nbsp;<span style="font-size:.9rem;color:var(--ink-soft)">— Q = unidades necesarias en el período · C₂ = costo de cada orden · C₁ = costo de mantener una unidad · T = período.</span></p>
+  <p style="font-size:.9rem;color:var(--ink-soft)">Las <strong>compras</strong> incluyen: manejo de almacenes, control de existencias y detección de la necesidad, estudio del mercado proveedor, planeamiento, ejecución (con importaciones) y seguimiento.</p>
 </div>
 
 <div class="callout">
