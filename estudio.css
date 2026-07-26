@@ -277,3 +277,31 @@ figcaption{margin-top:11px;font-size:.84rem;color:var(--muted);font-style:italic
   .deck-btn{padding:11px 13px;font-size:.86rem;max-width:47%}
   .deck-nav{margin-top:52px}
 }
+
+/* ---------- Figuras / diagramas SVG ---------- */
+.fig{margin:34px 0;padding:22px 20px 18px;text-align:left;background:var(--surface-2);
+  border:1px solid var(--line);border-radius:var(--radius)}
+.fig svg{display:block;width:100%;height:auto;max-width:660px;margin:0 auto;
+  color:var(--text);overflow:visible}
+.fig figcaption{margin:16px auto 0;max-width:660px;font-size:.88rem;line-height:1.7;
+  text-align:left;font-style:normal;
+  color:var(--muted)}
+.fig figcaption b{color:var(--ink)}
+.fig .svg-t{font-family:var(--sans);font-size:13px;fill:currentColor}
+.fig .svg-s{font-family:var(--sans);font-size:11.5px;fill:currentColor;opacity:.72}
+.fig .svg-k{font-family:var(--sans);font-size:12.5px;font-weight:600;fill:currentColor}
+.fig .svg-m{font-family:var(--mono);font-size:12px;fill:currentColor;opacity:.8}
+.fig .ax{stroke:currentColor;stroke-width:1.2;opacity:.45}
+.fig .grid{stroke:currentColor;stroke-width:1;opacity:.13}
+.fig .cv{fill:none;stroke-width:2.4;stroke-linecap:round}
+.fig .cv-a{stroke:var(--brand)}
+.fig .cv-b{stroke:var(--indigo)}
+.fig .cv-c{stroke:var(--gold)}
+.fig .dash{stroke-dasharray:5 4;stroke-width:1.4;fill:none;opacity:.75}
+.fig .box{fill:var(--surface);stroke:var(--line-strong);stroke-width:1.3}
+.fig .box-a{fill:var(--brand-soft);stroke:var(--brand);stroke-width:1.3}
+.fig .box-b{fill:var(--indigo-soft);stroke:var(--indigo);stroke-width:1.3}
+.fig .box-c{fill:var(--gold-soft);stroke:var(--gold);stroke-width:1.3}
+.fig .dot{fill:var(--brand)}
+.fig .dot-o{fill:var(--surface);stroke:var(--brand);stroke-width:2}
+@media (max-width:560px){ .fig{padding:16px 12px 14px} .fig figcaption{font-size:.84rem} }

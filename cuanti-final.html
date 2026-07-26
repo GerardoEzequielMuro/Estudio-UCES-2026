@@ -141,6 +141,39 @@ details.sol .cuerpo p{margin:8px 0}
 <li><strong>Racionales (\(\mathbb{Q}\)):</strong> los que se pueden escribir como <strong>cociente de dos enteros</strong> — fracciones y decimales, incluidos los periódicos. Entre dos racionales siempre hay otro: <strong>no existe el "siguiente"</strong>.</li>
 <li><strong>Irracionales (\(\mathbb{I}\)):</strong> los que <strong>no</strong> se pueden escribir como cociente de dos enteros; tienen infinitas cifras decimales <strong>no periódicas</strong>: \(\pi\), \(\sqrt{2}\), \(e\).</li>
 </ul>
+<figure class="fig">
+<svg viewBox="0 0 660 300" role="img" aria-label="Diagrama de los conjuntos numéricos: los naturales dentro de los enteros, dentro de los racionales; los irracionales aparte; todos dentro de los reales">
+  <rect x="4" y="4" width="652" height="292" rx="20" fill="none" stroke="var(--brand)" stroke-width="2.2"/>
+  <text class="svg-k" x="20" y="28" fill="var(--brand)">ℝ · REALES</text>
+
+  <rect x="22" y="44" width="368" height="238" rx="16" fill="none" stroke="var(--indigo)" stroke-width="1.8"/>
+  <text class="svg-k" x="36" y="66" fill="var(--indigo)">ℚ · Racionales</text>
+  <text class="svg-s" x="36" y="84">se escriben como fracción de dos enteros</text>
+  <text class="svg-m" x="36" y="270">3/4 · 0,25 · 0,666… · −7/2</text>
+
+  <rect x="40" y="96" width="332" height="158" rx="14" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".55"/>
+  <text class="svg-k" x="54" y="118">ℤ · Enteros</text>
+  <text class="svg-s" x="54" y="135">agregan el 0 y los negativos</text>
+  <text class="svg-m" x="54" y="242">… −3 · −2 · −1 · 0</text>
+
+  <rect x="60" y="150" width="292" height="76" rx="12" class="box-a"/>
+  <text class="svg-k" x="76" y="174">ℕ · Naturales</text>
+  <text class="svg-s" x="76" y="192">para contar</text>
+  <text class="svg-m" x="76" y="214">1 · 2 · 3 · 4 …</text>
+
+  <rect x="406" y="44" width="234" height="238" rx="16" class="box-c"/>
+  <text class="svg-k" x="422" y="66" fill="var(--gold)">𝕀 · Irracionales</text>
+  <text class="svg-s" x="422" y="86">NO se pueden escribir</text>
+  <text class="svg-s" x="422" y="103">como fracción de enteros</text>
+  <text class="svg-s" x="422" y="128">infinitas cifras decimales</text>
+  <text class="svg-s" x="422" y="145">SIN período</text>
+  <text class="svg-m" x="422" y="180">π = 3,14159…</text>
+  <text class="svg-m" x="422" y="202">√2 = 1,41421…</text>
+  <text class="svg-m" x="422" y="224">e = 2,71828…</text>
+</svg>
+<figcaption><b>Los naturales están dentro de los enteros, y los enteros dentro de los racionales</b> — por eso el 5 es natural, entero y racional a la vez. Los <b>irracionales quedan afuera de ℚ</b>: no se pisan con los racionales. La unión de ℚ e 𝕀 son los <b>reales</b>. Truco para el oral: los decimales <b>periódicos</b> son racionales (0,666… = 2/3); los irracionales tienen infinitos decimales <b>sin período</b>.</figcaption>
+</figure>
+
 <div class="repre">
 <b>Las preguntas capciosas de esta parte</b>
 <ul>
@@ -222,6 +255,32 @@ details.sol .cuerpo p{margin:8px 0}
 <li><strong>Cerrado</strong> \([a;b]\): los incluye; corresponde a \(\leq\) o \(\geq\).</li>
 <li>Semirrectas: \((a;+\infty)\), \((-\infty;b]\). <strong>El infinito siempre va con paréntesis</strong>, porque no es un número.</li>
 </ul>
+<figure class="fig">
+<svg viewBox="0 0 660 250" role="img" aria-label="Representación de intervalos abiertos, cerrados y semirrectas sobre la recta real">
+  <text class="svg-k" x="20" y="26">( a ; b )   ABIERTO — el extremo no entra · con &lt; o &gt;</text>
+  <line class="ax" x1="20" y1="54" x2="640" y2="54"/>
+  <path d="M636 50 L644 54 L636 58 Z" fill="currentColor" opacity=".45"/>
+  <line class="cv cv-a" x1="200" y1="54" x2="440" y2="54"/>
+  <circle class="dot-o" cx="200" cy="54" r="6"/><circle class="dot-o" cx="440" cy="54" r="6"/>
+  <text class="svg-m" x="192" y="42">a</text><text class="svg-m" x="434" y="42">b</text>
+
+  <text class="svg-k" x="20" y="118">[ a ; b ]   CERRADO — el extremo entra · con ≤ o ≥</text>
+  <line class="ax" x1="20" y1="146" x2="640" y2="146"/>
+  <path d="M636 142 L644 146 L636 150 Z" fill="currentColor" opacity=".45"/>
+  <line class="cv cv-a" x1="200" y1="146" x2="440" y2="146"/>
+  <circle class="dot" cx="200" cy="146" r="6"/><circle class="dot" cx="440" cy="146" r="6"/>
+  <text class="svg-m" x="192" y="134">a</text><text class="svg-m" x="434" y="134">b</text>
+
+  <text class="svg-k" x="20" y="210">( c ; +∞ )   SEMIRRECTA — el ∞ nunca se incluye</text>
+  <line class="ax" x1="20" y1="238" x2="640" y2="238"/>
+  <path d="M636 234 L644 238 L636 242 Z" fill="currentColor" opacity=".45"/>
+  <line class="cv cv-a" x1="200" y1="238" x2="632" y2="238"/>
+  <circle class="dot-o" cx="200" cy="238" r="6"/>
+  <text class="svg-m" x="192" y="226">c</text>
+</svg>
+<figcaption><b>Círculo vacío = el extremo NO entra</b> (desigualdad estricta, paréntesis). <b>Círculo lleno = sí entra</b> (≤ o ≥, corchete). El <b>infinito siempre va con paréntesis</b>, porque no es un número: no se puede "incluir".</figcaption>
+</figure>
+
 <div class="err"><strong>La regla que más se cobra:</strong> si multiplicás o dividís ambos miembros por un número <strong>negativo</strong>, <mark>se invierte el sentido de la desigualdad</mark>. \(-2x>6 \Rightarrow x<-3\).</div>
 </div>
 
@@ -274,6 +333,37 @@ details.sol .cuerpo p{margin:8px 0}
 <li><strong>Paralelismo:</strong> \(r_1 /\!/ r_2 \iff m_1=m_2\). &nbsp; <strong>Perpendicularidad:</strong> \(r_1 \perp r_2 \iff m_1=-\dfrac{1}{m_2}\) (opuesta e inversa).</li>
 <li><strong>Haz de rectas por un punto:</strong> \(y-y_1=m(x-x_1)\). <strong>Recta por dos puntos:</strong> \(y-y_1=\dfrac{y_2-y_1}{x_2-x_1}(x-x_1)\).</li>
 </ul>
+<figure class="fig">
+<svg viewBox="0 0 660 250" role="img" aria-label="Función lineal: significado de la pendiente y de la ordenada al origen">
+  <line class="ax" x1="40" y1="210" x2="330" y2="210"/><line class="ax" x1="70" y1="20" x2="70" y2="230"/>
+  <text class="svg-s" x="332" y="214">x</text><text class="svg-s" x="58" y="20">y</text>
+  <line class="cv cv-a" x1="70" y1="180" x2="310" y2="40"/>
+  <circle class="dot" cx="70" cy="180" r="5"/>
+  <text class="svg-m" x="20" y="184">b = 3</text>
+  <text class="svg-s" x="10" y="202">ordenada</text>
+  <line class="dash" x1="150" y1="133" x2="230" y2="133" stroke="var(--indigo)"/>
+  <line class="dash" x1="230" y1="133" x2="230" y2="86" stroke="var(--indigo)"/>
+  <text class="svg-m" x="168" y="152" fill="var(--indigo)">Δx = 1</text>
+  <text class="svg-m" x="238" y="115" fill="var(--indigo)">Δy = 2</text>
+  <text class="svg-k" x="196" y="36">f(x) = 2x + 3</text>
+  <text class="svg-s" x="40" y="243">m = Δy / Δx = 2 → si x sube 1, y sube 2</text>
+
+  <g transform="translate(376,0)">
+    <rect x="0" y="8" width="272" height="58" rx="10" class="box-a"/>
+    <text class="svg-k" x="16" y="34">m &gt; 0 · creciente</text>
+    <text class="svg-s" x="16" y="54">la recta sube de izquierda a derecha</text>
+    <rect x="0" y="76" width="272" height="58" rx="10" class="box-b"/>
+    <text class="svg-k" x="16" y="102">m &lt; 0 · decreciente</text>
+    <text class="svg-s" x="16" y="122">baja de izquierda a derecha</text>
+    <rect x="0" y="144" width="272" height="58" rx="10" class="box-c"/>
+    <text class="svg-k" x="16" y="170">m = 0 · constante</text>
+    <text class="svg-s" x="16" y="190">recta horizontal, paralela al eje x</text>
+    <text class="svg-s" x="0" y="228">Paralelas: m₁ = m₂ · Perpendiculares: m₁ = −1/m₂</text>
+  </g>
+</svg>
+<figcaption>La <b>pendiente</b> es cuánto cambia <i>y</i> cuando <i>x</i> aumenta una unidad; la <b>ordenada al origen</b> es dónde la recta cruza el eje <i>y</i>. En economía: en C = CF + CVu·q, la pendiente es el <b>costo variable unitario</b> y la ordenada al origen el <b>costo fijo</b>.</figcaption>
+</figure>
+
 <p style="font-size:.93rem;color:var(--muted)"><strong>Lectura económica:</strong> en \(C=CF+CVu\cdot q\), la pendiente es el <strong>costo variable unitario</strong> y la ordenada al origen el <strong>costo fijo</strong>. En una demanda \(p=a-bq\), la pendiente negativa dice que a mayor cantidad, menor precio.</p>
 </div>
 
@@ -294,6 +384,37 @@ details.sol .cuerpo p{margin:8px 0}
 <tr><td><strong>Incompatible</strong></td><td>Ninguna. \(S=\varnothing\)</td><td>Rectas <strong>paralelas no coincidentes</strong></td><td>\(m_1=m_2\) y \(b_1 \neq b_2\)</td></tr>
 </tbody>
 </table>
+<figure class="fig">
+<svg viewBox="0 0 660 250" role="img" aria-label="Los tres tipos de sistemas de ecuaciones lineales representados gráficamente">
+  <g>
+    <rect x="6" y="6" width="200" height="180" rx="12" class="box"/>
+    <line class="grid" x1="26" y1="96" x2="186" y2="96"/><line class="grid" x1="106" y1="26" x2="106" y2="166"/>
+    <line class="cv cv-a" x1="36" y1="150" x2="176" y2="42"/>
+    <line class="cv cv-b" x1="36" y1="52" x2="176" y2="146"/>
+    <circle class="dot" cx="106" cy="97" r="5.5"/>
+    <text class="svg-k" x="20" y="212" fill="var(--brand)">Compatible determinado</text>
+    <text class="svg-s" x="20" y="232">se cortan en un punto · 1 solución</text>
+  </g>
+  <g transform="translate(228,0)">
+    <rect x="6" y="6" width="200" height="180" rx="12" class="box"/>
+    <line class="grid" x1="26" y1="96" x2="186" y2="96"/><line class="grid" x1="106" y1="26" x2="106" y2="166"/>
+    <line class="cv cv-a" x1="36" y1="146" x2="176" y2="46"/>
+    <line class="cv cv-b" x1="36" y1="146" x2="176" y2="46" stroke-dasharray="7 6"/>
+    <text class="svg-k" x="20" y="212" fill="var(--indigo)">Compatible indeterminado</text>
+    <text class="svg-s" x="20" y="232">son la misma recta · ∞ soluciones</text>
+  </g>
+  <g transform="translate(452,0)">
+    <rect x="6" y="6" width="200" height="180" rx="12" class="box"/>
+    <line class="grid" x1="26" y1="96" x2="186" y2="96"/><line class="grid" x1="106" y1="26" x2="106" y2="166"/>
+    <line class="cv cv-a" x1="36" y1="156" x2="176" y2="56"/>
+    <line class="cv cv-c" x1="36" y1="122" x2="176" y2="22"/>
+    <text class="svg-k" x="20" y="212" fill="var(--gold)">Incompatible</text>
+    <text class="svg-s" x="20" y="232">paralelas · ninguna solución · S = ∅</text>
+  </g>
+</svg>
+<figcaption>La regla para clasificar sin resolver: <b>primero comparo las pendientes</b>. Distintas → se cortan → determinado. Iguales → miro la ordenada al origen: <b>igual también</b> → es la misma recta → indeterminado; <b>distinta</b> → paralelas → incompatible.</figcaption>
+</figure>
+
 <p><strong>Métodos de resolución:</strong> <strong>sustitución</strong> (despejo una incógnita y la reemplazo en la otra ecuación; conviene si algún coeficiente es 1) · <strong>igualación</strong> (despejo la misma incógnita en las dos y las igualo) · <strong>reducción o eliminación</strong> (multiplico para que los coeficientes de una variable queden opuestos y sumo) · <strong>gráfico</strong> (represento las dos rectas y leo el punto de cruce; su desventaja es la <strong>inexactitud</strong>). Los resultados de los métodos analítico y gráfico <strong>deben coincidir</strong>.</p>
 <div class="oral">
   <div class="ot">🗣 Cómo lo decís</div>
@@ -305,6 +426,33 @@ details.sol .cuerpo p{margin:8px 0}
 <p><strong>Oferta, demanda y equilibrio de mercado</strong> <span class="badge p1">Imprescindible</span>: la <strong>ecuación de demanda</strong> relaciona el precio \(p\) con la cantidad \(q\) que los <em>consumidores</em> compran; como a mayor precio menor cantidad, la <strong>curva de demanda desciende</strong> de izquierda a derecha. La <strong>ecuación de oferta</strong> relaciona \(p\) con la cantidad que los <em>productores</em> están dispuestos a proveer: a mayor precio, mayor cantidad, así que la <strong>curva de oferta asciende</strong>. En el curso se trabajan ambas <strong>lineales</strong>.</p>
 <p>El cruce de las dos es el <strong>punto de equilibrio de mercado</strong>: el par precio-cantidad donde lo que se ofrece coincide con lo que se demanda. Por eso el caso con sentido económico es el <strong>compatible determinado</strong>: el equilibrio es único. Si el sistema fuera incompatible, las curvas serían paralelas y no habría precio que equilibre el mercado.</p>
 <p>La otra aplicación del programa es el <strong>punto de equilibrio entre ingresos totales y costos totales</strong>: el nivel de actividad donde \(I=C\) y la utilidad es cero.</p>
+<figure class="fig">
+<svg viewBox="0 0 660 280" role="img" aria-label="Equilibrio de mercado: cruce de la curva de oferta y la de demanda">
+  <line class="ax" x1="70" y1="215" x2="470" y2="215"/><line class="ax" x1="70" y1="20" x2="70" y2="215"/>
+  <text class="svg-s" x="384" y="240">cantidad</text><text class="svg-s" x="46" y="18">precio</text>
+  <line class="cv cv-a" x1="90" y1="196" x2="440" y2="40"/>
+  <line class="cv cv-b" x1="90" y1="40" x2="440" y2="196"/>
+  <circle class="dot" cx="265" cy="118" r="6.5"/>
+  <line class="dash" x1="70" y1="118" x2="265" y2="118" stroke="currentColor"/>
+  <line class="dash" x1="265" y1="118" x2="265" y2="215" stroke="currentColor"/>
+  <text class="svg-m" x="34" y="122">p*</text>
+  <text class="svg-m" x="257" y="236">q*</text>
+  <text class="svg-k" x="150" y="104">EQUILIBRIO</text>
+
+  <g transform="translate(492,44)">
+    <line x1="0" y1="14" x2="26" y2="14" stroke="var(--brand)" stroke-width="2.6"/>
+    <text class="svg-k" x="36" y="18" fill="var(--brand)">OFERTA</text>
+    <text class="svg-s" x="0" y="40">sube: a más precio,</text>
+    <text class="svg-s" x="0" y="58">más cantidad ofrecida</text>
+    <line x1="0" y1="98" x2="26" y2="98" stroke="var(--indigo)" stroke-width="2.6"/>
+    <text class="svg-k" x="36" y="102" fill="var(--indigo)">DEMANDA</text>
+    <text class="svg-s" x="0" y="124">baja: a más precio,</text>
+    <text class="svg-s" x="0" y="142">menos cantidad pedida</text>
+  </g>
+</svg>
+<figcaption>El <b>equilibrio de mercado</b> es la solución del sistema: el único par precio-cantidad donde lo que los productores ofrecen coincide con lo que los consumidores demandan. Por eso el caso con sentido económico es el <b>compatible determinado</b>: si las rectas fueran paralelas, no habría ningún precio que equilibre el mercado.</figcaption>
+</figure>
+
 </div>
 
 <h3>🧮 Práctica · Sistemas de ecuaciones lineales</h3>
@@ -411,6 +559,30 @@ details.sol .cuerpo p{margin:8px 0}
 <tr><td><strong>Forma canónica</strong></td><td>\(f(x)=a(x-x_v)^2+y_v\) — <strong>siempre existe</strong></td></tr>
 </tbody>
 </table>
+<figure class="fig">
+<svg viewBox="0 0 660 320" role="img" aria-label="Elementos de la parábola: vértice, eje de simetría, raíces, ordenada al origen y punto simétrico">
+  <line class="ax" x1="40" y1="200" x2="640" y2="200"/><line class="ax" x1="150" y1="24" x2="150" y2="300"/>
+  <text class="svg-s" x="628" y="220">x</text><text class="svg-s" x="130" y="26">y</text>
+  <path class="cv cv-a" d="M 150 60 Q 350 440, 550 60"/>
+  <line class="dash" x1="350" y1="24" x2="350" y2="300" stroke="var(--indigo)"/>
+  <text class="svg-m" x="360" y="40" fill="var(--indigo)">eje de simetría</text>
+  <text class="svg-m" x="360" y="58" fill="var(--indigo)">x = −b / 2a</text>
+  <circle class="dot" cx="350" cy="250" r="6.5"/>
+  <text class="svg-k" x="364" y="256">V · vértice</text>
+  <text class="svg-s" x="364" y="274">acá está el máximo o el mínimo</text>
+  <circle class="dot" cx="248" cy="200" r="5.5"/><circle class="dot" cx="452" cy="200" r="5.5"/>
+  <text class="svg-m" x="226" y="192">x₁</text><text class="svg-m" x="446" y="192">x₂</text>
+  <text class="svg-s" x="250" y="176">raíces: los cortes con el eje x</text>
+  <circle cx="150" cy="60" r="5.5" fill="var(--gold)"/>
+  <text class="svg-m" x="46" y="58" fill="var(--gold)">(0 ; c)</text>
+  <text class="svg-s" x="40" y="76">ordenada al origen</text>
+  <circle cx="550" cy="60" r="5.5" fill="var(--gold)" opacity=".55"/>
+  <text class="svg-s" x="556" y="58">punto</text>
+  <text class="svg-s" x="556" y="74">simétrico</text>
+</svg>
+<figcaption>Los elementos que hay que hallar para graficarla, en este orden: <b>signo de a</b> (hacia dónde abre) → <b>ordenada al origen (0 ; c)</b> → <b>raíces</b> (si el discriminante las permite) → <b>eje de simetría y vértice</b> → <b>punto simétrico</b>. Con dos puntos no alcanza, como sí pasa con la recta.</figcaption>
+</figure>
+
 <div class="callout">
   <div class="ct">⚠ "Cóncava" y "convexa" están dadas vuelta según qué apunte leas</div>
   <p style="margin:6px 0 0">El <strong>apunte oficial de la cátedra (Salaj, 2026)</strong> dice: \(a>0\) → <strong>cóncava</strong> · \(a<0\) → <strong>convexa</strong>. Los resúmenes de compañeros que circulan (y varios libros) lo dicen al revés. <strong>La salida segura:</strong> describí primero el hecho — "con \(a<0\) las <strong>ramas se abren hacia abajo</strong> y el vértice es un <strong>máximo</strong>" — y recién después usá la etiqueta como la usa el apunte. El hecho no se discute; la palabra sí.</p>
@@ -426,6 +598,35 @@ details.sol .cuerpo p{margin:8px 0}
 <li>\(\Delta = 0\) → <strong>un solo punto</strong> (raíz doble): el vértice apoyado sobre el eje \(x\).</li>
 <li>\(\Delta < 0\) → <strong>no lo interseca</strong>.</li>
 </ul>
+<figure class="fig">
+<svg viewBox="0 0 660 250" role="img" aria-label="El discriminante decide en cuántos puntos la parábola corta al eje x">
+  <g>
+    <rect x="6" y="6" width="200" height="180" rx="12" class="box"/>
+    <line class="ax" x1="20" y1="120" x2="192" y2="120"/>
+    <path class="cv cv-a" d="M 46 30 Q 106 240, 166 30"/>
+    <circle class="dot" cx="74" cy="120" r="5"/><circle class="dot" cx="138" cy="120" r="5"/>
+    <text class="svg-k" x="18" y="212">Δ &gt; 0</text>
+    <text class="svg-s" x="18" y="232">corta en dos puntos distintos</text>
+  </g>
+  <g transform="translate(228,0)">
+    <rect x="6" y="6" width="200" height="180" rx="12" class="box"/>
+    <line class="ax" x1="20" y1="120" x2="192" y2="120"/>
+    <path class="cv cv-b" d="M 52 30 Q 106 210, 160 30"/>
+    <circle cx="106" cy="120" r="5.5" fill="var(--indigo)"/>
+    <text class="svg-k" x="18" y="212">Δ = 0</text>
+    <text class="svg-s" x="18" y="232">un solo punto: raíz doble</text>
+  </g>
+  <g transform="translate(452,0)">
+    <rect x="6" y="6" width="200" height="180" rx="12" class="box"/>
+    <line class="ax" x1="20" y1="120" x2="192" y2="120"/>
+    <path class="cv cv-c" d="M 56 30 Q 106 170, 156 30"/>
+    <text class="svg-k" x="18" y="212">Δ &lt; 0</text>
+    <text class="svg-s" x="18" y="232">no corta: sin raíces reales</text>
+  </g>
+</svg>
+<figcaption><b>Δ = b² − 4ac</b> no da la raíz: da <b>cuántas hay</b>. Y ojo con la pregunta del final: al <b>eje y la parábola lo corta siempre</b> (en (0 ; c), porque el dominio es ℝ); al <b>eje x, sólo si Δ ≥ 0</b>. Sin raíces reales tampoco se puede escribir la forma factorizada.</figcaption>
+</figure>
+
 <p><strong>Ejemplo con \(a<0\):</strong> \(f(x)=-x^2-1\), con \(\Delta = 0-4(-1)(-1)=-4<0\). No corta el eje \(x\) — queda entera por debajo — pero sí corta el eje \(y\) en \((0;-1)\).</p>
 <figure class="pizarra">
 <svg viewBox="0 0 320 220" role="img" aria-label="Parábola con a menor que cero y discriminante negativo: no corta el eje x, corta el eje y en (0;-1)">
@@ -524,6 +725,35 @@ details.sol .cuerpo p{margin:8px 0}
 <li><strong>Creciente si \(a>1\)</strong> · <strong>decreciente si \(0<a<1\)</strong>.</li>
 <li>Con base \(e\) se llama <strong>exponencial natural</strong>.</li>
 </ul>
+<figure class="fig">
+<svg viewBox="0 0 660 250" role="img" aria-label="Función exponencial creciente y decreciente con su asíntota horizontal">
+  <g>
+    <rect x="6" y="6" width="310" height="196" rx="12" class="box"/>
+    <line class="ax" x1="28" y1="160" x2="298" y2="160"/><line class="ax" x1="120" y1="22" x2="120" y2="180"/>
+    <line class="dash" x1="28" y1="160" x2="298" y2="160" stroke="var(--gold)"/>
+    <path class="cv cv-a" d="M 34 156 C 110 152, 150 140, 190 100 C 220 68, 240 40, 252 26"/>
+    <circle class="dot" cx="120" cy="146" r="5"/>
+    <text class="svg-m" x="128" y="142">(0 ; 1)</text>
+    <text class="svg-k" x="196" y="60">a &gt; 1</text>
+    <text class="svg-k" x="196" y="78">creciente</text>
+    <text class="svg-s" x="30" y="180" fill="var(--gold)">asíntota y = 0</text>
+    <text class="svg-s" x="16" y="228">Dom = ℝ · Img = (0 ; +∞) · nunca toca el eje x</text>
+  </g>
+  <g transform="translate(344,0)">
+    <rect x="6" y="6" width="310" height="196" rx="12" class="box"/>
+    <line class="ax" x1="28" y1="160" x2="298" y2="160"/><line class="ax" x1="196" y1="22" x2="196" y2="180"/>
+    <line class="dash" x1="28" y1="160" x2="298" y2="160" stroke="var(--gold)"/>
+    <path class="cv cv-b" d="M 64 26 C 76 40, 96 68, 126 100 C 166 140, 206 152, 282 156"/>
+    <circle cx="196" cy="146" r="5" fill="var(--indigo)"/>
+    <text class="svg-m" x="204" y="142">(0 ; 1)</text>
+    <text class="svg-k" x="46" y="60">0 &lt; a &lt; 1</text>
+    <text class="svg-k" x="46" y="78">decreciente</text>
+    <text class="svg-s" x="16" y="228">La base decide: mayor que 1 sube, entre 0 y 1 baja</text>
+  </g>
+</svg>
+<figcaption>Las dos pasan por <b>(0 ; 1)</b>, porque cualquier base elevada a 0 da 1, y las dos tienen <b>asíntota horizontal y = 0</b>: se acercan al eje x sin tocarlo. Si el enunciado suma o resta un número suelto (por ejemplo <i>y = 2 + 3ˣ</i>), <b>la asíntota se corre</b> y con ella cambia la imagen.</figcaption>
+</figure>
+
 <div class="repre">
 <b>Las dos preguntas de "por qué" que el apunte deja anotadas</b>
 <ul>
@@ -604,6 +834,35 @@ details.sol .cuerpo p{margin:8px 0}
 <tr><td><strong>Crece si</strong></td><td>\(a>1\)</td><td>\(a>1\)</td></tr>
 </tbody>
 </table>
+<figure class="fig">
+<svg viewBox="0 0 660 260" role="img" aria-label="Función exponencial y logarítmica como funciones inversas, simétricas respecto de la recta y igual a x">
+  <line class="ax" x1="40" y1="200" x2="440" y2="200"/><line class="ax" x1="140" y1="20" x2="140" y2="240"/>
+  <line class="dash" x1="52" y1="248" x2="380" y2="20" stroke="currentColor"/>
+  <text class="svg-m" x="384" y="26">y = x</text>
+  <path class="cv cv-a" d="M 50 190 C 110 186, 140 172, 176 140 C 204 114, 224 76, 238 34"/>
+  <text class="svg-k" x="242" y="46" fill="var(--brand)">y = aˣ</text>
+  <path class="cv cv-b" d="M 152 240 C 156 180, 170 150, 202 122 C 228 100, 266 80, 306 66 C 346 54, 386 46, 424 42"/>
+  <text class="svg-k" x="356" y="86" fill="var(--indigo)">y = logₐ x</text>
+  <circle class="dot" cx="140" cy="186" r="5"/>
+  <text class="svg-m" x="86" y="178">(0;1)</text>
+  <circle cx="186" cy="200" r="5" fill="var(--indigo)"/>
+  <text class="svg-m" x="180" y="222">(1;0)</text>
+
+  <g transform="translate(470,20)">
+    <rect x="0" y="0" width="180" height="56" rx="10" class="box-a"/>
+    <text class="svg-k" x="14" y="24">Exponencial</text>
+    <text class="svg-s" x="14" y="44">Dom ℝ · Img (0;+∞)</text>
+    <rect x="0" y="68" width="180" height="56" rx="10" class="box-b"/>
+    <text class="svg-k" x="14" y="92">Logarítmica</text>
+    <text class="svg-s" x="14" y="112">Dom (0;+∞) · Img ℝ</text>
+    <text class="svg-s" x="0" y="152">Dominio e imagen</text>
+    <text class="svg-s" x="0" y="170">quedan intercambiados:</text>
+    <text class="svg-s" x="0" y="188">son inversas entre sí</text>
+  </g>
+</svg>
+<figcaption>Son <b>inversas entre sí</b>: si un punto (c ; b) está en la exponencial, el punto dado vuelta (b ; c) está en la logarítmica. Por eso las dos curvas son <b>espejo respecto de la recta y = x</b>, y por eso la exponencial tiene asíntota <b>horizontal</b> y la logarítmica <b>vertical</b>.</figcaption>
+</figure>
+
 <p style="font-size:.93rem;color:var(--muted)">Mirá la simetría de la tabla: dominio e imagen <strong>intercambiados</strong>, los puntos fijos con las coordenadas dadas vuelta y las asíntotas en ejes opuestos. Es la forma más rápida de mostrar que entendiste que son inversas.</p>
 </div>
 
