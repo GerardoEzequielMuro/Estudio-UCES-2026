@@ -14,67 +14,70 @@
 <style>
 /* ---- índice de saltos ---- */
 .toc{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius);
-  padding:16px 18px;margin:22px 0 8px;box-shadow:var(--shadow)}
-.toc b{display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-.toc a{display:inline-block;text-decoration:none;color:var(--ink);font-size:.9rem;
-  border:1px solid var(--line-strong);border-radius:9px;padding:6px 12px;margin:0 6px 6px 0;
-  background:var(--surface);transition:border-color .15s,transform .15s}
-.toc a:hover{border-color:var(--brand);transform:translateY(-1px)}
-/* ---- separadores de parte ---- */
-.parte{margin:64px 0 8px;padding:22px 24px;border-radius:var(--radius);
-  background:linear-gradient(135deg,var(--brand-soft),var(--surface-2));border:1px solid var(--brand)}
-.parte .pn{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--brand-deep);font-weight:700;margin-bottom:8px}
-.parte h2{margin:0;padding:0;border:0;font-size:clamp(1.5rem,4vw,2rem)}
-.parte h2::before{display:none}
-.parte p{margin:8px 0 0;color:var(--text);font-size:.95rem}
-/* ---- bloques ---- */
-.oral{background:var(--brand-soft);border:1px solid var(--brand);border-radius:var(--radius);
-  padding:15px 18px;margin:14px 0}
-.oral .ot{font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--brand-deep);margin-bottom:8px}
+  padding:15px 18px;margin:22px 0 8px}
+.toc b{display:block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin-bottom:10px}
+.toc a{display:inline-block;text-decoration:none;color:var(--text);font-size:.88rem;
+  border:1px solid var(--line-strong);border-radius:8px;padding:5px 11px;margin:0 5px 5px 0;
+  background:var(--surface);transition:border-color .15s,color .15s}
+.toc a:hover{border-color:var(--brand);color:var(--brand-deep)}
+/* ---- separador de parte ---- */
+.parte{margin:60px 0 6px;padding:0 0 14px;border-bottom:2px solid var(--line-strong)}
+.parte .pn{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--brand-deep);font-weight:600;margin-bottom:6px}
+.parte h2{margin:0;padding:0;border:0}
+.parte p{margin:10px 0 0;color:var(--muted);font-size:.95rem}
+/* ---- esquemas ---- */
+.pizarra{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px;margin:16px 0;text-align:center}
+.pizarra svg{max-width:100%;height:auto}
+.pizarra figcaption{margin-top:9px;font-size:.85rem;color:var(--muted);text-align:left}
+/* ---- ejercicios con solución plegable ---- */
+.ejer{background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--radius);
+  padding:18px 20px;margin:16px 0}
+.ejer .et{font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);display:block;margin-bottom:9px}
+.ejer > p:first-of-type{margin-top:0}
+details.sol{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+details.sol summary{cursor:pointer;font-weight:600;color:var(--brand-deep);list-style:none;
+  font-size:.9rem;display:inline-flex;align-items:center;gap:7px;
+  border:1px solid var(--line-strong);border-radius:8px;padding:6px 13px;background:var(--surface-2)}
+details.sol summary:hover{border-color:var(--brand)}
+details.sol summary::-webkit-details-marker{display:none}
+details.sol summary::before{content:"+";font-family:var(--mono);font-size:.9rem}
+details.sol[open] summary::before{content:"−"}
+details.sol[open] summary{margin-bottom:12px}
+details.sol .cuerpo{font-size:.95rem}
+details.sol .cuerpo p{margin:8px 0}
+/* ---- bloques de apoyo: un solo tratamiento, sólo cambia la etiqueta ---- */
+.oral,.repre,.err{background:var(--surface-2);border:1px solid var(--line);
+  border-left:2px solid var(--line-strong);border-radius:0 10px 10px 0;
+  padding:14px 18px;margin:16px 0;font-size:.95rem}
+.oral{border-left-color:var(--brand)}
+.repre{border-left-color:var(--indigo)}
+.err{border-left-color:var(--gold)}
+.oral .ot,.repre > b:first-child{display:block;font-size:.86rem;font-weight:600;
+  color:var(--ink);margin-bottom:7px}
 .oral p{margin:0}
 .oral p + p{margin-top:9px}
-.repre{border-left:3px solid var(--indigo);background:var(--surface-2);border-radius:0 10px 10px 0;
-  padding:12px 16px;margin:14px 0;font-size:.93rem}
-.repre b{color:var(--indigo-deep)}
-.repre ul{margin:7px 0 0;padding-left:20px}
-.repre li{margin:5px 0}
-.err{background:var(--surface-2);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;
-  padding:12px 16px;margin:14px 0;font-size:.93rem}
+.repre ul,.err ul{margin:7px 0 0;padding-left:20px}
+.repre li,.err li{margin:5px 0}
 .tabla{width:100%;border-collapse:collapse;font-size:.92rem;margin:14px 0}
 .tabla th,.tabla td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
 .tabla th{background:var(--surface-2);color:var(--ink);font-weight:600}
 .paso{margin:10px 0 0;padding-left:20px}
 .paso li{margin:6px 0}
-.pizarra{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius);
-  padding:16px;margin:16px 0;text-align:center}
-.pizarra svg{max-width:100%;height:auto}
-.pizarra figcaption{margin-top:9px;font-size:.85rem;color:var(--muted)}
-/* ---- ejercicios con solución plegable ---- */
-.ejer{background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--radius);
-  padding:18px 20px;margin:16px 0;box-shadow:var(--shadow)}
-.ejer .et{font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--indigo-deep);background:var(--indigo-soft);
-  border-radius:6px;padding:3px 9px;display:inline-block;margin-bottom:10px}
-.ejer > p:first-of-type{margin-top:0}
-details.sol{margin-top:14px;border-top:1px dashed var(--line-strong);padding-top:12px}
-details.sol summary{cursor:pointer;font-weight:600;color:var(--brand-deep);list-style:none;
-  font-size:.93rem;display:inline-flex;align-items:center;gap:7px;
-  border:1px solid var(--brand);border-radius:9px;padding:7px 14px;background:var(--brand-soft)}
-details.sol summary::-webkit-details-marker{display:none}
-details.sol summary::before{content:"▸";font-size:.9rem}
-details.sol[open] summary::before{content:"▾"}
-details.sol[open] summary{margin-bottom:12px}
-details.sol .cuerpo{font-size:.95rem}
-details.sol .cuerpo p{margin:8px 0}
+.mnemo{display:block;margin-top:9px;padding-top:8px;border-top:1px dashed var(--line-strong);
+  font-size:.82rem;color:var(--muted);font-style:italic}
 @media (max-width:560px){
   p,li{overflow-wrap:break-word;word-break:break-word}
-  .callout,.oral,.ejer,.parte{padding:14px 15px}
+  .callout,.oral,.repre,.err,.ejer{padding:13px 15px}
   .tabla{font-size:.86rem}
   .tabla th,.tabla td{padding:7px 8px}
-  .toc a{font-size:.84rem;padding:5px 10px}
+  .toc a{font-size:.83rem;padding:5px 10px}
+  .map{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .branch{margin-left:9px;padding-left:12px}
+  .branch .branch{margin-left:6px;padding-left:10px}
 }
 </style>
 </head>
@@ -625,11 +628,10 @@ details.sol .cuerpo p{margin:8px 0}
 <p style="text-align:center">\(\begin{cases} 2x + y = m \\ 2x - y = n \end{cases}\)</p>
 <p>Describí cómo determinar si este sistema tiene solución. Explicá los diferentes tipos de sistemas de ecuaciones lineales y su interpretación gráfica.</p>
 <details class="sol"><summary>Mostrar resolución</summary><div class="cuerpo">
-<p><strong>Qué significa resolver.</strong> Determinar, si existe, un par \((x_0;y_0)\) que verifique <strong>las dos ecuaciones a la vez</strong>.</p>
-<p><strong>El procedimiento.</strong> 1) Despejo \(y\) en las dos para llevarlas a \(y=mx+b\). 2) Comparo las <strong>pendientes</strong>: distintas → una solución; iguales → comparo las <strong>ordenadas al origen</strong>. 3) Confirmo analíticamente (por sustitución, igualación o reducción): un <strong>absurdo</strong> tipo \(1=2\) indica incompatible y una <strong>identidad</strong> \(0=0\), indeterminado. 4) Verifico reemplazando.</p>
-<p><strong>Los tres tipos.</strong> <strong>Compatible determinado:</strong> solución única; las rectas se intersecan en un punto (oblicuas). <strong>Compatible indeterminado:</strong> infinitas soluciones; las rectas son coincidentes. <strong>Incompatible:</strong> ninguna solución, \(S=\varnothing\); las rectas son paralelas no coincidentes.</p>
-<p><strong>Aplicado a este sistema.</strong> Despejo: \(y=-2x+m\) y \(y=2x-n\). Las pendientes son \(-2\) y \(2\): <strong>distintas</strong>. Por lo tanto, <mark>cualesquiera sean \(m\) y \(n\), el sistema es siempre compatible determinado</mark>, con solución única. Y se puede exhibir: sumando las dos ecuaciones se elimina \(y\) y queda \(4x=m+n \Rightarrow x=\frac{m+n}{4}\); restándolas, \(2y=m-n \Rightarrow y=\frac{m-n}{2}\).</p>
-<p><strong>La lectura económica</strong> (el enunciado habla de oferta y demanda): la solución es el <strong>punto de equilibrio de mercado</strong>, el par precio-cantidad donde lo que los productores ofrecen coincide con lo que los consumidores demandan. Por eso el caso con sentido económico es el compatible determinado: el equilibrio es único. Si fuera incompatible, las curvas serían paralelas y ningún precio equilibraría el mercado.</p>
+<p><strong>Resolver</strong> es determinar, si existe, un par \((x_0;y_0)\) que verifique <strong>las dos ecuaciones a la vez</strong>. <strong>El procedimiento:</strong> despejo \(y\) en las dos, comparo <strong>pendientes</strong> (distintas → una solución; iguales → comparo ordenadas al origen), confirmo analíticamente —un <strong>absurdo</strong> \(1=2\) indica incompatible y una <strong>identidad</strong> \(0=0\), indeterminado— y verifico reemplazando.</p>
+<p><strong>Los tres tipos:</strong> <strong>compatible determinado</strong> (solución única, rectas oblicuas que se cortan en un punto) · <strong>compatible indeterminado</strong> (infinitas soluciones, rectas coincidentes) · <strong>incompatible</strong> (\(S=arnothing\), rectas paralelas no coincidentes).</p>
+<p><strong>Aplicado.</strong> Despejo: \(y=-2x+m\) y \(y=2x-n\). Pendientes \(-2\) y \(2\), <strong>distintas</strong> → <mark>cualesquiera sean \(m\) y \(n\), es siempre compatible determinado</mark>. Y se puede exhibir la solución: sumando las ecuaciones, \(4x=m+n \Rightarrow x=rac{m+n}{4}\); restándolas, \(2y=m-n \Rightarrow y=rac{m-n}{2}\).</p>
+<p><strong>Lectura económica</strong> (el enunciado habla de oferta y demanda): la solución es el <strong>punto de equilibrio de mercado</strong>. Por eso el caso con sentido económico es el determinado: el equilibrio es único. Si fuera incompatible, las curvas serían paralelas y ningún precio equilibraría el mercado.</p>
 </div></details>
 </div>
 
@@ -638,11 +640,10 @@ details.sol .cuerpo p{margin:8px 0}
 <p>La expresión de la función cuadrática está dada por \(f(x)=ax^2+bx+c\) con \(a \neq 0\). Definir los conjuntos dominio e imagen.</p>
 <p><strong>a)</strong> Caracterizar la función dada para \(a<0\). &nbsp; <strong>b)</strong> Analizar y justificar si la parábola siempre interseca a los ejes coordenados.</p>
 <details class="sol"><summary>Mostrar resolución</summary><div class="cuerpo">
-<p><strong>Dominio e imagen.</strong> \(Dom\,f=\mathbb{R}\) (salvo restricción del contexto). La imagen depende del signo de \(a\) y de la ordenada del vértice: con \(a>0\), \(Img=[y_v;+\infty)\); con \(a<0\), <strong>\(Img=(-\infty;y_v]\)</strong>.</p>
-<p><strong>(a) Caracterización con \(a<0\).</strong> Las <strong>ramas se abren hacia abajo</strong> (el apunte la llama <em>convexa</em>). El <strong>vértice es un máximo</strong>: \(x_v=-\frac{b}{2a}\), \(y_v=f(x_v)\). La función <strong>crece</strong> en \((-\infty;x_v)\) y <strong>decrece</strong> en \((x_v;+\infty)\). El <strong>eje de simetría</strong> es la recta \(x=-\frac{b}{2a}\), perpendicular al eje \(x\) y pasando por el vértice. Corta el eje \(y\) en \((0;c)\). Se puede escribir en forma <strong>canónica</strong> \(a(x-x_v)^2+y_v\) siempre, y en forma <strong>factorizada</strong> \(a(x-x_1)(x-x_2)\) sólo si tiene raíces reales.</p>
-<p><strong>(b) Los ejes, por separado.</strong> Al <strong>eje \(y\): SIEMPRE</strong>, y en un único punto. Justificación: el dominio es \(\mathbb{R}\), así que \(0\) pertenece al dominio y \(f(0)=c\) está siempre definido; el corte es \((0;c)\), y es uno solo porque por ser función a cada \(x\) le corresponde una única imagen.</p>
-<p>Al <strong>eje \(x\): NO siempre</strong>. Los cortes son las soluciones de \(ax^2+bx+c=0\), y su existencia la decide el <strong>discriminante</strong> \(\Delta=b^2-4ac\): \(\Delta>0\) dos puntos distintos · \(\Delta=0\) un solo punto (raíz doble, vértice sobre el eje) · \(\Delta<0\) ninguno.</p>
-<p><strong>Ejemplo para cerrar:</strong> \(f(x)=-x^2-1\), con \(a=-1\) y \(\Delta=0-4(-1)(-1)=-4<0\). No corta el eje \(x\) — con las ramas hacia abajo y el vértice en \((0;-1)\), queda entera por debajo — pero sí corta el eje \(y\) en \((0;-1)\).</p>
+<p><strong>Dominio e imagen.</strong> \(Dom=\mathbb{R}\) (salvo restricción del contexto). La imagen depende del signo de \(a\): con \(a>0\), \([y_v;+\infty)\); con \(a<0\), <strong>\((-\infty;y_v]\)</strong>.</p>
+<p><strong>(a) Con \(a<0\):</strong> ramas <strong>hacia abajo</strong> (el apunte la llama <em>convexa</em>), vértice <strong>máximo</strong> en \(x_v=-rac{b}{2a}\); <strong>crece</strong> en \((-\infty;x_v)\) y <strong>decrece</strong> en \((x_v;+\infty)\); eje de simetría \(x=-rac{b}{2a}\); corta el eje \(y\) en \((0;c)\). Forma <strong>canónica</strong> siempre; <strong>factorizada</strong> sólo si hay raíces reales.</p>
+<p><strong>(b) Hay que separar los dos ejes.</strong> Al <strong>eje \(y\): siempre</strong> y en un único punto, porque \(0\) pertenece al dominio y \(f(0)=c\) está siempre definido. Al <strong>eje \(x\): no siempre</strong> — los cortes son las soluciones de \(ax^2+bx+c=0\) y su existencia la decide el discriminante: \(\Delta>0\) dos puntos · \(\Delta=0\) uno (raíz doble) · \(\Delta<0\) ninguno.</p>
+<p><strong>Ejemplo:</strong> \(f(x)=-x^2-1\), con \(\Delta=-4<0\): no corta el eje \(x\) (queda entera por debajo) pero sí el eje \(y\), en \((0;-1)\).</p>
 </div></details>
 </div>
 
@@ -651,10 +652,9 @@ details.sol .cuerpo p{margin:8px 0}
 <p>Para la función \(f(x)=\ln(x-c)\) con \(c \leq 0\).</p>
 <p><strong>a)</strong> Justificá si es creciente o decreciente. &nbsp; <strong>b)</strong> ¿Cuál es el dominio? Indicá el procedimiento para hallarlo y escribilo como intervalo. &nbsp; <strong>c)</strong> Proponé un ejemplo de función logarítmica decreciente y realizá un esquema del gráfico.</p>
 <details class="sol"><summary>Mostrar resolución</summary><div class="cuerpo">
-<p><strong>(a) Es creciente.</strong> El crecimiento de una función logarítmica <strong>lo decide la base</strong>: con \(a>1\) es creciente y con \(0<a<1\) es decreciente. Acá es logaritmo <strong>natural o neperiano</strong>, o sea base \(e\approx2{,}7182\), que es mayor que 1 → creciente. El \(-c\) <strong>no cambia el crecimiento</strong>: sólo produce un desplazamiento horizontal (y mueve la asíntota).</p>
-<p><strong>(b) Dominio.</strong> Procedimiento: 1) por definición de logaritmo, el <strong>argumento debe ser estrictamente positivo</strong> (no existe el logaritmo de cero ni de un negativo); 2) planteo la inecuación \(x-c>0\); 3) despejo \(x>c\); 4) lo escribo como intervalo <strong>abierto</strong>, porque la desigualdad es estricta: <strong>\(Dom\,f=(c;+\infty)\)</strong>.</p>
-<p><em>Plus que suma:</em> la imagen es \(\mathbb{R}\), la recta \(x=c\) es <strong>asíntota vertical</strong> y la curva corta el eje \(x\) donde \(\ln(x-c)=0\), o sea \(x-c=1\), en el punto \((c+1;0)\).</p>
-<p><strong>(c) Ejemplo decreciente:</strong> \(y=\log_{1/2}(x)\), porque la base está entre 0 y 1. Con una tablita: \(\log_{1/2}(1)=0\), \(\log_{1/2}(2)=-1\), \(\log_{1/2}(4)=-2\) — a medida que \(x\) crece, la imagen baja. Características: \(Dom=(0;+\infty)\), \(Img=\mathbb{R}\), pasa por \((1;0)\) y tiene asíntota vertical \(x=0\). El esquema: una curva que baja de izquierda a derecha, pegada al eje \(y\) sin tocarlo.</p>
+<p><strong>(a) Creciente.</strong> El crecimiento lo decide la <strong>base</strong>: \(a>1\) creciente, \(0<a<1\) decreciente. Acá es logaritmo natural, base \(epprox2{,}72>1\). El \(-c\) sólo desplaza la curva horizontalmente, no cambia el crecimiento.</p>
+<p><strong>(b) Dominio.</strong> Procedimiento: el argumento debe ser <strong>estrictamente positivo</strong> → planteo \(x-c>0\) → despejo \(x>c\) → lo escribo como intervalo <strong>abierto</strong>: <strong>\(Dom=(c;+\infty)\)</strong>. <em>Plus:</em> \(Img=\mathbb{R}\), asíntota vertical \(x=c\), y corta el eje \(x\) en \((c+1;0)\) porque \(\ln(x-c)=0 \Rightarrow x-c=1\).</p>
+<p><strong>(c) Ejemplo decreciente:</strong> \(y=\log_{1/2}(x)\), base entre 0 y 1. Tablita: \(\log_{1/2}(1)=0\), \(\log_{1/2}(2)=-1\), \(\log_{1/2}(4)=-2\) — sube \(x\), baja la imagen. \(Dom=(0;+\infty)\), \(Img=\mathbb{R}\), pasa por \((1;0)\), asíntota vertical \(x=0\). El esquema está más arriba, en la teoría de la Unidad 5.</p>
 </div></details>
 </div>
 

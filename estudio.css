@@ -1,6 +1,6 @@
 /* =========================================================
    Sistema de Estudio UCES 2026 — estilo sobrio / lectura
-   Paleta casi monocromatica + un solo acento jade calmo.
+   Paleta casi monocromatica + un solo acento azul petroleo calmo.
    Source Serif 4 (titulos) / Inter (texto) / JetBrains Mono (datos).
    Un solo CSS compartido por las materias con layout .wrap + .tabs.
    (economia.html usa su propio <style> con layout de sidebar.)
@@ -12,11 +12,11 @@
   --bg:#f4f6f8; --surface:#ffffff; --surface-2:#f6f8fa;
   --ink:#1c2630; --text:#3a4654; --muted:#697585;
   --line:#e6e9ee; --line-strong:#d3d9e0;
-  --brand:#2f6b60; --brand-deep:#234f47; --brand-soft:#e9f1ef;
-  --indigo:#475569; --indigo-deep:#37424f; --indigo-soft:#eef1f5;
-  --gold:#8f7338; --gold-soft:#f0e9d8;
-  --rose:#9f5266; --rose-soft:#f4e7eb;
-  --ok:#2f7d57; --ok-soft:#e6f1ea; --bad:#b04438; --bad-soft:#f6e7e4;
+  --brand:#3a5c70; --brand-deep:#2b4655; --brand-soft:#eef2f5;
+  --indigo:#4a5568; --indigo-deep:#39434f; --indigo-soft:#eff1f4;
+  --gold:#7c6748; --gold-soft:#f1ede5;
+  --rose:#8d5b5b; --rose-soft:#f3ebea;
+  --ok:#3a6b52; --ok-soft:#e9f0ec; --bad:#9a4a41; --bad-soft:#f4e9e7;
   --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
   --sans:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -32,11 +32,11 @@
   --bg:#10151b; --surface:#171f28; --surface-2:#1d2731;
   --ink:#eaf0f6; --text:#bcc7d3; --muted:#8593a1;
   --line:#283340; --line-strong:#36434f;
-  --brand:#5bbfa9; --brand-deep:#7fd0bd; --brand-soft:#13302b;
-  --indigo:#8b97a8; --indigo-deep:#a3aebd; --indigo-soft:#1e2733;
-  --gold:#c9a866; --gold-soft:#2a2413;
-  --rose:#d98ba0; --rose-soft:#341a22;
-  --ok:#54c187; --ok-soft:#12301f; --bad:#e07a6c; --bad-soft:#371915;
+  --brand:#86adc2; --brand-deep:#a2c3d3; --brand-soft:#1a2630;
+  --indigo:#8f99a7; --indigo-deep:#a7b1bd; --indigo-soft:#1f262f;
+  --gold:#b39c74; --gold-soft:#272319;
+  --rose:#c08d8d; --rose-soft:#2c2120;
+  --ok:#6fae8c; --ok-soft:#182a21; --bad:#c9827a; --bad-soft:#2d1e1c;
   --shadow:0 1px 2px rgba(0,0,0,.3);
   --shadow-lift:0 1px 2px rgba(0,0,0,.3),0 10px 26px -14px rgba(0,0,0,.6);
 }
@@ -45,10 +45,10 @@
     --bg:#10151b; --surface:#171f28; --surface-2:#1d2731;
     --ink:#eaf0f6; --text:#bcc7d3; --muted:#8593a1;
     --line:#283340; --line-strong:#36434f;
-    --brand:#5bbfa9; --brand-deep:#7fd0bd; --brand-soft:#13302b;
-    --indigo:#8b97a8; --indigo-deep:#a3aebd; --indigo-soft:#1e2733;
-    --gold:#c9a866; --gold-soft:#2a2413; --rose:#d98ba0; --rose-soft:#341a22;
-    --ok:#54c187; --ok-soft:#12301f; --bad:#e07a6c; --bad-soft:#371915;
+    --brand:#86adc2; --brand-deep:#a2c3d3; --brand-soft:#1a2630;
+    --indigo:#8f99a7; --indigo-deep:#a7b1bd; --indigo-soft:#1f262f;
+    --gold:#b39c74; --gold-soft:#272319; --rose:#c08d8d; --rose-soft:#2c2120;
+    --ok:#6fae8c; --ok-soft:#182a21; --bad:#c9827a; --bad-soft:#2d1e1c;
     --shadow:0 1px 2px rgba(0,0,0,.3);
     --shadow-lift:0 1px 2px rgba(0,0,0,.3),0 10px 26px -14px rgba(0,0,0,.6);
   }
@@ -105,7 +105,9 @@ li::marker{color:var(--muted)}
 strong,b{font-weight:600;color:var(--ink)}
 em{color:var(--muted)}
 a{color:var(--brand-deep);text-underline-offset:3px;text-decoration-thickness:1px}
-mark{background:var(--gold-soft);color:inherit;padding:.06em .28em;border-radius:3px;font-weight:500}
+mark{background:transparent;color:inherit;font-weight:600;
+  box-shadow:inset 0 -0.42em 0 color-mix(in srgb,var(--brand) 13%,transparent);
+  padding:0 .08em;border-radius:2px}
 hr{border:0;border-top:1px solid var(--line);margin:40px 0}
 .lead{font-size:1.1rem;color:var(--muted);line-height:1.6}
 

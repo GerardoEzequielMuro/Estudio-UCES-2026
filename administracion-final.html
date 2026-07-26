@@ -7,34 +7,35 @@
 <meta name="description" content="Guía para el examen final oral de Administración de Empresas 1 (UCES 2026, cátedra Brugnoli / Rudaz): las 6 unidades del programa desarrolladas como respuestas habladas, banco de preguntas, repaso relámpago, flashcards, quiz y estrategia del oral.">
 <link rel="stylesheet" href="estudio.css">
 <style>
-.mnemo{display:block;margin-top:9px;padding-top:8px;border-top:1px dashed var(--line-strong);
-  font-size:.82rem;color:var(--muted);font-style:italic}
-.oral{background:var(--brand-soft);border:1px solid var(--brand);border-radius:var(--radius);
-  padding:15px 18px;margin:14px 0}
-.oral .ot{font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--brand-deep);margin-bottom:8px}
+/* ---- bloques de apoyo: un solo tratamiento, sólo cambia la etiqueta ---- */
+.oral,.repre,.err{background:var(--surface-2);border:1px solid var(--line);
+  border-left:2px solid var(--line-strong);border-radius:0 10px 10px 0;
+  padding:14px 18px;margin:16px 0;font-size:.95rem}
+.oral{border-left-color:var(--brand)}
+.repre{border-left-color:var(--indigo)}
+.err{border-left-color:var(--gold)}
+.oral .ot,.repre > b:first-child{display:block;font-size:.86rem;font-weight:600;
+  color:var(--ink);margin-bottom:7px}
 .oral p{margin:0}
 .oral p + p{margin-top:9px}
-.repre{border-left:3px solid var(--indigo);background:var(--surface-2);border-radius:0 10px 10px 0;
-  padding:12px 16px;margin:14px 0;font-size:.93rem}
-.repre b{color:var(--indigo-deep)}
-.repre ul{margin:7px 0 0;padding-left:20px}
-.repre li{margin:5px 0}
-.err{background:var(--surface-2);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;
-  padding:12px 16px;margin:14px 0;font-size:.93rem}
+.repre ul,.err ul{margin:7px 0 0;padding-left:20px}
+.repre li,.err li{margin:5px 0}
 .tabla{width:100%;border-collapse:collapse;font-size:.92rem;margin:14px 0}
 .tabla th,.tabla td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
 .tabla th{background:var(--surface-2);color:var(--ink);font-weight:600}
 .paso{margin:10px 0 0;padding-left:20px}
 .paso li{margin:6px 0}
+.mnemo{display:block;margin-top:9px;padding-top:8px;border-top:1px dashed var(--line-strong);
+  font-size:.82rem;color:var(--muted);font-style:italic}
 @media (max-width:560px){
+  p,li{overflow-wrap:break-word;word-break:break-word}
+  .callout,.oral,.repre,.err,.ejer{padding:13px 15px}
+  .tabla{font-size:.86rem}
+  .tabla th,.tabla td{padding:7px 8px}
+  .toc a{font-size:.83rem;padding:5px 10px}
   .map{overflow-x:auto;-webkit-overflow-scrolling:touch}
   .branch{margin-left:9px;padding-left:12px}
   .branch .branch{margin-left:6px;padding-left:10px}
-  p,li{overflow-wrap:break-word;word-break:break-word}
-  .callout,.oral{padding:14px 15px}
-  .tabla{font-size:.86rem}
-  .tabla th,.tabla td{padding:7px 8px}
 }
 </style>
 </head>
@@ -58,7 +59,6 @@
 <nav class="tabs">
   <button class="tab active" data-tab="desarrollo">Desarrollo por unidad</button>
   <button class="tab" data-tab="banco">🎙 Banco de preguntas</button>
-  <button class="tab" data-tab="repaso">⚡ Repaso relámpago</button>
   <button class="tab" data-tab="flash">Flashcards</button>
   <button class="tab" data-tab="quiz">Quiz</button>
   <button class="tab" data-tab="mapa">Mapa</button>
@@ -108,13 +108,13 @@
 <table class="tabla">
 <thead><tr><th>Escuela</th><th>Referentes</th><th>Idea central</th><th>Su límite</th></tr></thead>
 <tbody>
-<tr><td><strong>Clásica ·<br>Administración Científica</strong></td><td><strong>Taylor</strong></td><td>Foco en la <strong>fábrica y el operario</strong>: elevar la eficiencia con estudio de tiempos y movimientos, selección y entrenamiento científico del trabajador, y remuneración por rendimiento.</td><td>Visión <strong>mecanicista</strong>: supone que el obrero es holgazán por naturaleza y que sólo lo motiva el dinero.</td></tr>
-<tr><td><strong>Clásica ·<br>Adm. Industrial y General</strong></td><td><strong>Fayol</strong></td><td>Foco en la <strong>dirección y la estructura</strong>. Primero en sistematizar la administración: divide la empresa en áreas, crea el manual de funciones y formula <strong>14 principios</strong>. Gobernar exige prever, organizar, dirigir, coordinar y controlar.</td><td>También mecanicista: principios rígidos, poca consideración del factor humano.</td></tr>
-<tr><td><strong>Relaciones Humanas</strong></td><td><strong>Elton Mayo</strong></td><td>Reacción humanista. Los <strong>experimentos de Hawthorne</strong> (Western Electric, 1927-32): cambiaban la iluminación y la productividad subía igual. Conclusión: pesan más las <strong>condiciones sociopsicológicas</strong> (grupo, reconocimiento, atención) que las físicas. Aparecen los <strong>grupos informales</strong> y la figura del líder.</td><td>Sobrevalora lo informal y descuida la estructura y la eficiencia.</td></tr>
-<tr><td><strong>Neoclásica</strong></td><td>Gulick, Koontz, O'Donnell</td><td>Retoma a Taylor y Fayol adaptados a la posguerra. Desarrolla el <strong>organigrama</strong>, el manual de funciones y el esquema <strong>ACME</strong> de departamentalización.</td><td>Es más una actualización que una teoría nueva.</td></tr>
-<tr><td><strong>Estructuralista / Burocrática</strong></td><td><strong>Max Weber</strong> (y Merton)</td><td><strong>Modelo burocrático</strong>: normas estrictas, jerarquía clara, cargos despersonalizados, autoridad <strong>legal</strong>. Busca previsibilidad y trato igualitario.</td><td><strong>Rigidez</strong>: ideal para organismos públicos, lento para empresas privadas. Merton describe sus <strong>disfunciones</strong>.</td></tr>
-<tr><td><strong>Psicología y Sociología industrial</strong></td><td>Lewin, <strong>Maslow</strong>, <strong>McGregor</strong></td><td>Motivación y liderazgo. <strong>Teoría X</strong> (la gente no quiere trabajar, hay que controlarla) vs. <strong>Teoría Y</strong> (puede autoorganizarse, hay que delegar). Estilos de liderazgo: autoritario, democrático y permisivo.</td><td>Difícil de traducir en herramientas concretas de gestión.</td></tr>
-<tr><td><strong>Teoría de los Sistemas</strong></td><td><strong>Von Bertalanffy</strong></td><td>No es exclusiva de la administración: es un <strong>enfoque</strong> que cruza todas las ciencias. La organización es un <strong>sistema</strong> de partes interconectadas con un objetivo común. Aporta el vocabulario: input, output, feedback, entropía, caja negra.</td><td>Muy general: describe pero no prescribe qué hacer.</td></tr>
+<tr><td><strong>Clásica ·<br>Adm. Científica</strong></td><td><strong>Taylor</strong></td><td>Foco en la <strong>fábrica y el operario</strong>: eficiencia vía estudio de tiempos y movimientos, selección y entrenamiento científico, pago por rendimiento.</td><td><strong>Mecanicista</strong>: supone al obrero holgazán y motivado sólo por dinero.</td></tr>
+<tr><td><strong>Clásica ·<br>Adm. Industrial y General</strong></td><td><strong>Fayol</strong></td><td>Foco en la <strong>dirección y la estructura</strong>: divide la empresa en áreas, crea el manual de funciones y formula <strong>14 principios</strong>. Gobernar = prever, organizar, dirigir, coordinar y controlar.</td><td>Principios rígidos, poca consideración del factor humano.</td></tr>
+<tr><td><strong>Relaciones Humanas</strong></td><td><strong>Elton Mayo</strong></td><td><strong>Hawthorne</strong> (1927-32): cambiaban la iluminación y la productividad subía igual → pesan más las <strong>condiciones sociopsicológicas</strong> que las físicas. Aparecen los <strong>grupos informales</strong> y el líder.</td><td>Sobrevalora lo informal y descuida la estructura.</td></tr>
+<tr><td><strong>Neoclásica</strong></td><td>Gulick, Koontz</td><td>Retoma a Taylor y Fayol en la posguerra: <strong>organigrama</strong>, manual de funciones y esquema <strong>ACME</strong>.</td><td>Más una actualización que una teoría nueva.</td></tr>
+<tr><td><strong>Estructuralista / Burocrática</strong></td><td><strong>Weber</strong></td><td><strong>Modelo burocrático</strong>: normas estrictas, jerarquía clara, cargos despersonalizados, autoridad <strong>legal</strong>. Busca previsibilidad.</td><td><strong>Rigidez</strong>: sirve al Estado, es lento para la empresa privada.</td></tr>
+<tr><td><strong>Psicología y Sociología industrial</strong></td><td>Lewin, <strong>Maslow</strong>, <strong>McGregor</strong></td><td>Motivación y liderazgo. <strong>Teoría X</strong> (hay que controlar) vs. <strong>Teoría Y</strong> (hay que delegar). Estilos: autoritario, democrático, permisivo.</td><td>Difícil de traducir en herramientas de gestión.</td></tr>
+<tr><td><strong>Teoría de los Sistemas</strong></td><td><strong>Von Bertalanffy</strong></td><td>Enfoque que cruza todas las ciencias: la organización es un <strong>sistema</strong> de partes interconectadas. Aporta input, output, feedback, entropía.</td><td>Muy general: describe pero no prescribe.</td></tr>
 </tbody>
 </table>
 <div class="repre">
@@ -155,7 +155,7 @@
 <tr><td>Influyen de forma directa y reconocible, y la organización puede negociar con ellos:<br><strong>clientes · proveedores · competidores · sistema financiero (bancos) · sindicatos · el sector económico</strong> al que pertenece · grupos de presión inmediatos.</td><td>Fuerzas generales que la organización <strong>no puede controlar</strong>, sólo anticipar:<br><strong>factores económicos</strong> (inflación, tipo de cambio, PIB) · <strong>político-legales</strong> (regulaciones, leyes, gobiernos) · <strong>sociales</strong> (demografía, tendencias) · <strong>culturales</strong> (valores, costumbres, estilo de vida) · <strong>tecnológicos</strong> (nuevos procesos, automatización).</td></tr>
 </tbody>
 </table>
-<p><strong>El ejercicio típico</strong> (aunque el final sea oral, te lo pueden plantear de palabra): te dan una frase de un artículo periodístico y tenés que decir qué variable es. "El turismo representa el 11% del PIB" → <strong>económica</strong> · "el Ayuntamiento declara ilegales las viviendas turísticas" → <strong>político-legal</strong> · "pintadas de <em>tourist go home</em>" → <strong>social / cultural</strong> · "faltan redes de carga para autos eléctricos" → <strong>tecnológica</strong> · "trabajamos con el sindicato Smata" → <strong>sindicatos, acción directa</strong>.</p>
+<p><strong>El ejercicio típico</strong> (te lo pueden plantear de palabra): te dan una frase de un artículo y tenés que decir qué variable es. "El turismo representa el 11% del PIB" → <strong>económica</strong> · "el Ayuntamiento declara ilegales las viviendas turísticas" → <strong>político-legal</strong> · "pintadas de <em>tourist go home</em>" → <strong>social / cultural</strong> · "faltan redes de carga para autos eléctricos" → <strong>tecnológica</strong> · "trabajamos con el sindicato Smata" → <strong>sindicatos, acción directa</strong>.</p>
 <p><strong>Incertidumbre del entorno</strong> <span class="badge p3">Complementario</span>: Duncan la analiza cruzando el <strong>grado de cambio</strong> (estático / dinámico) con la <strong>complejidad</strong> (simple / complejo). Dinámico y complejo = máxima incertidumbre (la industria bancaria); estático y simple = mínima (la industria de contenedores).</p>
 </div>
 
@@ -416,14 +416,7 @@
 </div>
 
 <div class="tema">
-<p><strong>Remuneraciones y beneficios</strong> <span class="badge p2">Importante</span>: la remuneración se clasifica según <strong>de qué depende el pago</strong>:</p>
-<ul>
-<li><strong>En función del tiempo:</strong> por mes → <strong>sueldos</strong>; por día o quincena → <strong>salarios</strong>.</li>
-<li><strong>En función del nivel de actividad:</strong> <strong>a destajo</strong> o por pieza producida.</li>
-<li><strong>Por volumen de ventas:</strong> <strong>comisiones</strong>, típicas de vendedores.</li>
-<li><strong>En función de las utilidades:</strong> <strong>participaciones y bonificaciones</strong>, generalmente a directores y gerentes.</li>
-</ul>
-<p>Se suman los <strong>beneficios financieros indirectos</strong> (cobertura de salud, vacaciones pagas, seguro de vida, préstamos, guardería) y las <strong>compensaciones no financieras</strong> (trato justo, horario flexible, posibilidades de progreso, comedor, transporte). Para fijar los montos se combinan factores <strong>internos</strong> (jerarquía del puesto, mérito) y <strong>externos</strong> (mercado de trabajo, poder adquisitivo), con tres herramientas: la <strong>valuación de puestos</strong>, las <strong>encuestas de remuneraciones</strong> y los <strong>índices de precios</strong>.</p>
+<p><strong>Remuneraciones y beneficios</strong> <span class="badge p2">Importante</span>: la remuneración se clasifica según <strong>de qué depende el pago</strong> — <strong>del tiempo</strong> (por mes: sueldos; por día o quincena: salarios) · <strong>del nivel de actividad</strong> (a destajo, por pieza) · <strong>del volumen de ventas</strong> (comisiones) · <strong>de las utilidades</strong> (participaciones y bonificaciones, a directores y gerentes). Se suman los <strong>beneficios indirectos</strong> (salud, vacaciones pagas, seguros, guardería) y las <strong>compensaciones no financieras</strong> (trato justo, horario flexible, progreso). Los montos se fijan combinando factores <strong>internos</strong> (jerarquía del puesto, mérito) y <strong>externos</strong> (mercado, poder adquisitivo), con tres herramientas: <strong>valuación de puestos</strong>, <strong>encuestas de remuneraciones</strong> e <strong>índices de precios</strong>.</p>
 </div>
 
 <div class="tema">
@@ -438,9 +431,9 @@
 <div class="tema">
 <p><strong>Seguridad, salubridad y relaciones laborales</strong> <span class="badge p3">Complementario</span></p>
 <ul>
-<li><strong>Seguridad industrial:</strong> prevenir accidentes. La distinción que preguntan: <strong>actos inseguros</strong> (conductas de las personas: levantar mal una carga, no usar protección, hacer bromas pesadas) vs. <strong>condiciones inseguras</strong> (del ambiente: máquinas sin protección, mala iluminación o ventilación). Frente a un riesgo hay cuatro caminos: <strong>eliminarlo, tolerarlo, transferirlo</strong> (seguros) o <strong>prevenirlo</strong>, que es el criterio más maduro.</li>
-<li><strong>Salubridad e higiene:</strong> previene las <strong>enfermedades profesionales</strong>, las que produce el propio trabajo (por ejemplo la <strong>silicosis</strong>, por inhalar polvo de sílice, o el <strong>saturnismo</strong>, por intoxicación con plomo).</li>
-<li><strong>Relaciones laborales:</strong> el <strong>sindicato</strong> es una asociación profesional voluntaria que defiende los intereses del personal. Las <strong>negociaciones colectivas</strong> concluyen en convenios. Medidas de fuerza: de los trabajadores, huelga, trabajo a desgano, boicot; de los empresarios, el <strong>lock-out</strong> (cierre); y de ambas partes, la mediación o conciliación.</li>
+<li><strong>Seguridad industrial:</strong> prevenir accidentes. La distinción que preguntan: <strong>actos inseguros</strong> (conductas: levantar mal una carga, no usar protección) vs. <strong>condiciones inseguras</strong> (del ambiente: máquinas sin protección, mala iluminación). Frente al riesgo: eliminarlo, tolerarlo, transferirlo (seguros) o <strong>prevenirlo</strong>.</li>
+<li><strong>Salubridad e higiene:</strong> previene las <strong>enfermedades profesionales</strong>, las que produce el propio trabajo (silicosis por polvo de sílice, saturnismo por plomo).</li>
+<li><strong>Relaciones laborales:</strong> el <strong>sindicato</strong> defiende los intereses del personal; las <strong>negociaciones colectivas</strong> concluyen en convenios. Medidas de fuerza: huelga y trabajo a desgano (trabajadores), <strong>lock-out</strong> (empresarios), mediación o conciliación (ambos).</li>
 </ul>
 </div>
 
@@ -544,71 +537,6 @@
 <li><strong>Sus cuatro etapas.</strong> Planeamiento → revisión intermedia → evaluación → comunicación de resultados. La clave: no debe haber sorpresas al final.</li>
 <li><strong>Tipos de remuneración.</strong> Según el tiempo (sueldos y salarios), según el nivel de actividad (a destajo), por volumen de ventas (comisiones) y según las utilidades (participaciones y bonificaciones).</li>
 <li><strong>¿Qué dice Maslow? ¿Y McGregor?</strong> Maslow: las necesidades se ordenan en una pirámide (fisiológicas, seguridad, sociales, estima, autorrealización) y una necesidad satisfecha deja de motivar. McGregor: la Teoría X supone que la gente rehúye el trabajo y hay que controlarla; la Y, que puede autodirigirse y hay que delegar.</li>
-</ul></div>
-
-<a class="back" href="index.html">← Plan de estudio</a>
-</section>
-
-<!-- ============ REPASO RELÁMPAGO ============ -->
-<section class="tab-panel hidden" id="tab-repaso">
-<div class="card"><strong>⚡ Modo cram: todo en una carilla.</strong> Una línea por tema. Si algo te queda en blanco, saltá a "Desarrollo por unidad". Después reforzá con el <strong>Quiz</strong>: recordar rinde más que releer.</div>
-
-<div class="card"><strong>Unidad 1 · Administración: evolución y fundamentos</strong>
-<ul style="margin:8px 0 0;font-size:.95rem">
-<li><strong>Administrar:</strong> interpretar objetivos y transformarlos en acción vía planear, organizar, dirigir y controlar. Es un <strong>ciclo</strong>.</li>
-<li><strong>Eficacia</strong> = lograr el objetivo · <strong>eficiencia</strong> = lograrlo con el mínimo de recursos · <strong>productividad</strong> = salidas / insumos.</li>
-<li><strong>Ciencia fáctica + técnica</strong>, NO arte (el arte es subjetivo; lo que parece arte es el estilo del administrador).</li>
-<li><strong>Planeación:</strong> 3 niveles (estratégica / táctica / operacional) y 4 clases de planes (procedimientos, presupuestos, programas, normas).</li>
-<li><strong>Control:</strong> estándares → observar → comparar → corregir.</li>
-<li><strong>Escuelas:</strong> Taylor (taller, tiempos y movimientos) · Fayol (dirección, 14 principios) · Mayo (Hawthorne, grupos informales) · Neoclásicos (organigrama, ACME) · Weber (burocracia, autoridad legal) · Maslow/McGregor (motivación, X e Y) · Bertalanffy (sistemas).</li>
-</ul></div>
-
-<div class="card"><strong>Unidad 2 · La organización</strong>
-<ul style="margin:8px 0 0;font-size:.95rem">
-<li><strong>Definición:</strong> unidad social deliberadamente construida para alcanzar fines específicos.</li>
-<li><strong>3 características:</strong> división del trabajo y del poder planeada · centros de poder que controlan y remodelan · sustitución de personal.</li>
-<li><strong>Sistema abierto:</strong> entrada → proceso → salida + retroalimentación. <strong>Sociotécnico:</strong> subsistemas técnico, administrativo y social.</li>
-<li><strong>Microentorno</strong> (acción directa): clientes, proveedores, competidores, bancos, sindicatos. <strong>Macroentorno</strong> (indirecta): económico, político-legal, social, cultural, tecnológico.</li>
-<li><strong>Duncan:</strong> incertidumbre = grado de cambio × complejidad.</li>
-</ul></div>
-
-<div class="card"><strong>Unidad 3 · Estructuras orgánicas</strong>
-<ul style="margin:8px 0 0;font-size:.95rem">
-<li><strong>Formal</strong> (organigrama, planeada) vs. <strong>informal</strong> (espontánea, Barnard).</li>
-<li><strong>Principios:</strong> división del trabajo (vertical / horizontal) · unidad de mando · autoridad · tramo de control (amplio = achatada / estrecho = alargada) · cadena de mando · coordinación.</li>
-<li><strong>Delegación:</strong> resultados → tareas → autoridad → responsabilidad. <mark>La autoridad se delega, la responsabilidad no.</mark></li>
-<li><strong>Tipos:</strong> lineal (autoridad única, centralizada, piramidal) · funcional (autoridad por especialidad, pierde unidad de mando) · línea-staff (la más usada; conflicto típico).</li>
-<li><strong>Relaciones:</strong> lineal (manda en su área) · funcional (fija estándares para todos) · staff (sugiere, no decide).</li>
-<li><strong>Departamentalización:</strong> funciones · productos · geográfica · clientela · proceso · proyectos · matricial (doble jefe, rompe la unidad de mando).</li>
-<li><strong>Centralizar</strong> = uniformidad y control · <strong>descentralizar</strong> = rapidez y desarrollo de gerentes. Factores: costo de la decisión, tamaño, gerentes capacitados, uniformidad, ritmo de cambio.</li>
-</ul></div>
-
-<div class="card"><strong>Unidad 4 · Producción</strong>
-<ul style="margin:8px 0 0;font-size:.95rem">
-<li><strong>Producción:</strong> transformación de insumos en productos. Objetivos: <strong>costo, calidad, flexibilidad, entrega</strong>.</li>
-<li><strong>Decisiones:</strong> estratégicas (diseñan) · tácticas (hacen funcionar) · logísticas (sostienen).</li>
-<li><strong>Tipos:</strong> continua · intermitente · por montaje · por proyectos.</li>
-<li><strong>Localización:</strong> materia prima, energía, RRHH, cercanía del mercado, leyes de promoción. <strong>Layout:</strong> por producto (línea) · por proceso (máquinas afines) · posición fija (proyectos).</li>
-<li><strong>PE:</strong> ingresos = costos. \(Q_e\) = CF / (Pv − CVu). <strong>Contable</strong> (lucro 0) · <strong>financiero</strong> (resta depreciación) · <strong>económico</strong> (suma ganancia deseada). Financiero &lt; contable &lt; económico.</li>
-<li><strong>Para qué sirve:</strong> mínimo a vender, ganancia objetivo, impacto de cambios de precio o costo, margen de seguridad.</li>
-</ul></div>
-
-<div class="card"><strong>Unidad 5 · Aprovisionamiento</strong>
-<ul style="margin:8px 0 0;font-size:.95rem">
-<li><strong>Ciclo:</strong> almacenes (detectan) → compras (ejecuta) → recepción (ingresa).</li>
-<li><strong>Stock mínimo</strong> (lo mínimo para no parar) · <strong>stock de seguridad</strong> (colchón para imprevistos) · <strong>punto de pedido</strong> (CUÁNDO pido) · <strong>lote óptimo</strong> (CUÁNTO pido: minimiza costo de ordenar + costo de mantener).</li>
-<li><strong>Mantenimiento:</strong> preventivo · predictivo · correctivo programable · correctivo de emergencia.</li>
-<li><strong>Calidad:</strong> de diseño (cliente vs. diseño) y de concordancia (diseño vs. elaborado). Control por variable o por atributo.</li>
-</ul></div>
-
-<div class="card"><strong>Unidad 6 · Recursos Humanos</strong>
-<ul style="margin:8px 0 0;font-size:.95rem">
-<li><strong>Análisis de puestos → 2 productos:</strong> <strong>descripción</strong> (el QUÉ del puesto) y <strong>especificación</strong> (el QUIÉN que lo ocupa).</li>
-<li><strong>Dotación:</strong> planeamiento (brecha entre requerido y disponible) → reclutamiento (atraer, interno o externo) → selección (elegir, con etapas de descarte) → inducción (minimizar ansiedad).</li>
-<li><strong>Capacitación</strong> = puesto actual · <strong>desarrollo</strong> = actividad futura.</li>
-<li><strong>Evaluación de desempeño:</strong> objetivos + factores objetivos + factores subjetivos. Etapas: planeamiento → revisión intermedia → evaluación → comunicación.</li>
-<li><strong>Remuneración:</strong> por tiempo (sueldo/salario) · por actividad (destajo) · por ventas (comisión) · por utilidades (participaciones).</li>
-<li><strong>Motivación:</strong> Maslow (pirámide, la necesidad satisfecha deja de motivar) · McGregor (X controla / Y delega).</li>
 </ul></div>
 
 <a class="back" href="index.html">← Plan de estudio</a>
@@ -730,45 +658,43 @@
 <section class="tab-panel hidden" id="tab-guia">
 
 <h2>Estrategia para el final oral</h2>
-<p>Un final oral de Administración no se gana recitando listas: se gana <strong>ordenando</strong>. La materia es enorme y muy enumerativa —tres características de esto, cuatro pasos de aquello, siete tipos de lo otro— así que la tentación es memorizar listas sueltas. El problema es que en un oral, apenas te falta un ítem de una lista, se te nota. En cambio, si arrancás con una definición firme y un ejemplo propio, tenés el punto ganado aunque después te falte un elemento de la enumeración.</p>
+<p>La materia es muy enumerativa —tres características de esto, cuatro pasos de aquello— y la tentación es memorizar listas sueltas. El problema es que si te falta un ítem, se nota. Si en cambio arrancás con una definición firme y un ejemplo propio, el punto está ganado igual.</p>
 
 <h3>La estructura de una buena respuesta</h3>
 <ol class="paso">
-<li><strong>Definición.</strong> Una oración con la terminología de la cátedra. "La departamentalización es agrupar actividades homogéneas en unidades".</li>
-<li><strong>Para qué sirve / por qué existe.</strong> El profe quiere saber si entendés el problema que el concepto resuelve, no si lo memorizaste.</li>
-<li><strong>Clasificación o componentes.</strong> Acá va la lista: los tipos, los pasos, los factores.</li>
-<li><strong>Un ejemplo propio.</strong> No el del apunte. Una pizzería, un supermercado, la agencia donde trabajás. Es lo que más diferencia una respuesta buena de una excelente.</li>
-<li><strong>Una conexión con otra unidad,</strong> si la ves. "Esto se relaciona con la unidad de mando, porque la matricial justamente la rompe". Ahí se nota que estudiaste la materia y no seis unidades sueltas.</li>
+<li><strong>Definición</strong> con la terminología de la cátedra.</li>
+<li><strong>Para qué sirve:</strong> qué problema resuelve el concepto. Es lo que separa entender de memorizar.</li>
+<li><strong>Clasificación o componentes:</strong> acá va la lista (tipos, pasos, factores).</li>
+<li><strong>Un ejemplo propio</strong>, no el del apunte. Es lo que más diferencia una respuesta buena de una excelente.</li>
+<li><strong>Una conexión con otra unidad,</strong> si la ves: "la matricial es flexible pero rompe la unidad de mando". Ahí se nota que estudiaste la materia y no seis unidades sueltas.</li>
 </ol>
 
-<h3>Los temas que más se preguntan</h3>
-<p>Si tenés poco tiempo, éstos son los que rinden más porque son los que la cátedra tomó una y otra vez, en parciales y trabajos prácticos:</p>
+<h3>Los temas que más rinden</h3>
 <ol class="paso">
-<li><strong>Ciclo administrativo</strong> y las escuelas (sobre todo Taylor vs. Fayol y Hawthorne).</li>
-<li><strong>La organización como sistema abierto</strong> y las <strong>variables del entorno</strong> (micro y macro), con ejemplos.</li>
-<li><strong>Departamentalización</strong> y <strong>centralización vs. descentralización</strong> con sus factores determinantes.</li>
-<li><strong>Delegación</strong>, con la frase "la autoridad se delega, la responsabilidad no", y las <strong>relaciones línea / funcional / staff</strong>.</li>
-<li><strong>Punto de equilibrio</strong>: concepto, los tres tipos y para qué sirve en la toma de decisiones.</li>
-<li><strong>Abastecimiento</strong>: punto de pedido vs. lote óptimo.</li>
-<li><strong>Análisis de puestos</strong> (descripción vs. especificación) y <strong>evaluación de desempeño</strong>.</li>
+<li><strong>Ciclo administrativo</strong> y escuelas (sobre todo Taylor vs. Fayol y Hawthorne).</li>
+<li><strong>Sistema abierto</strong> y <strong>variables del entorno</strong> (micro y macro), con ejemplos.</li>
+<li><strong>Departamentalización</strong> y <strong>centralización vs. descentralización</strong> con sus factores.</li>
+<li><strong>Delegación</strong> ("la autoridad se delega, la responsabilidad no") y las relaciones <strong>línea / funcional / staff</strong>.</li>
+<li><strong>Punto de equilibrio:</strong> concepto, los tres tipos y para qué sirve.</li>
+<li><strong>Abastecimiento:</strong> punto de pedido vs. lote óptimo.</li>
+<li><strong>Análisis de puestos</strong> y <strong>evaluación de desempeño</strong>.</li>
 </ol>
 
-<h3>Qué hacer si te quedás en blanco</h3>
+<h3>Si te quedás en blanco</h3>
 <ul>
-<li><strong>Volvé al para qué.</strong> Si no te acordás la lista de factores de la descentralización, pensá para qué sirve descentralizar y los factores salen solos: si la empresa es grande, si las decisiones son caras, si tenés gente capacitada.</li>
-<li><strong>Usá el ejemplo como andamio.</strong> Empezá a describir un caso concreto y la teoría aparece: contar cómo funciona una pizzería te lleva naturalmente a planear, organizar, dirigir y controlar.</li>
-<li><strong>Decí cuántos son antes de enumerar.</strong> "Son tres características" te obliga a ordenarte y le muestra al profe que tenés la estructura, aunque una te salga floja.</li>
-<li><strong>No inventes autores.</strong> Si no estás seguro de quién dijo qué, describí el concepto sin nombre. Es mejor "la escuela que estudió los grupos informales" que atribuirle Hawthorne a Fayol.</li>
+<li><strong>Volvé al para qué.</strong> Si no te acordás los factores de la descentralización, pensá para qué sirve y salen solos: tamaño, costo de la decisión, gente capacitada.</li>
+<li><strong>Usá el ejemplo como andamio.</strong> Contar cómo funciona una pizzería te lleva solo a planear, organizar, dirigir y controlar.</li>
+<li><strong>Decí cuántos son antes de enumerar</strong> ("son tres características"): te ordena y muestra que tenés la estructura.</li>
+<li><strong>No inventes autores.</strong> Mejor "la escuela que estudió los grupos informales" que atribuirle Hawthorne a Fayol.</li>
 </ul>
 
 <div class="callout">
   <div class="ct">Avisos de último minuto</div>
   <ul style="margin:6px 0 0">
-    <li><strong>Es oral y sólo teórico:</strong> no vas a tener que resolver un punto de equilibrio, pero sí explicar <strong>qué es, cuáles son los tres tipos y para qué sirve</strong>. No estudies las cuentas, estudiá el concepto y las señales que distinguen contable, financiero y económico.</li>
-    <li><strong>Las parejas que se confunden</strong> y que son el 80% de las repreguntas: eficacia / eficiencia · formal / informal · línea / staff · centralizar / descentralizar · lote óptimo / punto de pedido · descripción / especificación de puesto · capacitación / desarrollo · reclutamiento / selección · calidad de diseño / de concordancia · acto inseguro / condición insegura.</li>
-    <li><strong>Los ejemplos son parte de la respuesta,</strong> no un adorno. La cátedra trabaja todo el cuatrimestre con casos y artículos periodísticos: llevá dos o tres empresas conocidas en la cabeza y usalas para todo.</li>
-    <li><strong>Cuidado con las escuelas:</strong> el error más común es mezclar a Taylor con Fayol. Fijá una imagen para cada uno: Taylor = cronómetro en el taller; Fayol = el organigrama y los principios en el escritorio del director.</li>
-    <li><strong>Si te toca un tema que sabés poco,</strong> empezá igual por la definición y el para qué, y llevá la respuesta hacia el terreno que dominás mediante una conexión honesta ("esto se apoya en la estructura, que es donde aparece la unidad de mando..."). Callarse es peor que decir menos.</li>
+    <li><strong>Es oral y sólo teórico:</strong> el punto de equilibrio no se calcula, se explica. Estudiá el concepto, los tres tipos y para qué sirve, no las cuentas.</li>
+    <li><strong>Las parejas que se confunden</strong> son el 80% de las repreguntas: eficacia/eficiencia · formal/informal · línea/staff · centralizar/descentralizar · lote óptimo/punto de pedido · descripción/especificación de puesto · capacitación/desarrollo · reclutamiento/selección · acto inseguro/condición insegura.</li>
+    <li><strong>Los ejemplos son parte de la respuesta.</strong> Llevá dos o tres empresas conocidas en la cabeza y usalas para todo.</li>
+    <li><strong>Fijá una imagen por autor</strong> para no mezclarlos: Taylor = cronómetro en el taller · Fayol = organigrama en el escritorio del director.</li>
   </ul>
 </div>
 
