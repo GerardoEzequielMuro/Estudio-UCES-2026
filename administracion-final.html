@@ -48,29 +48,48 @@
 <header class="site-head">
   <div class="kicker">Administración de Empresas 1 · FINAL ORAL</div>
   <h1>Guía para el Final · Administración</h1>
-  <p class="sub">UCES 2026 · cátedra Brugnoli / Rudaz. El final es <strong>oral y sólo teórico</strong>: no hay ejercicios de punto de equilibrio para resolver, pero sí hay que <strong>explicar el concepto</strong> y para qué sirve. Las 6 unidades del programa, desarrolladas como respuestas para decir en voz alta.</p>
+  <p class="sub">UCES 2026 · cátedra Brugnoli / Rudaz. El final es <strong>oral y sólo teórico</strong>. Guía en <strong>pantallas</strong>: una unidad por vez, con el guion para decirla en voz alta.</p>
   <div class="meta-row">
     <span><b>Unidades:</b> 6</span>
     <span><b>Formato:</b> Oral · desarrollar temas</span>
     <span><b>Ojo con:</b> dar ejemplos propios</span>
   </div>
 </header>
+<div class="deck-bar">
+  <button class="deck-arrow" id="prevTop" aria-label="Pantalla anterior">&#8592;</button>
+  <span class="dtitle" id="dTitle"></span>
+  <span class="dcount" id="dCount"></span>
+  <button class="deck-arrow" id="nextTop" aria-label="Pantalla siguiente">&#8594;</button>
+</div>
+<div class="deck-progress"><i id="dBar"></i></div>
 
-<nav class="tabs">
-  <button class="tab active" data-tab="desarrollo">Desarrollo por unidad</button>
-  <button class="tab" data-tab="banco">🎙 Banco de preguntas</button>
-  <button class="tab" data-tab="flash">Flashcards</button>
-  <button class="tab" data-tab="quiz">Quiz</button>
-  <button class="tab" data-tab="mapa">Mapa</button>
-  <button class="tab" data-tab="guia">Estrategia del oral</button>
-</nav>
+<div class="deck" id="deck">
 
-<!-- ============ DESARROLLO ============ -->
-<section class="tab-panel" id="tab-desarrollo">
+<section class="slide on" data-nm="Cómo es el final">
+  <div class="slide-head">
+    <div class="eyebrow">Antes de empezar</div>
+    <h2>Cómo es el final</h2>
+    <p class="lede">Es <strong>oral y sólo teórico</strong>: no hay ejercicios de punto de equilibrio para resolver, pero sí hay que explicar el concepto y para qué sirve.</p>
+  </div>
 
-<div class="card"><p>Las <strong>6 unidades del programa oficial 2026</strong>, desarrolladas en el orden en que conviene decirlas: definición → clasificación o componentes → ejemplo propio. Los badges marcan el peso: <span class="badge p1">Imprescindible</span> cae casi seguro, <span class="badge p2">Importante</span> muy probable, <span class="badge p3">Complementario</span> es de apoyo. Los cuadros <strong>🗣 Cómo lo decís</strong> son el guion hablado; los <strong>Repreguntas probables</strong> son lo que viene después de que respondés bien.</p></div>
+<div class="callout">
+  <div class="ct">Cómo se usa</div>
+  <p style="margin:12px 0 0">Cada pantalla es una unidad. Avanzá con la flecha <strong>→</strong> de arriba, con el botón <strong>Siguiente</strong> del final, o con las <strong>flechas del teclado</strong>. La página se acuerda de dónde quedaste, así que podés cerrarla y volver.</p>
+</div>
 
-<h2>Unidad 1 · Administración: evolución y fundamentos</h2>
+<p>Las <strong>seis unidades del programa oficial 2026</strong> están desarrolladas en el orden en que conviene decirlas: definición → para qué sirve → clasificación o componentes → ejemplo propio. Los cuadros <strong>🗣 Cómo lo decís</strong> son el guion hablado.</p>
+
+<p>Después de las unidades vienen cuatro pantallas de apoyo: el <strong>banco de preguntas</strong> (una por cada ítem del programa, con la respuesta corta), <strong>flashcards</strong>, <strong>quiz</strong>, el <strong>mapa</strong> y la <strong>estrategia del oral</strong>.</p>
+
+<p>Los badges marcan el peso de cada tema: <span class="badge p1">Imprescindible</span> cae casi seguro · <span class="badge p2">Importante</span> muy probable · <span class="badge p3">Complementario</span> es de apoyo.</p>
+</section>
+
+<section class="slide" data-nm="U1 · Administración">
+  <div class="slide-head">
+    <div class="eyebrow">Unidad 1 de 6</div>
+    <h2>Unidad 1 · Administración: evolución y fundamentos</h2>
+    <p class="lede">Qué es administrar, si es ciencia o técnica, el ciclo administrativo y la evolución de las escuelas. Es la unidad que más se pregunta.</p>
+  </div>
 
 <div class="tema">
 <p><strong>Concepto y propósito</strong> <span class="badge p1">Imprescindible</span>: administrar es <mark>interpretar los objetivos de la organización y transformarlos en acción</mark> a través de cuatro funciones — <strong>planear, organizar, dirigir y controlar</strong> — para alcanzarlos de la mejor manera con los recursos disponibles.</p>
@@ -126,8 +145,14 @@
 </ul>
 </div>
 </div>
+</section>
 
-<h2>Unidad 2 · La organización</h2>
+<section class="slide" data-nm="U2 · La organización">
+  <div class="slide-head">
+    <div class="eyebrow">Unidad 2 de 6</div>
+    <h2>Unidad 2 · La organización</h2>
+    <p class="lede">Qué es una organización, sus tres características, por qué es un sistema abierto y cómo se lee el entorno.</p>
+  </div>
 
 <div class="tema">
 <p><strong>Concepto y características</strong> <span class="badge p1">Imprescindible</span>: las organizaciones son <mark>unidades sociales deliberadamente construidas o reconstruidas para alcanzar fines específicos</mark>. Un club, un hospital, Mercado Libre o la UCES: todas lo son. Se caracterizan por <strong>tres rasgos</strong>:</p>
@@ -158,8 +183,14 @@
 <p><strong>El ejercicio típico</strong> (te lo pueden plantear de palabra): te dan una frase de un artículo y tenés que decir qué variable es. "El turismo representa el 11% del PIB" → <strong>económica</strong> · "el Ayuntamiento declara ilegales las viviendas turísticas" → <strong>político-legal</strong> · "pintadas de <em>tourist go home</em>" → <strong>social / cultural</strong> · "faltan redes de carga para autos eléctricos" → <strong>tecnológica</strong> · "trabajamos con el sindicato Smata" → <strong>sindicatos, acción directa</strong>.</p>
 <p><strong>Incertidumbre del entorno</strong> <span class="badge p3">Complementario</span>: Duncan la analiza cruzando el <strong>grado de cambio</strong> (estático / dinámico) con la <strong>complejidad</strong> (simple / complejo). Dinámico y complejo = máxima incertidumbre (la industria bancaria); estático y simple = mínima (la industria de contenedores).</p>
 </div>
+</section>
 
-<h2>Unidad 3 · Estructuras orgánicas</h2>
+<section class="slide" data-nm="U3 · Estructuras">
+  <div class="slide-head">
+    <div class="eyebrow">Unidad 3 de 6</div>
+    <h2>Unidad 3 · Estructuras orgánicas</h2>
+    <p class="lede">La unidad más larga: principios de estructura, delegación, tipos de organización, departamentalización y centralización.</p>
+  </div>
 
 <div class="tema">
 <p><strong>Diseño organizacional y organización formal e informal</strong> <span class="badge p1">Imprescindible</span></p>
@@ -255,8 +286,14 @@
   <p>"Centralizar es concentrar las decisiones arriba y descentralizar es delegarlas hacia abajo. No hay una mejor: depende de factores. Te doy tres. Primero, el <strong>costo de la decisión</strong>: cuanto más cara y difícil de revertir, más se centraliza, porque un error se paga caro. Segundo, el <strong>tamaño</strong>: una organización grande y dispersa no puede esperar que todo lo resuelva la cúpula, así que descentraliza. Y tercero, la <strong>disponibilidad de gerentes capacitados</strong>: podés querer descentralizar, pero si no tenés gente formada para decidir, no podés — y ahí la solución previa es capacitar."</p>
 </div>
 </div>
+</section>
 
-<h2>Unidad 4 · Producción</h2>
+<section class="slide" data-nm="U4 · Producción">
+  <div class="slide-head">
+    <div class="eyebrow">Unidad 4 de 6</div>
+    <h2>Unidad 4 · Producción</h2>
+    <p class="lede">La función producción, sus decisiones, la localización y el layout, y el punto de equilibrio — que acá se explica, no se calcula.</p>
+  </div>
 
 <div class="tema">
 <p><strong>Concepto y objetivos</strong> <span class="badge p1">Imprescindible</span>: producción es la <mark>transformación o conversión de insumos en productos</mark>, bienes o servicios. Funciona como sistema: <strong>entradas</strong> (materias primas, mano de obra, energía, capital, información) → <strong>proceso de conversión</strong> → <strong>salidas</strong> (productos y servicios), con un <strong>subsistema de control por retroalimentación</strong>.</p>
@@ -325,8 +362,14 @@
 </ul>
 </div>
 </div>
+</section>
 
-<h2>Unidad 5 · Aprovisionamiento (abastecimiento)</h2>
+<section class="slide" data-nm="U5 · Aprovisionamiento">
+  <div class="slide-head">
+    <div class="eyebrow">Unidad 5 de 6</div>
+    <h2>Unidad 5 · Aprovisionamiento (abastecimiento)</h2>
+    <p class="lede">El ciclo de abastecimiento y los cuatro conceptos que pide el programa: stock mínimo, stock de seguridad, punto de pedido y lote óptimo.</p>
+  </div>
 
 <div class="tema">
 <p><strong>Concepto, objetivos y subfunciones</strong> <span class="badge p1">Imprescindible</span>: el <strong>abastecimiento</strong> es la función logística que se ocupa de <mark>proveer a la organización de los materiales e insumos que necesita, en la cantidad, calidad, momento y costo adecuados</mark>. Comprende <strong>tres subfunciones que forman un ciclo</strong>:</p>
@@ -367,8 +410,14 @@
 <div class="tema">
 <p><strong>Calidad</strong> <span class="badge p2">Importante</span>: hay dos conceptos que no hay que mezclar — <strong>calidad de diseño</strong> (grado de coincidencia entre lo que el cliente necesita y lo que se diseñó) y <strong>calidad de concordancia</strong> (coincidencia entre lo que se elaboró y lo que se había diseñado). El control puede ser <strong>por variable</strong> (se mide: peso, largo, tolerancias) o <strong>por atributo</strong> (pasa / no pasa), y se aplica sobre entradas, procesos o salidas. La <strong>calidad total</strong> (Juran) extiende la responsabilidad por la calidad a <strong>toda</strong> la organización, con clientes y proveedores internos. Regla: <strong>es mejor prevenir que curar</strong>.</p>
 </div>
+</section>
 
-<h2>Unidad 6 · Recursos Humanos</h2>
+<section class="slide" data-nm="U6 · RRHH">
+  <div class="slide-head">
+    <div class="eyebrow">Unidad 6 de 6</div>
+    <h2>Unidad 6 · Recursos Humanos</h2>
+    <p class="lede">Análisis de puestos, dotación, capacitación, evaluación de desempeño, remuneraciones y motivación.</p>
+  </div>
 
 <div class="tema">
 <p><strong>Concepto y funciones</strong> <span class="badge p1">Imprescindible</span>: la administración de personal comprende <strong>los conceptos y técnicas necesarios para desempeñar adecuadamente lo relacionado con el personal</strong>. Busca el <mark>equilibrio entre los objetivos de la organización y los de las personas</mark>.</p>
@@ -436,12 +485,14 @@
 <li><strong>Relaciones laborales:</strong> el <strong>sindicato</strong> defiende los intereses del personal; las <strong>negociaciones colectivas</strong> concluyen en convenios. Medidas de fuerza: huelga y trabajo a desgano (trabajadores), <strong>lock-out</strong> (empresarios), mediación o conciliación (ambos).</li>
 </ul>
 </div>
-
-<a class="back" href="index.html">← Plan de estudio</a>
 </section>
 
-<!-- ============ BANCO DE PREGUNTAS ============ -->
-<section class="tab-panel hidden" id="tab-banco">
+<section class="slide" data-nm="Banco de preguntas">
+  <div class="slide-head">
+    <div class="eyebrow">Apoyo</div>
+    <h2>Banco de preguntas</h2>
+    <p class="lede">Una pregunta por cada ítem numerado del programa, con la respuesta en una o dos líneas: lo mínimo que tenés que poder soltar sin pensar.</p>
+  </div>
 
 <div class="callout">
   <div class="ct">🎙 Las preguntas del oral, con la respuesta corta</div>
@@ -538,29 +589,39 @@
 <li><strong>Tipos de remuneración.</strong> Según el tiempo (sueldos y salarios), según el nivel de actividad (a destajo), por volumen de ventas (comisiones) y según las utilidades (participaciones y bonificaciones).</li>
 <li><strong>¿Qué dice Maslow? ¿Y McGregor?</strong> Maslow: las necesidades se ordenan en una pirámide (fisiológicas, seguridad, sociales, estima, autorrealización) y una necesidad satisfecha deja de motivar. McGregor: la Teoría X supone que la gente rehúye el trabajo y hay que controlarla; la Y, que puede autodirigirse y hay que delegar.</li>
 </ul></div>
-
-<a class="back" href="index.html">← Plan de estudio</a>
 </section>
 
-<!-- ============ FLASHCARDS ============ -->
-<section class="tab-panel hidden" id="tab-flash">
-  <div class="card"><strong>Tocá la tarjeta para darla vuelta.</strong> Adelante la pregunta como te la puede hacer la profe, atrás la respuesta con la terminología de la cátedra. Para un oral, entrenar el <em>decirlo</em> rinde más que releer.</div>
+<section class="slide" data-nm="Flashcards">
+  <div class="slide-head">
+    <div class="eyebrow">Apoyo</div>
+    <h2>Flashcards</h2>
+    <p class="lede">Para entrenar el <em>decirlo</em>, que es lo que se evalúa en un oral. Tocá la tarjeta para darla vuelta.</p>
+  </div>
+
+<div class="card"><strong>Tocá la tarjeta para darla vuelta.</strong> Adelante la pregunta como te la puede hacer la profe, atrás la respuesta con la terminología de la cátedra. Para un oral, entrenar el <em>decirlo</em> rinde más que releer.</div>
   <div id="flashBox"></div>
-  <a class="back" href="index.html">← Plan de estudio</a>
 </section>
 
-<!-- ============ QUIZ ============ -->
-<section class="tab-panel hidden" id="tab-quiz">
-  <div class="card">
+<section class="slide" data-nm="Quiz">
+  <div class="slide-head">
+    <div class="eyebrow">Apoyo</div>
+    <h2>Quiz</h2>
+    <p class="lede">Para chequear que las definiciones y las distinciones estén firmes antes de sentarte a rendir.</p>
+  </div>
+
+<div class="card">
     <strong>¿Cómo funciona?</strong> Tocá una opción y al toque te dice si está bien o mal, con la explicación. Sirve para chequear que las definiciones y las distinciones estén firmes antes de sentarte a rendir.
     <p style="margin:12px 0 0">Aciertos: <span class="score" id="score">0</span> / <span id="answered">0</span> respondidas (<span id="totalq">0</span> en total) &nbsp; <button class="tab" onclick="resetQuiz()" style="border-color:var(--line-strong)">Reiniciar</button></p>
   </div>
   <div id="quizBox"></div>
-  <a class="back" href="index.html">← Plan de estudio</a>
 </section>
 
-<!-- ============ MAPA ============ -->
-<section class="tab-panel hidden" id="tab-mapa">
+<section class="slide" data-nm="Mapa">
+  <div class="slide-head">
+    <div class="eyebrow">Apoyo</div>
+    <h2>Mapa de la materia</h2>
+    <p class="lede">Las seis unidades de un vistazo, para ver cómo se conecta todo.</p>
+  </div>
 
 <h2>Unidad 1 · Administración</h2>
 <div class="map">
@@ -650,12 +711,14 @@
   <div class="branch"><div class="node">Maslow (pirámide de necesidades) · McGregor (Teoría X / Teoría Y) · modificación de la conducta (refuerzo)</div></div>
 </div>
 </div>
-
-<a class="back" href="index.html">← Plan de estudio</a>
 </section>
 
-<!-- ============ ESTRATEGIA ============ -->
-<section class="tab-panel hidden" id="tab-guia">
+<section class="slide" data-nm="Estrategia del oral">
+  <div class="slide-head">
+    <div class="eyebrow">Cierre</div>
+    <h2>Estrategia del oral</h2>
+    <p class="lede">Cómo armar una respuesta, qué temas rinden más y qué hacer si te quedás en blanco.</p>
+  </div>
 
 <h2>Estrategia para el final oral</h2>
 <p>La materia es muy enumerativa —tres características de esto, cuatro pasos de aquello— y la tentación es memorizar listas sueltas. El problema es que si te falta un ítem, se nota. Si en cambio arrancás con una definición firme y un ejemplo propio, el punto está ganado igual.</p>
@@ -697,9 +760,18 @@
     <li><strong>Fijá una imagen por autor</strong> para no mezclarlos: Taylor = cronómetro en el taller · Fayol = organigrama en el escritorio del director.</li>
   </ul>
 </div>
-
-<a class="back" href="index.html">← Plan de estudio</a>
 </section>
+
+</div>
+
+<div class="deck-nav">
+  <button class="deck-btn prev" id="prevBtn"><span><span class="lbl">&#8592; Anterior</span><span class="nm" id="prevNm"></span></span></button>
+  <button class="deck-btn next" id="nextBtn"><span><span class="lbl">Siguiente &#8594;</span><span class="nm" id="nextNm"></span></span></button>
+</div>
+
+<div class="deck-index"><b>Todas las pantallas</b><div id="dIdx"></div></div>
+
+<a class="back" href="index.html">&#8592; Plan de estudio</a>
 
 </div>
 
@@ -717,17 +789,52 @@ document.getElementById('themeBtn').addEventListener('click', function(){
   localStorage.setItem('theme', next);
 });
 
-/* ====== TABS ====== */
-document.querySelectorAll('.tab[data-tab]').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    var id = btn.dataset.tab;
-    document.querySelectorAll('.tab[data-tab]').forEach(function(b){ b.classList.toggle('active', b===btn); });
-    document.querySelectorAll('.tab-panel').forEach(function(p){
-      p.classList.toggle('hidden', p.id !== 'tab-'+id);
-    });
-    window.scrollTo({top:0});
+/* ====== DECK: una unidad por pantalla ====== */
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  if(!slides.length) return;
+  var names = slides.map(function(s){ return s.dataset.nm; });
+  var i = 0;
+  var KEY = 'deck-' + location.pathname.split('/').pop();
+  var saved = parseInt(localStorage.getItem(KEY), 10);
+  if(!isNaN(saved) && saved >= 0 && saved < slides.length) i = saved;
+
+  var idx = document.getElementById('dIdx');
+  names.forEach(function(n, k){
+    var b = document.createElement('button');
+    b.textContent = (k+1) + '. ' + n;
+    b.addEventListener('click', function(){ go(k); });
+    idx.appendChild(b);
   });
-});
+
+  function set(id, prop, val){ var el = document.getElementById(id); if(el) el[prop] = val; }
+
+  function go(k, keepScroll){
+    i = Math.max(0, Math.min(slides.length-1, k));
+    slides.forEach(function(s, n){ s.classList.toggle('on', n===i); });
+    set('dTitle','textContent', names[i]);
+    set('dCount','textContent', (i+1) + ' / ' + slides.length);
+    document.getElementById('dBar').style.width = ((i+1)/slides.length*100) + '%';
+    set('prevNm','textContent', i>0 ? names[i-1] : 'Estás en la primera');
+    set('nextNm','textContent', i<slides.length-1 ? names[i+1] : 'Llegaste al final');
+    ['prevBtn','prevTop'].forEach(function(id){ set(id,'disabled', i===0); });
+    ['nextBtn','nextTop'].forEach(function(id){ set(id,'disabled', i===slides.length-1); });
+    Array.prototype.forEach.call(idx.children, function(b, n){ b.classList.toggle('on', n===i); });
+    try { localStorage.setItem(KEY, i); } catch(e){}
+    if(!keepScroll) window.scrollTo({top:0});
+  }
+  ['prevBtn','prevTop'].forEach(function(id){ var el=document.getElementById(id); if(el) el.addEventListener('click', function(){ go(i-1); }); });
+  ['nextBtn','nextTop'].forEach(function(id){ var el=document.getElementById(id); if(el) el.addEventListener('click', function(){ go(i+1); }); });
+  document.addEventListener('keydown', function(e){
+    if(e.target.closest('input,textarea')) return;
+    if(e.key === 'ArrowRight') go(i+1);
+    if(e.key === 'ArrowLeft') go(i-1);
+  });
+  go(i, true);
+})();
+
+
+/* ====== TABS (ya no se usan, quedan por compatibilidad) ====== */
 
 /* ====== QUIZ DATA ====== */
 const QUIZ = [

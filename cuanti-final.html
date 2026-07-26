@@ -90,39 +90,43 @@ details.sol .cuerpo p{margin:8px 0}
 <header class="site-head">
   <div class="kicker">Instrumentos Cuantitativos · FINAL</div>
   <h1>Guía para el Final · Instrumentos Cuantitativos</h1>
-  <p class="sub">UCES 2026 · cátedra Salaj / Romero. Una sola página, de arriba a abajo: <strong>toda la teoría</strong> unidad por unidad, con la <strong>práctica pegada</strong> a los tres temas que se toman (sistemas, cuadrática y logaritmos), y al final <strong>cuatro finales completos para resolver</strong> — el primero es el examen real de Julio I 2026.</p>
+  <p class="sub">UCES 2026 · cátedra Salaj / Romero. Guía en <strong>pantallas</strong>: una unidad por vez, para no leer todo de una. Toda la teoría del programa, con la <strong>práctica pegada</strong> a los tres temas que se toman, y al final <strong>cuatro finales completos para resolver</strong>.</p>
   <div class="meta-row">
     <span><b>Unidades:</b> 5 + preliminares</span>
     <span><b>Formato:</b> Oral · teoría + poca práctica</span>
     <span><b>Ojo con:</b> justificar, no sólo responder</span>
   </div>
 </header>
-
-<div class="toc">
-  <b>Saltar a</b>
-  <a href="#teoria">① Teoría por unidad</a>
-  <a href="#p0">Preliminares</a>
-  <a href="#u1">U1 · Ecuaciones</a>
-  <a href="#u2">U2 · Funciones y sistemas</a>
-  <a href="#u3">U3 · 2º grado</a>
-  <a href="#u4">U4 · Cuadrática</a>
-  <a href="#u5">U5 · Exponencial y log</a>
-  <a href="#finales">② Finales de práctica</a>
+<div class="deck-bar">
+  <button class="deck-arrow" id="prevTop" aria-label="Pantalla anterior">&#8592;</button>
+  <span class="dtitle" id="dTitle"></span>
+  <span class="dcount" id="dCount"></span>
+  <button class="deck-arrow" id="nextTop" aria-label="Pantalla siguiente">&#8594;</button>
 </div>
+<div class="deck-progress"><i id="dBar"></i></div>
+
+<div class="deck" id="deck">
+
+<section class="slide on" data-nm="Cómo es el final">
+  <div class="slide-head">
+    <div class="eyebrow">Antes de empezar</div>
+    <h2>Cómo es el final</h2>
+    <p class="lede">Es <strong>oral</strong> y casi todo teórico: te piden describir un procedimiento, caracterizar una función, justificar si algo pasa siempre o no y proponer un ejemplo propio. La parte práctica es corta y repite los tipos de ejercicio de los parciales.</p>
+  </div>
 
 <div class="callout">
-  <div class="ct">Cómo es el final</div>
-  <p style="margin:8px 0 0">Es <strong>oral</strong> y <strong>casi todo teórico</strong>: te piden <em>describir un procedimiento</em>, <em>caracterizar</em> una función, <em>justificar</em> si algo pasa siempre o no y <em>proponer un ejemplo propio</em>. La parte práctica es corta y repite los mismos tipos de ejercicio de los parciales. Por eso esta guía va en ese orden: la teoría primero (que es lo que más pesa), la práctica después.</p>
+  <div class="ct">Cómo se usa</div>
+  <p style="margin:12px 0 0">Cada pantalla es una unidad. Avanzá con la flecha <strong>→</strong> de arriba, con el botón <strong>Siguiente</strong> del final, o con las <strong>flechas del teclado</strong>. La página se acuerda de dónde quedaste, así que podés cerrarla y volver.</p>
 </div>
+<p>Las tres unidades que además se toman en la práctica —<strong>sistemas</strong>, <strong>cuadrática</strong> y <strong>logaritmos</strong>— traen su bloque de ejercicios resueltos al final de la pantalla. Las últimas cuatro pantallas son <strong>finales completos para resolver</strong>.</p>
+</section>
 
-<!-- ================= PARTE 1 · TEORÍA ================= -->
-<div class="parte" id="teoria">
-  <div class="pn">Parte 1</div>
-  <h2>Teoría y práctica, unidad por unidad</h2>
-  <p>Todo el programa. Cada tema en el orden en que conviene decirlo en el oral: <strong>definición textual → condiciones → características → ejemplo</strong>. Los tres temas que además <strong>se toman en la práctica</strong> —sistemas de ecuaciones, función cuadrática y logaritmos— traen su bloque de <strong>🧮 Práctica</strong> justo después de la teoría, con ejercicios de parciales reales resueltos. Los badges marcan el peso: <span class="badge p1">Imprescindible</span> cae casi seguro · <span class="badge p2">Importante</span> muy probable · <span class="badge p3">Complementario</span> de apoyo.</p>
-</div>
-
-<h2 id="p0">Preliminares · Conjuntos numéricos, propiedades y porcentajes</h2>
+<section class="slide" data-nm="Preliminares">
+  <div class="slide-head">
+    <div class="eyebrow">Teoría · preliminares</div>
+    <h2>Preliminares · Conjuntos numéricos, propiedades y porcentajes</h2>
+    <p class="lede">Los porcentajes son el <strong>objetivo número uno del programa</strong>: es la pregunta más barata de tomar y la más fácil de arruinar.</p>
+  </div>
 
 <div class="callout">
   <div class="ct">⚠ No lo saltees: los porcentajes son el objetivo N°1 del programa</div>
@@ -184,8 +188,14 @@ details.sol .cuerpo p{margin:8px 0}
 <li><strong>La regla que preguntan:</strong> la <strong>tasa \(i\) y el plazo \(n\) deben tener la misma periodicidad</strong>. Tasa mensual → plazo en meses.</li>
 </ul>
 </div>
+</section>
 
-<h2 id="u1">Unidad 1 · Expresiones algebraicas: ecuaciones e inecuaciones</h2>
+<section class="slide" data-nm="U1 · Ecuaciones">
+  <div class="slide-head">
+    <div class="eyebrow">Teoría · unidad 1</div>
+    <h2>Unidad 1 · Expresiones algebraicas: ecuaciones e inecuaciones</h2>
+    <p class="lede">Ecuaciones, inecuaciones y los modelos de costo, ingreso y utilidad que después se usan en todas las unidades.</p>
+  </div>
 
 <div class="tema">
 <p><strong>Ecuación de primer grado</strong> <span class="badge p2">Importante</span>: una igualdad entre dos expresiones, de las cuales al menos una contiene la incógnita, que se verifica sólo para ciertos valores. Resolverla es hallar su <strong>conjunto solución</strong>, aplicando operaciones que produzcan ecuaciones <strong>equivalentes</strong>.</p>
@@ -224,8 +234,14 @@ details.sol .cuerpo p{margin:8px 0}
 <li><strong>Punto de equilibrio (nivelación):</strong> el nivel donde \(I=C\), o sea \(U=0\). Por debajo hay pérdida, por encima ganancia.</li>
 </ul>
 </div>
+</section>
 
-<h2 id="u2">Unidad 2 · Funciones y sistemas lineales</h2>
+<section class="slide" data-nm="U2 · Funciones y sistemas">
+  <div class="slide-head">
+    <div class="eyebrow">Teoría y práctica · unidad 2</div>
+    <h2>Unidad 2 · Funciones y sistemas lineales</h2>
+    <p class="lede">La unidad más grande: función, función lineal, sistemas 2×2 y equilibrio de mercado. Al final, la práctica de sistemas con ejercicios de parciales reales.</p>
+  </div>
 
 <div class="tema">
 <p><strong>Definición de función</strong> <span class="badge p1">Imprescindible</span> (textual de la cátedra): "Una función \(f\) es una <strong>regla que asigna a cada elemento \(x\) de un conjunto \(A\) de números reales un único elemento \(y=f(x)\)</strong> de un subconjunto \(B\) de \(\mathbb{R}\)". Notación: \(f: A \to B\,/\,y=f(x)\).</p>
@@ -331,8 +347,14 @@ details.sol .cuerpo p{margin:8px 0}
 <p><strong>(b) Ingreso total \(=p\cdot q\).</strong> Antes: \(48\cdot360=\$17.280\). Después: \(48{,}60\cdot372=\$18.079{,}20\) contando el subsidio (sólo por ventas serían \(47{,}60\cdot372=\$17.707{,}20\)).</p>
 </div></details>
 </div>
+</section>
 
-<h2 id="u3">Unidad 3 · Ecuaciones de segundo grado en una variable</h2>
+<section class="slide" data-nm="U3 · Segundo grado">
+  <div class="slide-head">
+    <div class="eyebrow">Teoría · unidad 3</div>
+    <h2>Unidad 3 · Ecuaciones de segundo grado en una variable</h2>
+    <p class="lede">La ecuación de segundo grado: casos particulares, resolvente y discriminante.</p>
+  </div>
 
 <div class="tema">
 <p><strong>Forma general:</strong> \(ax^2+bx+c=0\) con \(a \neq 0\) <span class="badge p1">Imprescindible</span>. Sus términos: <strong>cuadrático</strong> (\(ax^2\)), <strong>lineal</strong> (\(bx\)) e <strong>independiente</strong> (\(c\)).</p>
@@ -352,8 +374,14 @@ details.sol .cuerpo p{margin:8px 0}
 <div class="tema">
 <p><strong>Aplicaciones económicas</strong> <span class="badge p2">Importante</span>: la ecuación de segundo grado aparece al igualar dos expresiones donde una es cuadrática — típicamente <strong>ingreso = costo</strong>, o cuando se busca para qué cantidad la utilidad toma un valor dado. Como el modelo es económico, hay que <strong>descartar las raíces negativas</strong> (no existen cantidades ni precios negativos) e interpretar el resultado con unidades.</p>
 </div>
+</section>
 
-<h2 id="u4">Unidad 4 · Función cuadrática</h2>
+<section class="slide" data-nm="U4 · Cuadrática">
+  <div class="slide-head">
+    <div class="eyebrow">Teoría y práctica · unidad 4</div>
+    <h2>Unidad 4 · Función cuadrática</h2>
+    <p class="lede">La parábola y sus elementos, con la pregunta que cayó en el final: ¿siempre corta los ejes? Al final, la práctica de cuadrática.</p>
+  </div>
 
 <div class="tema">
 <p><strong>Definición</strong> <span class="badge p1">Imprescindible · cayó en el final de julio</span>: \(f\) es una <strong>función cuadrática</strong> si \(f(x)=ax^2+bx+c\), con \(a,b,c \in \mathbb{R}\) y \(a \neq 0\). Es decir, su expresión es un <strong>polinomio de grado 2</strong>. Su gráfica se llama <strong>parábola</strong>.</p>
@@ -476,8 +504,14 @@ details.sol .cuerpo p{margin:8px 0}
 <p><strong>7) Verificación</strong> (la piden explícitamente): \(U=\tfrac{97^2}{3}-\tfrac{82}{3}\cdot97+15=\tfrac{9409-7954}{3}+15=485+15=500\) ✓</p>
 </div></details>
 </div>
+</section>
 
-<h2 id="u5">Unidad 5 · Función exponencial y función logarítmica</h2>
+<section class="slide" data-nm="U5 · Exponencial y log">
+  <div class="slide-head">
+    <div class="eyebrow">Teoría y práctica · unidad 5</div>
+    <h2>Unidad 5 · Función exponencial y función logarítmica</h2>
+    <p class="lede">Exponencial, logaritmo y función logarítmica, con las dos preguntas de "por qué" que el apunte deja anotadas.</p>
+  </div>
 
 <div class="tema">
 <p><strong>Función exponencial</strong> <span class="badge p1">Imprescindible</span> — definición textual: "una función de la forma \(f(x)=a^x\), donde la base \(a\) es un número real <strong>positivo y distinto de 1</strong>". Simbólicamente \(f:\mathbb{R}\to\mathbb{R}^+\,/\,f(x)=a^x\) con \(a>0\;;\;a\neq1\).</p>
@@ -611,15 +645,15 @@ details.sol .cuerpo p{margin:8px 0}
 <p><strong>(c)</strong> Planteo \(\ln(5x-10)=2\) y aplico la definición (\(\ln a = b \iff e^{b}=a\)): \(5x-10=e^{2}\approx7{,}389 \Rightarrow 5x\approx17{,}389 \Rightarrow x\approx3{,}48\). Como \(3{,}48>2\), <strong>está en el dominio</strong>: la solución es válida.</p>
 </div></details>
 </div>
+</section>
 
-<!-- ================= PARTE 2 · FINALES DE PRÁCTICA ================= -->
-<div class="parte" id="finales">
-  <div class="pn">Parte 2</div>
-  <h2>Finales de práctica</h2>
-  <p>Cuatro modelos con la <strong>misma estructura del final real</strong>: tres puntos, uno de <strong>sistemas</strong>, uno de <strong>función cuadrática</strong> y uno de <strong>exponencial / logarítmica</strong>, todos pidiendo describir, caracterizar, justificar y proponer un ejemplo. El <strong>Modelo 1 es el examen real de Julio I 2026</strong>; los otros tres son originales sobre los mismos temas. Hacelos <mark>en voz alta</mark> antes de abrir la solución: el examen es oral, así que practicar escribiendo no alcanza.</p>
-</div>
+<section class="slide" data-nm="Final real 2026">
+  <div class="slide-head">
+    <div class="eyebrow">Final de práctica · el real</div>
+    <h2>📄 Modelo 1 · Final real — Julio I 2026</h2>
+    <p class="lede">El examen del turno de Julio I 2026, punto por punto. Van a cambiar los números y las letras, pero la estructura se repite.</p>
+  </div>
 
-<h2>📄 Modelo 1 · Final real — Julio I 2026</h2>
 <div class="callout"><div class="ct">Esto es el examen de verdad</div><p style="margin:6px 0 0">Es el que dieron en el turno de Julio I 2026. Van a cambiar los números y las letras, pero la estructura se repite.</p></div>
 
 <div class="ejer">
@@ -657,8 +691,14 @@ details.sol .cuerpo p{margin:8px 0}
 <p><strong>(c) Ejemplo decreciente:</strong> \(y=\log_{1/2}(x)\), base entre 0 y 1. Tablita: \(\log_{1/2}(1)=0\), \(\log_{1/2}(2)=-1\), \(\log_{1/2}(4)=-2\) — sube \(x\), baja la imagen. \(Dom=(0;+\infty)\), \(Img=\mathbb{R}\), pasa por \((1;0)\), asíntota vertical \(x=0\). El esquema está más arriba, en la teoría de la Unidad 5.</p>
 </div></details>
 </div>
+</section>
 
-<h2>📝 Modelo 2</h2>
+<section class="slide" data-nm="Modelo 2">
+  <div class="slide-head">
+    <div class="eyebrow">Final de práctica · modelo 2</div>
+    <h2>📝 Modelo 2</h2>
+    <p class="lede">Mismos temas, otra vuelta. Acá el sistema tiene las dos pendientes iguales: hay que razonar indeterminado vs. incompatible.</p>
+  </div>
 
 <div class="ejer">
 <span class="et">Punto 1 · Sistemas</span>
@@ -698,8 +738,14 @@ details.sol .cuerpo p{margin:8px 0}
 <p><em>Plus:</em> \(y=2^x\) e \(y=\log_2 x\) son inversas entre sí y sus gráficas son simétricas respecto de \(y=x\).</p>
 </div></details>
 </div>
+</section>
 
-<h2>📝 Modelo 3</h2>
+<section class="slide" data-nm="Modelo 3">
+  <div class="slide-head">
+    <div class="eyebrow">Final de práctica · modelo 3</div>
+    <h2>📝 Modelo 3</h2>
+    <p class="lede">Otro sistema de pendientes iguales, discriminante y una exponencial con la asíntota corrida.</p>
+  </div>
 
 <div class="ejer">
 <span class="et">Punto 1 · Sistemas</span>
@@ -732,8 +778,14 @@ details.sol .cuerpo p{margin:8px 0}
 <p><strong>(f)</strong> Si la base fuera <strong>negativa</strong>, la potencia no estaría definida en los reales para muchos exponentes (\((-4)^{1/2}=\sqrt{-4}\) no es real); si fuera <strong>0</strong>, no estaría definida para exponentes negativos; y si fuera <strong>1</strong>, quedaría \(1^x=1\), una función constante, no biyectiva y por lo tanto sin inversa — no existiría el logaritmo de base 1.</p>
 </div></details>
 </div>
+</section>
 
-<h2>📝 Modelo 4 · el más conceptual</h2>
+<section class="slide" data-nm="Modelo 4">
+  <div class="slide-head">
+    <div class="eyebrow">Final de práctica · modelo 4</div>
+    <h2>📝 Modelo 4 · el más conceptual</h2>
+    <p class="lede">El más conceptual: todo procedimiento y justificación, casi sin números.</p>
+  </div>
 
 <div class="ejer">
 <span class="et">Punto 1 · Sistemas</span>
@@ -785,12 +837,66 @@ details.sol .cuerpo p{margin:8px 0}
     <li><strong>En los prácticos:</strong> unidades siempre, descartar las raíces negativas, verificar reemplazando, y responder <em>lo que preguntan</em> (a veces piden el precio y el vértice te dio la cantidad).</li>
   </ul>
 </div>
+</section>
+
+</div>
+
+<div class="deck-nav">
+  <button class="deck-btn prev" id="prevBtn"><span><span class="lbl">&#8592; Anterior</span><span class="nm" id="prevNm"></span></span></button>
+  <button class="deck-btn next" id="nextBtn"><span><span class="lbl">Siguiente &#8594;</span><span class="nm" id="nextNm"></span></span></button>
+</div>
+
+<div class="deck-index"><b>Todas las pantallas</b><div id="dIdx"></div></div>
 
 <a class="back" href="index.html">← Plan de estudio</a>
 
 </div>
 
 <script>
+/* ====== DECK: una unidad por pantalla ====== */
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  if(!slides.length) return;
+  var names = slides.map(function(s){ return s.dataset.nm; });
+  var i = 0;
+  var KEY = 'deck-' + location.pathname.split('/').pop();
+  var saved = parseInt(localStorage.getItem(KEY), 10);
+  if(!isNaN(saved) && saved >= 0 && saved < slides.length) i = saved;
+
+  var idx = document.getElementById('dIdx');
+  names.forEach(function(n, k){
+    var b = document.createElement('button');
+    b.textContent = (k+1) + '. ' + n;
+    b.addEventListener('click', function(){ go(k); });
+    idx.appendChild(b);
+  });
+
+  function set(id, prop, val){ var el = document.getElementById(id); if(el) el[prop] = val; }
+
+  function go(k, keepScroll){
+    i = Math.max(0, Math.min(slides.length-1, k));
+    slides.forEach(function(s, n){ s.classList.toggle('on', n===i); });
+    set('dTitle','textContent', names[i]);
+    set('dCount','textContent', (i+1) + ' / ' + slides.length);
+    document.getElementById('dBar').style.width = ((i+1)/slides.length*100) + '%';
+    set('prevNm','textContent', i>0 ? names[i-1] : 'Estás en la primera');
+    set('nextNm','textContent', i<slides.length-1 ? names[i+1] : 'Llegaste al final');
+    ['prevBtn','prevTop'].forEach(function(id){ set(id,'disabled', i===0); });
+    ['nextBtn','nextTop'].forEach(function(id){ set(id,'disabled', i===slides.length-1); });
+    Array.prototype.forEach.call(idx.children, function(b, n){ b.classList.toggle('on', n===i); });
+    try { localStorage.setItem(KEY, i); } catch(e){}
+    if(!keepScroll) window.scrollTo({top:0});
+  }
+  ['prevBtn','prevTop'].forEach(function(id){ var el=document.getElementById(id); if(el) el.addEventListener('click', function(){ go(i-1); }); });
+  ['nextBtn','nextTop'].forEach(function(id){ var el=document.getElementById(id); if(el) el.addEventListener('click', function(){ go(i+1); }); });
+  document.addEventListener('keydown', function(e){
+    if(e.target.closest('input,textarea')) return;
+    if(e.key === 'ArrowRight') go(i+1);
+    if(e.key === 'ArrowLeft') go(i-1);
+  });
+  go(i, true);
+})();
+
 /* ====== THEME ====== */
 (function(){
   var saved = localStorage.getItem('theme');
