@@ -27,6 +27,16 @@
 .paso li{margin:6px 0}
 .mnemo{display:block;margin-top:9px;padding-top:8px;border-top:1px dashed var(--line-strong);
   font-size:.82rem;color:var(--muted);font-style:italic}
+/* ---- galería de diapositivas de la cátedra ---- */
+.gal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:20px 0 4px}
+.gal figure{margin:0}
+.gal figcaption{margin-top:9px;font-size:.82rem;line-height:1.6;color:var(--muted);font-style:normal;
+  text-align:left;max-width:none}
+.gal a{display:block;text-decoration:none}
+.gal a:hover img{border-color:var(--brand)}
+.gal figcaption b{color:var(--ink);font-style:normal}
+.slide-src{font-size:.82rem;color:var(--muted);margin-top:14px}
+@media (max-width:700px){ .gal{grid-template-columns:1fr;gap:14px} }
 /* ---- quiz de cierre de cada unidad ---- */
 .quiz-meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px;
   margin:12px 0 20px;font-size:.9rem;color:var(--muted)}
@@ -260,6 +270,11 @@
 <figcaption>Es un <b>ciclo, no una lista</b>: el control detecta los desvíos y esa información vuelve a la planeación. Es el punto que más se valora al explicarlo — si lo contás como cuatro pasos sueltos, se nota.</figcaption>
 </figure>
 
+<figure>
+<img src="assets/administracion/ppt_u1_ciclo_administrativo.png" alt="Diapositiva de la cátedra: las funciones administrativas dispuestas en círculo — planeación, organización, dirección y control — formando el ciclo administrativo" loading="lazy">
+<figcaption><b>Así lo proyecta la cátedra</b> (clase 1, 2026). Usá su vocabulario: "el desempeño de las funciones administrativas <b>en su totalidad</b> conforma el ciclo administrativo, y a medida que se repite permite la corrección y el ajuste <b>mediante la retroalimentación</b>".</figcaption>
+</figure>
+
 <div class="oral">
   <div class="ot">🗣 Cómo lo decís</div>
   <p>"Administrar es interpretar los objetivos de la organización y transformarlos en acción mediante cuatro funciones: planear, organizar, dirigir y controlar. Es un <strong>ciclo</strong>: el control detecta los desvíos y esa información vuelve a la planeación. Por ejemplo, en una pizzería: planeo abrir una sucursal y armo el presupuesto; organizo quién cocina y quién reparte; dirijo motivando al equipo; y controlo si vendimos lo previsto y si la pizza sale en veinte minutos. Si hay desvíos, corrijo y el ciclo arranca de nuevo."</p>
@@ -346,6 +361,62 @@
 <div class="tema">
 <p><strong>Evolución del pensamiento administrativo: las escuelas</strong> <span class="badge p1">Imprescindible · el tema más pedido del programa</span>. No hace falta recitar las seis con fechas: hace falta poder decir <strong>qué problema vino a resolver cada una</strong> y en qué se diferencia de la anterior.</p>
 
+<p><strong>Leelo como una cadena de reclamos, no como una lista.</strong> Cada escuela nace para resolver el problema que tenía la empresa de su época. Al resolverlo <strong>deja algo afuera</strong>, y ese "algo afuera" <mark>es exactamente el problema del que se ocupa la escuela siguiente</mark>. Dos avisos que evitan la confusión típica: las escuelas <strong>se superponen en el tiempo</strong> (Weber es contemporáneo de los neoclásicos, no posterior), y <strong>ninguna reemplaza a la anterior</strong> — se van sumando capas.</p>
+
+<figure class="fig">
+<svg viewBox="0 0 660 730" role="img" aria-label="Cadena de las escuelas de administración: el problema de cada época, su concepción del hombre y lo que dejó sin resolver">
+  <defs><marker id="arc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="currentColor" opacity=".55"/></marker></defs>
+
+  <rect x="90" y="16" width="500" height="76" rx="12" class="box-a"/>
+  <text class="svg-k" x="110" y="40">1 · CLÁSICA — Taylor y Fayol</text>
+  <text class="svg-s" x="110" y="60">el problema de su época: la fábrica produce poco y desordenada</text>
+  <text class="svg-s" x="110" y="80">su hombre: el HOMBRE ECONÓMICO, holgazán, lo mueve el dinero</text>
+  <line class="ax" x1="120" y1="92" x2="120" y2="140" marker-end="url(#arc)"/>
+  <text class="svg-s" x="136" y="122">pero trata a la persona como una máquina más</text>
+
+  <rect x="90" y="140" width="500" height="76" rx="12" class="box-c"/>
+  <text class="svg-k" x="110" y="164">2 · RELACIONES HUMANAS — Mayo, Hawthorne</text>
+  <text class="svg-s" x="110" y="184">el problema: la gente está desmotivada y produce por debajo</text>
+  <text class="svg-s" x="110" y="204">su hombre: el HOMBRE SOCIAL, lo mueven el grupo y el reconocimiento</text>
+  <line class="ax" x1="120" y1="216" x2="120" y2="264" marker-end="url(#arc)"/>
+  <text class="svg-s" x="136" y="246">pero se olvida de la estructura: con buen clima y sin orden tampoco alcanza</text>
+
+  <rect x="90" y="264" width="500" height="76" rx="12" class="box-a"/>
+  <text class="svg-k" x="110" y="288">3 · NEOCLÁSICA y BUROCRÁTICA — Koontz, Weber</text>
+  <text class="svg-s" x="110" y="308">el problema: falta método, orden y previsibilidad</text>
+  <text class="svg-s" x="110" y="328">su hombre: el HOMBRE DE LA NORMA, hace lo que el cargo indica</text>
+  <line class="ax" x1="120" y1="340" x2="120" y2="388" marker-end="url(#arc)"/>
+  <text class="svg-s" x="136" y="370">pero es rígida y sigue sin explicar qué mueve realmente a la gente</text>
+
+  <rect x="90" y="388" width="500" height="76" rx="12" class="box-c"/>
+  <text class="svg-k" x="110" y="412">4 · PSICOLOGÍA y SOCIOLOGÍA — Maslow, McGregor</text>
+  <text class="svg-s" x="110" y="432">el problema: qué motiva de verdad y cómo conducir</text>
+  <text class="svg-s" x="110" y="452">su hombre: el HOMBRE COMPLEJO, con necesidades en varios niveles</text>
+  <line class="ax" x1="120" y1="464" x2="120" y2="512" marker-end="url(#arc)"/>
+  <text class="svg-s" x="136" y="494">pero son teorías sin método para aplicarlas en la organización</text>
+
+  <rect x="90" y="512" width="500" height="76" rx="12" class="box"/>
+  <text class="svg-k" x="110" y="536">5 · TEORÍA DE LOS SISTEMAS — Von Bertalanffy</text>
+  <text class="svg-s" x="110" y="556">el problema: cada escuela miraba una parte, nadie el conjunto</text>
+  <text class="svg-s" x="110" y="576">su aporte: INTEGRA todo lo anterior — partes conectadas hacia un objetivo</text>
+  <line class="ax" x1="120" y1="588" x2="120" y2="636" marker-end="url(#arc)"/>
+  <text class="svg-s" x="136" y="618">pero mira hacia adentro, y afuera el entorno no para de cambiar</text>
+
+  <rect x="90" y="636" width="500" height="76" rx="12" class="box"/>
+  <text class="svg-k" x="110" y="660">6 · ADMINISTRACIÓN ESTRATÉGICA — 1970 en adelante</text>
+  <text class="svg-s" x="110" y="680">el problema: un entorno cambiante que la empresa no controla</text>
+  <text class="svg-s" x="110" y="700">su aporte: ya no organiza hacia adentro, POSICIONA hacia afuera</text>
+</svg>
+<figcaption>La flecha entre dos escuelas es <b>la crítica</b>: lo que la de arriba dejó sin resolver es el punto de partida de la de abajo. Fijate en el color: <b>1 y 3 miran la tarea y la estructura</b>, <b>2 y 4 miran a las personas</b> — de ahí que la historia se lea como un <b>péndulo</b> — y <b>5 y 6 son las que integran</b>. Si contás esta cadena, ya explicaste la unidad sin decir una sola fecha.</figcaption>
+</figure>
+
+<div class="oral">
+  <div class="ot">🗣 Cómo lo decís · la evolución en 40 segundos</div>
+  <p>"El pensamiento administrativo evoluciona por <strong>crítica a la escuela anterior</strong>. Arranca con la <strong>clásica</strong>, Taylor y Fayol: el problema era producir más, y la respuesta fue la eficiencia — Taylor en el taller con tiempos y movimientos, Fayol en la dirección con las áreas y los principios. Su límite es que suponen un <strong>hombre económico</strong>, movido sólo por dinero. Contra eso reacciona <strong>Relaciones Humanas</strong>: Mayo, en Hawthorne, muestra que pesan más el grupo y el reconocimiento que las condiciones físicas; aparece el <strong>hombre social</strong>. Pero se va al otro extremo y descuida la estructura, así que la <strong>neoclásica</strong> vuelve a Fayol con el organigrama y el manual de funciones, y <strong>Weber</strong> aporta la burocracia: normas, jerarquía y autoridad legal para dar previsibilidad. El costo es la <strong>rigidez</strong>. Ahí entran la <strong>psicología y la sociología industrial</strong> —Maslow, McGregor— con el <strong>hombre complejo</strong> y las teorías X e Y, aunque sin método de aplicación. Y finalmente la <strong>teoría de los sistemas</strong> integra todas las miradas: la organización como un sistema de partes conectadas dentro de otro mayor. Desde los setenta, la <strong>administración estratégica</strong> corre el foco al entorno. Y la conclusión: <strong>ninguna escuela reemplaza a la anterior</strong>, las empresas de hoy combinan elementos de todas."</p>
+</div>
+
+<p style="margin-top:26px"><strong>La misma historia en el tiempo</strong> <span class="badge p3">Complementario</span>, para ubicar cuándo pasó cada cosa y ver el péndulo de un vistazo:</p>
+
 <figure class="fig">
 <svg viewBox="0 0 660 400" role="img" aria-label="Línea de tiempo de las escuelas de administración, con el problema que resolvió cada una">
   <defs><marker id="art" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="currentColor" opacity=".55"/></marker></defs>
@@ -355,7 +426,7 @@
   <text class="svg-s" x="600" y="214">hoy</text>
 
   <!-- arriba: foco en la tarea y la estructura -->
-  <text class="svg-k" x="24" y="22" fill="var(--brand)">EL FOCO EN LA TAREA Y LA ESTRUCTURA</text>
+  <text class="svg-k" x="24" y="22" fill="var(--brand)">FOCO: LA TAREA Y LA ESTRUCTURA</text>
   <line class="ax" x1="60" y1="186" x2="60" y2="150" stroke-dasharray="3 3"/>
   <rect x="14" y="88" width="112" height="62" rx="10" class="box-a"/>
   <text class="svg-k" x="70" y="108" text-anchor="middle">CLÁSICA</text>
@@ -369,13 +440,13 @@
   <text class="svg-s" x="246" y="142" text-anchor="middle">falta de método</text>
 
   <line class="ax" x1="330" y1="186" x2="330" y2="80" stroke-dasharray="3 3"/>
-  <rect x="274" y="18" width="112" height="62" rx="10" class="box-a"/>
+  <rect x="256" y="18" width="148" height="62" rx="10" class="box-a"/>
   <text class="svg-k" x="330" y="38" text-anchor="middle">BUROCRÁTICA</text>
   <text class="svg-s" x="330" y="56" text-anchor="middle">Weber</text>
   <text class="svg-s" x="330" y="72" text-anchor="middle">orden y previsibilidad</text>
 
   <!-- abajo: foco en las personas -->
-  <text class="svg-k" x="24" y="392" fill="var(--gold)">EL FOCO EN LAS PERSONAS</text>
+  <text class="svg-k" x="24" y="392" fill="var(--gold)">FOCO: LAS PERSONAS</text>
   <line class="ax" x1="160" y1="206" x2="160" y2="242" stroke-dasharray="3 3"/>
   <rect x="104" y="242" width="118" height="62" rx="10" class="box-b"/>
   <text class="svg-k" x="163" y="262" text-anchor="middle">RELACIONES HUM.</text>
@@ -396,13 +467,26 @@
   <text class="svg-s" x="470" y="142" text-anchor="middle">integra todo lo anterior</text>
 
   <line class="ax" x1="588" y1="206" x2="588" y2="242" stroke-dasharray="3 3"/>
-  <rect x="528" y="242" width="118" height="62" rx="10" class="box-b"/>
-  <text class="svg-k" x="587" y="262" text-anchor="middle">ESTRATÉGICA</text>
+  <rect x="516" y="242" width="140" height="62" rx="10" class="box-b"/>
+  <text class="svg-k" x="586" y="262" text-anchor="middle">ESTRATÉGICA</text>
   <text class="svg-s" x="587" y="280" text-anchor="middle">1970 →</text>
   <text class="svg-s" x="587" y="296" text-anchor="middle">un entorno que cambia</text>
 </svg>
 <figcaption>La historia se lee como un <b>péndulo</b>: arriba, las escuelas que miran la <b>tarea y la estructura</b>; abajo, las que miran a <b>las personas</b>. Cada una nace del problema que la anterior no resolvió — y <b>Sistemas</b> es la que las integra. Si contás esto, ya explicaste la unidad sin recitar fechas.</figcaption>
 </figure>
+<p><strong>El cuadro con el que la cátedra ordena la unidad</strong> <span class="badge p1">Imprescindible</span> — cuatro columnas: <strong>problema central · concepción del hombre · aporte · limitación</strong>. Es el mejor guion para el oral, porque muestra la evolución en vez de recitar escuelas sueltas. Si te tomás cinco minutos para memorizar algo de esta unidad, que sea esto:</p>
+<table class="tabla">
+<thead><tr><th>Escuela</th><th>Problema central</th><th>Concepción del hombre</th><th>Aporte</th><th>Limitación</th></tr></thead>
+<tbody>
+<tr><td><strong>Clásica</strong><br>Taylor · Fayol</td><td>La <strong>baja productividad</strong></td><td><strong>Hombre económico</strong>: holgazán por naturaleza, lo mueve el dinero</td><td>La <strong>eficiencia</strong>: el método en el taller y la estructura en la dirección</td><td><strong>Mecanicista</strong>: ignora a la persona</td></tr>
+<tr><td><strong>Relaciones Humanas</strong><br>Mayo</td><td>La <strong>desmotivación</strong></td><td><strong>Hombre social</strong>: lo mueven el grupo y el reconocimiento</td><td>El <strong>factor humano</strong>, los grupos informales y el liderazgo</td><td>Descuida la <strong>estructura</strong></td></tr>
+<tr><td><strong>Neoclásica y Burocrática</strong><br>Koontz · Weber</td><td>El <strong>orden</strong> y la <strong>estabilidad</strong></td><td><strong>Individuo regido por la norma</strong>: hace lo que el cargo indica</td><td><strong>Previsibilidad</strong>: organigrama, manual de funciones, autoridad legal</td><td><strong>Rigidez</strong>, formalismo</td></tr>
+<tr><td><strong>Psicología y Sociología</strong><br>Maslow · McGregor</td><td>Qué <strong>motiva</strong> de verdad</td><td><strong>Hombre complejo</strong>: necesidades en varios niveles</td><td><strong>Motivación</strong>, liderazgo, dinámica de grupo (X e Y)</td><td>Teorías <strong>sin método</strong> de aplicación</td></tr>
+<tr><td><strong>Teoría de los Sistemas</strong><br>Von Bertalanffy</td><td>Nadie miraba el <strong>conjunto</strong></td><td>El hombre como <strong>parte de un sistema</strong></td><td><strong>Integra todas</strong> las perspectivas: input, output, feedback</td><td>Muy <strong>general</strong>: describe pero no prescribe</td></tr>
+</tbody>
+</table>
+
+<p style="margin-top:26px"><strong>La ficha de cada escuela</strong> <span class="badge p2">Para consultar, no para memorizar</span> — acá está el detalle por si te repreguntan referentes, fechas o aportes puntuales:</p>
 <table class="tabla">
 <thead><tr><th>Escuela</th><th>Referentes</th><th>Idea central</th><th>Su límite</th></tr></thead>
 <tbody>
@@ -417,8 +501,12 @@
 </tbody>
 </table>
 <div class="err">
-<b>El cierre con el que la cátedra ordena la unidad</b>
-<p style="margin:7px 0 0">El apunte 2026 cierra con un cuadro de cuatro columnas — <strong>problema central · concepción del hombre · aporte · limitación</strong> — y ése es el mejor guion para el oral, porque muestra la evolución en vez de recitar escuelas sueltas: la clásica enfrenta la <strong>baja productividad</strong> con un <strong>hombre económico</strong>; relaciones humanas enfrenta la <strong>desmotivación</strong> con un <strong>hombre social</strong>; la burocracia busca <strong>orden y estabilidad</strong> con un individuo regido por la norma; la psicológica estudia la motivación de un <strong>hombre complejo</strong>; y la de sistemas <strong>integra todas las perspectivas</strong>. Y la frase de cierre: ninguna escuela reemplaza a la anterior, las organizaciones actuales combinan elementos de todas.</p>
+<b>Los tres errores que se cobran en esta unidad</b>
+<ul>
+<li><strong>Recitar escuelas sueltas.</strong> Si las enumerás sin decir qué le criticó cada una a la anterior, no mostraste la evolución — que es justamente lo que se evalúa. Encadenalas: "…y su límite fue X, y contra eso reacciona…".</li>
+<li><strong>Mezclar los autores.</strong> Una imagen por autor y no fallás: <strong>Taylor</strong> = cronómetro en el taller · <strong>Fayol</strong> = organigrama y los 14 principios · <strong>Mayo</strong> = la lámpara de Hawthorne · <strong>Weber</strong> = el reglamento · <strong>Maslow</strong> = la pirámide · <strong>Von Bertalanffy</strong> = la caja con entradas y salidas.</li>
+<li><strong>Decir que una escuela "reemplazó" a la otra.</strong> No se reemplazan, se suman: hoy una empresa usa el estudio de métodos de Taylor, el organigrama de Fayol, el clima de Mayo y la mirada sistémica, todo junto. Ésa es la frase de cierre de la unidad.</li>
+</ul>
 </div>
 <div class="repre">
 <b>Repreguntas probables</b>
@@ -727,6 +815,42 @@
 <tr><td><strong>Matricial</strong></td><td>Combina funcional + proyectos: <strong>doble jefe</strong></td><td>Cada persona responde a un gerente funcional Y a un gerente de proyecto</td></tr>
 </tbody>
 </table>
+<p style="margin-top:26px"><strong>Cómo se ve cada criterio en un organigrama</strong> <span class="badge p2">Diapositivas de la cátedra · clase 5</span> — son los mismos dibujos que se proyectaron en clase (Chiavenato, cap. 9). Si en el oral podés describir el dibujo, ya explicaste el criterio. Tocá cualquiera para abrirla en grande:</p>
+<div class="gal">
+  <figure>
+    <a href="assets/administracion/ppt_u3_depto_funcional.png" target="_blank" rel="noopener"><img src="assets/administracion/ppt_u3_depto_funcional.png" alt="Departamentalización funcional: Dirección con departamentos de producción, ventas y finanzas, y cómo se llaman los mismos departamentos en una empresa mayorista, un ferrocarril, un hospital y un club" loading="lazy"></a>
+    <figcaption><b>Por funciones.</b> Fijate en las filas: son <b>los mismos tres departamentos</b> cambiando de nombre según la organización. Eso es agrupar por naturaleza de la actividad.</figcaption>
+  </figure>
+  <figure>
+    <a href="assets/administracion/ppt_u3_depto_productos.jpg" target="_blank" rel="noopener"><img src="assets/administracion/ppt_u3_depto_productos.jpg" alt="Departamentalización por productos: Dirección con división farmacéutica, veterinaria y química, cada una con sus departamentos" loading="lazy"></a>
+    <figcaption><b>Por productos.</b> Cada <b>división</b> es una línea de producto y abajo repite sus propios departamentos. Por eso facilita evaluar resultados y sacrifica especialización.</figcaption>
+  </figure>
+  <figure>
+    <a href="assets/administracion/ppt_u3_depto_geografica.png" target="_blank" rel="noopener"><img src="assets/administracion/ppt_u3_depto_geografica.png" alt="Departamentalización geográfica: una dirección con regiones y dentro de cada región los departamentos" loading="lazy"></a>
+    <figcaption><b>Geográfica.</b> El primer corte es la <b>zona</b>. Se adapta a las condiciones locales, pero cada región tira para su lado y se pierde coordinación del conjunto.</figcaption>
+  </figure>
+  <figure>
+    <a href="assets/administracion/ppt_u3_depto_clientes.png" target="_blank" rel="noopener"><img src="assets/administracion/ppt_u3_depto_clientes.png" alt="Departamentalización por clientes: departamentos organizados según el tipo de cliente que atienden" loading="lazy"></a>
+    <figcaption><b>Por clientela.</b> El corte es el <b>tipo de cliente</b> (el ejemplo del banco: individuos, empresas, institucional). Todo se subordina a atenderlo.</figcaption>
+  </figure>
+  <figure>
+    <a href="assets/administracion/ppt_u3_depto_procesos.png" target="_blank" rel="noopener"><img src="assets/administracion/ppt_u3_depto_procesos.png" alt="Departamentalización por procesos: secciones ordenadas según las fases del proceso productivo" loading="lazy"></a>
+    <figcaption><b>Por proceso.</b> Los departamentos siguen las <b>fases productivas</b>, en el orden en que pasa el material. Ordena la planta y es poco flexible al cambio.</figcaption>
+  </figure>
+  <figure>
+    <a href="assets/administracion/ppt_u3_depto_proyectos.jpg" target="_blank" rel="noopener"><img src="assets/administracion/ppt_u3_depto_proyectos.jpg" alt="Departamentalización por proyectos: un equipo con recursos asignados a cada proyecto de forma temporal" loading="lazy"></a>
+    <figcaption><b>Por proyectos.</b> La estructura se arma <b>alrededor de cada proyecto</b> y se disuelve al terminarlo: concentra gente y recursos de forma provisional.</figcaption>
+  </figure>
+  <figure>
+    <a href="assets/administracion/ppt_u3_depto_turnos.png" target="_blank" rel="noopener"><img src="assets/administracion/ppt_u3_depto_turnos.png" alt="Departamentalización por tiempo o turnos: mañana, tarde y noche" loading="lazy"></a>
+    <figcaption><b>Por tiempo / turnos.</b> Mismo trabajo, distinta <b>franja horaria</b>. Aparece donde la actividad no puede parar; el lío es asignar responsabilidades entre turnos.</figcaption>
+  </figure>
+  <figure>
+    <a href="assets/administracion/ppt_u3_depto_matricial.jpg" target="_blank" rel="noopener"><img src="assets/administracion/ppt_u3_depto_matricial.jpg" alt="Departamentalización matricial: director de ingeniería con jefes funcionales en columnas y gerentes de proyecto en filas, formando una grilla" loading="lazy"></a>
+    <figcaption><b>Matricial.</b> Acá se ve la trampa: los jefes funcionales son las <b>columnas</b> y los gerentes de proyecto las <b>filas</b>. Quien está en un cruce tiene <b>dos jefes</b> — se rompe la unidad de mando.</figcaption>
+  </figure>
+</div>
+
 <p><strong>Ventajas y desventajas</strong> <span class="badge p2">está en el programa</span>. En general, departamentalizar permite especializar, aprovechar economías de escala y controlar mejor cada área, pero genera <strong>compartimentos estancos</strong>. Por tipo, así se dio en clase — cada ventaja tiene su desventaja simétrica:</p>
 <table class="tabla">
 <thead><tr><th>Tipo</th><th>Ventaja</th><th>Desventaja</th></tr></thead>
@@ -1486,6 +1610,9 @@ const QUIZ = [
 {u:1,t:'vf',q:'La primera fase del control es observar el desempeño.',a:1,e:'Falso. La primera es ESTABLECER LOS ESTÁNDARES: sin un estándar previo no hay nada contra qué comparar. Después vienen observar, comparar y aplicar la acción correctiva.'},
 {u:1,t:'mc',q:'El estudio de tiempos y movimientos y la remuneración por rendimiento individual corresponden a...',o:['Fayol y la administración industrial y general','Taylor y la administración científica','Mayo y las relaciones humanas','Weber y el modelo burocrático'],a:1,e:'Es Taylor: mira la organización desde el taller, buscando la eficiencia del operario. Fayol mira desde la dirección, con las áreas funcionales y los 14 principios.'},
 {u:1,t:'mc',q:'¿Qué demostraron los experimentos de Hawthorne?',o:['Que mejorar la iluminación aumenta siempre la productividad','Que la productividad depende más de factores sociopsicológicos que de las condiciones físicas','Que el dinero es el único motivador','Que la burocracia mejora el rendimiento'],a:1,e:'La productividad subía aunque empeorara la luz: pesaban el reconocimiento, la atención de los supervisores y el grupo. De ahí nacen la escuela de Relaciones Humanas y la importancia de los grupos informales.'},
+{u:1,t:'mc',q:'La escuela clásica supone un "hombre económico". ¿Qué quiere decir eso?',o:['Que estudia la economía de la empresa','Que la persona es holgazana por naturaleza y sólo la mueve el dinero','Que el trabajador decide de forma racional qué le conviene comprar','Que el objetivo de la organización es el lucro'],a:1,e:'Es la concepción del hombre de Taylor y Fayol, y es su gran límite: al suponer que sólo motiva el dinero, tratan a la persona como una pieza más. Contra eso reacciona Relaciones Humanas con el HOMBRE SOCIAL.'},
+{u:1,t:'mc',q:'¿Qué le dejó sin resolver la escuela de Relaciones Humanas, y que retoman los neoclásicos y Weber?',o:['La motivación del personal','La estructura y el orden formal de la organización','El estudio de tiempos y movimientos','La relación con el entorno'],a:1,e:'Relaciones Humanas se corre al otro extremo: descuida la estructura. Por eso los neoclásicos vuelven al organigrama y al manual de funciones, y Weber aporta normas, jerarquía y autoridad legal para dar previsibilidad. El costo de eso es la rigidez.'},
+{u:1,t:'mc',q:'¿Cuál es la escuela que INTEGRA las perspectivas de todas las anteriores?',o:['La neoclásica','La burocrática','La teoría de los sistemas','La administración estratégica'],a:2,e:'La teoría de los sistemas (Von Bertalanffy): la organización es un sistema de partes conectadas hacia un objetivo, y siempre está dentro de otro sistema mayor. Su límite es ser muy general — describe pero no prescribe. La estratégica, ya desde 1970, corre el foco al entorno.'},
 {u:1,t:'mc',q:'El modelo burocrático de Weber se caracteriza por...',o:['La flexibilidad y la autonomía de los equipos','Normas estrictas, jerarquía clara, cargos despersonalizados y autoridad legal','El estudio de la motivación','La visión sistémica de la organización'],a:1,e:'Weber busca previsibilidad y trato igualitario mediante normas y jerarquía. Su límite es la rigidez: es ideal para organismos públicos y lento para empresas privadas.'},
 /* U2 */
 {u:2,t:'mc',q:'¿Cuál NO es una de las tres características de las organizaciones?',o:['División del trabajo, del poder y de las responsabilidades, planeada','Presencia de uno o más centros de poder','Sustitución de personal','Tener fines de lucro'],a:3,e:'Un club, un hospital o una universidad son organizaciones sin fines de lucro. Lo que las define es la división planeada del trabajo, los centros de poder y la posibilidad de sustituir personal.'},
