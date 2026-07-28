@@ -27,6 +27,13 @@
 .paso li{margin:6px 0}
 .mnemo{display:block;margin-top:9px;padding-top:8px;border-top:1px dashed var(--line-strong);
   font-size:.82rem;color:var(--muted);font-style:italic}
+/* ---- cita textual del material académico ---- */
+.cita{background:var(--surface-2);border:1px solid var(--line);border-left:2px solid var(--indigo);
+  border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0;font-size:.95rem}
+.cita p{margin:0;font-style:italic;color:var(--ink)}
+.cita p + p{margin-top:9px}
+.cita cite{display:block;margin-top:9px;font-family:var(--sans);font-style:normal;
+  font-size:.8rem;color:var(--muted)}
 /* ---- galería de diapositivas de la cátedra ---- */
 .gal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:20px 0 4px}
 .gal figure{margin:0}
@@ -119,6 +126,11 @@
 <li><strong>Unidad 6</strong> — <strong>Solana</strong>, cap. 15, <em>La función personal</em>.</li>
 <li>El <strong>banco de preguntas</strong> y las advertencias salen además de los parciales reales (1º parcial 2025, 2º parcial 2023) y de los trabajos prácticos de la cátedra.</li>
 </ul>
+<p style="margin:10px 0 0">Cuando veas un <strong>bloque de cita</strong> como el de abajo, es <strong>texto transcripto del material, sin retoques</strong> — ésa es la definición que conviene decir con esas palabras. Lo demás es explicación, ejemplos y guiones para hablar.</p>
+<div class="cita" style="margin-bottom:0">
+  <p>“Administración es el proceso de planear, organizar, dirigir y controlar el uso de los recursos para lograr los objetivos.”</p>
+  <cite>Apunte <em>Concepto de administración</em> (Unidad 1), tomado de Chiavenato. Así se ve una cita textual en esta guía.</cite>
+</div>
 </div>
 </section>
 
@@ -363,6 +375,12 @@
 
 <p><strong>Leelo como una cadena de reclamos, no como una lista.</strong> Cada escuela nace para resolver el problema que tenía la empresa de su época. Al resolverlo <strong>deja algo afuera</strong>, y ese "algo afuera" <mark>es exactamente el problema del que se ocupa la escuela siguiente</mark>. Dos avisos que evitan la confusión típica: las escuelas <strong>se superponen en el tiempo</strong> (Weber es contemporáneo de los neoclásicos, no posterior), y <strong>ninguna reemplaza a la anterior</strong> — se van sumando capas.</p>
 
+<div class="cita">
+  <p>“No se trata simplemente de hacer historia de la administración, sino de analizar los avances conceptuales que en cada momento representaron verdaderas revoluciones en la forma de conducir las organizaciones.”</p>
+  <p>“Cada escuela administrativa surge entonces para responder a los problemas predominantes en un determinado contexto histórico.”</p>
+  <cite>Hermida, citado en el apunte de cátedra <em>Unidad 1 · Evolución del Pensamiento Administrativo</em> (2026), puntos 1 y 2. Es la frase con la que conviene abrir el tema en el oral.</cite>
+</div>
+
 <figure class="fig">
 <svg viewBox="0 0 660 730" role="img" aria-label="Cadena de las escuelas de administración: el problema de cada época, su concepción del hombre y lo que dejó sin resolver">
   <defs><marker id="arc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="currentColor" opacity=".55"/></marker></defs>
@@ -384,7 +402,7 @@
   <rect x="90" y="264" width="500" height="76" rx="12" class="box-a"/>
   <text class="svg-k" x="110" y="288">3 · NEOCLÁSICA y BUROCRÁTICA — Koontz, Weber</text>
   <text class="svg-s" x="110" y="308">el problema: falta método, orden y previsibilidad</text>
-  <text class="svg-s" x="110" y="328">su hombre: el HOMBRE DE LA NORMA, hace lo que el cargo indica</text>
+  <text class="svg-s" x="110" y="328">su hombre: INDIVIDUO REGIDO POR LA NORMA, hace lo que el cargo indica</text>
   <line class="ax" x1="120" y1="340" x2="120" y2="388" marker-end="url(#arc)"/>
   <text class="svg-s" x="136" y="370">pero es rígida y sigue sin explicar qué mueve realmente a la gente</text>
 
@@ -398,7 +416,7 @@
   <rect x="90" y="512" width="500" height="76" rx="12" class="box"/>
   <text class="svg-k" x="110" y="536">5 · TEORÍA DE LOS SISTEMAS — Von Bertalanffy</text>
   <text class="svg-s" x="110" y="556">el problema: cada escuela miraba una parte, nadie el conjunto</text>
-  <text class="svg-s" x="110" y="576">su aporte: INTEGRA todo lo anterior — partes conectadas hacia un objetivo</text>
+  <text class="svg-s" x="110" y="576">su aporte: INTEGRACIÓN de las distintas perspectivas y ciencias</text>
   <line class="ax" x1="120" y1="588" x2="120" y2="636" marker-end="url(#arc)"/>
   <text class="svg-s" x="136" y="618">pero mira hacia adentro, y afuera el entorno no para de cambiar</text>
 
@@ -422,7 +440,7 @@
   <defs><marker id="art" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="currentColor" opacity=".55"/></marker></defs>
 
   <line class="ax" x1="24" y1="196" x2="640" y2="196" marker-end="url(#art)"/>
-  <text class="svg-s" x="24" y="214">1890</text>
+  <text class="svg-s" x="24" y="214">1841</text>
   <text class="svg-s" x="600" y="214">hoy</text>
 
   <!-- arriba: foco en la tarea y la estructura -->
@@ -474,25 +492,32 @@
 </svg>
 <figcaption>La historia se lee como un <b>péndulo</b>: arriba, las escuelas que miran la <b>tarea y la estructura</b>; abajo, las que miran a <b>las personas</b>. Cada una nace del problema que la anterior no resolvió — y <b>Sistemas</b> es la que las integra. Si contás esto, ya explicaste la unidad sin recitar fechas.</figcaption>
 </figure>
-<p><strong>El cuadro con el que la cátedra ordena la unidad</strong> <span class="badge p1">Imprescindible</span> — cuatro columnas: <strong>problema central · concepción del hombre · aporte · limitación</strong>. Es el mejor guion para el oral, porque muestra la evolución en vez de recitar escuelas sueltas. Si te tomás cinco minutos para memorizar algo de esta unidad, que sea esto:</p>
+<p><strong>El Cuadro Comparativo Final del apunte</strong> <span class="badge p1">Imprescindible · textual</span> — cuatro columnas: <strong>problema central · concepción del hombre · aporte · limitación</strong>. Va <mark>tal como está en el material</mark>, con sus palabras, porque es el guion que la cátedra espera escuchar. Ojo con dos cosas: <strong>Fayol figura como fila aparte</strong> de la clásica, y la <strong>neoclásica no entra en este cuadro</strong> (viene de Hermida, no del apunte 2026). Si te tomás cinco minutos para memorizar algo de esta unidad, que sea esto:</p>
 <table class="tabla">
 <thead><tr><th>Escuela</th><th>Problema central</th><th>Concepción del hombre</th><th>Aporte</th><th>Limitación</th></tr></thead>
 <tbody>
-<tr><td><strong>Clásica</strong><br>Taylor · Fayol</td><td>La <strong>baja productividad</strong></td><td><strong>Hombre económico</strong>: holgazán por naturaleza, lo mueve el dinero</td><td>La <strong>eficiencia</strong>: el método en el taller y la estructura en la dirección</td><td><strong>Mecanicista</strong>: ignora a la persona</td></tr>
-<tr><td><strong>Relaciones Humanas</strong><br>Mayo</td><td>La <strong>desmotivación</strong></td><td><strong>Hombre social</strong>: lo mueven el grupo y el reconocimiento</td><td>El <strong>factor humano</strong>, los grupos informales y el liderazgo</td><td>Descuida la <strong>estructura</strong></td></tr>
-<tr><td><strong>Neoclásica y Burocrática</strong><br>Koontz · Weber</td><td>El <strong>orden</strong> y la <strong>estabilidad</strong></td><td><strong>Individuo regido por la norma</strong>: hace lo que el cargo indica</td><td><strong>Previsibilidad</strong>: organigrama, manual de funciones, autoridad legal</td><td><strong>Rigidez</strong>, formalismo</td></tr>
-<tr><td><strong>Psicología y Sociología</strong><br>Maslow · McGregor</td><td>Qué <strong>motiva</strong> de verdad</td><td><strong>Hombre complejo</strong>: necesidades en varios niveles</td><td><strong>Motivación</strong>, liderazgo, dinámica de grupo (X e Y)</td><td>Teorías <strong>sin método</strong> de aplicación</td></tr>
-<tr><td><strong>Teoría de los Sistemas</strong><br>Von Bertalanffy</td><td>Nadie miraba el <strong>conjunto</strong></td><td>El hombre como <strong>parte de un sistema</strong></td><td><strong>Integra todas</strong> las perspectivas: input, output, feedback</td><td>Muy <strong>general</strong>: describe pero no prescribe</td></tr>
+<tr><td><strong>Clásica</strong></td><td>Baja productividad</td><td>Hombre económico</td><td>Eficiencia científica</td><td>Mecanización humana</td></tr>
+<tr><td><strong>Fayol</strong></td><td>Falta de dirección sistemática</td><td>Sujeto jerárquico</td><td>Proceso administrativo</td><td>Rigidez estructural</td></tr>
+<tr><td><strong>Relaciones Humanas</strong></td><td>Desmotivación</td><td>Hombre social</td><td>Grupo informal</td><td>Exceso de armonía</td></tr>
+<tr><td><strong>Burocrática</strong></td><td>Orden y estabilidad</td><td>Individuo regido por norma</td><td>Autoridad racional</td><td>Formalismo excesivo</td></tr>
+<tr><td><strong>Psicológica</strong></td><td>Comprender motivación</td><td>Hombre complejo</td><td>Teorías motivacionales</td><td>Dificultad estructural</td></tr>
+<tr><td><strong>Teoría de Sistemas</strong></td><td>Organización como sistema abierto</td><td>Social y basado en las relaciones</td><td>Integración de las distintas perspectivas y ciencias</td><td>Alta abstracción</td></tr>
 </tbody>
 </table>
+<p class="slide-src">Fuente: apunte de cátedra <em>Unidad 1 · Evolución del Pensamiento Administrativo</em> (2026), “Cuadro Comparativo Final” (p. 9). Transcripto sin cambios.</p>
+
+<div class="cita">
+  <p>“La evolución del pensamiento administrativo no implica el reemplazo total de una escuela por otra. Cada enfoque aporta herramientas para comprender diferentes dimensiones de las organizaciones: la escuela clásica aporta eficiencia productiva, las relaciones humanas introducen la dimensión social, la burocracia aporta estabilidad institucional, la escuela psicológica profundiza la motivación y el liderazgo, y la teoría de sistemas integra las distintas perspectivas. Las organizaciones actuales combinan elementos de todos estos enfoques.”</p>
+  <cite>Apunte de cátedra 2026, “Conclusión Integrada” (p. 9-10). <strong>Con esto se cierra la respuesta</strong> — es la conclusión que el apunte deja escrita.</cite>
+</div>
 
 <p style="margin-top:26px"><strong>La ficha de cada escuela</strong> <span class="badge p2">Para consultar, no para memorizar</span> — acá está el detalle por si te repreguntan referentes, fechas o aportes puntuales:</p>
 <table class="tabla">
 <thead><tr><th>Escuela</th><th>Referentes</th><th>Idea central</th><th>Su límite</th></tr></thead>
 <tbody>
-<tr><td><strong>Clásica ·<br>Adm. Científica</strong><br><span class="badge p3">1890-1925</span></td><td><strong>Taylor</strong>, Gantt, Gilbreth</td><td>Foco en la <strong>fábrica y el operario</strong>: eficiencia vía estudio de tiempos y movimientos, selección y entrenamiento científico, pago por rendimiento. Nace de combatir el <strong>“soldiering”</strong> — el obrero que baja el ritmo a propósito para que no le suban la exigencia.</td><td><strong>Mecanicista</strong>: el <strong>hombre económico</strong>, holgazán por naturaleza y motivado sólo por dinero.</td></tr>
-<tr><td><strong>Clásica ·<br>Adm. Industrial y General</strong><br><span class="badge p3">1890-1925</span></td><td><strong>Fayol</strong></td><td>Foco en la <strong>dirección y la estructura</strong>. <strong>Gobernar = prever, organizar, dirigir, coordinar y controlar</strong>, y divide la empresa en <strong>seis funciones o áreas</strong>: técnicas, comerciales, financieras, de seguridad, de contabilidad y administrativas. Crea el manual de funciones y formula <strong>14 principios</strong>.</td><td>Principios universales y rígidos: “el individuo es una constante, se le indica qué hacer y lo hace”.</td></tr>
-<tr><td><strong>Relaciones Humanas</strong></td><td><strong>Elton Mayo</strong></td><td><strong>Hawthorne</strong> (1927-32): cambiaban la iluminación y la productividad subía igual → pesan más las <strong>condiciones sociopsicológicas</strong> que las físicas. Aparecen los <strong>grupos informales</strong> y el líder.</td><td>Sobrevalora lo informal y descuida la estructura.</td></tr>
+<tr><td><strong>Clásica ·<br>Adm. Científica</strong><br><span class="badge p3">1841-1925</span></td><td><strong>Taylor</strong>, Gantt, Gilbreth</td><td>Foco en la <strong>fábrica y el operario</strong>: eficiencia vía estudio de tiempos y movimientos, selección y entrenamiento científico, pago por rendimiento. Nace de combatir el <strong>“soldiering”</strong> — el obrero que baja el ritmo a propósito para que no le suban la exigencia. Resultados que da la cátedra: la productividad <strong>aumenta entre un 40% y un 300%</strong>, la jornada baja entre media hora y una hora, y la remuneración sube entre un 50% y un 100%.</td><td><strong>Mecanicista</strong>: el <strong>hombre económico</strong>, holgazán por naturaleza y motivado sólo por dinero.</td></tr>
+<tr><td><strong>Clásica ·<br>Adm. Industrial y General</strong><br><span class="badge p3">1841-1925</span></td><td><strong>Fayol</strong></td><td>Foco en la <strong>dirección y la estructura</strong>. <strong>Gobernar = prever, organizar, dirigir, coordinar y controlar</strong>, y divide la empresa en <strong>seis funciones o áreas</strong>: técnicas, comerciales, financieras, de seguridad, de contabilidad y administrativas. Crea el manual de funciones y formula <strong>14 principios</strong>.</td><td>Textual de la clase: <strong>“considera la autoridad de derecho divino y desconoce el papel del líder”</strong> y <strong>“considera al individuo como una constante”</strong>. O sea: principios universales y rígidos.</td></tr>
+<tr><td><strong>Relaciones Humanas</strong><br><span class="badge p3">1925-1935</span></td><td><strong>Elton Mayo</strong></td><td><strong>Hawthorne</strong> (1927-32): cambiaban la iluminación y la productividad subía igual → pesan más las <strong>condiciones sociopsicológicas</strong> que las físicas. Aparecen los <strong>grupos informales</strong> y el líder.</td><td>Sobrevalora lo informal y descuida la estructura.</td></tr>
 <tr><td><strong>Neoclásica</strong><br><span class="badge p3">1925-1945</span></td><td>Gulick, Urwick, Koontz, O’Donnell</td><td>Retoma a Taylor y Fayol en la guerra y la posguerra. Amplían las cinco funciones de Fayol a <strong>siete</strong>: planificación, organización, <strong>formación del plantel</strong>, dirección, coordinación, <strong>rendición de cuentas</strong> y <strong>confección del presupuesto</strong>. Herramientas: <strong>organigrama</strong>, manual de funciones y el esquema <strong>ACME</strong> de departamentalización.</td><td>Parte de las mismas premisas clásicas: formalismo, sin variables de conducta.</td></tr>
 <tr><td><strong>Estructuralista ·<br>Burocrática</strong><br><span class="badge p3">1910-1950</span></td><td><strong>Weber</strong>, Merton, Gouldner</td><td><strong>Modelo burocrático</strong>: normas escritas estrictas, jerarquía clara, cargos despersonalizados y temporales, autoridad <strong>legal-racional</strong> (el poder viene de la norma, no de la persona). Busca previsibilidad. <strong>Merton</strong> agrega las funciones <strong>manifiestas</strong> (conocidas) y <strong>latentes</strong> (ocultas).</td><td><strong>Rigidez</strong>: sirve al Estado, universidades y fuerzas armadas; es lento para la empresa privada.</td></tr>
 <tr><td><strong>Psicología y Sociología industrial</strong><br><span class="badge p3">1935-1950</span></td><td>Lewin, <strong>Maslow</strong>, <strong>McGregor</strong>, Likert</td><td>Motivación, personalidad y dinámica de grupo. <strong>Teoría X</strong> (hay que controlar) vs. <strong>Teoría Y</strong> (hay que delegar). Estilos de liderazgo: <strong>autoritario, democrático y permisivo</strong> (laissez-faire) — y el democrático es el que mejor responde. También los tres modelos de participación: nula, amplia y relativa.</td><td>Actuaron sólo en la dimensión informal: teorías sin metodología de aplicación.</td></tr>
@@ -964,6 +989,11 @@
 <div class="tema">
 <p><strong>Punto de equilibrio: concepto, tipos e importancia</strong> <span class="badge p1">Imprescindible</span>. En el final <strong>no te van a hacer calcular</strong>, pero sí explicar qué es, cuáles son los tres tipos y para qué sirve.</p>
 <p><strong>Concepto:</strong> el punto de equilibrio es el <mark>nivel de actividad en el que los ingresos totales igualan a los costos totales</mark>: no se gana ni se pierde. Por encima hay ganancia, por debajo pérdida.</p>
+
+<div class="cita">
+  <p>“El Punto de Equilibrio es aquel punto de actividad en el cual los ingresos totales son exactamente equivalentes a los costos totales asociados con la venta o elaboración de un producto. Es decir, es aquel punto de actividad en el cual no existe utilidad, ni pérdida (la empresa no gana dinero, pero tampoco pierde).”</p>
+  <cite>Material de cátedra, <em>Teoría Punto de Equilibrio</em> (Unidad 4), p. 1. Ésta es la definición para arrancar la respuesta; después venís con el gráfico y la fórmula.</cite>
+</div>
 <p><strong>Las variables:</strong> <strong>costos fijos</strong> (no varían con el volumen: alquiler, sueldos generales) · <strong>costos variables</strong> (dependen del volumen: materia prima, comisiones) · <strong>costo variable unitario</strong> · <strong>precio de venta</strong> · <strong>margen o contribución marginal</strong> = precio − costo variable unitario, que es lo que aporta cada unidad para cubrir los fijos.</p>
 <p><strong>La fórmula base:</strong> \(Q_e = \dfrac{CF}{Pv - CVu}\) — costos fijos dividido la contribución marginal. En valores, \(PE(\$)=Q_e \cdot Pv\).</p>
 <figure class="fig">
@@ -997,6 +1027,8 @@
 <li><strong>Financiero o de caja (PEF):</strong> <strong>resta</strong> del numerador los gastos que <strong>no salen de la caja</strong> (depreciaciones y amortizaciones). <strong>PEF = (Gastos fijos − gastos no desembolsables) / margen.</strong> Su límite: no prepara a la empresa para reponer las máquinas.</li>
 <li><strong>Económico (PEE):</strong> <strong>suma</strong> al numerador una <strong>ganancia mínima deseada</strong> (la remuneración del capital propio). <strong>PEE = (Gastos fijos + beneficio deseado) / margen.</strong></li>
 </ol>
+<p>El material los distingue por el <strong>lucro que persigue cada uno</strong>, y es la forma más corta de decirlos: <strong>contable → Lucro = Cero</strong> · <strong>financiero → Lucro = Cero − Depreciación</strong> · <strong>económico → Lucro = Cero + Remuneración del Capital Propio</strong>.</p>
+<p class="slide-src">Fuente de las tres fórmulas y de esas tres igualdades: material de cátedra <em>Tipos de Puntos de equilibrio</em> (Unidad 4), transcripto textual.</p>
 <div class="err"><strong>El chequeo de sanidad:</strong> como uno resta y el otro suma, el orden es siempre <mark>Financiero &lt; Contable &lt; Económico</mark>.</div>
 <p><strong>Su importancia en la toma de decisiones y el planeamiento</strong> — esto es lo que más se pregunta en un oral: permite saber <strong>cuánto hay que vender como mínimo</strong> para no perder, <strong>cuánto para alcanzar una ganancia objetivo</strong>, evaluar el impacto de un cambio de precio o de costos, decidir si conviene lanzar un producto, y medir el <strong>margen de seguridad</strong> (cuánto pueden caer las ventas antes de entrar en pérdida). En clase se agregaron dos usos más, que conviene decir porque no son los obvios: determinar la <strong>viabilidad de un proyecto</strong> y ayudar a decidir si <strong>conviene pasar un costo variable a fijo</strong> (por ejemplo, cambiar comisiones por sueldo fijo: baja el costo variable unitario, sube el margen de contribución y sube el punto de equilibrio).</p>
 <div class="repre">
