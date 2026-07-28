@@ -27,6 +27,14 @@
 .paso li{margin:6px 0}
 .mnemo{display:block;margin-top:9px;padding-top:8px;border-top:1px dashed var(--line-strong);
   font-size:.82rem;color:var(--muted);font-style:italic}
+/* ---- quiz de cierre de cada unidad ---- */
+.quiz-meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+  margin:12px 0 20px;font-size:.9rem;color:var(--muted)}
+.quiz-meta .score{color:var(--brand-deep)}
+.quiz-box .quiz-q:last-child{margin-bottom:0}
+.quiz-box h3{font-family:var(--sans);font-size:.8rem;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--muted);margin:26px 0 12px}
+.quiz-box h3:first-child{margin-top:0}
 @media (max-width:560px){
   p,li{overflow-wrap:break-word;word-break:break-word}
   .callout,.oral,.repre,.err,.ejer{padding:13px 15px}
@@ -77,7 +85,7 @@
   <p style="margin:12px 0 0">Cada pantalla es una unidad. Avanzá con la flecha <strong>→</strong> de arriba, con el botón <strong>Siguiente</strong> del final, o con las <strong>flechas del teclado</strong>. La página se acuerda de dónde quedaste, así que podés cerrarla y volver.</p>
 </div>
 
-<p>Las <strong>seis unidades del programa oficial 2026</strong> están desarrolladas en el orden en que conviene decirlas: definición → para qué sirve → clasificación o componentes → ejemplo propio. Los cuadros <strong>🗣 Cómo lo decís</strong> son el guion hablado. Después vienen las pantallas de apoyo: <strong>banco de preguntas</strong>, <strong>flashcards</strong>, <strong>quiz</strong>, <strong>mapa</strong> y <strong>estrategia del oral</strong>.</p>
+<p>Las <strong>seis unidades del programa oficial 2026</strong> están desarrolladas en el orden en que conviene decirlas: definición → para qué sirve → clasificación o componentes → ejemplo propio. Los cuadros <strong>🗣 Cómo lo decís</strong> son el guion hablado, y <strong>cada unidad cierra con su propio quiz</strong> para no seguir de largo sin haber fijado lo que acabás de leer. Después vienen las pantallas de apoyo: <strong>banco de preguntas</strong>, <strong>flashcards</strong>, <strong>quiz</strong>, <strong>mapa</strong> y <strong>estrategia del oral</strong>.</p>
 
 <p>Los badges marcan el peso de cada tema: <span class="badge p1">Imprescindible</span> cae casi seguro · <span class="badge p2">Importante</span> muy probable · <span class="badge p3">Complementario</span> es de apoyo.</p>
 
@@ -421,6 +429,12 @@
 </ul>
 </div>
 </div>
+
+<div class="tema quizset">
+<p><strong>Quiz de la Unidad 1</strong> <span class="badge exam">Antes de seguir</span> Tocá una opción y te dice al toque si está bien o mal, con la explicación. Si fallás una, volvé al tema de arriba antes de pasar a la Unidad 2.</p>
+<p class="quiz-meta"><span>Aciertos: <span class="score" data-role="score">0</span> / <span data-role="answered">0</span> respondidas (<span data-role="total">0</span> en total)</span> <button class="btn-reset" data-role="reset">Reiniciar</button></p>
+<div class="quiz-box" data-unit="1"></div>
+</div>
 </section>
 
 <section class="slide" data-nm="U2 · La organización">
@@ -528,6 +542,12 @@
 
 <p><strong>El ejercicio típico</strong> (te lo pueden plantear de palabra): te dan una frase de un artículo y tenés que decir qué variable es. "El turismo representa el 11% del PIB" → <strong>económica</strong> · "el Ayuntamiento declara ilegales las viviendas turísticas" → <strong>político-legal</strong> · "pintadas de <em>tourist go home</em>" → <strong>social / cultural</strong> · "faltan redes de carga para autos eléctricos" → <strong>tecnológica</strong> · "trabajamos con el sindicato Smata" → <strong>sindicatos, acción directa</strong>.</p>
 <p><strong>Incertidumbre del entorno</strong> <span class="badge p3">Complementario</span>: Duncan la analiza cruzando el <strong>grado de cambio</strong> (estático / dinámico) con la <strong>complejidad</strong> (simple / complejo). Dinámico y complejo = máxima incertidumbre (la industria bancaria); estático y simple = mínima (la industria de contenedores).</p>
+</div>
+
+<div class="tema quizset">
+<p><strong>Quiz de la Unidad 2</strong> <span class="badge exam">Antes de seguir</span> Ojo con la pregunta de "tipos de organización" y con clasificar frases en micro o macroentorno: son las dos cosas que más se cobran de esta unidad.</p>
+<p class="quiz-meta"><span>Aciertos: <span class="score" data-role="score">0</span> / <span data-role="answered">0</span> respondidas (<span data-role="total">0</span> en total)</span> <button class="btn-reset" data-role="reset">Reiniciar</button></p>
+<div class="quiz-box" data-unit="2"></div>
 </div>
 </section>
 
@@ -750,6 +770,12 @@
   <p>"Centralizar es concentrar las decisiones arriba y descentralizar es delegarlas hacia abajo. No hay una mejor: depende de factores. Te doy tres. Primero, el <strong>costo de la decisión</strong>: cuanto más cara y difícil de revertir, más se centraliza, porque un error se paga caro. Segundo, el <strong>tamaño</strong>: una organización grande y dispersa no puede esperar que todo lo resuelva la cúpula, así que descentraliza. Y tercero, la <strong>disponibilidad de gerentes capacitados</strong>: podés querer descentralizar, pero si no tenés gente formada para decidir, no podés — y ahí la solución previa es capacitar."</p>
 </div>
 </div>
+
+<div class="tema quizset">
+<p><strong>Quiz de la Unidad 3</strong> <span class="badge exam">Antes de seguir</span> Es la unidad más pesada y la que más preguntas tiene acá. Prestá atención a las tres relaciones formales, a qué se delega y a los factores de centralización.</p>
+<p class="quiz-meta"><span>Aciertos: <span class="score" data-role="score">0</span> / <span data-role="answered">0</span> respondidas (<span data-role="total">0</span> en total)</span> <button class="btn-reset" data-role="reset">Reiniciar</button></p>
+<div class="quiz-box" data-unit="3"></div>
+</div>
 </section>
 
 <section class="slide" data-nm="U4 · Producción">
@@ -858,6 +884,12 @@
 </ul>
 </div>
 </div>
+
+<div class="tema quizset">
+<p><strong>Quiz de la Unidad 4</strong> <span class="badge exam">Antes de seguir</span> Acordate de que en el oral el punto de equilibrio <strong>se explica, no se calcula</strong>: lo que se pregunta es el concepto, los tres tipos y qué le pasa si se mueve un dato.</p>
+<p class="quiz-meta"><span>Aciertos: <span class="score" data-role="score">0</span> / <span data-role="answered">0</span> respondidas (<span data-role="total">0</span> en total)</span> <button class="btn-reset" data-role="reset">Reiniciar</button></p>
+<div class="quiz-box" data-unit="4"></div>
+</div>
 </section>
 
 <section class="slide" data-nm="U5 · Aprovisionamiento">
@@ -956,6 +988,12 @@
 
 <div class="tema">
 <p><strong>Calidad</strong> <span class="badge p2">Importante</span>: hay dos conceptos que no hay que mezclar — <strong>calidad de diseño</strong> (grado de coincidencia entre lo que el cliente necesita y lo que se diseñó) y <strong>calidad de concordancia</strong> (coincidencia entre lo que se elaboró y lo que se había diseñado). El control puede ser <strong>por variable</strong> (se mide: peso, largo, tolerancias) o <strong>por atributo</strong> (pasa / no pasa), y se aplica sobre entradas, procesos o salidas. La <strong>calidad total</strong> (Juran) extiende la responsabilidad por la calidad a <strong>toda</strong> la organización, con clientes y proveedores internos. Regla: <strong>es mejor prevenir que curar</strong>.</p>
+</div>
+
+<div class="tema quizset">
+<p><strong>Quiz de la Unidad 5</strong> <span class="badge exam">Antes de seguir</span> La trampa de siempre: <strong>lote óptimo</strong> es CUÁNTO pido y <strong>punto de pedido</strong> es CUÁNDO. Si esa la tenés firme, la unidad está.</p>
+<p class="quiz-meta"><span>Aciertos: <span class="score" data-role="score">0</span> / <span data-role="answered">0</span> respondidas (<span data-role="total">0</span> en total)</span> <button class="btn-reset" data-role="reset">Reiniciar</button></p>
+<div class="quiz-box" data-unit="5"></div>
 </div>
 </section>
 
@@ -1068,6 +1106,12 @@
 <li><strong>Salubridad e higiene:</strong> previene las <strong>enfermedades profesionales</strong>, las que produce el propio trabajo (silicosis por polvo de sílice, saturnismo por plomo).</li>
 <li><strong>Relaciones laborales:</strong> el <strong>sindicato</strong> defiende los intereses del personal; las <strong>negociaciones colectivas</strong> concluyen en convenios. Medidas de fuerza: huelga y trabajo a desgano (trabajadores), <strong>lock-out</strong> (empresarios), mediación o conciliación (ambos).</li>
 </ul>
+</div>
+
+<div class="tema quizset">
+<p><strong>Quiz de la Unidad 6</strong> <span class="badge exam">Cierre del programa</span> Las distinciones que más se preguntan: descripción vs. especificación, reclutar vs. seleccionar, capacitación vs. desarrollo, acto vs. condición insegura.</p>
+<p class="quiz-meta"><span>Aciertos: <span class="score" data-role="score">0</span> / <span data-role="answered">0</span> respondidas (<span data-role="total">0</span> en total)</span> <button class="btn-reset" data-role="reset">Reiniciar</button></p>
+<div class="quiz-box" data-unit="6"></div>
 </div>
 </section>
 
@@ -1190,14 +1234,16 @@
   <div class="slide-head">
     <div class="eyebrow">Apoyo</div>
     <h2>Quiz</h2>
-    <p class="lede">Para chequear que las definiciones y las distinciones estén firmes antes de sentarte a rendir.</p>
+    <p class="lede">Todas las preguntas de las seis unidades juntas, para chequear que las definiciones y las distinciones estén firmes antes de sentarte a rendir.</p>
   </div>
 
-<div class="card">
-    <strong>¿Cómo funciona?</strong> Tocá una opción y al toque te dice si está bien o mal, con la explicación. Sirve para chequear que las definiciones y las distinciones estén firmes antes de sentarte a rendir.
-    <p style="margin:12px 0 0">Aciertos: <span class="score" id="score">0</span> / <span id="answered">0</span> respondidas (<span id="totalq">0</span> en total) &nbsp; <button class="tab" onclick="resetQuiz()" style="border-color:var(--line-strong)">Reiniciar</button></p>
+<div class="quizset">
+  <div class="card">
+    <strong>¿Cómo funciona?</strong> Tocá una opción y al toque te dice si está bien o mal, con la explicación. Son las mismas preguntas que cierran cada unidad, acá todas seguidas y agrupadas por unidad.
+    <p class="quiz-meta" style="margin-bottom:0"><span>Aciertos: <span class="score" data-role="score">0</span> / <span data-role="answered">0</span> respondidas (<span data-role="total">0</span> en total)</span> <button class="btn-reset" data-role="reset">Reiniciar</button></p>
   </div>
-  <div id="quizBox"></div>
+  <div class="quiz-box" data-unit="all" id="quizBox"></div>
+</div>
 </section>
 
 <section class="slide" data-nm="Mapa">
@@ -1447,6 +1493,8 @@ const QUIZ = [
 {u:2,t:'mc',q:'Los proveedores y los sindicatos pertenecen al...',o:['Macroentorno o entorno de acción indirecta','Microentorno o entorno de acción directa','Subsistema técnico','Subsistema social'],a:1,e:'Micro / acción directa: clientes, proveedores, competidores, bancos, sindicatos y el sector económico. Macro / acción indirecta: económico, político-legal, social, cultural y tecnológico.'},
 {u:2,t:'mc',q:'"El Municipio declara ilegales los alquileres turísticos" es una variable...',o:['Económica','Político-legal','Cultural','Tecnológica'],a:1,e:'Una regulación de una autoridad pública es político-legal. "El turismo representa el 11% del PIB" sería económica; las pintadas contra los turistas, social o cultural.'},
 {u:2,t:'vf',q:'La organización es un sistema cerrado, porque tiene límites definidos respecto de su entorno.',a:1,e:'Falso. Es un sistema ABIERTO: intercambia permanentemente con el entorno, lo influye y es influido por él. Si fuera cerrado no registraría los cambios del mercado.'},
+{u:2,t:'mc',q:'Que la organización sea un sistema SOCIOTÉCNICO significa que tiene tres subsistemas:',o:['Entrada, proceso y salida','Técnico, administrativo y social','Institucional, intermedio y operacional','Micro, macro e interno'],a:1,e:'Técnico (máquinas, tecnología, procesos), administrativo (estructura, dirección, decisiones) y social (personas, motivaciones, cultura). Entrada → proceso → salida es el esquema del sistema abierto, no los subsistemas.'},
+{u:2,t:'mc',q:'Según Duncan, la máxima incertidumbre del entorno se da cuando éste es...',o:['Estático y simple','Estático y complejo','Dinámico y simple','Dinámico y complejo'],a:3,e:'Duncan cruza el grado de cambio (estático / dinámico) con la complejidad (simple / complejo). Dinámico y complejo = máxima incertidumbre, el caso de la industria bancaria; estático y simple = mínima, la industria de contenedores.'},
 /* U3 */
 {u:3,t:'mc',q:'El grupo de compañeros que almuerza junto todos los días y se entera antes que nadie de las novedades es...',o:['Organización formal','Organización informal','Un órgano de staff','Un comité'],a:1,e:'Organización informal: la red de relaciones que surge espontáneamente (concepto de Barnard). No figura en el organigrama, pero influye en cómo circula la información.'},
 {u:3,t:'vf',q:'Cuando un jefe delega, transfiere también la responsabilidad por el resultado.',a:1,e:'Falso, y es LA pregunta de la unidad. Se delega la AUTORIDAD; la responsabilidad no se delega: el que delegó sigue respondiendo ante su superior. Además la autoridad delegada puede recuperarse.'},
@@ -1472,6 +1520,8 @@ const QUIZ = [
 {u:5,t:'mc',q:'El ciclo de abastecimiento es...',o:['Compras → almacenes → recepción','Almacenes → compras → recepción','Recepción → compras → almacenes','Compras → recepción → producción'],a:1,e:'Almacenes detecta la necesidad al llegar al punto de pedido e informa a Compras; Compras estudia proveedores y ejecuta; Recepción controla e ingresa los bienes, y el inventario vuelve a subir.'},
 {u:5,t:'mc',q:'Monitorear vibraciones y temperatura de una máquina para anticipar cuándo va a fallar es mantenimiento...',o:['Preventivo','Predictivo','Correctivo programable','Correctivo de emergencia'],a:1,e:'Predictivo: se basa en el monitoreo de condición, midiendo variables técnicas para prever la falla. El preventivo es el programado por anticipado sin medir; el correctivo actúa una vez producida la falla.'},
 {u:5,t:'mc',q:'La coincidencia entre lo que se elaboró y lo que se había diseñado es la calidad de...',o:['Diseño','Concordancia','Servicio','Proceso'],a:1,e:'Calidad de concordancia: lo elaborado vs. lo diseñado. La calidad de DISEÑO es la coincidencia entre lo que el cliente necesita y lo que se diseñó.'},
+{u:5,t:'mc',q:'Con qué frase abre la cátedra la unidad: ¿para qué existe el aprovisionamiento?',o:['Para bajar el costo de las compras','Para equilibrar los distintos ritmos de las actividades de la organización','Para controlar la calidad de los proveedores','Para minimizar el stock en depósito'],a:1,e:'Equilibrar los ritmos: el de las ventas con el de la producción, y el de la producción con el de las compras. Proveer los materiales en la cantidad, calidad, momento y costo adecuados es la definición; equilibrar los ritmos es el para qué.'},
+{u:5,t:'mc',q:'Un control de calidad que sólo define si la pieza pasa o no pasa es control...',o:['Por variable','Por atributo','De diseño','Preventivo'],a:1,e:'Por atributo: pasa / no pasa. El control por VARIABLE mide algo (peso, largo, tolerancias). Los dos se pueden aplicar sobre entradas, procesos o salidas.'},
 /* U6 */
 {u:6,t:'mc',q:'El documento que establece la educación, la experiencia y las condiciones que debe reunir quien ocupe un cargo es...',o:['La descripción del puesto','La especificación del puesto','La evaluación de desempeño','El manual de funciones'],a:1,e:'La ESPECIFICACIÓN es el QUIÉN (requisitos de la persona). La DESCRIPCIÓN es el QUÉ (objetivos, funciones y responsabilidades del puesto). Los dos salen del análisis de puestos.'},
 {u:6,t:'mc',q:'Atraer candidatos potencialmente calificados es...',o:['Selección','Reclutamiento','Inducción','Capacitación'],a:1,e:'Reclutar es ATRAER (ampliar el embudo); seleccionar es ELEGIR entre los atraídos, con etapas en las que se puede rechazar. La inducción viene después de contratar.'},
@@ -1528,61 +1578,79 @@ const CARDS = [
 {u:6,f:'Maslow y McGregor',b:'<b>Maslow:</b> pirámide de necesidades (fisiológicas, seguridad, sociales, estima, autorrealización); una necesidad satisfecha deja de motivar. <b>McGregor:</b> Teoría X (la gente rehúye el trabajo, hay que controlarla) vs. Teoría Y (puede autodirigirse, hay que delegar).',m:'El supuesto del jefe define su estilo.'}
 ];
 
-/* ====== QUIZ RENDER ====== */
-var score = 0, answered = 0;
-function renderQuiz(){
-  var box = document.getElementById('quizBox'); box.innerHTML = '';
-  var lastU = null;
-  QUIZ.forEach(function(item, i){
-    if(item.u !== lastU){
-      lastU = item.u;
-      var h = document.createElement('h3');
-      h.textContent = 'Unidad ' + item.u; box.appendChild(h);
-    }
-    var d = document.createElement('div'); d.className = 'quiz-q';
-    var en = document.createElement('div'); en.className = 'q';
-    en.textContent = (i+1) + '. ' + (item.t==='vf' ? '[V/F] ' : '') + item.q;
-    d.appendChild(en);
-    var opts = item.t==='vf' ? ['Verdadero','Falso'] : item.o;
-    opts.forEach(function(op, j){
-      var b = document.createElement('button'); b.className = 'opt'; b.textContent = op;
-      b.addEventListener('click', function(){ answer(d, item, j); });
-      d.appendChild(b);
+/* ====== QUIZ RENDER ======
+   Un mismo motor para los seis quizzes de cierre de unidad (.quiz-box[data-unit="N"])
+   y para la pantalla Quiz, que muestra todo junto (data-unit="all").
+   Cada bloque lleva su propio puntaje, independiente de los demás. */
+function mountQuiz(set){
+  var box = set.querySelector('.quiz-box');
+  if(!box) return;
+  var unit = box.getAttribute('data-unit');
+  var all = (unit === 'all');
+  var items = all
+    ? QUIZ.slice().sort(function(a, b){ return a.u - b.u; })
+    : QUIZ.filter(function(q){ return q.u === parseInt(unit, 10); });
+  var score = 0, answered = 0;
+
+  function show(role, value){
+    var el = set.querySelector('[data-role="' + role + '"]');
+    if(el) el.textContent = value;
+  }
+  function answer(card, item, chosen){
+    if(card.dataset.done) return;
+    card.dataset.done = '1';
+    Array.prototype.forEach.call(card.querySelectorAll('.opt'), function(b, j){
+      b.classList.add('disabled');
+      if(j === item.a) b.classList.add('correct');
+      if(j === chosen && j !== item.a) b.classList.add('wrong');
     });
-    var ex = document.createElement('div'); ex.className = 'explain hidden'; d.appendChild(ex);
-    box.appendChild(d);
-  });
-  document.getElementById('totalq').textContent = QUIZ.length;
+    answered++;
+    var ok = (chosen === item.a);
+    if(ok) score++;
+    var ex = card.querySelector('.explain');
+    ex.textContent = (ok ? 'Bien ahí. ' : 'No va. ') + item.e;
+    ex.classList.remove('hidden');
+    show('score', score); show('answered', answered);
+  }
+  function render(){
+    box.innerHTML = '';
+    score = 0; answered = 0;
+    var lastU = null;
+    items.forEach(function(item, i){
+      if(all && item.u !== lastU){
+        lastU = item.u;
+        var h = document.createElement('h3');
+        h.textContent = 'Unidad ' + item.u; box.appendChild(h);
+      }
+      var d = document.createElement('div'); d.className = 'quiz-q';
+      var en = document.createElement('div'); en.className = 'q';
+      en.textContent = (i+1) + '. ' + (item.t==='vf' ? '[V/F] ' : '') + item.q;
+      d.appendChild(en);
+      var opts = item.t==='vf' ? ['Verdadero','Falso'] : item.o;
+      opts.forEach(function(op, j){
+        var b = document.createElement('button'); b.className = 'opt'; b.textContent = op;
+        b.addEventListener('click', function(){ answer(d, item, j); });
+        d.appendChild(b);
+      });
+      var ex = document.createElement('div'); ex.className = 'explain hidden'; d.appendChild(ex);
+      box.appendChild(d);
+    });
+    show('total', items.length); show('score', 0); show('answered', 0);
+  }
+
+  var reset = set.querySelector('[data-role="reset"]');
+  if(reset) reset.addEventListener('click', render);
+  render();
 }
-function answer(card, item, chosen){
-  if(card.dataset.done) return;
-  card.dataset.done = '1';
-  var btns = card.querySelectorAll('.opt');
-  btns.forEach(function(b, j){
-    b.classList.add('disabled');
-    if(j === item.a) b.classList.add('correct');
-    if(j === chosen && j !== item.a) b.classList.add('wrong');
-  });
-  answered++;
-  var ok = (chosen === item.a);
-  if(ok) score++;
-  var ex = card.querySelector('.explain');
-  ex.textContent = (ok ? 'Bien ahí. ' : 'No va. ') + item.e;
-  ex.classList.remove('hidden');
-  document.getElementById('score').textContent = score;
-  document.getElementById('answered').textContent = answered;
-}
-function resetQuiz(){ score = 0; answered = 0;
-  document.getElementById('score').textContent = 0;
-  document.getElementById('answered').textContent = 0;
-  renderQuiz();
+function renderQuiz(){
+  Array.prototype.forEach.call(document.querySelectorAll('.quizset'), mountQuiz);
 }
 
 /* ====== FLASHCARDS RENDER ====== */
 function renderCards(){
   var box = document.getElementById('flashBox'); box.innerHTML = '';
   var lastU = null, grid = null;
-  CARDS.forEach(function(c){
+  CARDS.slice().sort(function(a, b){ return a.u - b.u; }).forEach(function(c){
     if(c.u !== lastU){
       lastU = c.u;
       var h = document.createElement('h3');
